@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Model Validation on Awaiting Bits</title>
-    <link>http://example.org/tags/model-validation/</link>
+    <link>https://zhaytam.github.io/tags/model-validation/</link>
     <description>Recent content in Model Validation on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Apr 2019 17:12:34 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/model-validation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/tags/model-validation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ASP.NET Core – Checking ModelState.IsValid is boring</title>
-      <link>http://example.org/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</link>
+      <link>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>http://example.org/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
+      <guid>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
       <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.
 But that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.</description>
     </item>

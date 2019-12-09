@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iqr on Awaiting Bits</title>
-    <link>http://example.org/tags/iqr/</link>
+    <link>https://zhaytam.github.io/tags/iqr/</link>
     <description>Recent content in iqr on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jul 2019 13:31:51 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/iqr/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/tags/iqr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Outliers Detection in PySpark #2 – Interquartile Range</title>
-      <link>http://example.org/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</link>
+      <link>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</link>
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
-      <guid>http://example.org/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
+      <guid>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
       <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection.
 In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
 Introduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.</description>

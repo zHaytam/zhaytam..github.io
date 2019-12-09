@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PIL Fork on Awaiting Bits</title>
-    <link>http://example.org/tags/pil-fork/</link>
+    <link>https://zhaytam.github.io/tags/pil-fork/</link>
     <description>Recent content in PIL Fork on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Aug 2018 20:09:28 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/pil-fork/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/tags/pil-fork/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating GIFs in Python using Pillow (PIL Fork)</title>
-      <link>http://example.org/2018/08/21/creating-gifs-using-python-pillow/</link>
+      <link>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>http://example.org/2018/08/21/creating-gifs-using-python-pillow/</guid>
+      <guid>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</guid>
       <description>I was working on a personal project the other day and I needed to create some images (frames) and save them as a playable GIF. Working in Python, I excepted to find an easy solution fast but oh boy did it take me too long to find it.
 Here I am now, creating a blog post to help future people looking to create gifs in Python.</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows 10 on Awaiting Bits</title>
-    <link>http://example.org/tags/windows-10/</link>
+    <link>https://zhaytam.github.io/tags/windows-10/</link>
     <description>Recent content in Windows 10 on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 Feb 2019 19:46:21 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/windows-10/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/tags/windows-10/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to lower the volume of the annoying Windows 10 notifications</title>
-      <link>http://example.org/2019/02/08/lower-windows-10-notifications-volume/</link>
+      <link>https://zhaytam.github.io/2019/02/08/lower-windows-10-notifications-volume/</link>
       <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
       
-      <guid>http://example.org/2019/02/08/lower-windows-10-notifications-volume/</guid>
+      <guid>https://zhaytam.github.io/2019/02/08/lower-windows-10-notifications-volume/</guid>
       <description>I bought a laptop a long time ago but I never really used it enough to notice this.
 I am now using it every day and every time a Windows 10 notification shows up, both my ears bleed (not really but you get the idea).
 The volume of these notifications is EXTREMELY loud.</description>

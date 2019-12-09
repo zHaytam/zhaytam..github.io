@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ASP.NET Core on Awaiting Bits</title>
-    <link>http://example.org/categories/asp.net-core/</link>
+    <link>https://zhaytam.github.io/categories/asp.net-core/</link>
     <description>Recent content in ASP.NET Core on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 03 Oct 2019 08:35:40 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google Sign-In for ASP.NET Core Web APIs</title>
-      <link>http://example.org/2019/10/03/google-sign-in-asp-net-core-web-api/</link>
+      <link>https://zhaytam.github.io/2019/10/03/google-sign-in-asp-net-core-web-api/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>http://example.org/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
+      <guid>https://zhaytam.github.io/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
       <description>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.
 Today I&#39;ll be showing how you can add Google Sign-In and still manage users in your back-end.
 Overview Here&#39;s a sequence diagram showing how it all works:</description>
@@ -24,20 +24,20 @@ Overview Here&#39;s a sequence diagram showing how it all works:</description>
     
     <item>
       <title>What’s new in ASP.NET Core 3.0, Blazor and SignalR</title>
-      <link>http://example.org/2019/09/13/whats-new-asp-net-core-3/</link>
+      <link>https://zhaytam.github.io/2019/09/13/whats-new-asp-net-core-3/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>http://example.org/2019/09/13/whats-new-asp-net-core-3/</guid>
+      <guid>https://zhaytam.github.io/2019/09/13/whats-new-asp-net-core-3/</guid>
       <description>I got interested in ASP.NET Core 3.0 since the first preview and followed it very closely. I started using it since preview2 and will now soon go to production with it (preview9).
 I compiled this list to have all the new features, improvements and breaking changes that happened during this time for easy access and accessibility.</description>
     </item>
     
     <item>
       <title>EmailSender Service using FluentEmail &amp; Razor Templates</title>
-      <link>http://example.org/2019/06/08/emailsender-service-fluent-email-razor-templates/</link>
+      <link>https://zhaytam.github.io/2019/06/08/emailsender-service-fluent-email-razor-templates/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>http://example.org/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
+      <guid>https://zhaytam.github.io/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
 Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
 EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
@@ -45,10 +45,10 @@ EmailSender interface If you&#39;re working with a project that implements a Cle
     
     <item>
       <title>ASP.NET Core – Checking ModelState.IsValid is boring</title>
-      <link>http://example.org/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</link>
+      <link>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>http://example.org/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
+      <guid>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
       <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.
 But that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.</description>
     </item>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C# on Awaiting Bits</title>
-    <link>http://example.org/categories/c#/</link>
+    <link>https://zhaytam.github.io/categories/c#/</link>
     <description>Recent content in C# on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/c#/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaytam.github.io/categories/c#/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Socks5 – A .NET Core implementation from scratch</title>
-      <link>http://example.org/2019/11/15/socks5-a-net-core-implementation-from-scratch/</link>
+      <link>https://zhaytam.github.io/2019/11/15/socks5-a-net-core-implementation-from-scratch/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>http://example.org/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
+      <guid>https://zhaytam.github.io/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
       <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
 The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
     </item>
     
     <item>
       <title>Instanciating a Type at Runtime – C# Benchmarks</title>
-      <link>http://example.org/2019/04/26/fas-to-instanciating-a-type-at-runtime/</link>
+      <link>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</link>
       <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
       
-      <guid>http://example.org/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
+      <guid>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
       <description>Assuming you are familiar with C#;
 If I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?
 What if I tell you that instanciating a Type using Expression Treesis much faster?
