@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Type on Awaiting Bits</title>
+    <link>http://example.org/tags/type/</link>
+    <description>Recent content in Type on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Apr 2019 00:06:15 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/type/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Instanciating a Type at Runtime – C# Benchmarks</title>
+      <link>http://example.org/2019/04/26/fas-to-instanciating-a-type-at-runtime/</link>
+      <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
+      
+      <guid>http://example.org/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
+      <description>Assuming you are familiar with C#;
+If I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?
+What if I tell you that instanciating a Type using Expression Treesis much faster?
+First of all, the code for the benchmarks is here:</description>
+    </item>
+    
+  </channel>
+</rss>

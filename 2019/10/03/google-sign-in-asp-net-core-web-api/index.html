@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Google Sign-In for ASP.NET Core Web APIs",
+        "headline" : "Google Sign-In for ASP.NET Core Web APIs",
+        "description" : "There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.\nToday I\x27ll be showing how you can add Google Sign-In and still manage users in your back-end.\nOverview Here\x27s a sequence diagram showing how it all works:",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-10-03 08:35:40 \x2b0000 \x2b0000",
+        "dateModified" : "2019-10-03 08:35:40 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/10\/03\/google-sign-in-asp-net-core-web-api\/",
+        "wordCount" : "719",
+        "image" : "http://example.org/img/default.webp"",
+        "keywords" : [ ""google"",""jwt"",""oauth"",""rest api"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Google Sign-In for ASP.NET Core Web APIs </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/default.webp">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">03 October</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/asp.net-core">ASP.NET Core</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Google Sign-In for ASP.NET Core Web APIs</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.<br>
+Today I'll be showing how you can add Google Sign-In and still manage users in your back-end.</p>
+<h2 id="overview">Overview</h2>
+<p>Here's a sequence diagram showing how it all works:</p>
+<figure>
+    <img src="/img/Google-Sign-In-768x685.webp"
+         alt="Google Sign-In - Sequence Diagram"/> <figcaption>
+            <h4>Google Sign-In - Sequence Diagram</h4>
+        </figcaption>
+</figure>
+
+<p>Here are the steps:</p>
+<ol>
+<li>The client sends a login request to Google, using the login window (pop-up).</li>
+<li>Google responds with an `id_token` and some user information.</li>
+<li>The client sends the `id_token` to the back-end server.</li>
+<li>The back-end server validates the token and gets the user information from it.</li>
+<li>Create a user and link the external login to it.
+<ul>
+<li>If a user already exists with the email address, link directly to him.</li>
+<li>If the external login is already linked to a user, skip this step.</li>
+</ul>
+</li>
+<li>Send a response to the client.
+<ul>
+<li>If the response is a success, send a JWT token generated from your back-end for the user to use in all his next requests.</li>
+</ul>
+</li>
+</ol>
+<p>You can also refer to the official guide from Google: <a href="https://developers.google.com/identity/sign-in/web/backend-auth">Authenticate with a backend server</a>.</p>
+<h2 id="getting-the-idtoken-from-our-client">Getting the `id_token` from our client</h2>
+<p>In order to make it possible for the client to use Google’s login window, we’ll have to use their SDK <a href="https://apis.google.com/js/api.js">gapi</a>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">function onSignIn(googleUser) {
+  <span style="color:#458;font-weight:bold">var</span> id_token = googleUser.getAuthResponse().id_token;
+  ...
+}
+</code></pre></div><p>If you're using a framework instead of plain javascript, there are libraries that make this process easier, for instance:</p>
+<ul>
+<li>React: <a href="https://www.npmjs.com/package/react-google-login">react-google-login</a></li>
+<li>Angular: <a href="https://www.npmjs.com/package/angularx-social-login">angularx-social-login</a></li>
+</ul>
+<p>Next, we will send the `id_token` to our back-end server:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">sendGoogleToken (token: <span style="color:#458;font-weight:bold">string</span>)<span style="color:#000;font-weight:bold">:</span> Observable<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span> {
+  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">this</span>.http.post<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span>(<span style="color:#000;font-weight:bold">this</span>.googleAuthUrl, token)
+    .pipe(...);
+}
+</code></pre></div><h2 id="integrating-google-signin-in-our-server">Integrating Google Sign-In in our server</h2>
+<p><em>Note: I explain this process using ASP.NET Core but it applies to whatever language/framework you're using.</em></p>
+<p>Firstly, we'll have an action (route) to receive the token:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[HttpPost(&#34;auth/google&#34;)]</span>
+<span style="color:#008080">[ProducesDefaultResponseType]</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;JsonResult&gt; GoogleLogin(GoogleLoginRequest request)
+{
+  <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><p>Secondly, we’ll validate the received token using Google’s <a href="https://www.nuget.org/packages/Google.Apis.Auth/">Auth API</a> for .NET.
+To install it, you can use the Package Manager: `Install-Package Google.Apis.Auth -Version 1.41.1`</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Payload payload;
+<span style="color:#000;font-weight:bold">try</span>
+{
+    payload = <span style="color:#000;font-weight:bold">await</span> ValidateAsync(request.IdToken, <span style="color:#000;font-weight:bold">new</span> ValidationSettings
+    {
+        Audience = <span style="color:#000;font-weight:bold">new</span>[] { <span style="color:#d14">&#34;YOUR_CLIENT_ID&#34;</span> }
+    });
+    <span style="color:#998;font-style:italic">// It is important to add your ClientId as an audience in order to make sure
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// that the token is for your application!
+</span><span style="color:#998;font-style:italic"></span>}
+<span style="color:#000;font-weight:bold">catch</span>
+{
+    <span style="color:#998;font-style:italic">// Invalid token
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><p><em>Note: If you require users to have confirmed emails, Google's paypload contains an <strong>EmailVerified</strong> property that you can check.</em></p>
+<p>Thirdly, we'll get the user linked to this login attempt (or create it if needed):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;User&gt; GetOrCreateExternalLoginUser(<span style="color:#458;font-weight:bold">string</span> provider, <span style="color:#458;font-weight:bold">string</span> key, <span style="color:#458;font-weight:bold">string</span> email, <span style="color:#458;font-weight:bold">string</span> firstName, <span style="color:#458;font-weight:bold">string</span> lastName)
+{
+    <span style="color:#998;font-style:italic">// Login already linked to a user
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#458;font-weight:bold">var</span> user = <span style="color:#000;font-weight:bold">await</span> _userManager.FindByLoginAsync(provider, key);
+    <span style="color:#000;font-weight:bold">if</span> (user != <span style="color:#000;font-weight:bold">null</span>)
+        <span style="color:#000;font-weight:bold">return</span> user;
+
+    user = <span style="color:#000;font-weight:bold">await</span> _userManager.FindByEmailAsync(email);
+    <span style="color:#000;font-weight:bold">if</span> (user == <span style="color:#000;font-weight:bold">null</span>)
+    {
+      <span style="color:#998;font-style:italic">// No user exists with this email address, we create a new one
+</span><span style="color:#998;font-style:italic"></span>        user = <span style="color:#000;font-weight:bold">new</span> User
+        {
+            Email = email,
+            UserName = email,
+            FirstName = firstName,
+            LastName = lastName
+        };
+
+        <span style="color:#000;font-weight:bold">await</span> _userManager.CreateAsync(user);
+    }
+
+    <span style="color:#998;font-style:italic">// Link the user to this login
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#458;font-weight:bold">var</span> info = <span style="color:#000;font-weight:bold">new</span> UserLoginInfo(provider, key, provider.ToUpperInvariant());
+    <span style="color:#458;font-weight:bold">var</span> result = <span style="color:#000;font-weight:bold">await</span> _userManager.AddLoginAsync(user, info);
+    <span style="color:#000;font-weight:bold">if</span> (result.Succeeded)
+      <span style="color:#000;font-weight:bold">return</span> user;
+
+    _logger.LogError(<span style="color:#d14">&#34;Failed add a user linked to a login.&#34;</span>);
+    _logger.LogError(<span style="color:#458;font-weight:bold">string</span>.Join(Environment.NewLine, result.Errors.Select(e =&gt; e.Description)));
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">null</span>;
+}
+</code></pre></div><p>Lastly, we'll generate a JWT token:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// How to generate a JWT token is not in this post&#39;s scope
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;<span style="color:#458;font-weight:bold">string</span>&gt; GenerateToken(User user)
+{
+    <span style="color:#458;font-weight:bold">var</span> claims = <span style="color:#000;font-weight:bold">await</span> GetUserClaims(user);
+    <span style="color:#000;font-weight:bold">return</span> GenerateToken(user, claims);
+}
+</code></pre></div><p>Putting everything together gives us:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[HttpPost(&#34;auth/google&#34;)]</span>
+<span style="color:#008080">[ProducesDefaultResponseType]</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;JsonResult&gt; GoogleLogin(GoogleLoginRequest request)
+{
+  Payload payload;
+  <span style="color:#000;font-weight:bold">try</span>
+  {
+      payload = <span style="color:#000;font-weight:bold">await</span> ValidateAsync(request.IdToken, <span style="color:#000;font-weight:bold">new</span> ValidationSettings
+      {
+          Audience = <span style="color:#000;font-weight:bold">new</span>[] { <span style="color:#d14">&#34;YOUR_CLIENT_ID&#34;</span> }
+      });
+      <span style="color:#998;font-style:italic">// It is important to add your ClientId as an audience in order to make sure
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#998;font-style:italic">// that the token is for your application!
+</span><span style="color:#998;font-style:italic"></span>  }
+  <span style="color:#000;font-weight:bold">catch</span>
+  {
+      <span style="color:#998;font-style:italic">// Invalid token
+</span><span style="color:#998;font-style:italic"></span>  }
+
+  <span style="color:#458;font-weight:bold">var</span> user = <span style="color:#000;font-weight:bold">await</span> GetOrCreateExternalLoginUser(<span style="color:#d14">&#34;google&#34;</span>, payload.Subject, payload.Email, payload.GivenName, payload.FamilyName);
+  <span style="color:#458;font-weight:bold">var</span> token = <span style="color:#000;font-weight:bold">await</span> GenerateToken(user);
+  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> JsonResult(token);
+  }
+</code></pre></div><p>I highly recommend putting this in a service or a handler.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, integrating Google (or any other provider in that matter) into your sign in/up flow is easier than you think. We saw how to show the user Google's login window, and, after validating the token in our back-end, link a user entry from our database to that login for future use.<br>
+I hope you enjoyed this post!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/asp.net-core" title="View all posts in ASP.NET Core">ASP.NET Core</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/google" title="View all posts tagged google">google</a>
+  
+  <a href="/tags/jwt" title="View all posts tagged jwt">jwt</a>
+  
+  <a href="/tags/oauth" title="View all posts tagged oauth">oauth</a>
+  
+  <a href="/tags/rest-api" title="View all posts tagged rest api">rest api</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

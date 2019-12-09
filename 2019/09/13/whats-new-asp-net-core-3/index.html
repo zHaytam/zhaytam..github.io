@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "What’s new in ASP.NET Core 3.0, Blazor and SignalR",
+        "headline" : "What’s new in ASP.NET Core 3.0, Blazor and SignalR",
+        "description" : "I got interested in ASP.NET Core 3.0 since the first preview and followed it very closely. I started using it since preview2 and will now soon go to production with it (preview9).\nI compiled this list to have all the new features, improvements and breaking changes that happened during this time for easy access and accessibility.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-09-13 18:06:20 \x2b0000 \x2b0000",
+        "dateModified" : "2019-09-13 18:06:20 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/09\/13\/whats-new-asp-net-core-3\/",
+        "wordCount" : "3066",
+        "image" : "http://example.org/%!s(\u003cnil\u003e)"",
+        "keywords" : [ ""ASP.NET Core 3.0"",""Blazor"",""Breaking Changes"",""New Features"",""SignalR"","Blog" ]   
+    }
+    </script>
+
+
+ <title>What’s new in ASP.NET Core 3.0, Blazor and SignalR </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+
+      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
+
+        
+        <div class="entry-meta">
+          <span class="date">13 September</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/asp.net-core">ASP.NET Core</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> What’s new in ASP.NET Core 3.0, Blazor and SignalR</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>I got interested in ASP.NET Core 3.0 since the first preview and followed it very closely. I started using it since preview2 and will now soon go to production with it (preview9).</p>
+<p>I compiled this list to have all the new features, improvements and breaking changes that happened during this time for easy access and accessibility.<br>
+All of this is also present in this <a href="https://github.com/zHaytam/aspnetcore3.0-whatsnew">github repository</a>.</p>
+<p><strong>Disclaimer</strong><br>
+The content present here is not mine, it is mostly taken from github issues and .NET blog posts.</p>
+<h2 id="signalr">SignalR</h2>
+<h3 id="clienttoserver-streaming">Client-to-server streaming</h3>
+<p>In Preview2, a new feature has been added to SignalR which gives the ability for the server to listen to streams.</p>
+<h4 id="example-source1">Example (<a href="https://devblogs.microsoft.com/aspnet/aspnet-core-3-preview-2/">source</a>)</h4>
+<p>Server (Hub):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task StartStream(<span style="color:#458;font-weight:bold">string</span> streamName, ChannelReader&lt;<span style="color:#458;font-weight:bold">string</span>&gt; streamContent)
+{
+    <span style="color:#998;font-style:italic">// read from and process stream items
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">await</span> streamContent.WaitToReadAsync(Context.ConnectionAborted))
+    {
+        <span style="color:#000;font-weight:bold">while</span> (streamContent.TryRead(<span style="color:#000;font-weight:bold">out</span> <span style="color:#458;font-weight:bold">var</span> content))
+        {
+            <span style="color:#998;font-style:italic">// process content
+</span><span style="color:#998;font-style:italic"></span>        }
+    }
+}
+</code></pre></div><p>Client:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">let</span> subject <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> signalR.Subject();
+await connection.send(<span style="color:#d14">&#34;StartStream&#34;</span>, <span style="color:#d14">&#34;MyAsciiArtStream&#34;</span>, subject);
+subject.next(<span style="color:#d14">&#34;example&#34;</span>);
+subject.complete();
+</code></pre></div><p>For more information, please check the <a href="https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-2.2">documentation page</a>.</p>
+<h3 id="long-polling-for-java-signalr-client">Long polling for Java SignalR Client</h3>
+<blockquote>
+<p>We added long polling support to the Java client which enables it to establish connections even in environments that do not support WebSockets. This also gives you the ability to specifically select the long polling transport in your client apps.</p>
+</blockquote>
+<h3 id="new-customizable-signalr-hub-method-authorization">New Customizable SignalR Hub Method Authorization</h3>
+<blockquote>
+<p>SignalR now provides a custom resource to authorization handlers when a hub method requires authorization. The resource is an instance of HubInvocationContext. The HubInvocationContext includes the HubCallerContext, the name of the hub method being invoked, and the arguments to the hub method.</p>
+</blockquote>
+<h4 id="example-source3">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-7/">source</a></h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">DomainRestrictedRequirement</span> :
+    AuthorizationHandler&lt;DomainRestrictedRequirement, HubInvocationContext&gt;,
+    IAuthorizationRequirement
+{
+    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#000;font-weight:bold">override</span> Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        DomainRestrictedRequirement requirement,
+        HubInvocationContext resource)
+    {
+        <span style="color:#000;font-weight:bold">if</span> (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name) &amp;&amp;
+            context.User != <span style="color:#000;font-weight:bold">null</span> &amp;&amp;
+            context.User.Identity != <span style="color:#000;font-weight:bold">null</span> &amp;&amp;
+            context.User.Identity.Name.EndsWith(<span style="color:#d14">&#34;@jabbr.net&#34;</span>, StringComparison.OrdinalIgnoreCase))
+        {
+            context.Succeed(requirement);
+        }
+
+        <span style="color:#000;font-weight:bold">return</span> Task.CompletedTask;
+    }
+
+    <span style="color:#000;font-weight:bold">private</span> <span style="color:#458;font-weight:bold">bool</span> IsUserAllowedToDoThis(<span style="color:#458;font-weight:bold">string</span> hubMethodName,
+        <span style="color:#458;font-weight:bold">string</span> currentUsername)
+    {
+        <span style="color:#000;font-weight:bold">return</span> !(currentUsername.Equals(<span style="color:#d14">&#34;bob42@jabbr.net&#34;</span>, StringComparison.OrdinalIgnoreCase) &amp;&amp;
+            hubMethodName.Equals(<span style="color:#d14">&#34;banUser&#34;</span>, StringComparison.OrdinalIgnoreCase));
+    }
+}
+<span style="color:#008080">
+</span><span style="color:#008080">[Authorize]</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ChatHub</span> : Hub
+{
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> SendMessage(<span style="color:#458;font-weight:bold">string</span> message)
+    {
+    }
+<span style="color:#008080">
+</span><span style="color:#008080">    [Authorize(&#34;DomainRestricted&#34;)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> BanUser(<span style="color:#458;font-weight:bold">string</span> username)
+    {
+    }
+<span style="color:#008080">
+</span><span style="color:#008080">    [Authorize(&#34;DomainRestricted&#34;)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ViewUserHistory(<span style="color:#458;font-weight:bold">string</span> username)
+    {
+    }
+}
+
+<span style="color:#998;font-style:italic">// Startup.cs
+</span><span style="color:#998;font-style:italic"></span>services
+    .AddAuthorization(options =&gt;
+    {
+        options.AddPolicy(<span style="color:#d14">&#34;DomainRestricted&#34;</span>, policy =&gt;
+        {
+            policy.Requirements.Add(<span style="color:#000;font-weight:bold">new</span> DomainRestrictedRequirement());
+        });
+    });
+</code></pre></div><h2 id="aspnet-core">ASP.NET Core</h2>
+<h3 id="systemiopipelines-on-httpcontext">System.IO.Pipelines on HttpContext</h3>
+<p>The body request and response pipes on the <code>HttpContext</code> are now exposed to users looking to write high performance code.</p>
+<p>These pipes are using the new <a href="https://blogs.msdn.microsoft.com/dotnet/2018/07/09/system-io-pipelines-high-performance-io-in-net/">System.IO.Pipelines API</a>.</p>
+<h4 id="example-source11">Example (<a href="https://devblogs.microsoft.com/aspnet/aspnet-core-3-preview-2/">source</a>)</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    <span style="color:#000;font-weight:bold">if</span> (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseRouting(routes =&gt;
+    {
+        routes.MapGet(<span style="color:#d14">&#34;/&#34;</span>, <span style="color:#000;font-weight:bold">async</span> context =&gt;
+        {
+            <span style="color:#000;font-weight:bold">await</span> context.Response.WriteAsync(<span style="color:#d14">&#34;Hello World&#34;</span>);
+        });
+
+        routes.MapPost(<span style="color:#d14">&#34;/&#34;</span>, <span style="color:#000;font-weight:bold">async</span> context =&gt;
+        {
+            <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">true</span>)
+            {
+                <span style="color:#458;font-weight:bold">var</span> result = <span style="color:#000;font-weight:bold">await</span> context.Request.BodyPipe.ReadAsync();
+                <span style="color:#458;font-weight:bold">var</span> buffer = result.Buffer;
+
+                <span style="color:#000;font-weight:bold">if</span> (result.IsCompleted)
+                {
+                    <span style="color:#000;font-weight:bold">break</span>;
+                }
+
+                context.Request.BodyPipe.AdvanceTo(buffer.End);
+            }
+        });
+    });
+}
+</code></pre></div><h3 id="generic-host-templates">Generic host templates</h3>
+<p>ASP.NET Core now uses the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-2.2">Generic Host</a> by default.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#000;font-weight:bold">void</span> Main(<span style="color:#458;font-weight:bold">string</span>[] args)
+{
+    CreateHostBuilder(args).Build().Run();
+}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> IHostBuilder CreateHostBuilder(<span style="color:#458;font-weight:bold">string</span>[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.UseStartup&lt;Startup&gt;();
+        });
+</code></pre></div><p>Note that this comes with a <a href="#generic-host-only-supports-specific-constructor-injections-in-startup">breaking change</a>.</p>
+<h3 id="endpoint-routing">Endpoint Routing</h3>
+<p>Quoting <strong>Daniel</strong> from this blog <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-core-3-0-preview-4/">post</a>:</p>
+<blockquote>
+<p>Endpoint Routing is made up of the pair of middleware created by app.UseRouting() and app.UseEndpoints(). app.UseRouting() marks the position in the middleware pipeline where a routing decision is made – where an endpoint is selected. app.UseEndpoints() marks the position in the middleware pipeline where the selected endpoint is executed. Middleware that run in between these can see the selected endpoint (if any) or can select a different endpoint.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    <span style="color:#998;font-style:italic">// Middleware that run before routing. Usually the following appear here:
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">if</span> (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseDatabaseErrorPage();
+    }
+    <span style="color:#000;font-weight:bold">else</span>
+    {
+        app.UseExceptionHandler(<span style="color:#d14">&#34;/Error&#34;</span>);
+
+    }
+
+    app.UseStaticFiles();
+
+    <span style="color:#998;font-style:italic">// Runs matching. An endpoint is selected and set on the HttpContext if a match is found.
+</span><span style="color:#998;font-style:italic"></span>    app.UseRouting();
+
+    <span style="color:#998;font-style:italic">// Middleware that run after routing occurs. Usually the following appear here:
+</span><span style="color:#998;font-style:italic"></span>    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseCors();
+    <span style="color:#998;font-style:italic">// These middleware can take different actions based on the endpoint.
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#998;font-style:italic">// Executes the endpoint that was selected by routing.
+</span><span style="color:#998;font-style:italic"></span>    app.UseEndpoints(endpoints =&gt;
+    {
+        <span style="color:#998;font-style:italic">// Mapping of endpoints goes here:
+</span><span style="color:#998;font-style:italic"></span>        endpoints.MapControllers();
+        endpoints.MapRazorPages();
+        endpoints.MapHub&lt;MyChatHub&gt;();
+        endpoints.MapGrpcService&lt;MyCalculatorService&gt;();
+    });
+
+    <span style="color:#998;font-style:italic">// Middleware here will only run if nothing was matched.
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><h3 id="worker-service">Worker Service</h3>
+<p>ASP.NET Core adds a new template for worker services for long running tasks such as Windows Services or Linux Systemd daemons.</p>
+<h3 id="grpc">gRPC</h3>
+<p>A new project template has been added for users interested in creating <a href="https://grpc.io/">gRPC</a> servers, which use HTTP/2 for transport and protocol buffers, and supports HTTPs by default.</p>
+<p>A package <code>Grpc.Net.ClientFactory</code> is available for developers interested in a gRPC Client Factory. It's intented to use in scenarios that don't include ASP.NET Core.</p>
+<p>The package also gives the possibility to include interceptors.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services
+    .AddGrpcClient&lt;GreeterClient&gt;(options =&gt;
+    {
+        options.BaseAddress = <span style="color:#000;font-weight:bold">new</span> Uri(<span style="color:#d14">&#34;https://localhost:5001&#34;</span>);
+    })
+    .AddInterceptor&lt;CallbackInterceptor&gt;();
+</code></pre></div><p>gRPC also supports <code>CallCredentials</code>, allowing for interoperability with existing libraries like <code>Grpc.Auth</code> that rely on <code>CallCredentials</code>.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/grpc/grpc-dotnet">gRPC dotnet repository</a></li>
+</ul>
+<h3 id="addmvc-was-split">AddMvc() was split</h3>
+<p>In order to give developpers more option in what they include in their projects, <code>AddMvc</code> was split into 3 top level extension methods:</p>
+<h4 id="addcontrollers">AddControllers</h4>
+<ul>
+<li>Controllers</li>
+<li>Model Binding</li>
+<li>API Explorer (OpenAPI integration)</li>
+<li>Authorization [Authorize]</li>
+<li>CORS [EnableCors]</li>
+<li>Data Annotations validation [Required]</li>
+<li>Formatter Mappings (translate a file-extension to a content-type)</li>
+</ul>
+<h4 id="addcontrollerswithviews">AddControllersWithViews</h4>
+<ul>
+<li>Controllers</li>
+<li>Model Binding</li>
+<li>API Explorer (OpenAPI integration)</li>
+<li>Authorization [Authorize]</li>
+<li>CORS [EnableCors]</li>
+<li>Data Annotations validation [Required]</li>
+<li>Formatter Mappings (translate a file-extension to a content-type)</li>
+<li>Antiforgery</li>
+<li>Temp Data</li>
+<li>Views</li>
+<li>Tag Helpers</li>
+<li>Memory Cache</li>
+</ul>
+<h4 id="addrazorpages">AddRazorPages</h4>
+<ul>
+<li>Pages</li>
+<li>Controllers</li>
+<li>Model Binding</li>
+<li>Authorization [Authorize]</li>
+<li>Data Annotations validation [Required]</li>
+<li>Antiforgery</li>
+<li>Temp Data</li>
+<li>Views</li>
+<li>Tag Helpers</li>
+<li>Memory Cache</li>
+</ul>
+<h3 id="new-json-serialization">New JSON Serialization</h3>
+<p>The .NET Core team introduced a new JSON Serialization library, found in the <code>System.Text.Json</code> namespace.</p>
+<blockquote>
+<p>For the most common payload sizes, System.Text.Json offers about 20% throughput increase during input and output formatting with a smaller memory footprint.</p>
+</blockquote>
+<p>It is now used by default in ASP.NET Core projects and SignalR Hubs.</p>
+<h3 id="certificate-and-kerberos-authentication">Certificate and Kerberos authentication</h3>
+<blockquote>
+<p>Preview 6 brings Certificate and Kerberos authentication to ASP.NET Core.<br>
+Certificate authentication requires you to configure your server to accept certificates, and then add the authentication middleware in Startup.Configure and the certificate authentication service in Startup.ConfigureServices.</p>
+</blockquote>
+<h4 id="example-source10">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-6/">source</a></h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+            .AddCertificate();
+    <span style="color:#998;font-style:italic">// All the other service configuration.
+</span><span style="color:#998;font-style:italic"></span>}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseAuthentication();
+    <span style="color:#998;font-style:italic">// All the other app configuration.
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><h3 id="eventcounters">EventCounters</h3>
+<blockquote>
+<p>In place of Windows perf counters, .NET Core introduced a new way of emitting metrics via <a href="https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracing.eventcounter?view=netcore-3.0">EventCounters</a>.</p>
+</blockquote>
+<h4 id="hosting-microsoftaspnetcorehosting">Hosting (<code>Microsoft.AspNetCore.Hosting</code>)</h4>
+<ul>
+<li>requests-per-second</li>
+<li>total-requests</li>
+<li>current-requests</li>
+<li>failed-requests</li>
+</ul>
+<h4 id="signalr-microsoftaspnetcorehttpconnections">SignalR (<code>Microsoft.AspNetCore.Http.Connections</code>)</h4>
+<ul>
+<li>connections-started</li>
+<li>connections-stopped</li>
+<li>connections-timed-out</li>
+<li>connections-duration</li>
+</ul>
+<h4 id="grpc-grpcaspnetcoreserver-and-grpcnetclient">gRPC (<code>Grpc.AspNetCore.Server</code> and <code>Grpc.Net.Client</code>)</h4>
+<ul>
+<li>total-calls</li>
+<li>current-calls</li>
+<li>calls-failed</li>
+<li>calls-deadline-exceeded</li>
+<li>messages-sent</li>
+<li>messages-received</li>
+<li>calls-unimplemented</li>
+</ul>
+<h4 id="viewing">Viewing</h4>
+<p><code>dotnet counters monitor -p &lt;PID&gt; Microsoft.AspNetCore.Hosting System.Runtime</code></p>
+<h3 id="razor-pages-support-for-attribute">Razor Pages support for <code>@attribute</code></h3>
+<p>This is a feature that was added to Blazor that lets developers include attributes (e.g. Authorize) on their components. It is now also available in Razor Pages!</p>
+<h3 id="new-networking-primitives-for-nonhttp-servers">New networking primitives for non-HTTP Servers</h3>
+<blockquote>
+<p>As part of the effort to decouple the components of Kestrel, we are introducing new networking primitives allowing you to add support for non-HTTP protocols.</p>
+<p>You can bind to an endpoint (System.Net.EndPoint) by calling Bind on an IConnectionListenerFactory. This returns a IConnectionListener which can be used to accept new connections. Calling AcceptAsync returns a ConnectionContext with details on the connection. A ConnectionContext is similar to HttpContext except it represents a connection instead of an HTTP request and response.</p>
+</blockquote>
+<h4 id="example-source111">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/">source</a></h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TcpEchoServer</span> : BackgroundService
+{
+    <span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">readonly</span> ILogger&lt;TcpEchoServer&gt; _logger;
+    <span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">readonly</span> IConnectionListenerFactory _factory;
+    <span style="color:#000;font-weight:bold">private</span> IConnectionListener _listener;
+
+    <span style="color:#000;font-weight:bold">public</span> TcpEchoServer(ILogger&lt;TcpEchoServer&gt; logger, IConnectionListenerFactory factory)
+    {
+        _logger = logger;
+        _factory = factory;
+    }
+
+    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#000;font-weight:bold">override</span> <span style="color:#000;font-weight:bold">async</span> Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        _listener = <span style="color:#000;font-weight:bold">await</span> _factory.BindAsync(<span style="color:#000;font-weight:bold">new</span> IPEndPoint(IPAddress.Loopback, <span style="color:#099">6</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>), stoppingToken);
+
+        <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">true</span>)
+        {
+            <span style="color:#458;font-weight:bold">var</span> connection = <span style="color:#000;font-weight:bold">await</span> _listener.AcceptAsync(stoppingToken);
+            <span style="color:#998;font-style:italic">// AcceptAsync will return null upon disposing the listener
+</span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">if</span> (connection == <span style="color:#000;font-weight:bold">null</span>)
+            {
+                <span style="color:#000;font-weight:bold">break</span>;
+            }
+            <span style="color:#998;font-style:italic">// In an actual server, ensure all accepted connections are disposed prior to completing
+</span><span style="color:#998;font-style:italic"></span>            _ = Echo(connection, stoppingToken);
+        }
+
+    }
+
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">override</span> <span style="color:#000;font-weight:bold">async</span> Task StopAsync(CancellationToken cancellationToken)
+    {
+        <span style="color:#000;font-weight:bold">await</span> _listener.DisposeAsync();
+    }
+
+    <span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">async</span> Task Echo(ConnectionContext connection, CancellationToken stoppingToken)
+    {
+        <span style="color:#000;font-weight:bold">try</span>
+        {
+            <span style="color:#458;font-weight:bold">var</span> input = connection.Transport.Input;
+            <span style="color:#458;font-weight:bold">var</span> output = connection.Transport.Output;
+
+            <span style="color:#000;font-weight:bold">await</span> input.CopyToAsync(output, stoppingToken);
+        }
+        <span style="color:#000;font-weight:bold">catch</span> (OperationCanceledException)
+        {
+            _logger.LogInformation(<span style="color:#d14">&#34;Connection {ConnectionId} cancelled due to server shutdown&#34;</span>, connection.ConnectionId);
+        }
+        <span style="color:#000;font-weight:bold">catch</span> (Exception e)
+        {
+            _logger.LogError(e, <span style="color:#d14">&#34;Connection {ConnectionId} threw an exception&#34;</span>, connection.ConnectionId);
+        }
+        <span style="color:#000;font-weight:bold">finally</span>
+        {
+            <span style="color:#000;font-weight:bold">await</span> connection.DisposeAsync();
+            _logger.LogInformation(<span style="color:#d14">&#34;Connection {ConnectionId} disconnected&#34;</span>, connection.ConnectionId);
+        }
+    }
+</code></pre></div><h3 id="unix-domain-socket-support-for-the-kestrel-sockets-transport">Unix domain socket support for the Kestrel Sockets transport</h3>
+<p>Kestrel now supports Unix domain sockets (on Linux, macOS, and Windows 10, version 1803 and newer).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> IHostBuilder CreateHostBuilder(<span style="color:#458;font-weight:bold">string</span>[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder
+                .ConfigureKestrel(o =&gt;
+                {
+                    o.ListenUnixSocket(<span style="color:#d14">&#34;/var/listen.sock&#34;</span>);
+                })
+                .UseStartup&lt;Startup&gt;();
+        });
+</code></pre></div><h2 id="blazor">Blazor</h2>
+<h3 id="culture-aware-data-binding">Culture aware data binding</h3>
+<blockquote>
+<p>Data-binding support (@bind) for  elements is now culture-aware. Data bound values will be formatted for display and parsed using the current culture as specified by the System.Globalization.CultureInfo.CurrentCulture property. This means that @bind will work correctly when the user’s desired culture has been set as the current culture, which is typically done using the ASP.NET Core localization middleware (see Localization).</p>
+<p>You can also manually specify the culture to use for data binding using the new @bind:culture parameter, where the value of the parameter is a CultureInfo instance. For example, to bind using the invariant culture:</p>
+</blockquote>
+<p><code>&lt;input @bind=&quot;amount&quot; @bind:culture=&quot;CultureInfo.InvariantCulture&quot; /&gt;</code></p>
+<h3 id="casesensitive-component-binding">Case-sensitive component binding</h3>
+<blockquote>
+<p>Components in .razor files are now case-sensitive. This enables some useful new scenarios and improves diagnostics from the Razor compiler.</p>
+<p>For example, the Counter has a button for incrementing the count that is styled as a primary button. What if we wanted a Button component that is styled as a primary button by default? Creating a component named Button in previous Blazor releases was problematic because it clashed with the button HTML element, but now that component matching is case-sensitive we can create our Button component and use it in Counter without issue.</p>
+</blockquote>
+<h3 id="accepting-arbitrary-parameters">Accepting arbitrary parameters</h3>
+<blockquote>
+<p>Components can now capture and render additional attributes in addition to the component’s declared parameters. Additional attributes can be captured in a dictionary and then “splatted” onto an element as part of the component’s rendering using the new @attributes Razor directive. This feature is especially valuable when defining a component that produces a markup element that supports a variety of customizations. For instance if you were defining a component that produces an  element, it would be tedious to define all of the attributes  supports like maxlength or placeholder as component parameters.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">&lt;input class=<span style="color:#d14">&#34;form-field&#34;</span> @attributes=<span style="color:#d14">&#34;Attributes&#34;</span> type=<span style="color:#d14">&#34;text&#34;</span> /&gt;
+
+@code {
+<span style="color:#008080">    [Parameter(CaptureUnmatchedValues = true)]</span>
+    Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt; Attributes { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+}
+</code></pre></div><p>In the above example:</p>
+<ul>
+<li>If <code>Attributes</code> contains a class then it will be used instead of <code>form-field</code>.</li>
+<li>If <code>Attributes</code> contains a type then it will be overwritten by <code>text</code> since it comes after.</li>
+<li>All other attributes are simply added.</li>
+</ul>
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+<blockquote>
+<p>Blazor now has built-in support for handling authentication and authorization. The server-side Blazor template now supports options for enabling all of the standard authentication configurations using ASP.NET Core Identity, Azure AD, and Azure AD B2C. We haven’t updated the Blazor WebAssembly templates to support these options yet, but we plan to do so after .NET Core 3.0 has shipped.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;AuthorizeView</span><span style="color:#000080">&gt;</span>
+    <span style="color:#000080">&lt;Authorized</span><span style="color:#000080">&gt;</span>
+        <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Manage&#34;</span><span style="color:#000080">&gt;</span>Hello, @context.User.Identity.Name!<span style="color:#000080">&lt;/a&gt;</span>
+        <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/LogOut&#34;</span><span style="color:#000080">&gt;</span>Log out<span style="color:#000080">&lt;/a&gt;</span>
+    <span style="color:#000080">&lt;/Authorized&gt;</span>
+    <span style="color:#000080">&lt;NotAuthorized</span><span style="color:#000080">&gt;</span>
+        <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Register&#34;</span><span style="color:#000080">&gt;</span>Register<span style="color:#000080">&lt;/a&gt;</span>
+        <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Login&#34;</span><span style="color:#000080">&gt;</span>Log in<span style="color:#000080">&lt;/a&gt;</span>
+    <span style="color:#000080">&lt;/NotAuthorized&gt;</span>
+<span style="color:#000080">&lt;/AuthorizeView&gt;</span>
+</code></pre></div><h3 id="static-assets">Static assets</h3>
+<blockquote>
+<p>Razor class libraries can now include static assets like JavaScript, CSS, and images. These static assets can then be included in ASP.NET Core apps by referencing the Razor class library project or via a package reference.</p>
+</blockquote>
+<p>Static assets must be in the <code>wwwroot</code> folder.</p>
+<h3 id="forms--validation">Forms &amp; Validation</h3>
+<p>Blazor now supports forms &amp; validation!</p>
+<h4 id="example-source12">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-core-3-0-preview-3/">source</a></h4>
+<p>Model:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Person</span>
+{
+<span style="color:#008080">    [Required(ErrorMessage = &#34;Enter a name&#34;)]</span>
+<span style="color:#008080">    [StringLength(10, ErrorMessage = &#34;That name is too long&#34;)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> Name { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+<span style="color:#008080">
+</span><span style="color:#008080">    [Range(0, 200, ErrorMessage = &#34;Nobody is that old&#34;)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> AgeInYears { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+<span style="color:#008080">
+</span><span style="color:#008080">    [Required]</span>
+<span style="color:#008080">    [Range(typeof(bool), &#34;true&#34;, &#34;true&#34;, ErrorMessage = &#34;Must accept terms&#34;)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">bool</span> AcceptsTerms { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+}
+</code></pre></div><p>UI:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">&lt;EditForm Model=<span style="color:#d14">&#34;@person&#34;</span> OnValidSubmit=<span style="color:#d14">&#34;@HandleValidSubmit&#34;</span>&gt;
+    &lt;DataAnnotationsValidator /&gt;
+    &lt;ValidationSummary /&gt;
+
+    &lt;p class=<span style="color:#d14">&#34;name&#34;</span>&gt;
+        Name: &lt;InputText bind-Value=<span style="color:#d14">&#34;@person.Name&#34;</span> /&gt;
+    &lt;/p&gt;
+    &lt;p class=<span style="color:#d14">&#34;age&#34;</span>&gt;
+        Age (years): &lt;InputNumber bind-Value=<span style="color:#d14">&#34;@person.AgeInYears&#34;</span> /&gt;
+    &lt;/p&gt;
+    &lt;p class=<span style="color:#d14">&#34;accepts-terms&#34;</span>&gt;
+        Accepts terms: &lt;InputCheckbox bind-Value=<span style="color:#d14">&#34;@person.AcceptsTerms&#34;</span> /&gt;
+    &lt;/p&gt;
+
+    &lt;button type=<span style="color:#d14">&#34;submit&#34;</span>&gt;Submit&lt;/button&gt;
+&lt;/EditForm&gt;
+
+@functions {
+    Person person = <span style="color:#000;font-weight:bold">new</span> Person();
+
+    <span style="color:#000;font-weight:bold">void</span> HandleValidSubmit()
+    {
+        Console.WriteLine(<span style="color:#d14">&#34;OnValidSubmit&#34;</span>);
+    }
+}
+</code></pre></div><h3 id="razor-components-in-razor-class-libraries">Razor Components in Razor Class Libraries</h3>
+<p>You can now create Razor Components in Razor Class Libraries and use them from ASP.NET Core projects.</p>
+<h3 id="prerendering">Prerendering</h3>
+<blockquote>
+<p>The Razor Components project template now does server-side prerendering by default. This means that when a user navigates to your application, the server will perform an initial render of your Razor Components and deliver the result to their browser as plain static HTML. Then, the browser will reconnect to the server via SignalR and switch the Razor Components into a fully interactive mode. This two-phase delivery is beneficial because:</p>
+</blockquote>
+<ul>
+<li>It improves the perceived performance of the site, because the UI can appear sooner, without waiting to make any WebSocket connections or even running any client-side script. This makes a bigger difference for users on slow connections, such as 2G/3G mobiles.</li>
+<li>It can make your application easily crawlable by search engines.</li>
+</ul>
+<h3 id="reconnecting-in-blazor-serverside">Reconnecting in Blazor (server-side)</h3>
+<p>Since Blazor (server-side) requires SignalR to run, it will now attempt to reconnect whenever it gets disconnected.</p>
+<p>The reconnection timings can be changed, for example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">const</span> connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> signalR.HubConnectionBuilder()
+    .withUrl(<span style="color:#d14">&#34;/chatHub&#34;</span>)
+    .withAutomaticReconnect([<span style="color:#099">0</span>, <span style="color:#099">0</span>, <span style="color:#099">2000</span>, <span style="color:#099">5000</span>]) <span style="color:#998;font-style:italic">// defaults to [0, 2000, 10000, 30000]
+</span><span style="color:#998;font-style:italic"></span>    .build()
+</code></pre></div><p>Upong reconnecting, the <code>onreconnecting</code> callback is fired. When the reconnection is successfull, the <code>onreconnected</code> callback is fired.</p>
+<h3 id="render-stateful-interactive-components-from-razor-pages-and-views">Render stateful interactive components from Razor pages and views</h3>
+<blockquote>
+<p>You can now add stateful interactive components to a Razor page or View. When the page or view renders the component will be prerendered with it. The app will then reconnect to the component state once the client connection has been established as long as it is still in memory.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">&lt;h1&gt;My Razor Page&lt;/h1&gt;
+&lt;form&gt;
+    &lt;input type=<span style="color:#d14">&#34;number&#34;</span> asp-<span style="color:#000;font-weight:bold">for</span>=<span style="color:#d14">&#34;InitialCount&#34;</span> /&gt;
+    &lt;button type=<span style="color:#d14">&#34;submit&#34;</span>&gt;Set initial count&lt;/button&gt;
+&lt;/form&gt;
+
+<span style="color:#a61717;background-color:#e3d2d2">@</span>(<span style="color:#000;font-weight:bold">await</span> Html.RenderComponentAsync&lt;Counter&gt;(<span style="color:#000;font-weight:bold">new</span> { InitialCount = InitialCount }))
+
+@functions {
+<span style="color:#008080">    [BindProperty(SupportsGet=true)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> InitialCount { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+}
+</code></pre></div><p><img src="https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2019/04/interactive-component-on-razor-page.gif" alt="Result GIF"></p>
+<h2 id="breaking-changes">Breaking Changes</h2>
+<h3 id="aspnet-core-30-will-only-run-on-net-core">ASP.NET Core 3.0 will only run on .NET Core</h3>
+<p>Quoting <strong>natemcmaster</strong>:</p>
+<blockquote>
+<p>As announced on the .NET Blog earlier this month, .NET Framework will get fewer of the newer platform and language features that come to .NET Core moving forward, due to the in-place update nature of .NET Framework and the desire to limit changes there that might break existing applications. To ensure ASP.NET Core can fully leverage the improvements coming to .NET Core moving forward, ASP.NET Core will only run on .NET Core starting from 3.0. Moving forward, you can simply think of ASP.NET Core as being part of .NET Core.</p>
+</blockquote>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/324">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/3753">Discussion</a></li>
+</ul>
+<h3 id="microsoftaspnetcoreall-has-been-deprecated"><code>Microsoft.AspNetCore.All</code> has been deprecated</h3>
+<p>A new meta-package was introduced: <code>Microsoft.AspNetCore.App</code>, which doesn't include Json.NET, EF Core and CodeAnalysis.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/314">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/3418">Discussion</a></li>
+</ul>
+<h3 id="microsoftaspnetcoreapp-is-now-a-frameworkreference"><code>Microsoft.AspNetCore.App</code> is now a FrameworkReference</h3>
+<p>This is such a neat feature, being able to easily reference the framework without worrying about the version and without searching in NuGet is such a good thing.</p>
+<p>Quoting <strong>natemcmaster</strong>:</p>
+<blockquote>
+<p>Most NuGet packages provide both compilation and runtime assets. Microsoft.NETCore.App and Microsoft.AspNetCore.App effectively only provide the first - compilation references. Users must install other runtime assets to make .NET Core apps work but this is not obvious or intuitive, and not always possible: for example, Azure Web Apps, AWS, Google Cloud, etc. This violates a reasonable expectation of using a NuGet package, and has been a continual source of confusion for users.</p>
+</blockquote>
+<p>Usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;ItemGroup</span><span style="color:#000080">&gt;</span>
+   <span style="color:#000080">&lt;FrameworkReference</span> <span style="color:#008080">Include=</span><span style="color:#d14">&#34;Microsoft.AspNetCore.App&#34;</span> <span style="color:#000080">/&gt;</span>
+<span style="color:#000080">&lt;/ItemGroup&gt;</span>
+</code></pre></div><p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/325">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/3612">Details</a></li>
+</ul>
+<h3 id="the-mvcprecompilation-tool-has-been-deprecated">The MvcPrecompilation tool has been deprecated</h3>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/315">Announcement</a></li>
+<li><a href="https://github.com/aspnet/Mvc/issues/8313">Discussion</a></li>
+<li><a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/sdk?view=aspnetcore-3.0">Razor SDK</a></li>
+</ul>
+<h3 id="microsoftaspnetcoreserverkestrelhttps-was-removed"><code>Microsoft.AspNetCore.Server.Kestrel.Https</code> was removed</h3>
+<p>Quoting <strong>Tratcher</strong>:</p>
+<blockquote>
+<p>In ASP.NET Core 2.1 the contents of Microsoft.AspNetCore.Server.Kestrel.Https.dll were moved to Microsoft.AspNetCore.Server.Kestrel.Core.dll. This was done in a non-breaking way using TypeForwardedTo attributes. In the next major release (3.0) this empty assembly will be removed.</p>
+</blockquote>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/329">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/4228">Discussion</a></li>
+</ul>
+<h3 id="obselete-session-apis-removed">Obselete Session APIs removed</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ConfigureServices(ServiceCollection services)
+{
+    services.AddSession(options =&gt;
+    {
+        <span style="color:#998;font-style:italic">// Removed obsolete APIs
+</span><span style="color:#998;font-style:italic"></span>        options.CookieName = <span style="color:#d14">&#34;SessionCookie&#34;</span>;
+        options.CookieDomain = <span style="color:#d14">&#34;contoso.com&#34;</span>;
+        options.CookiePath = <span style="color:#d14">&#34;/&#34;</span>;
+        options.CookieHttpOnly = <span style="color:#000;font-weight:bold">true</span>;
+        options.CookieSecure = CookieSecurePolicy.Always;
+        <span style="color:#998;font-style:italic">// new API
+</span><span style="color:#998;font-style:italic"></span>        options.Cookie.Name = <span style="color:#d14">&#34;SessionCookie&#34;</span>;
+        options.Cookie.Domain = <span style="color:#d14">&#34;contoso.com&#34;</span>;
+        options.Cookie.Path = <span style="color:#d14">&#34;/&#34;</span>;
+        options.Cookie.HttpOnly = <span style="color:#000;font-weight:bold">true</span>;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    });
+}
+</code></pre></div><p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/331">Announcement</a></li>
+</ul>
+<h3 id="authentication-changes">Authentication changes</h3>
+<ul>
+<li>The old 1.x stack, which was obselete, has been removed.</li>
+<li><code>Newtonsoft.Json</code> dependecy in <code>Microsoft.AspNetCore.Authentication</code> was removed, it now uses <code>System.Text.Json</code>.</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li>Announcements: <a href="https://github.com/aspnet/Announcements/issues/337">1</a> and <a href="https://github.com/aspnet/Announcements/issues/341">2</a></li>
+<li>Pull requests: <a href="https://github.com/aspnet/AspNetCore/pull/6504">1</a>, <a href="https://github.com/aspnet/AspNetCore/pull/4485">2</a> and <a href="https://github.com/aspnet/AspNetCore/pull/7105">3</a></li>
+<li>Discussions: <a href="https://github.com/aspnet/AspNetCore/issues/6533">1</a>, <a href="https://github.com/aspnet/Extensions/issues/1062">2</a> and <a href="https://github.com/aspnet/AspNetCore/issues/7289">3</a></li>
+<li>Migration guide: <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/1x-to-2x/identity-2x?view=aspnetcore-2.2#use-httpcontext-authentication-extensions">Use HttpContext authentication extensions</a></li>
+</ul>
+<h3 id="allowsynchronousio-is-now-set-to-false-by-default"><code>AllowSynchronousIO</code> is now set to false by default</h3>
+<p><code>AllowSynchronousIO</code> is an option added to servers (Kestrel, IIS, …) in order to allow or not synchronous IO API calls such as <code>HttpRequest.Body.Read(?)</code>.</p>
+<p>Starting 3.0, this options is set to false by default and so all synchronous calls will throw an <code>InvalidOperationException</code> with the message: <code>Synchronous IO APIs are disabled, see AllowSynchronousIO.</code></p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/342">Announcement issue</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/7644">Discussion issue</a></li>
+</ul>
+<h3 id="runtime-complication-of-razor-viewspages-is-not-available-by-default-anymore">Runtime complication of Razor Views/Pages is not available by default anymore</h3>
+<p>Since the ASP.NET Core framework doesn't depend on Roslyn anymore, compiling views and pages at runtime is not possible anymore.</p>
+<p>A new package has been added later, <code>Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation</code>, which is the same behaviour. To use it, call <code>AddMvcRazorRuntimeCompilation</code> on an <code>IMvcBuilder</code>.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/343">Announcement issue</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/7647">Discussion issue</a></li>
+</ul>
+<h3 id="ihostingenvironments-and-iapplicationlifetimes-marked-obsolete-and-replaced">IHostingEnvironment's and IApplicationLifetime's marked obsolete and replaced</h3>
+<p>Quoting <strong>Tratcher</strong>:</p>
+<blockquote>
+<p>When Microsoft.Extensions.Hosting was introduced in 2.1 some types like IHostingEnvironment and IApplicationLifetime were copied from Microsoft.AspNetCore.Hosting. Some 3.0 changes cause apps to include both the Microsoft.Extensions.Hosting and Microsoft.AspNetCore.Hosting namespaces. Any use of those duplicate types causes an “ambiguous reference” compiler error when both namespaces are referenced.</p>
+</blockquote>
+<p>Obsolete types (warning):</p>
+<ul>
+<li>Microsoft.Extensions.Hosting.IHostingEnvironment</li>
+<li>Microsoft.AspNetCore.Hosting.IHostingEnvironment</li>
+<li>Microsoft.Extensions.Hosting.IApplicationLifetime</li>
+<li>Microsoft.AspNetCore.Hosting.IApplicationLifetime</li>
+<li>Microsoft.Extensions.Hosting.EnvironmentName</li>
+<li>Microsoft.AspNetCore.Hosting.EnvironmentName</li>
+</ul>
+<p>New types:</p>
+<ul>
+<li>Microsoft.Extensions.Hosting.IHostEnvironment</li>
+<li>Microsoft.AspNetCore.Hosting.IWebHostEnvironment : IHostEnvironment</li>
+<li>Microsoft.Extensions.Hosting.IHostApplicationLifetime</li>
+<li>Microsoft.Extensions.Hosting.Environments</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/344">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/7749">Discussion</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/pull/7725">Pull Request</a> - <a href="https://github.com/aspnet/AspNetCore/pull/7725">Pull Request</a></li>
+</ul>
+<h3 id="resourcemanagerwithculturestringlocalizer-class-and-withculture-interface-member-are-now-obselete"><code>ResourceManagerWithCultureStringLocalizer</code> class and <code>WithCulture</code> interface member are now obselete</h3>
+<p>Since these are becoming obselete, users are encouraged to use <code>CurrentCulture</code> and <code>CurrentUICulture</code>.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/346">Accouncement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/7756">Discussion</a></li>
+<li><a href="https://github.com/aspnet/Extensions/pull/1133">Pull Request</a></li>
+</ul>
+<h3 id="generic-host-only-supports-specific-constructor-injections-in-startup">Generic Host only supports specific constructor injections in Startup</h3>
+<p>In 3.0, ASP.NET Core uses the new generic host, which you can see in <code>Program.cs</code>. With the old web host, users were able to add constructor dependencies in the Startup class since it was using two containers. With this new implementation, only <code>IHostEnvironment</code>, <code>IWebHostEnvironment</code> and <code>IConfiguration</code> are injectable since it only uses a single container.</p>
+<p>Note that dependencies can still be injected in the <code>Startup.Configure</code> method.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/353">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/9337">Discussion</a></li>
+</ul>
+<h3 id="changes-to-responsecaching">Changes to ResponseCaching</h3>
+<p>“pubinternal” types are now fully internal:</p>
+<ul>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.CachedResponse</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.CachedVaryByRules</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCache</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCacheEntry</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCachingKeyProvider</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCachingPolicyProvider</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.MemoryResponseCache</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingContext</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingKeyProvider</li>
+<li>Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingPolicyProvider</li>
+</ul>
+<p>Since these types are now internal, <code>AddResponseCaching</code> doesn't add a default implementation of <code>IResponseCachingPolicyProvider</code> nor <code>IResponseCachingKeyProvider</code>.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/354">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/9442">Discussion</a></li>
+</ul>
+<h3 id="usesignalr-and-useconnections-are-now-obselete"><code>UseSignalR</code> and <code>UseConnections</code> are now obselete</h3>
+<p>With the introduction of the new endpoints system, SignalR should now be added there and so these methods/classes are now obselete:</p>
+<ul>
+<li><code>UseSignalR</code></li>
+<li><code>UseConnections</code></li>
+<li><code>ConnectionsRouteBuilder</code></li>
+<li><code>HasRouteBuilder</code></li>
+</ul>
+<p>Links :</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/362">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/10754">Discussion</a></li>
+</ul>
+<h3 id="defaulthttpcontext-is-not-extensible-anymore"><code>DefaultHttpContext</code> is not extensible anymore</h3>
+<p>As part of the performance improvements in ASP.NET Core 3.0, see <a href="https://github.com/aspnet/HttpAbstractions/pull/999">this</a> and <a href="https://github.com/aspnet/AspNetCore/pull/6424">this</a>, <code>DefaultHttpContext</code> is now sealed.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/338">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/6534">Discussion</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/pull/6504">Pull Request</a></li>
+</ul>
+<h3 id="aspnetcoremodule-v1-removed-from-windows-hosting-bundle">AspNetCoreModule V1 removed from Windows Hosting Bundle</h3>
+<p>Links:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Announcements/issues/339">Announcement</a></li>
+<li><a href="https://github.com/aspnet/AspNetCore/issues/7095">Discussion</a></li>
+</ul>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/asp.net-core" title="View all posts in ASP.NET Core">ASP.NET Core</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/asp.net-core-3.0" title="View all posts tagged ASP.NET Core 3.0">ASP.NET Core 3.0</a>
+  
+  <a href="/tags/blazor" title="View all posts tagged Blazor">Blazor</a>
+  
+  <a href="/tags/breaking-changes" title="View all posts tagged Breaking Changes">Breaking Changes</a>
+  
+  <a href="/tags/new-features" title="View all posts tagged New Features">New Features</a>
+  
+  <a href="/tags/signalr" title="View all posts tagged SignalR">SignalR</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

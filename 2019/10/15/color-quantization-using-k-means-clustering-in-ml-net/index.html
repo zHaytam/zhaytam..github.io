@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Color quantization using K-means clustering in ML.NET",
+        "headline" : "Color quantization using K-means clustering in ML.NET",
+        "description" : "When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.\nAll the code is available in this GitHub repository.\nWhat is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-10-15 09:39:51 \x2b0000 \x2b0000",
+        "dateModified" : "2019-10-15 09:39:51 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/10\/15\/color-quantization-using-k-means-clustering-in-ml-net\/",
+        "wordCount" : "907",
+        "image" : "http://example.org/img/imgonline-com-ua-twotoone-zohJbOgY40O-768x256.jpg.webp"",
+        "keywords" : [ ""colors"",""compression"",""images"",""k-means"",""ml.net"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Color quantization using K-means clustering in ML.NET </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/imgonline-com-ua-twotoone-zohJbOgY40O-768x256.jpg.webp">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">15 October</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/algorithms">Algorithms</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/data-mining">Data Mining</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Color quantization using K-means clustering in ML.NET</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.</p>
+<p>All the code is available in this GitHub <a href="https://github.com/zHaytam/ColorQuantization">repository</a>.</p>
+<h2 id="what-is-color-quantization">What is color quantization</h2>
+<p>Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.</p>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Spatial_color_quantization_-_rainbow%2C_4_colors.png"
+         alt="Color quantization"/> <figcaption>
+            <h4>Color quantization</h4>
+        </figcaption>
+</figure>
+
+<p>A colorful image reduced to 4 colors using spatial color quantization.</p>
+<h2 id="the-use-of-kmeans">The use of K-means</h2>
+<p>K-means is an unsupervised clustering technique used to group N points into K clusters. In the past, it was computationally expensive to use it for quantization, until these recent years, as demonstrated by M. Emre Celebi.</p>
+<ol>
+<li>Firstly, we load the RGB image and normalize the values (divide them by 255).</li>
+<li>Secondly, we execute K-means on a sample of the data (with K equal to the number of colors we want the new image to have).</li>
+<li>Lastly, we reconstruct the old image using the centroids of K-means. If we execute K-means with K=32, the new image will only use 32 colors.</li>
+</ol>
+<h2 id="implementation-in-mlnet">Implementation in ML.NET</h2>
+<h3 id="loading-the-image">Loading the image</h3>
+<p>First, we'll create a couple of classes to hold our data. It is useful to hold on to the width and height of the image so we can reconstruct the image later.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">PixelEntry</span>
+{
+
+    <span style="color:#998;font-style:italic">// Normalized RGB values, e.g. [0.02323, 0.23013, 0.359305]
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [VectorType(3)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">float</span>[] Features { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+
+}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ImageEntry</span>
+{
+
+    <span style="color:#000;font-weight:bold">public</span> PixelEntry[] Data { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> Width { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> Height { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+
+}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Prediction</span>
+{
+
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">uint</span> PredictedLabel { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+
+}
+</code></pre></div><p>Then we'll add a method to load the image. For this, we'll be using the <a href="https://github.com/SixLabors/ImageSharp">SixLabors.ImageSharp</a> package.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ImageEntry LoadImage(FileInfo file)
+{
+    <span style="color:#000;font-weight:bold">using</span> (Image&lt;Rgba32&gt; img = Image.Load&lt;Rgba32&gt;(file.FullName))
+    {
+        <span style="color:#458;font-weight:bold">var</span> pixels = <span style="color:#000;font-weight:bold">new</span> PixelEntry[img.Width * img.Height];
+
+        <span style="color:#458;font-weight:bold">int</span> i = <span style="color:#099">0</span>;
+        <span style="color:#000;font-weight:bold">foreach</span> (<span style="color:#458;font-weight:bold">var</span> pixel <span style="color:#000;font-weight:bold">in</span> img.GetPixelSpan())
+        {
+            pixels[i++] = <span style="color:#000;font-weight:bold">new</span> PixelEntry
+            {
+                Features = <span style="color:#000;font-weight:bold">new</span>[]
+                {
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.R / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>,
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.G / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>,
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.B / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>
+                }
+            };
+        }
+
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> ImageEntry
+        {
+            Data = pixels,
+            Width = img.Width,
+            Height = img.Height
+        };
+    }
+}
+</code></pre></div><p>The method takes as input the image (file) to load and returns the loaded image, with normalized data, as an `ImageEntry` instance.</p>
+<h3 id="training-kmeans">Training K-means</h3>
+<p>This step is made very easy by ML.NET. The input is the data and the number of clusters, and the output is a trained model.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ClusteringPredictionTransformer&lt;KMeansModelParameters&gt; Train(MLContext mlContext, IDataView data, <span style="color:#458;font-weight:bold">int</span> numberOfClusters)
+{
+    <span style="color:#458;font-weight:bold">var</span> pipeline = mlContext.Clustering.Trainers.KMeans(numberOfClusters: numberOfClusters);
+
+    Console.WriteLine(<span style="color:#d14">&#34;Training model...&#34;</span>);
+    <span style="color:#458;font-weight:bold">var</span> sw = Stopwatch.StartNew();
+    <span style="color:#458;font-weight:bold">var</span> model = pipeline.Fit(data);
+    Console.WriteLine(<span style="color:#d14">&#34;Model trained in {0} ms.&#34;</span>, sw.Elapsed.Milliseconds);
+
+    <span style="color:#000;font-weight:bold">return</span> model;
+}
+</code></pre></div><p>We also calculate the time taken when training to see how this technique performs.</p>
+<h3 id="reconstructing-our-image">Reconstructing our image</h3>
+<p>Once the model is trained on the sample data, we can reconstruct our previous image using the new unique colors.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> Image&lt;Rgba32&gt; ReconstructImage(Prediction[] labels, VBuffer&lt;<span style="color:#458;font-weight:bold">float</span>&gt;[] centroidsBuffer, <span style="color:#458;font-weight:bold">int</span> width, <span style="color:#458;font-weight:bold">int</span> height)
+{
+    <span style="color:#458;font-weight:bold">var</span> img = <span style="color:#000;font-weight:bold">new</span> Image&lt;Rgba32&gt;(<span style="color:#000;font-weight:bold">null</span>, width, height);
+    <span style="color:#458;font-weight:bold">int</span> i = <span style="color:#099">0</span>;
+    <span style="color:#000;font-weight:bold">for</span> (<span style="color:#458;font-weight:bold">var</span> h = <span style="color:#099">0</span>; h &lt; height; h++)
+    {
+        <span style="color:#000;font-weight:bold">for</span> (<span style="color:#458;font-weight:bold">var</span> w = <span style="color:#099">0</span>; w &lt; width; w++)
+        {
+            <span style="color:#458;font-weight:bold">var</span> label = labels[i].PredictedLabel;
+            <span style="color:#458;font-weight:bold">var</span> centroid = centroidsBuffer[label - <span style="color:#099">1</span>].DenseValues().ToArray();
+            img[w, h] = <span style="color:#000;font-weight:bold">new</span> Rgba32(centroid[<span style="color:#099">0</span>], centroid[<span style="color:#099">1</span>], centroid[<span style="color:#099">2</span>]);
+            i++;
+        }
+    }
+
+    <span style="color:#000;font-weight:bold">return</span> img;
+}
+
+<span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#000;font-weight:bold">void</span> SaveImage(Image&lt;Rgba32&gt; image, FileInfo file)
+{
+    <span style="color:#000;font-weight:bold">using</span> (<span style="color:#458;font-weight:bold">var</span> fs = <span style="color:#000;font-weight:bold">new</span> FileStream(file.FullName, FileMode.Create, FileAccess.Write))
+    {
+        image.SaveAsJpeg(fs);
+    }
+}
+</code></pre></div><p>The predictions are basically which cluster this data belongs to. We use this information to select the centroid of that cluster and use it as a color.</p>
+<p>The `Rgba32` constructor can handle values between 0 and 1 for RGB, but you can also multiply them by 255 if you want to.</p>
+<h3 id="putting-everything-together">Putting everything together</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#000;font-weight:bold">void</span> Main(<span style="color:#458;font-weight:bold">string</span>[] args)
+{
+    <span style="color:#458;font-weight:bold">var</span> inputFile = <span style="color:#000;font-weight:bold">new</span> FileInfo(<span style="color:#d14">&#34;test3.jpg&#34;</span>);
+    <span style="color:#458;font-weight:bold">var</span> outputFile = <span style="color:#000;font-weight:bold">new</span> FileInfo(<span style="color:#d14">&#34;result3.jpg&#34;</span>);
+
+    <span style="color:#458;font-weight:bold">var</span> mlContext = <span style="color:#000;font-weight:bold">new</span> MLContext();
+    <span style="color:#458;font-weight:bold">var</span> img = LoadImage(inputFile);
+
+    <span style="color:#458;font-weight:bold">var</span> fullData = mlContext.Data.LoadFromEnumerable(img.Data);
+    <span style="color:#458;font-weight:bold">var</span> trainingData = mlContext.Data.LoadFromEnumerable(SelectRandom(img.Data, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>));
+    <span style="color:#458;font-weight:bold">var</span> model = Train(mlContext, trainingData, numberOfClusters: <span style="color:#099">3</span><span style="color:#099">2</span>);
+
+    VBuffer&lt;<span style="color:#458;font-weight:bold">float</span>&gt;[] centroidsBuffer = <span style="color:#000;font-weight:bold">default</span>;
+    model.Model.GetClusterCentroids(<span style="color:#000;font-weight:bold">ref</span> centroidsBuffer, <span style="color:#000;font-weight:bold">out</span> <span style="color:#458;font-weight:bold">int</span> k);
+
+    <span style="color:#458;font-weight:bold">var</span> labels = mlContext.Data
+        .CreateEnumerable&lt;Prediction&gt;(model.Transform(fullData), reuseRowObject: <span style="color:#000;font-weight:bold">false</span>)
+        .ToArray();
+
+    Console.WriteLine(<span style="color:#d14">&#34;Reconstructing image...&#34;</span>);
+    <span style="color:#000;font-weight:bold">using</span> <span style="color:#555">var</span> reconstructedImg = ReconstructImage(labels, centroidsBuffer, img.Width, img.Height);
+    SaveImage(reconstructedImg, outputFile);
+
+    Console.WriteLine(<span style="color:#d14">&#34;Original size: {0:F2} KB.&#34;</span>, inputFile.Length / <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4.0</span>);
+    Console.WriteLine(<span style="color:#d14">&#34;Result size: {0:F2} KB.&#34;</span>, outputFile.Length / <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4.0</span>);
+}
+
+<span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> T[] SelectRandom&lt;T&gt;(T[] array, <span style="color:#458;font-weight:bold">int</span> count)
+{
+    <span style="color:#458;font-weight:bold">var</span> result = <span style="color:#000;font-weight:bold">new</span> T[count];
+    <span style="color:#458;font-weight:bold">var</span> rnd = <span style="color:#000;font-weight:bold">new</span> Random();
+    <span style="color:#458;font-weight:bold">var</span> chosen = <span style="color:#000;font-weight:bold">new</span> HashSet&lt;<span style="color:#458;font-weight:bold">int</span>&gt;();
+
+    <span style="color:#000;font-weight:bold">for</span> (<span style="color:#458;font-weight:bold">var</span> i = <span style="color:#099">0</span>; i &lt; count; i++)
+    {
+        <span style="color:#458;font-weight:bold">int</span> r;
+        <span style="color:#000;font-weight:bold">while</span> (chosen.Contains((r = rnd.Next(<span style="color:#099">0</span>, array.Length))))
+        {
+            <span style="color:#000;font-weight:bold">continue</span>;
+        }
+
+        result[i] = array[r];
+    }
+
+    <span style="color:#000;font-weight:bold">return</span> result;
+}
+</code></pre></div><h2 id="results">Results</h2>
+<p><figure>
+    <img src="/img/imgonline-com-ua-twotoone-oXkZpw0LmgB1WAAE-768x324.jpg.webp"
+         alt="Original (Left, 62 KB) vs Compressed (Right, 25 KB) using K=32 in ~200ms"/> <figcaption>
+            <h4>Original (Left, 62 KB) vs Compressed (Right, 25 KB) using K=32 in ~200ms</h4>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/img/imgonline-com-ua-twotoone-zohJbOgY40O-768x256.jpg.webp"
+         alt="Original (Left, 127 KB) vs Compressed (Right, 89 KB) using K=64 in ~500ms"/> <figcaption>
+            <h4>Original (Left, 127 KB) vs Compressed (Right, 89 KB) using K=64 in ~500ms</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Yes, I like cats.</p>
+<figure>
+    <img src="/img/imgonline-com-ua-twotoone-ArjVtzPD0vqP8-768x295.jpg.webp"
+         alt="Original (Left, 58 KB) vs Compressed (Right, 49 KB) using K=32 in ~300ms"/> <figcaption>
+            <h4>Original (Left, 58 KB) vs Compressed (Right, 49 KB) using K=32 in ~300ms</h4>
+        </figcaption>
+</figure>
+
+<p>In this last image, we don't gain much space (~9KB) and the quality of the result image is obviously pixelized, increasing K to 64 would definitely help.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Color quantization is an interesting technique that can be used to compress images, especially thumbnails to save a good amount of disk space in small amount of time (milliseconds).</p>
+<p>We can use K-means for this technique, which performs well and fast and is fairly easy to implement. ML.NET ended up a lot easier to use than I anticipated and I can't wait to try it on other tasks!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/algorithms" title="View all posts in Algorithms">Algorithms</a>
+    <a href="/categories/data-mining" title="View all posts in Data Mining">Data Mining</a>
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/colors" title="View all posts tagged colors">colors</a>
+  
+  <a href="/tags/compression" title="View all posts tagged compression">compression</a>
+  
+  <a href="/tags/images" title="View all posts tagged images">images</a>
+  
+  <a href="/tags/k-means" title="View all posts tagged k-means">k-means</a>
+  
+  <a href="/tags/ml.net" title="View all posts tagged ml.net">ml.net</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

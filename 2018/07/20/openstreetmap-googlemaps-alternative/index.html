@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "OpenStreetMap, Google Maps alternative using Leaflet",
+        "headline" : "OpenStreetMap, Google Maps alternative using Leaflet",
+        "description" : "In result of Google\x27s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.\n Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc…  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2018",
+        "datePublished": "2018-07-20 18:39:00 \x2b0000 \x2b0000",
+        "dateModified" : "2018-07-20 18:39:00 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2018\/07\/20\/openstreetmap-googlemaps-alternative\/",
+        "wordCount" : "1326",
+        "image" : "http://example.org/img/map.jpg"",
+        "keywords" : [ ""Google Maps Alternative"",""Javascript"",""Leaflet"",""OpenStreetMap"","Blog" ]   
+    }
+    </script>
+
+
+ <title>OpenStreetMap, Google Maps alternative using Leaflet </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/map.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">20 July</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> OpenStreetMap, Google Maps alternative using Leaflet</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>In result of Google's latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.</p>
+<ul>
+<li>Increase in the price.</li>
+<li>Decrease in the free map loads.</li>
+<li>Obligation of adding a billing account.</li>
+<li>Etc…</li>
+</ul>
+<p>Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</p>
+<p>Today, I'll talk about <!-- raw HTML omitted -->OpenStreetMap<!-- raw HTML omitted -->, a possible alternative to Google Maps. Why is it good and how to use it using the <a href="https://leafletjs.com/">Leaflet javascript library</a>.</p>
+<p>The code used in this post is available <!-- raw HTML omitted -->here<!-- raw HTML omitted --> and the demo page is <!-- raw HTML omitted -->here<!-- raw HTML omitted -->.</p>
+<h2 id="changes-to-google-maps">Changes to Google Maps</h2>
+<p>Here are some of the changes Google did:</p>
+<ul>
+<li>Standard and Premium plans have been merged into a pay-as-you-go plan.</li>
+<li>Google raised its price by more than 1400%!</li>
+<li>All projects now need valid API keys, there is no more keyless access.</li>
+<li>In order to be able to use the Maps API, you'll have to add a billing account (even for “free” use).</li>
+<li>Every month, you'll get 200$ of free usage. This is equal to 28,000 requests per MONTH (while before, it was 25,000 requests per DAY).</li>
+<li>The support is now free for both usages.</li>
+<li>Upon exceeding the 200$, your account will be charged <strong>7$</strong> per 1000 requests (yes, 7 dollars).</li>
+</ul>
+<h2 id="openstreetmap">OpenStreetMap</h2>
+<p>Before starting the integration part, let's talk about OSM.</p>
+<h3 id="what-is-it">What is it?</h3>
+<p><!-- raw HTML omitted -->OpenStreetMap<!-- raw HTML omitted --> is a collaborative project to create a free editable map of the world. Rather than the map itself, the data generated by the project is considered its primary output.</p>
+<p>It is built by a community of mappers that contribute and maintain data about roads, trails, cafés, railway stations, and much more, all over the world.</p>
+<h3 id="why-is-it-good">Why is it good?</h3>
+<ul>
+<li><strong>Local Knowledge</strong>: OpenStreetMap emphasizes local knowledge. Contributors use aerial imagery, GPS devices, and low-tech field maps to verify that OSM is accurate and up to date.</li>
+<li><strong>Community Driven:</strong> OpenStreetMap's community is diverse, passionate, and growing every day. Our contributors include enthusiast mappers, GIS professionals, engineers running the OSM servers, humanitarians mapping disaster-affected areas, and many more.</li>
+<li><strong>Open Data:</strong> OpenStreetMap is <em>open data</em>: you are free to use it for any purpose as long as you credit OpenStreetMap and its contributors. If you alter or build upon the data in certain ways, you may distribute the result only under the same license.</li>
+</ul>
+<p>What makes it great is that it's open source, free to use and highly customizable. Actual people helped making it thanks to their contributions and even you can help in the process!</p>
+<h2 id="integrating-openstreetmap-to-your-website-using-leaflet">Integrating OpenStreetMap to your website using Leaflet</h2>
+<p>In this part, we're going to look at how to:</p>
+<ol>
+<li>Add a map to your website.</li>
+<li>Add markers to our map.</li>
+<li>Handle click events on the map/markers.</li>
+</ol>
+<p><!-- raw HTML omitted --></p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>A basic knowledge of HTML, CSS and Javascript (nothing fancy).</li>
+<li>The leaflet library (<a href="https://leafletjs.com/download.html">download here</a>).</li>
+</ul>
+<p>My project's structure is as follow:</p>
+<ul>
+<li>leaflet
+<ul>
+<li>library's files</li>
+</ul>
+</li>
+<li>index.html</li>
+<li>main.js</li>
+</ul>
+<h3 id="adding-the-map">Adding the map</h3>
+<p>At first, your index page should look like:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;OpenStreetMap, Google Maps alternative using Leaflet&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>We'll then go ahead and import leaflet and our javascript file:</p>
+<pre><code>...
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet/leaflet.css&quot; /&gt;
+...
+
+    &lt;script src=&quot;leaflet/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+
+...
+</code></pre><p>We'll then add a div element that will contain the map. This element has to have a height in order for the map to show and an Id.</p>
+<p>In my case, I went ahead and added a title and centered everything on the page.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;OpenStreetMap, Google Maps alternative using Leaflet&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet/leaflet.css&quot; /&gt;
+    &lt;style&gt;
+        html, body {
+            text-align: center;
+        }
+        #map {
+            height: 500px;
+            width: 700px;
+            max-width: 100%;
+            margin: auto;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;OpenStreetMap, Google Maps alternative using Leaflet&lt;/h1&gt;
+    &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+
+    &lt;script src=&quot;leaflet/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>Now to the Javascript part!</p>
+<p>To keep everything clean and simple, I created a function that will handle the map creation:</p>
+<pre><code>function createMap(elemId, centerLat, centerLng, zoom) {
+    var map = new L.Map(elemId);
+
+    // Data provider
+    var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib = 'Map data © &lt;a href=&quot;https://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; contributors';
+
+    // Layer
+    var osmLayer = new L.TileLayer(osmUrl, {
+        minZoom: 4,
+        maxZoom: 20,
+        attribution: osmAttrib
+    });
+
+    // Map
+    map.setView(new L.LatLng(centerLat, centerLng), zoom);
+    map.addLayer(osmLayer);
+    return map;
+}
+</code></pre><p>Here's what this code does:</p>
+<ol>
+<li>Creates a Map instance using the element id specified.</li>
+<li>Creates a TileLayer that uses OSM's url as a provider (we also add the custom attribution for copyright).</li>
+<li>Sets the view of the map (center location and zoom).</li>
+<li>Adds our OSM layer to the map and return it.</li>
+</ol>
+<p>Now all we have to do is use this function to initialize our map!</p>
+<pre><code>document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+    // The DOMContentLoaded event fires when the page is ready (like $(document).ready() in jQuery)
+    var map = createMap('map', -21.208312, 46.262851, 6);
+    // map is the id of our div element and the other options are
+    // lattitude, longitude and zoom
+});
+</code></pre><p>If you launch your index.html file in the browser, you should be able to see the map.</p>
+<h3 id="adding-markers">Adding markers</h3>
+<p>First, we'll store some positions (latLng) for our markers:</p>
+<pre><code>markersLatLng = [
+    [-18.586379, 45.878906],
+    [-22.311967, 47.373047],
+    [-20.61479, 45.922852]
+];
+</code></pre><p>Again, I created a function to handle creating markers to keep things clean:</p>
+<pre><code>function addMarker(map, latLng, onClick) {
+    var marker = L.marker(latLng).addTo(map);
+    if (onClick !== null) {
+        marker.on('click', onClick);
+    }
+    return marker;
+}
+</code></pre><p>The code is pretty straightforward, it creates a marker instance using a latLng and adds it to the map.</p>
+<p>I'll talk about the onClick parameter in the next part.</p>
+<p>Now all we have to do is loop on our markers positions and use this function to add them after we create our map.</p>
+<pre><code>var map = createMap('map', -21.208312, 46.262851, 6);
+
+markersLatLng.forEach(function(latLng) {
+    addMarker(map, latLng);
+});
+</code></pre><p>Refresh the index page and voila!, 3 markers added to the map!</p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="handling-click-events-on-the-mapmarkers">Handling click events on the map/markers</h3>
+<p>Sometimes you want to make your map more interactive, maybe show more informations when the user clicks somewhere on the map or on a certain marker.</p>
+<p>Thanks to Leaflet, it's very easy to do so.</p>
+<p>Let's say we want to show the latLng of where the user clicks, we would either use html elements or simply use the popup element that Leaflet provides.</p>
+<pre><code>var popup = L.popup(); // Create a popup instance
+// NB: The popup should be created outside the for loop, we only need 1 popup
+
+map.on('click', function (e) {
+    // When the map is clicked, this function is executed
+    // The parameter 'e' gives us informations about the click
+    popup.setLatLng(e.latlng)
+         .setContent(&quot;What's here: &quot; + e.latlng.toString())
+         .openOn(map);
+    // We set the popup's position to where the user clicked
+    // Then set its content and open it on our map
+});
+</code></pre><p>What if we want to show some kind of informations when the user clicks markers? Also simple.</p>
+<p>I added a span element with the Id `markerInfos` where I'll be showing the latLng where the user clicked everytime.</p>
+<pre><code>var markerInfos = document.getElementById(&quot;markerInfos&quot;);
+var map = createMap('map', -21.208312, 46.262851, 6);
+
+// This function simply sets the text of our span
+function onMarkerClick(e) {
+    markerInfos.textContent = &quot;Marker at &quot; + e.latlng.toString() + &quot; clicked!&quot;;
+}
+
+markersLatLng.forEach(function(latLng) {
+    addMarker(map, latLng, onMarkerClick);
+    // Now we use the onClick parameter to pass our function
+});
+</code></pre><p>Now if you refresh the page and click somewhere on the map, the popup will appear and if you click on one of the three markers, the span's text will change depending on the clicked marker.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Google Maps was used by a LOT of people, until they changed their service and made it a lot more expensive to use.</p>
+<p>For small websites this can be fine, but for larger websites or simply websites that get a lot of hits per day, the bill can easily shock you.</p>
+<p>This is why I went looking for an alternative and I found OpenStreetMap, the open-source and free map.</p>
+<p>Coupled with Leaflet, It's very easy to integrate and customize and I urge people to try it.</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/google-maps-alternative" title="View all posts tagged Google Maps Alternative">Google Maps Alternative</a>
+  
+  <a href="/tags/javascript" title="View all posts tagged Javascript">Javascript</a>
+  
+  <a href="/tags/leaflet" title="View all posts tagged Leaflet">Leaflet</a>
+  
+  <a href="/tags/openstreetmap" title="View all posts tagged OpenStreetMap">OpenStreetMap</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

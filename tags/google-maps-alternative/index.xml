@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google Maps Alternative on Awaiting Bits</title>
+    <link>http://example.org/tags/google-maps-alternative/</link>
+    <description>Recent content in Google Maps Alternative on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jul 2018 18:39:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/google-maps-alternative/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OpenStreetMap, Google Maps alternative using Leaflet</title>
+      <link>http://example.org/2018/07/20/openstreetmap-googlemaps-alternative/</link>
+      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
+      <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
+ Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc…  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
+    </item>
+    
+  </channel>
+</rss>

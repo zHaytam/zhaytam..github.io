@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Creating a Mouseless Context Menu in Unity",
+        "headline" : "Creating a Mouseless Context Menu in Unity",
+        "description" : "I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).\nUnfortunately, Unity didn\x27t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completley mouseless, since my game was mouseless itself.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-02-02 14:50:31 \x2b0000 \x2b0000",
+        "dateModified" : "2019-02-02 14:50:31 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/02\/02\/creating-mouseless-context-menu-unity\/",
+        "wordCount" : "750",
+        "image" : "http://example.org/%!s(\u003cnil\u003e)"",
+        "keywords" : [ ""ContextMenu"",""Mouseless"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Creating a Mouseless Context Menu in Unity </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+
+      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
+
+        
+        <div class="entry-meta">
+          <span class="date">02 February</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/unity-2d/3d">Unity 2D/3D</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Creating a Mouseless Context Menu in Unity</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).<br>
+Unfortunately, Unity didn't have a Context Menu out of the box so I searched a bit and found <a href="https://gamedev.stackexchange.com/questions/108508/how-to-design-context-menus-based-on-whatever-the-object-is#answer-108527">this</a>, which helped me get an idea of how to implement one as well as make it completley mouseless, since my game was mouseless itself.</p>
+<h2 id="preparing-the-ui">Preparing the UI</h2>
+<h3 id="a-panel-for-our-context-menu">A panel for our Context Menu</h3>
+<p>The first step is to create a panel (in a canvas as usual) for our Context Menu, you can customize it however you like.<br>
+The panel will have to have these components to save us some code:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="a-button-prefab-for-our-context-menu-items">A button prefab for our Context Menu Items</h3>
+<p>Next, we'll have to create a prefab of how the items will be shown in the menu.<br>
+Using a Button makes things easier since it has a `onClick `.</p>
+<!-- raw HTML omitted -->
+<h2 id="scripts">Scripts</h2>
+<h3 id="items">Items</h3>
+<p>We will represent each item in the menu with the following class:</p>
+<pre><code>using System;
+
+namespace Assets.Scripts.ContextMenu
+{
+    public class ContextMenuItem
+    {
+
+        #region Properties
+
+        // The item's text/name
+        public string Text { get; }
+
+        // What will this menu item do once it's clicked
+        public Action Action { get; }
+
+        #endregion
+
+        public ContextMenuItem(string text, Action action)
+        {
+            Text = text;
+            Action = action;
+        }
+
+    }
+}
+</code></pre><h3 id="menu">Menu</h3>
+<p>We'll need a couple of fields:</p>
+<pre><code>// The prefab we created previously
+[SerializeField] private Button _itemButtonPrefab;
+// To position the menu where it was clicked/pressed
+private RectTransform _panelRectTransform;
+// To help us go back to our previous action
+// For example: Navigating items in an Inventory,
+// once we're done, we need to re-select the slot
+// we were in so that the player can keep navigating.
+private Selectable _lastSelectableObject;
+</code></pre><p>Unity methods:</p>
+<pre><code>private void Awake()
+{
+    // Since this is a Singleton.
+    _mInstance = this;
+    // Assuming you're using the script on the Context Menu
+    // panel we created earlier.
+    _panelRectTransform = GetComponent&lt;RectTransform&gt;();
+    // Hide the menu by default.
+    gameObject.SetActive(false);
+}
+
+private void Update()
+{
+    // Hide menu if Escape is pressed
+    if (gameObject.activeSelf &amp;&amp; Input.GetKeyDown(KeyCode.Escape))
+    {
+        Hide();
+    }
+}
+</code></pre><p>Showing the menu:</p>
+<pre><code>public void Show(List&lt;ContextMenuItem&gt; items, Vector2 position)
+{
+    // If the menu is already open
+    if (gameObject.activeSelf || items.Count == 0)
+        return;
+
+    // Save the object that was selected before we open the menu
+    _lastSelectableObject = EventSystem.current.currentSelectedGameObject.GetComponent&lt;Selectable&gt;();
+    Button firstBtn = null;
+
+    // Set new items
+    foreach (var item in items)
+    {
+        var btn = Instantiate(_itemButtonPrefab);
+        btn.GetComponentInChildren&lt;Text&gt;().text = item.Text;
+
+        // For future use
+        if (firstBtn == null)
+            firstBtn = btn;
+
+        // Add a listener to the button's click event to call the item's action, then hide the menu
+        btn.onClick.AddListener(() =&gt;
+        {
+            item.Action();
+            Hide();
+        });
+
+        // Set the item's parent to the menu
+        btn.transform.SetParent(gameObject.transform);
+    }
+
+    // Show menu in position
+    _panelRectTransform.anchoredPosition = position;
+    gameObject.SetActive(true);
+
+    // Select first button after showing menu by default
+    firstBtn.Select();
+}
+</code></pre><p>Hiding the menu:</p>
+<pre><code>public void Hide()
+{
+    if (!gameObject.activeSelf)
+        return;
+
+    // Clear items
+    foreach (Transform child in gameObject.transform)
+        Destroy(child.gameObject);
+
+    // Hide
+    gameObject.SetActive(false);
+
+    // Re-select previous object
+    _lastSelectableObject?.Select();
+}
+</code></pre><p>I got a problem when hiding the menu directly if the player presses Space to click items.<br>
+Since Space was the key the player needed to press on an Item slot to show the menu, it would hide the menu and show it directly.</p>
+<p>To fix this, I ended up hiding the menu the next frame (after the Space event is fired):</p>
+<pre><code>public void Hide()
+{
+    if (!gameObject.activeSelf)
+        return;
+
+    // Clear items
+    foreach (Transform child in gameObject.transform)
+        Destroy(child.gameObject);
+
+    // Hide the next frame
+    StartCoroutine(CloseNextFrame());
+
+    // Re-select previous object
+    _lastSelectableObject?.Select();
+}
+
+private IEnumerator CloseNextFrame()
+{
+    yield return null;
+    gameObject.SetActive(false);
+}
+</code></pre><h2 id="usage-example">Usage Example</h2>
+<p>I will show you how I personally use this for my Inventory System.</p>
+<p>I have a `ItemSlotBehaviour` that handles each slot in the inventory.<br>
+When the player presses Space:</p>
+<pre><code>private void Update()
+{
+    // If the slot contains an item and is currently selected/highlighted
+    if (_item == null || currentSelectionState != SelectionState.Highlighted)
+        return;
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        ContextMenuBehaviour.Instance.Show(GetContextMenuItems(), transform.position);
+    }
+}
+</code></pre><p>`GetContextMenuItems()` simply returns a list of `ContextMenuItem` depending on the type of item (usable, equipment, others…).</p>
+<p>For example, if the item is an equipable:</p>
+<pre><code>if (_item is EquipableItem equipableItem)
+{
+    items.Add(new ContextMenuItem(&quot;Equip&quot;, () =&gt; InventoryBehaviour.Instance.EquipItem(equipableItem)));
+}
+</code></pre><p>The action is simply to equip the item using the Inventory System.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope this post helps someone in the future and I'd like to thank Experion again for his answer in Stackoverflow as his idea was my starting point.<br>
+If you have any suggestions, feel free to comment/message me.<br>
+See you around!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+    <a href="/categories/unity-2d/3d" title="View all posts in Unity 2D/3D">Unity 2D/3D</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/contextmenu" title="View all posts tagged ContextMenu">ContextMenu</a>
+  
+  <a href="/tags/mouseless" title="View all posts tagged Mouseless">Mouseless</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

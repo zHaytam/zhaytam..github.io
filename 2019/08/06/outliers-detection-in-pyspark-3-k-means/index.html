@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Outliers Detection in PySpark #3 – K-means",
+        "headline" : "Outliers Detection in PySpark #3 – K-means",
+        "description" : "In parts #1 and #2 of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular K-means clustering algorithm to detect outliers.\nK-means K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-08-06 10:33:10 \x2b0000 \x2b0000",
+        "dateModified" : "2019-08-06 10:33:10 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/08\/06\/outliers-detection-in-pyspark-3-k-means\/",
+        "wordCount" : "520",
+        "image" : "http://example.org/img/outliers_detection_p3_img.webp"",
+        "keywords" : [ ""clustering"",""k-means"",""outliers detection"",""unsupervised learning"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Outliers Detection in PySpark #3 – K-means </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/outliers_detection_p3_img.webp">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">06 August</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/algorithms">Algorithms</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/data-mining">Data Mining</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Outliers Detection in PySpark #3 – K-means</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>In parts <a href="http://example.org/2019/06/21/outliers-detection-pyspark-1-intro/">#1</a> and <a href="http://example.org/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/">#2</a> of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-means clustering algorithm</a> to detect outliers.</p>
+<h2 id="kmeans">K-means</h2>
+<p>K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering. It aims to cluster data points into different K clusters in an iterative process.</p>
+<p>Most importantly, the algorithm is parametric. It needs K, the number of clusters and, sometimes, the maximum number of iterations so that it doesn't run forever.</p>
+<h3 id="how-it-works">How it works</h3>
+<ol>
+<li>Generate K random centroids.</li>
+<li>Associate each data point to the nearest centroid.</li>
+<li>Re-generate the K centroids.</li>
+<li>Repeat steps 2 and 3 until nothing changes (or other conditions, since it doesn't guarantee an optimal solution).</li>
+</ol>
+<figure>
+    <img src="https://www.projectrhea.org/rhea/images/e/ef/RunyanKmeans.gif"
+         alt="K-means illustration by David Runyan"/> <figcaption>
+            <h4>K-means Illustration - Introduction to Clustering (David Runyan)</h4>
+        </figcaption>
+</figure>
+
+<h2 id="using-kmeans-to-detect-outliers">Using K-means to detect outliers</h2>
+<p>Although it's not the best of solutions, K-means can actually be used to detect outliers. The idea is very simple: After constructing the clusters, we flag points that are far as outliers. In other words, we consider points that are far from the centroid of the cluster they belong to (distance-wise) as outliers.</p>
+<p>Above all, this technique is also parametric and expects you to provide the fraction of outliers the data contains, which isn't always possible.</p>
+<p>Here are the steps:</p>
+<ol>
+<li>Run the K-means on all the data points.</li>
+<li>For each point:
+<ol>
+<li>Predict the cluster they belong to.</li>
+<li>Calculate the distance between the point and the centroid of that cluster.</li>
+</ol>
+</li>
+<li>Based on a given fraction, flag outliers.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>The following images are generated using this <a href="http://syskall.com/kmeans.js/">website</a>.</p>
+<p><figure>
+    <img src="/img/image-768x396.webp"
+         alt="Outliers detection - Illustration #1"/> <figcaption>
+            <h4>Outliers detection - Illustration #1</h4>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/img/k-means_outliers-768x396.webp"
+         alt="Outliers detection - Illustration #1"/> <figcaption>
+            <h4>Outliers detection - Illustration #2</h4>
+        </figcaption>
+</figure>
+</p>
+<h2 id="pyspark-implementation">PySpark Implementation</h2>
+<p>Firstly, we'll run K-means on all the data points and predict the clusters they belong to:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyspark.mllib.clustering</span> <span style="color:#000;font-weight:bold">import</span> KMeans
+
+k <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+maxIterations <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+data_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing all the data</span>
+training_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing, for each row, a tuple with all the values (except the row key)</span>
+model <span style="color:#000;font-weight:bold">=</span> KMeans<span style="color:#000;font-weight:bold">.</span>train(training_rdd, k, maxIterations<span style="color:#000;font-weight:bold">=</span>maxIterations)
+preds <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>predict(training_rdd)
+</code></pre></div><p>Secondly, calculate the distance between each point and the centroid of the cluster it belongs to:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">to_distances</span>(entry):
+	data_point <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">0</span>]
+	prediction <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">1</span>]
+	centroid <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>centers[prediction]
+	<span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>linalg<span style="color:#000;font-weight:bold">.</span>norm(data_point <span style="color:#000;font-weight:bold">-</span> centroid)
+
+<span style="color:#998;font-style:italic"># Calculate the distances</span>
+distances <span style="color:#000;font-weight:bold">=</span> training_rdd<span style="color:#000;font-weight:bold">.</span>zip(preds)<span style="color:#000;font-weight:bold">.</span>map(to_distances)
+<span style="color:#998;font-style:italic"># Zip each row with its key so that they can be identified later on</span>
+distances_and_keys <span style="color:#000;font-weight:bold">=</span> distances<span style="color:#000;font-weight:bold">.</span>zip(data_rdd)<span style="color:#000;font-weight:bold">.</span>map(<span style="color:#000;font-weight:bold">lambda</span> (distance, data_tuple): (data_tuple[key_col], distance))
+</code></pre></div><p>Lastly, calculate the number of outliers based on the given fraction and flag outliers:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">number_of_outliers <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">int</span>(outliers_fraction <span style="color:#000;font-weight:bold">*</span> distances<span style="color:#000;font-weight:bold">.</span>count())
+outliers <span style="color:#000;font-weight:bold">=</span> distances_and_keys<span style="color:#000;font-weight:bold">.</span>sortBy(<span style="color:#000;font-weight:bold">lambda</span> (key, distance): distance, ascending<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>)<span style="color:#000;font-weight:bold">.</span>take(number_of_outliers)
+</code></pre></div><p>To sum up, data quality is an important side of data mining overall. I focused on Anomaly detection (Outliers detection specifically) because that's what I was working on these months and I saw how important it was in real use cases, such as banking systems.</p>
+<p>In these posts I introduced what these terms meant and explain 2 easy and popular algorithms: Interquartile Range and K-means clustering.<br>
+Hope you enjoyed the series!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/algorithms" title="View all posts in Algorithms">Algorithms</a>
+    <a href="/categories/data-mining" title="View all posts in Data Mining">Data Mining</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/clustering" title="View all posts tagged clustering">clustering</a>
+  
+  <a href="/tags/k-means" title="View all posts tagged k-means">k-means</a>
+  
+  <a href="/tags/outliers-detection" title="View all posts tagged outliers detection">outliers detection</a>
+  
+  <a href="/tags/unsupervised-learning" title="View all posts tagged unsupervised learning">unsupervised learning</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

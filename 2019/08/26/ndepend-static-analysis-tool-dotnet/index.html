@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "NDepend, a powerful static analysis tool for .NET",
+        "headline" : "NDepend, a powerful static analysis tool for .NET",
+        "description" : "Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I\x27ll be talking about my opinion and thoughts after trying it for the first time.\nStatic code analysis Being able to check the quality of your source code before it\x27s even ran is a very valuable thing to have.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-08-26 12:57:51 \x2b0000 \x2b0000",
+        "dateModified" : "2019-08-26 12:57:51 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/08\/26\/ndepend-static-analysis-tool-dotnet\/",
+        "wordCount" : "583",
+        "image" : "http://example.org/img/NDepend.webp"",
+        "keywords" : [ ""Code Analysis"",""NDepend"",""Technical Debt"","Blog" ]   
+    }
+    </script>
+
+
+ <title>NDepend, a powerful static analysis tool for .NET </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/NDepend.webp">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">26 August</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/code-analysis">Code Analysis</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> NDepend, a powerful static analysis tool for .NET</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p><a href="https://blog.ndepend.com/author/psmacchia/">Patrick Smacchia</a>, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I'll be talking about my opinion and thoughts after trying it for the first time.</p>
+<h2 id="static-code-analysis">Static code analysis</h2>
+<p>Being able to check the quality of your source code before it's even ran is a very valuable thing to have. In static code analysis, a set of predefined rules are ran against your code to determine whether you need to change anything.</p>
+<p>This type of analysis is powerful because it can save you a lot of time, especially in medium/big projects where things like technical debt is something you certainly don't want to have.</p>
+<h2 id="ndepend">NDepend</h2>
+<p>NDepend is a static analysis tool for .NET managed code. It contains a lot of predefined metrics, insights and visualizations out of the box. You can easily integrate it with Visual Studio and Azure DevOps.</p>
+<blockquote>
+<p>NDepend is the only Visual Studio extension that is able to tell the developer that over the past hour, <strong>the code just written has introduced debt that would cost for example about 30 minutes should it have to be repaid later</strong>. Knowing this, the developer can fix the code before even committing it to the source control.</p>
+<p><a href="https://www.ndepend.com/"><a href="https://www.ndepend.com/">https://www.ndepend.com/</a></a></p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>While trying out NDepend, I was using its Visual Studio's extension. I used it on the current project I'm working on, which is ML.NET's AutoML.</p>
+<h3 id="analysis">Analysis</h3>
+<p>Firstly, setting up NDepend on the project failed as it couldn't find the dll files in the Debug folder. The author(s) already thought of this: manually selecting the folder/files.</p>
+<figure>
+    <img src="/img/devenv_2019-08-26_10-56-00-768x498.webp"
+         alt="NDepend - Adding assemblies"/> <figcaption>
+            <h4>NDepend - Adding assemblies</h4>
+        </figcaption>
+</figure>
+
+<p>Note that the test projects and assemblies couldn't be loaded. If they were loaded, you'll have to remove them.</p>
+<p>Secondly, I ran the analysis and after a couple of seconds, the results were in! An HTML report was generated and auto-opened and the extension shows you some next steps to take.</p>
+<figure>
+    <img src="/img/devenv_2019-08-26_10-58-08-768x620.webp"
+         alt="Dashboard - Overview"/> <figcaption>
+            <h4>Dashboard - Overview</h4>
+        </figcaption>
+</figure>
+
+<p>The dashboard that the extension greets you with is full of information, exactly what you need for a quick overview.</p>
+<figure>
+    <img src="/img/devenv_2019-08-26_10-58-58-768x154.webp"
+         alt="Queries and Rules Explorer"/> <figcaption>
+            <h4>Queries and Rules Explorer</h4>
+        </figcaption>
+</figure>
+
+<p>NDepend adds a few tabs, one of them is the “Queries and Rules Explorer”. This tab shows the full list of the code rules (331 as of the time of writing), grouped by type.</p>
+<p>Upon clicking on one of them, it takes you to a more detailed tab, “Queries and Rules Edit”. This tab shows you where exactly the rules fail or pass.</p>
+<figure>
+    <img src="/img/devenv_2019-08-26_11-04-01.webp"
+         alt="Queries and Rules Edit"/> <figcaption>
+            <h4>Queries and Rules Edit</h4>
+        </figcaption>
+</figure>
+
+<h3 id="critical-rules">Critical Rules</h3>
+<p>NDepend contains a set of critical rules, which when violated, give an “error”.<br>
+These rules are part of the quality gates too. For example:</p>
+<ul>
+<li>Avoid types too big.</li>
+<li>Avoid non-readonly static fields.</li>
+<li>Don't create threads explicitly.</li>
+</ul>
+<h3 id="cqlinq">CQLinq</h3>
+<p>CQLinq is a feature that comes with NDepend, which lets you query code using LINQ.<br>
+For instance, this is one of the predefined rules, which makes sure you don't explicitly create your own threads:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">warnif count &gt; <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">from</span> m <span style="color:#000;font-weight:bold">in</span> Application.Methods <span style="color:#000;font-weight:bold">where</span>
+  m.CreateA (<span style="color:#d14">&#34;System.Threading.Thread&#34;</span>.AllowNoMatch())
+<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">new</span> {
+   m,
+   Debt = <span style="color:#099">6</span><span style="color:#099">0.</span>ToMinutes().ToDebt(),
+   Severity = Severity.Critical
+}
+</code></pre></div><p>This is a very good addition to the tool where people can add their own rules easily.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>To sum up, NDepend turned out to be better than what I was expecting. The amount of information you get is incredible and insightful. Considering a license's price, I highly doubt a solo developer would be able to afford it, but for medium/big teams, I'd say this tool is a must.</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/code-analysis" title="View all posts in Code Analysis">Code Analysis</a>
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/code-analysis" title="View all posts tagged Code Analysis">Code Analysis</a>
+  
+  <a href="/tags/ndepend" title="View all posts tagged NDepend">NDepend</a>
+  
+  <a href="/tags/technical-debt" title="View all posts tagged Technical Debt">Technical Debt</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

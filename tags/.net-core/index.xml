@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET Core on Awaiting Bits</title>
+    <link>http://example.org/tags/.net-core/</link>
+    <description>Recent content in .NET Core on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/.net-core/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socks5 – A .NET Core implementation from scratch</title>
+      <link>http://example.org/2019/11/15/socks5-a-net-core-implementation-from-scratch/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>http://example.org/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
+      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
+The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
+    </item>
+    
+  </channel>
+</rss>

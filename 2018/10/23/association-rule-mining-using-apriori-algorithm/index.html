@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Association Rule Mining using Apriori Algorithm",
+        "headline" : "Association Rule Mining using Apriori Algorithm",
+        "description" : "Have you ever wondered how Amazon suggets to us items to buy when we\x27re looking at a product (labeled as “Frequently bought together”)?\nFor example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.\nWhich is true because a lot of people buy their components grouped when building a desktop pc.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2018",
+        "datePublished": "2018-10-23 17:52:24 \x2b0000 \x2b0000",
+        "dateModified" : "2018-10-23 17:52:24 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2018\/10\/23\/association-rule-mining-using-apriori-algorithm\/",
+        "wordCount" : "768",
+        "image" : "http://example.org/%!s(\u003cnil\u003e)"",
+        "keywords" : [ "Blog" ]   
+    }
+    </script>
+
+
+ <title>Association Rule Mining using Apriori Algorithm </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+
+      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
+
+        
+        <div class="entry-meta">
+          <span class="date">23 October</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/algorithms">Algorithms</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/data-mining">Data Mining</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Association Rule Mining using Apriori Algorithm</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Have you ever wondered how Amazon suggets to us items to buy when we're looking at a product (labeled as “Frequently bought together”)?</p>
+<p>For example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.</p>
+<p>Which is true because a lot of people buy their components grouped when building a desktop pc.</p>
+<p>I always thought of it as a block box that takes a specific product (or specifications of that product, like its category) and outputs a list of related products. Not until I recently started studying Data Mining and came across <a href="https://en.wikipedia.org/wiki/Association_rule_learning">Association Rule Mining/Learning</a>.</p>
+<h2 id="association-rule-mining">Association Rule Mining</h2>
+<p>Given a set of transactions, association rule mining is simply the process of finding relations between a set of items such as an occurence of one (or many) results in the occurence of another (or many).</p>
+<p>An association rule is often represented as  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->and  <!-- raw HTML omitted -->are itemsets.</p>
+<p>A popular example used to explain association rules is the store expample.</p>
+<p>In a store, a lot of people come and buy products everyday.</p>
+<p>We can look at the list of products bought in a period, see what products are bought together and create our rules.</p>
+<p>We can then use these rules to help us make decisions, e.g. put certain products together, add collective discounts.</p>
+<p>Of course it's not as easy as picking whatever products that come together.</p>
+<p>Not only the generation of such rules takes time, but the rules also have to reflect on frequent products and not random products bought together.</p>
+<h2 id="vocabulary">Vocabulary</h2>
+<ul>
+<li><strong>Itemset</strong>: A list of one or more items (products in our example).</li>
+<li><strong>Support count <!-- raw HTML omitted --></strong>: The number of times an itemset occurs.</li>
+<li><strong>Support</strong>: The fraction of transactions that contain an itemset.</li>
+<li><strong>Frequent itemset</strong>: An itemset that whose support is above or equal to a threshold (called minimum support).</li>
+<li><strong>Support of an association rule</strong>: The fraction of transactions that contain both  <!-- raw HTML omitted -->and <!-- raw HTML omitted -->.</li>
+<li><strong>Confidence of an association rule</strong>: How often items in  <!-- raw HTML omitted -->appear in transactions that contain <!-- raw HTML omitted -->.</li>
+</ul>
+<h2 id="apriori-algorithm">Apriori Algorithm</h2>
+<p>Association rules are great and everything, but how do we generate them?</p>
+<p>The easiest answer that comes to mind is to bruteforce all possible rules. This is VERY inefficent because we'll have to compute the support and confidence of all these rules, which is computationally infeasable in medium to large datasets.</p>
+<p>A more “sophisticated” way to generate the rules is to use the Apriori algorithm.</p>
+<p>The apriori algorithm reduces the number of candidates thanks to the following principle:</p>
+<p><strong>If an itemset is frequent, ALL of its subsets are frequent.</strong></p>
+<p>We can think of this backwards, every unfrequent itemset cannot be used to generate a frequent itemset.</p>
+<p>In case you're wondering, here's why the Apriori principle holds:</p>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>Steps of the algorithm:</p>
+<ol>
+<li>Extract all the frequent 1-itemsets (unique items in all the transactions).</li>
+<li>Create new candidates (itemsets) using the previous frequent itemsets.</li>
+<li>Calculate their supports and eliminate unfrequent ones.</li>
+<li>Repeat 2 and 3 until we don't have any more candidates.</li>
+<li>Extract all the association rules from all the frequent itemsets and eliminate those who have low confidence.</li>
+</ol>
+<h2 id="example">Example</h2>
+<p>Let's take for example the following list of transactions:</p>
+<p>[table id=3 /]</p>
+<p>In this example, our minimum support is 0.5 and our minimum confidence 0.5.</p>
+<p>Let's extract the 1-itemsets from it and calculate their support:</p>
+<p>[table id=4 /]</p>
+<p>As you can see, a lot of itemsets were removed because they don't meet the minimum support threshold.</p>
+<p>Now let's extract the 2-itemsets using the 1-itemsets and calculate their support:</p>
+<p>[table id=5 /]</p>
+<p>We have less elements to consider at each step, which reduces the number of supports we need to calculate.</p>
+<p>Now to our 3-itemsets:</p>
+<p>[table id=6 /]</p>
+<p>Finally, we're left with one 3-itemset that happens to be frequent.</p>
+<p>Thanks to the Apriori algorithm, we ended up checking 16 candidate itemsets instead of many more.</p>
+<p>The next and last step is creating the association rules from all the frequent itemsets that have at least 2 items and calculate their confidence.</p>
+<p>[table id=7 /]</p>
+<p>Luckily, all our association rules met our minimum confidence threshold!</p>
+<p>If you noticed, we got an association rule with a confidence equal to 1. This means that WHENEVER we see its X, the Y will be there in the transactions.</p>
+<p>If we check to make sure, all the transactions containing a Banana and a Lime contain indeed an Orange.</p>
+<p> </p>
+<p>As you can see, association rule minig is very important. It helps us incover relations between items and can help us make better decisions overall.</p>
+<p>If you're interested to see the implementation of the apriori algorithm, here's <a href="https://github.com/zHaytam/AprioriAlgorithm">mine in github</a>.</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/algorithms" title="View all posts in Algorithms">Algorithms</a>
+    <a href="/categories/data-mining" title="View all posts in Data Mining">Data Mining</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

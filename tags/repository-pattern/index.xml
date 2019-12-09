@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Repository Pattern on Awaiting Bits</title>
+    <link>http://example.org/tags/repository-pattern/</link>
+    <description>Recent content in Repository Pattern on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Mar 2019 15:00:44 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/repository-pattern/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repository Pattern – Generic Async Repositories in C#</title>
+      <link>http://example.org/2019/03/14/generic-repository-pattern-csharp/</link>
+      <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
+      
+      <guid>http://example.org/2019/03/14/generic-repository-pattern-csharp/</guid>
+      <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
+Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
+The code of this blog post is available here.</description>
+    </item>
+    
+  </channel>
+</rss>

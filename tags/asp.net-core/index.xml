@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ASP.NET Core on Awaiting Bits</title>
+    <link>http://example.org/tags/asp.net-core/</link>
+    <description>Recent content in ASP.NET Core on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Mar 2019 15:00:44 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repository Pattern – Generic Async Repositories in C#</title>
+      <link>http://example.org/2019/03/14/generic-repository-pattern-csharp/</link>
+      <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
+      
+      <guid>http://example.org/2019/03/14/generic-repository-pattern-csharp/</guid>
+      <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
+Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
+The code of this blog post is available here.</description>
+    </item>
+    
+    <item>
+      <title>Generate a documentation for an ASP.NET Core Web API using Swagger</title>
+      <link>http://example.org/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
+      <description>Hi everyone! I hope you&#39;re having a great sunday.
+Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.</description>
+    </item>
+    
+    <item>
+      <title>Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs</title>
+      <link>http://example.org/2018/06/24/asp-net-core-using-smartbreadcrumbs/</link>
+      <pubDate>Sun, 24 Jun 2018 03:04:36 +0000</pubDate>
+      
+      <guid>http://example.org/2018/06/24/asp-net-core-using-smartbreadcrumbs/</guid>
+      <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&#39;s not, unless you want to end up copying the almost-same code in all your pages.
+Today I&#39;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
+    </item>
+    
+  </channel>
+</rss>

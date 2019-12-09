@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k-means on Awaiting Bits</title>
+    <link>http://example.org/tags/k-means/</link>
+    <description>Recent content in k-means on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/k-means/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Color quantization using K-means clustering in ML.NET</title>
+      <link>http://example.org/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
+      <description>When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.
+All the code is available in this GitHub repository.
+What is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.</description>
+    </item>
+    
+    <item>
+      <title>Outliers Detection in PySpark #3 – K-means</title>
+      <link>http://example.org/2019/08/06/outliers-detection-in-pyspark-3-k-means/</link>
+      <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
+      
+      <guid>http://example.org/2019/08/06/outliers-detection-in-pyspark-3-k-means/</guid>
+      <description>In parts #1 and #2 of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular K-means clustering algorithm to detect outliers.
+K-means K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering.</description>
+    </item>
+    
+  </channel>
+</rss>

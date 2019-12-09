@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs",
+        "headline" : "Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs",
+        "description" : "Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it\x27s not, unless you want to end up copying the almost-same code in all your pages.\nToday I\x27ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2018",
+        "datePublished": "2018-06-24 03:04:36 \x2b0000 \x2b0000",
+        "dateModified" : "2018-06-24 03:04:36 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2018\/06\/24\/asp-net-core-using-smartbreadcrumbs\/",
+        "wordCount" : "1010",
+        "image" : "http://example.org/%!s(\u003cnil\u003e)"",
+        "keywords" : [ ""ASP.NET Core"",""C#"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+
+      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
+
+        
+        <div class="entry-meta">
+          <span class="date">24 June</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it's not, unless you want to end up copying the almost-same code in all your pages.</p>
+<p>Today I'll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using <!-- raw HTML omitted -->SmartBreadcrumbs (1.3.0)<!-- raw HTML omitted -->, a library I created to help me add and manage breadcrumbs easily in my projects.</p>
+<h2 id="what-are-breadcrumbs-and-why-use-them">What are breadcrumbs and why use them?</h2>
+<p>A breadcrumb is a type of secondary navigation that shows a user's current location in the website as well as the “history” of how he got there.</p>
+<p>If your website has hierarchically arranged pages or is starting to have a lot of pages (e.g. e-commerce websites), Breadcrumbs can enhance the users navigation by a lot, reducing even the number of actions/clicks it takes them to do so.</p>
+<h2 id="why-isnt-it-simple-to-add-them-in-aspnet-core">Why isn't it simple to add them in ASP.NET Core?</h2>
+<p>Adding breadcrumbs to ASP.NET Core isn't easy because there is no out-of-the-box solution. Which leaves 2 options:</p>
+<ol>
+<li>Manually adding them in every page.</li>
+<li>Using an external library to do so.</li>
+</ol>
+<h3 id="manually-adding-them-in-every-page">Manually adding them in every page</h3>
+<p>This option shouldn't and will not be considered because the purpose is to find a better way to handle breadcrumbs, not for us to manually add them every time.</p>
+<h3 id="using-an-external-library">Using an external library</h3>
+<p>This seems like a better solution, all we have to do is find THE library.</p>
+<p>When I was making some websites for a client, I looked for a library that could help me add breadcrumbs to them without a lot of work.</p>
+<p>I stumbled upon 2 interesting options:</p>
+<ol>
+<li><!-- raw HTML omitted -->MvcSiteMapProviders<!-- raw HTML omitted --> is a tool that provides flexible menus, breadcrumb trails and SEO features for the ASP.NET MVC framework.</li>
+</ol>
+<pre><code>As you might have noticed, it's only for ASP.NET MVC (v3 and v4) and won't work for ASP.NET v5 / Core.
+</code></pre>
+<ol start="2">
+<li><!-- raw HTML omitted -->DNTBreadCrumb.Core<!-- raw HTML omitted --> creates custom breadcrumb definitions, based on Twitter bootstrap 3.x features for ASP.NET Core.</li>
+</ol>
+<pre><code>I was happy when I found this library, until I tested it in my projects. DNBreadCrumb.Core works well with simple websites but not with more complex websites, because it doesn't handle breadcrumb items coming from different Controllers (at least not out of the box, if I understood correctly), which is a downside for me since I needed that kind of navigation.
+</code></pre>
+<p>So after not finding what I was looking for, I ended up creating my own simple utility library: <!-- raw HTML omitted -->SmartBreadcrumbs<!-- raw HTML omitted -->.</p>
+<h2 id="about-smartbreadcrumbs">About SmartBreadcrumbs</h2>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->SmartBreadcrumbs<!-- raw HTML omitted --> is a .NET Core utility library for ASP.NET Core websites to easily add and customize breadcrumbs. It is easy to setup and even easier to use!</p>
+<h3 id="how-it-works">How it works</h3>
+<p>At initialization, SmartBreadcrumbs will create a node hierarchy using all the breadcrumb attributes used on Actions (taken from all the Controllers in your Assembly).</p>
+<p>You'll then be able to use a TagHelper that will check if the current action/controller has a node and will render the breadcrumb element if found.</p>
+<p>By default, SmartBreadcrumbs uses Bootstrap 4's classes to style the breadcrumbs.</p>
+<h3 id="usage">Usage</h3>
+<p>SmartBreadcrumbs is available on Nuget, you can install it directly from the Package Manager or using the console.</p>
+<h4 id="initialization">Initialization</h4>
+<p>In your services configuration, add:</p>
+<p><code>csharp services.UseBreadcrumbs(GetType().Assembly);</code></p>
+<p>This will let SmartBreadcrumbs extract all the Breadcrumb attributes and their Controller.Action and create a node hierarchy of them.</p>
+<p>If you want to customize the css classes, you can do so using the options parameter:</p>
+<pre><code>// These are the classes by default (Bootstrap 4.1)
+services.UseBreadcrumbs(GetType().Assembly, options =&gt;
+{
+	TagName = &quot;nav&quot;;
+	TagClasses = &quot;&quot;;
+	OlClasses = &quot;breadcrumb&quot;;
+	LiClasses = &quot;breadcrumb-item&quot;;
+	ActiveLiClasses = &quot;breadcrumb-item active&quot;;
+	SeparatorElement = &quot;&lt;li class=\&quot;separator\&quot;&gt;/&lt;/li&gt;&quot;;
+});
+</code></pre><p>The SeperatorElement will be added after each node, use it when you're using a custom theme/template for example.</p>
+<h4 id="adding-nodes">Adding nodes</h4>
+<p>First, you'll need a Default node, most of the time (if not always) this will be your Home page.</p>
+<p>The default node will always be present as the parent, even if not explicitly chosen.</p>
+<pre><code>[DefaultBreadcrumb(&quot;My home&quot;)]
+public IActionResult Index()
+{
+	// We set the Home.Index as the default node
+	// &quot;My home&quot; is the title that the node will use
+	return View();
+}
+</code></pre><p>You can then start adding child nodes:</p>
+<pre><code>[Breadcrumb(&quot;About us&quot;)]
+public IActionResult AboutUs()
+{
+	// In this case, the DefaultNode will be the parent of this node.
+	return View();
+}
+
+[Breadcrumb(&quot;Contact us&quot;, FromAction = &quot;Home.AboutUs&quot;)]
+public IActionResult ContactUs()
+{
+	// This page is a child of the About us page
+	return View();
+}
+</code></pre><p>You can even use the ViewData in case you want your titles to be taken from it:</p>
+<pre><code>[Breadcrumb(&quot;ViewData.Title&quot;)]
+[Breadcrumb(&quot;ViewData.Title&quot;, CacheTitle = true)]
+public IActionResult AboutUs()
+{
+        // In this case, the DefaultNode will be the parent of this node.
+	return View();
+}
+</code></pre><h4 id="manually-setting-the-current-nodes">Manually setting the current nodes</h4>
+<p>In some cases, you'll like to set the current nodes yourself. For example, you want the titles of more than one node to be taken from the database or some other source.</p>
+<p>Luckily, SmartBreadcrumbs can trust you on this:</p>
+<pre><code>public IActionResult Product(int id)
+{
+	var product = GetProduct(id);
+
+	// Manually create the nodes (assuming you used the attribute to create a Default node, otherwise create it manually too).
+	var categoryNode = new BreadcrumbNode(product.Category.Name, &quot;Controller&quot;, &quot;Category&quot;, null, new { id = 10 });
+	// When manually creating nodes, you have the option to use route values in case you need them.
+	var productNode = new BreadcrumbNode(product.Title, &quot;Controller&quot;, &quot;Product&quot;, categoryNode);
+
+	// All you have to do now is tell SmartBreadcrumbs about this
+	ViewData[&quot;BreadcrumbNode&quot;] = productNode; // Use the last node
+	
+	return View();
+}
+</code></pre><p>This is an e-commerce example where the result would be something like this: <strong>Home / Laptops / New ACER laptop</strong></p>
+<h4 id="rendering-the-breadcrumb">Rendering the breadcrumb</h4>
+<p>When you're finished adding all the nodes, the last step is to make use of the TagHelper to render the breadcrumb element:</p>
+<pre><code>&lt;breadcrumb&gt;&lt;/breadcrumb&gt;
+@* In your _Layout.cshtml *@
+</code></pre><p>Don't forget to import SmartBreadcrumbs:</p>
+<pre><code>@addTagHelper *, SmartBreadcrumbs
+@* In your _ViewImports.cshtml *@
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Breadcrumbs can be very helpful in some situations and to be able to add and manage easily can save you a lot of work/time and keeps your code clean.</p>
+<p>This is why I created SmartBreadcrumbs, which I now use in every project (when needed of course).</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/asp.net-core" title="View all posts tagged ASP.NET Core">ASP.NET Core</a>
+  
+  <a href="/tags/c" title="View all posts tagged C#">C#</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

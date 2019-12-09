@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Socks5 – A .NET Core implementation from scratch",
+        "headline" : "Socks5 – A .NET Core implementation from scratch",
+        "description" : "A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn\x27t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.\nThe implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-11-15 11:23:57 \x2b0000 \x2b0000",
+        "dateModified" : "2019-11-15 11:23:57 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2019\/11\/15\/socks5-a-net-core-implementation-from-scratch\/",
+        "wordCount" : "1080",
+        "image" : "http://example.org/img/network.jpg"",
+        "keywords" : [ "".NET Core"",""Proxy"",""Socks"",""Socks5"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Socks5 – A .NET Core implementation from scratch </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="http://example.org/img/network.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">15 November</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/c">C#</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/protocols">Protocols</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Socks5 – A .NET Core implementation from scratch</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn't find an up-to-date implementation for .NET Core, so I decided to give it a go myself.</p>
+<p>The implementation is pretty straightforward and easy, I got inspired from <a href="https://github.com/bentonstark/starksoft-aspen">starksoft-aspen</a> and followed the official <a href="https://tools.ietf.org/html/rfc1928">RFC</a>. All the code in this blog post is available in this <a href="https://gist.github.com/zHaytam/3730d512eb5eaf37fb3bd3d176185541">Gist</a>.</p>
+<h2 id="what-is-socks">What is Socks</h2>
+<p>Socks is an internet protocol used to exchanges packets between a client and a server using a proxy in the middle. It also provides authentication methods. Socks works on the 5th layer (session) of the OSI model that controls communication between computers.</p>
+<h2 id="about-socks5">About Socks5</h2>
+<p>There are a few versions of Socks and, Socks5 is, <em>obviously</em>, an improvement of the previous version 4, which adds more authentication methods and support for IPv6 and UDP.<br>
+Here are the authentication methods that Socks5 supports:</p>
+<ul>
+<li>No authentication</li>
+<li><a href="https://en.wikipedia.org/wiki/GSSAPI">GSSAPI</a></li>
+<li>Username/password</li>
+<li>Methods assigned by <a href="https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority">IANA</a></li>
+<li>Methods reserved for private use</li>
+</ul>
+<h2 id="implementation">Implementation</h2>
+<figure>
+    <img src="/img/Socks5SequenceDiagram.webp"
+         alt="Socks5 Implementation - Sequence Diagram"/> <figcaption>
+            <h4>Socks5 Implementation - Sequence Diagram</h4>
+        </figcaption>
+</figure>
+
+<h3 id="constants--options">Constants &amp; Options</h3>
+<p>Here are the constants (never-changing values) that we'll using during the implementation:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Socks5Constants</span>
+{
+
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> Reserved = <span style="color:#099">0</span>x00;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthNumberOfAuthMethodsSupported = <span style="color:#099">2</span>;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodNoAuthenticationRequired = <span style="color:#099">0</span>x00;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodGssapi = <span style="color:#099">0</span>x01;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodUsernamePassword = <span style="color:#099">0</span>x02;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodIanaAssignedRangeBegin = <span style="color:#099">0</span>x03;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodIanaAssignedRangeEnd = <span style="color:#099">0</span>x7f;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodReservedRangeBegin = <span style="color:#099">0</span>x80;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodReservedRangeEnd = <span style="color:#099">0</span>xfe;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AuthMethodReplyNoAcceptableMethods = <span style="color:#099">0</span>xff;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdConnect = <span style="color:#099">0</span>x01;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdBind = <span style="color:#099">0</span>x02;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdUdpAssociate = <span style="color:#099">0</span>x03;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplySucceeded = <span style="color:#099">0</span>x00;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyGeneralSocksServerFailure = <span style="color:#099">0</span>x01;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyConnectionNotAllowedByRuleset = <span style="color:#099">0</span>x02;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyNetworkUnreachable = <span style="color:#099">0</span>x03;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyHostUnreachable = <span style="color:#099">0</span>x04;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyConnectionRefused = <span style="color:#099">0</span>x05;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyTtlExpired = <span style="color:#099">0</span>x06;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyCommandNotSupported = <span style="color:#099">0</span>x07;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> CmdReplyAddressTypeNotSupported = <span style="color:#099">0</span>x08;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AddrtypeIpv4 = <span style="color:#099">0</span>x01;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AddrtypeDomainName = <span style="color:#099">0</span>x03;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">const</span> <span style="color:#458;font-weight:bold">byte</span> AddrtypeIpv6 = <span style="color:#099">0</span>x04;
+
+}
+</code></pre></div><p>And here are the options a user needs to provide in order to use the implementation:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Socks5Options</span>
+{
+
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> ProxyHost { <span style="color:#000;font-weight:bold">get</span>; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> ProxyPort { <span style="color:#000;font-weight:bold">get</span>; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> DestinationHost { <span style="color:#000;font-weight:bold">get</span>; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> DestinationPort { <span style="color:#000;font-weight:bold">get</span>; }
+    <span style="color:#000;font-weight:bold">public</span> AuthType? Auth { <span style="color:#000;font-weight:bold">get</span>; }
+    <span style="color:#000;font-weight:bold">public</span> (<span style="color:#458;font-weight:bold">string</span> Username, <span style="color:#458;font-weight:bold">string</span> Password) Credentials { <span style="color:#000;font-weight:bold">get</span>; }
+
+    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">int</span> proxyPort, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort)
+    {
+        ProxyHost = proxyHost;
+        ProxyPort = proxyPort;
+        DestinationHost = destHost;
+        DestinationPort = destPort;
+        Auth = AuthType.None;
+    }
+
+    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort) : <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">8</span><span style="color:#099">0</span>, destHost, destPort) { }
+
+    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">int</span> proxyPort, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort, <span style="color:#458;font-weight:bold">string</span> username,
+        <span style="color:#458;font-weight:bold">string</span> password) : <span style="color:#000;font-weight:bold">this</span>(proxyHost, proxyPort, destHost, destPort)
+    {
+        Auth = AuthType.UsernamePassword;
+        Credentials = (username, password);
+    }
+
+    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort, <span style="color:#458;font-weight:bold">string</span> username, <span style="color:#458;font-weight:bold">string</span> password) :
+        <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">8</span><span style="color:#099">0</span>, destHost, destPort, username, password)
+    { }
+
+}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">enum</span> AuthType
+{
+    None,
+    UsernamePassword
+}
+</code></pre></div><p>I only implemented two authentication methods: NoAuthentication and UsernamePassword, but you can easily add the others.</p>
+<h3 id="selecting-an-authentication-method">Selecting an authentication method</h3>
+<p>Firstly, after the client successfully connects to the proxy server, it needs to send the authentication methods it handles. I'll be sending the two methods previously shown.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+----+----------+----------+
+</span><span style="color:#998;font-style:italic">| VER | NMETHODS | METHODS |
+</span><span style="color:#998;font-style:italic">+----+----------+----------+
+</span><span style="color:#998;font-style:italic">| 1  | 1        | 1 to 255 |
+</span><span style="color:#998;font-style:italic">+----+----------+----------+
+</span><span style="color:#998;font-style:italic">*/</span>
+<span style="color:#458;font-weight:bold">var</span> buffer = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">4</span>] {
+    <span style="color:#099">5</span>,
+    <span style="color:#099">2</span>,
+    Socks5Constants.AuthMethodNoAuthenticationRequired, Socks5Constants.AuthMethodUsernamePassword
+};
+<span style="color:#000;font-weight:bold">await</span> socket.SendAsync(buffer, SocketFlags.None);
+</code></pre></div><p>The proxy server responds with the chosen method (if any):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+-----+--------+
+</span><span style="color:#998;font-style:italic">| VER | METHOD |
+</span><span style="color:#998;font-style:italic">+-----+--------+
+</span><span style="color:#998;font-style:italic">| 1   | 1      |
+</span><span style="color:#998;font-style:italic">+-----+--------+
+</span><span style="color:#998;font-style:italic">*/</span>
+<span style="color:#458;font-weight:bold">var</span> response = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">2</span>];
+<span style="color:#458;font-weight:bold">var</span> read = <span style="color:#000;font-weight:bold">await</span> socket.ReceiveAsync(response, SocketFlags.None);
+<span style="color:#000;font-weight:bold">if</span> (read != <span style="color:#099">2</span>)
+    <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">$&#34;Failed to select an authentication method, the server sent {read} bytes.&#34;</span>);
+
+<span style="color:#000;font-weight:bold">if</span> (response[<span style="color:#099">1</span>] == Socks5Constants.AuthMethodReplyNoAcceptableMethods)
+{
+    socket.Close();
+    <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">&#34;The proxy destination does not accept the supported proxy client authentication methods.&#34;</span>);
+}
+
+<span style="color:#000;font-weight:bold">if</span> (response[<span style="color:#099">1</span>] == Socks5Constants.AuthMethodUsernamePassword &amp;&amp; options.Auth == AuthType.None)
+{
+    socket.Close();
+    <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">&#34;The proxy destination requires a username and password for authentication.&#34;</span>);
+}
+</code></pre></div><h4 id="usernamepassword-authentication">Username/Password authentication</h4>
+<p>Secondly, we check if the server chose the Username/Password method (`0x02`) and if so, we send him the authentication credentials:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+-----+------+----------+------+----------+
+</span><span style="color:#998;font-style:italic">| VER | ULEN | UNAME    | PLEN | PASSWD   |
+</span><span style="color:#998;font-style:italic">+----+-------+----------+------+----------+
+</span><span style="color:#998;font-style:italic">| 1  | 1     | 1 to 255 | 1    | 1 to 255 |
+</span><span style="color:#998;font-style:italic">+----+-------+----------+------+----------+
+</span><span style="color:#998;font-style:italic">*/</span>
+<span style="color:#458;font-weight:bold">var</span> buffer = ConstructAuthBuffer(options.Credentials.Username, options.Credentials.Password);
+<span style="color:#000;font-weight:bold">await</span> socket.SendAsync(buffer, SocketFlags.None);
+</code></pre></div><p>The `ConstructAuthBuffer`, as you can understand from its name, constructs a `byte[]` buffer that contains the command.</p>
+<p>The proxy server then responds with either a success or a fail:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+----+--------+
+</span><span style="color:#998;font-style:italic">|VER | STATUS |
+</span><span style="color:#998;font-style:italic">+----+--------+
+</span><span style="color:#998;font-style:italic">| 1  |   1    |
+</span><span style="color:#998;font-style:italic">+----+--------+
+</span><span style="color:#998;font-style:italic">*/</span>
+<span style="color:#458;font-weight:bold">var</span> response = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">2</span>];
+<span style="color:#458;font-weight:bold">var</span> read = <span style="color:#000;font-weight:bold">await</span> socket.ReceiveAsync(response, SocketFlags.None);
+<span style="color:#000;font-weight:bold">if</span> (read != <span style="color:#099">2</span>)
+    <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">$&#34;Failed to perform authentication, the server sent {read} bytes.&#34;</span>);
+
+<span style="color:#000;font-weight:bold">if</span> (response[<span style="color:#099">1</span>] != <span style="color:#099">0</span>)
+{
+    socket.Close();
+    <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">&#34;Proxy authentication failed.&#34;</span>);
+}
+</code></pre></div><h3 id="connecting-to-the-remote-server">Connecting to the remote server</h3>
+<p>Lastly, we need to tell the proxy server to connect to the remote server:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+-----+-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">| VER | CMD | RSV   | ATYP | DST.ADDR | DST.PORT |
+</span><span style="color:#998;font-style:italic">+--- -+-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">| 1   | 1   | X&#39;00&#39; | 1    | Variable | 2        |
+</span><span style="color:#998;font-style:italic">+-----+-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">*/</span>
+
+<span style="color:#458;font-weight:bold">var</span> addressType = GetDestAddressType(options.DestinationHost);
+<span style="color:#458;font-weight:bold">var</span> destAddr = GetDestAddressBytes(addressType, options.DestinationHost);
+<span style="color:#458;font-weight:bold">var</span> destPort = GetDestPortBytes(options.DestinationPort);
+
+<span style="color:#458;font-weight:bold">var</span> buffer = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">6</span> + options.DestinationHost.Length];
+buffer[<span style="color:#099">0</span>] = <span style="color:#099">5</span>;
+buffer[<span style="color:#099">1</span>] = Socks5Constants.CmdConnect;
+buffer[<span style="color:#099">2</span>] = Socks5Constants.Reserved;
+buffer[<span style="color:#099">3</span>] = addressType;
+destAddr.CopyTo(buffer, <span style="color:#099">4</span>);
+destPort.CopyTo(buffer, <span style="color:#099">4</span> + destAddr.Length);
+
+<span style="color:#000;font-weight:bold">await</span> socket.SendAsync(buffer, SocketFlags.None);
+</code></pre></div><p>The proxy server responds with, again, either a success or a fail with some other information:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">+---- +-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">| VER | REP | RSV   | ATYP | BND.ADDR | BND.PORT |
+</span><span style="color:#998;font-style:italic">+-----+-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">| 1   | 1   | X&#39;00&#39; | 1    | Variable | 2        |
+</span><span style="color:#998;font-style:italic">+-----+-----+-------+------+----------+----------+
+</span><span style="color:#998;font-style:italic">*/</span>
+
+<span style="color:#458;font-weight:bold">var</span> response = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5</span>];
+<span style="color:#000;font-weight:bold">await</span> socket.ReceiveAsync(response, SocketFlags.None);
+
+<span style="color:#000;font-weight:bold">if</span> (response[<span style="color:#099">1</span>] != Socks5Constants.CmdReplySucceeded)
+    HandleProxyCommandError(response, options.DestinationHost, options.DestinationPort);
+</code></pre></div><p>The <code>HandleProxyCommandError</code> method throws a comprehensive error for the user to know exactly what went wrong.</p>
+<p>We can now use the socket like we always do, all packets will be forwarded to the remote server by the proxy server. There will be a latency depending on the proxy server.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As you can see, implementing the Socks5 internet protocol is fairly easy and understandable. The implementation is small and well documented in the RFCs.<br>
+The protocol can be used to connect to servers using a VPN that provides Socks5 proxies, for whatever reason you may need.</p>
+<p>Once again, the code of this implementation is available in this <a href="https://gist.github.com/zHaytam/3730d512eb5eaf37fb3bd3d176185541">Gist</a> and is ready to use!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/c" title="View all posts in C#">C#</a>
+    <a href="/categories/protocols" title="View all posts in Protocols">Protocols</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/.net-core" title="View all posts tagged .NET Core">.NET Core</a>
+  
+  <a href="/tags/proxy" title="View all posts tagged Proxy">Proxy</a>
+  
+  <a href="/tags/socks" title="View all posts tagged Socks">Socks</a>
+  
+  <a href="/tags/socks5" title="View all posts tagged Socks5">Socks5</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

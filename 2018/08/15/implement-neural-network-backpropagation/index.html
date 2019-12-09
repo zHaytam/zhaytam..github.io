@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/example.org\/"
+        },
+        "articleSection" : "post",
+        "name" : "Implementing a flexible neural network with backpropagation from scratch",
+        "headline" : "Implementing a flexible neural network with backpropagation from scratch",
+        "description" : "Implementing your own neural network can be hard, especially if you\x27re like me, coming from a computer science background, math equations\/syntax makes you dizzy and you would understand things better using actual code.\nToday I\x27ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.",
+        "inLanguage" : "en",
+        "author" : "zHaytam",
+        "creator" : "zHaytam",
+        "publisher": "zHaytam",
+        "accountablePerson" : "zHaytam",
+        "copyrightHolder" : "zHaytam",
+        "copyrightYear" : "2018",
+        "datePublished": "2018-08-15 21:39:58 \x2b0000 \x2b0000",
+        "dateModified" : "2018-08-15 21:39:58 \x2b0000 \x2b0000",
+        "url" : "http:\/\/example.org\/2018\/08\/15\/implement-neural-network-backpropagation\/",
+        "wordCount" : "3168",
+        "image" : "http://example.org/%!s(\u003cnil\u003e)"",
+        "keywords" : [ ""Backpropagation"",""Binary AND"",""Neural networks"",""NumPy"",""Python"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Implementing a flexible neural network with backpropagation from scratch </title>
+
+
+<meta name="description" content="Describe your website" />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="http://example.org/css/style.css?v=1575894832" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="http://example.org/css/custom.css?v=1575894832" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://example.org/img/favicon.ico" type="image/x-icon">
+
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">A fast &amp; secure theme</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="http://example.org/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="http://example.org/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+
+      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
+
+        
+        <div class="entry-meta">
+          <span class="date">15 August</span>	<span> / </span>
+
+          <span class="author">
+            <a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/algorithms">Algorithms</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/deep-learning">Deep Learning</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Implementing a flexible neural network with backpropagation from scratch</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Implementing your own neural network can be hard, especially if you're like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.</p>
+<p>Today I'll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm. I'll be implementing this in Python using only <a href="http://www.numpy.org/">NumPy</a> as an external library.</p>
+<p>After reading this post, you should understand the following:</p>
+<ul>
+<li>How to feed forward inputs to a neural network.</li>
+<li>Use the Backpropagation algorithm to train a neural network.</li>
+<li>Use the neural network to solve a problem.</li>
+</ul>
+<p>In this post, we'll use our neural network to solve a very simple problem: <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND">Binary AND</a>.</p>
+<p>The code source of the implementation is available <a href="https://github.com/zHaytam/FlexibleNeuralNetFromScratch">here</a>.</p>
+<h2 id="background-knowledge">Background knowledge</h2>
+<p>In order to easily follow and understand this post, you'll need to know the following:</p>
+<ul>
+<li>The basics of Python / <a href="https://python.swaroopch.com/oop.html">OOP</a>.</li>
+<li>An idea of calculus (e.g. dot products, derivatives).</li>
+<li>An idea of neural networks.</li>
+<li>(Optional) How to work with NumPy.</li>
+</ul>
+<p>Rest assured though, I'll try to explain everything I do/use here.</p>
+<h2 id="neural-networks">Neural networks</h2>
+<p>Before throwing ourselves into our favourite IDE, we must understand what exactly are neural networks (or more precisely, feedforward neural networks).</p>
+<p>A feedforward neural network (also called a multilayer perceptron) is an artificial neural network where all its layers are connected but do not form a circle. Meaning that the network is not recurrent and there are no feedback connections.</p>
+<!-- raw HTML omitted -->
+<p>These neural networks try and approximate a function  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->are the inputs that get fed forward through the network to give us an output.</p>
+<p>The lines connecting the network's nodes (neurons) are called weights, typically numbers (floats) between 0 and 1.</p>
+<p>Also, each neuron has a bias unit (a float between 0 and 1) that helps shift the results.</p>
+<p>These are called the parameters of the network.</p>
+<!-- raw HTML omitted -->
+<p>When inputs are fed forward through the network, each layer will calculate the dot product between its weights and the inputs, add its bias then activate the result using an activation function (e.g. sigmoid, tanh).</p>
+<!-- raw HTML omitted -->
+<p>These activation functions are used to introduce non linearity.</p>
+<h2 id="implementing-a-flexible-neural-network">Implementing a flexible neural network</h2>
+<p>In order for our implementation to be called flexible, we should be able to add/remove layers without changing the code. This means that hard-coding weights and layers is a no go.</p>
+<p>First of all, let's import NumPy and set a seed for us to get the same results when generating random numbers:</p>
+<pre><code>import numpy as np
+
+np.random.seed(100)
+</code></pre><h3 id="layers">Layers</h3>
+<p>We'll create a class that represents our network's hidden and output layers.</p>
+<pre><code>class Layer:
+    &quot;&quot;&quot;
+    Represents a layer (hidden or output) in our neural network.
+    &quot;&quot;&quot;
+</code></pre><h4 id="initialisation">Initialisation</h4>
+<pre><code>def __init__(self, n_input, n_neurons, activation=None, weights=None, bias=None):
+    &quot;&quot;&quot;
+    :param int n_input: The input size (coming from the input layer or a previous hidden layer)
+    :param int n_neurons: The number of neurons in this layer.
+    :param str activation: The activation function to use (if any).
+    :param weights: The layer's weights.
+    :param bias: The layer's bias.
+    &quot;&quot;&quot;
+
+    self.weights = weights if weights is not None else np.random.rand(n_input, n_neurons)
+    self.activation = activation
+    self.bias = bias if bias is not None else np.random.rand(n_neurons)
+</code></pre><p>In the class's constructor `__init__` we'll initialize the layer's weights and bias using the length of the input and the number of neurons this layer has. Specifying the weights and bias is optional as they will be randomly generated if not provided.</p>
+<p><em>N.B: The layer's input is not always our initial input <!-- raw HTML omitted -->, it can also be the output of a previous layer.</em></p>
+<p>If we take the network shown in the figures above, we can represent its first hidden layer (3×4) as follows: `hidden_layer_1 = Layer(3, 4)`.</p>
+<p>As a result, the weights and bias will be:</p>
+<pre><code>Weights: [[0.54340494 0.27836939 0.42451759 0.84477613]
+ 		  [0.00471886 0.12156912 0.67074908 0.82585276]
+ 		  [0.13670659 0.57509333 0.89132195 0.20920212]]
+
+Bias: 	 [0.18532822 0.10837689 0.21969749 0.97862378]
+</code></pre><p>Printed out nicely, we get:</p>
+<!-- raw HTML omitted -->
+<p>The columns in the weights matrix  <!-- raw HTML omitted -->represent our layer's neurons and each row is the weights between one input neuron and all our layer's neurons.</p>
+<h4 id="activation">Activation</h4>
+<p>As the inputs get fed forward through our network, each layer must calculate the output using its weights and the received inputs, apply an activation function (if chosen) on the output then return the result to us.</p>
+<pre><code>def activate(self, x):
+    &quot;&quot;&quot;
+    Calculates the dot product of this layer.
+    :param x: The input.
+    :return: The result.
+    &quot;&quot;&quot;
+
+    r = np.dot(x, self.weights) + self.bias
+    self.last_activation = self._apply_activation(r)
+    return self.last_activation
+
+def _apply_activation(self, r):
+    &quot;&quot;&quot;
+    Applies the chosen activation function (if any).
+    :param r: The normal value.
+    :return: The activated value.
+    &quot;&quot;&quot;
+
+    # In case no activation function was chosen
+    if self.activation is None:
+        return r
+
+    # tanh
+    if self.activation == 'tanh':
+        return np.tanh(r)
+
+    # sigmoid
+    if self.activation == 'sigmoid':
+        return 1 / (1 + np.exp(-r))
+
+    return r
+</code></pre><p>Here's an explanation of the process:</p>
+<ol>
+<li>The input goes through our `activate` function.</li>
+<li>It calculates <!-- raw HTML omitted -->.</li>
+<li>Applies the chosen activation function <!-- raw HTML omitted -->.</li>
+<li>Saves the result in `last_activation` (I'll explain why later).</li>
+<li>Returns the result.</li>
+</ol>
+<p><em>N.B: I only implemented here 2 activation functions, tanh  <!-- raw HTML omitted -->and sigmoid <!-- raw HTML omitted -->, but there are many more available.</em></p>
+<p>If we want to active the input `[1, 2, 3]` for example, we'll write the following: `layer.activate([1, 2, 3])`, which results in: `[1.14829064 2.35516451 4.65967912 4.10271179]`, a vector of length 4 (our number of neurons).</p>
+<!-- raw HTML omitted -->
+<p>The dot product between a matrix  <!-- raw HTML omitted -->and a vector  <!-- raw HTML omitted -->is simply a new vector  <!-- raw HTML omitted -->made of dot products between each element in  <!-- raw HTML omitted -->and each row <!-- raw HTML omitted -->. You can find more information about this <a href="https://mathinsight.org/matrix_vector_multiplication">here</a>.</p>
+<p>Don't forget that we didn't specify any activation function, so the result we're seeing here is only the dot product.</p>
+<p>If we did actually specify one, let's say sigmoid, then the result would be the following (note that all the values are now between 0 and 1):</p>
+<!-- raw HTML omitted -->
+<h3 id="neural-networks1">Neural networks</h3>
+<p>We'll also create a class to represent a neural network:</p>
+<pre><code>class NeuralNetwork:
+    &quot;&quot;&quot;
+    Represents a neural network.
+    &quot;&quot;&quot;
+
+    def __init__(self):
+        self._layers = []
+
+    def add_layer(self, layer):
+        &quot;&quot;&quot;
+        Adds a layer to the neural network.
+        :param Layer layer: The layer to add.
+        &quot;&quot;&quot;
+
+        self._layers.append(layer)
+</code></pre><p>The code is pretty straight forward, we have a constructor a initialize an empty list `_layers` and a function `add_layer` that appends layers to that list (of course, the layers are of type `Layer`, the one we created earlier).</p>
+<h3 id="feed-forward">Feed forward</h3>
+<p>As previously explained, inputs travel forward through the network.</p>
+<p>We'll go ahead and implement it in our `NeuralNetwork` class:</p>
+<pre><code>def feed_forward(self, X):
+    &quot;&quot;&quot;
+    Feed forward the input through the layers.
+    :param X: The input values.
+    :return: The result.
+    &quot;&quot;&quot;
+
+    for layer in self._layers:
+        X = layer.activate(X)
+
+    return X
+
+&quot;&quot;&quot;
+N.B: Having a sigmoid activation in the output layer can be interpreted 
+as expecting probabilities as outputs.
+W'll need to choose a winning class, this is usually done by choosing the 
+index of the biggest probability.
+&quot;&quot;&quot;
+def predict(self, X):
+    &quot;&quot;&quot;
+    Predicts a class (or classes).
+    :param X: The input values.
+    :return: The predictions.
+    &quot;&quot;&quot;
+
+    ff = self.feed_forward(X)
+
+    # One row
+    if ff.ndim == 1:
+        return np.argmax(ff)
+
+    # Multiple rows
+    return np.argmax(ff, axis=1)
+</code></pre><ul>
+<li>The function `feed_forward` takes the input  <!-- raw HTML omitted -->and feeds it forward through all our layers.</li>
+<li>Each next layer will take the output of the previous one as the new input.</li>
+<li>The function `predict` chooses the winning probability and returns its index (interpreted as the winning class).</li>
+</ul>
+<h3 id="our-neural-network">Our neural network</h3>
+<p>Let's now create a neural network that we will use throughout the post.</p>
+<pre><code>nn = NeuralNetwork()
+nn.add_layer(Layer(2, 3, 'tanh'))
+nn.add_layer(Layer(3, 3, 'sigmoid'))
+nn.add_layer(Layer(3, 2, 'sigmoid'))
+</code></pre><!-- raw HTML omitted -->
+<p>Our neural network's goal is to be able to perform the Binary AND operation.</p>
+<p>Although at the moment, it sucks at it:</p>
+<pre><code>nn.predict([[0, 0], [0, 1], [1, 0], [1, 1]])
+&gt; [1 1 1 1]
+</code></pre><p>[table id=1 /]</p>
+<h3 id="backpropagation">Backpropagation</h3>
+<p>Now we're at the most important step of our implementation, the backpropagation algorithm.</p>
+<p>Simply put, the backpropagation is a method that calculates gradients which are then used to train neural networks by modifying their weights for better results/predictions.</p>
+<p>The algorithm is supervised, meaning that we'll need to provide examples (inputs and targets) of how it should work in order for it to actually help us.</p>
+<p>In this implementation, we'll use the Mean Squared Sum Loss as the loss function for the backpropagation algorithm, where  <!-- raw HTML omitted -->is the target value and  <!-- raw HTML omitted -->is the predicted value.</p>
+<!-- raw HTML omitted -->
+<h4 id="how-does-it-work">How does it work?</h4>
+<p>Let's represent our neural network the following way:</p>
+<!-- raw HTML omitted -->
+<p>Where <!-- raw HTML omitted --> and <!-- raw HTML omitted --> are the outputs of the hidden layer 1 and the hidden layer 2.</p>
+<p>We can then see that the output is simply a chain of functions:</p>
+<!-- raw HTML omitted -->
+<p>Calculating the gradients and changing our weights is now a step closer, all we have to do is use the <a href="https://en.wikipedia.org/wiki/Chain_rule">Chain Rule</a> and update every single weight we have.</p>
+<p>If you want to read more about the exact math behind this, I highly recommend you this <a href="https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/">article</a>.</p>
+<h4 id="calculating-the-errors-and-the-deltas">Calculating the errors and the deltas</h4>
+<p>For each layer starting from the last layer (output layer):</p>
+<ul>
+<li>
+<p>Calculate the error <!-- raw HTML omitted -->:</p>
+<p>For the output layer:  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->is the output that we get from `feed_forward(X)`.</p>
+<p>For the hidden layers:  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->is the next layer and  <!-- raw HTML omitted -->is its delta.</p>
+</li>
+<li>
+<p>Calculate the delta:  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->is the derivative of our activation function and  <!-- raw HTML omitted -->is the last activation that we stored previously.</p>
+</li>
+</ul>
+<p>First, let's add the derivatives of our activation functions:</p>
+<pre><code>def apply_activation_derivative(self, r):
+    &quot;&quot;&quot;
+    Applies the derivative of the activation function (if any).
+    :param r: The normal value.
+    :return: The &quot;derived&quot; value.
+    &quot;&quot;&quot;
+
+    # We use 'r' directly here because its already activated, the only values that
+    # are used in this function are the last activations that were saved.
+
+    if self.activation is None:
+        return r
+
+    if self.activation == 'tanh':
+        return 1 - r ** 2
+
+    if self.activation == 'sigmoid':
+        return r * (1 - r)
+
+    return r
+</code></pre><p>Then calculate the errors and the deltas:</p>
+<pre><code>def backpropagation(self, X, y, learning_rate):
+    &quot;&quot;&quot;
+    Performs the backward propagation algorithm and updates the layers weights.
+    :param X: The input values.
+    :param y: The target values.
+    :param float learning_rate: The learning rate (between 0 and 1).
+    &quot;&quot;&quot;
+
+    # Feed forward for the output
+    output = self.feed_forward(X)
+
+    # Loop over the layers backward
+    for i in reversed(range(len(self._layers))):
+        layer = self._layers[i]
+
+        # If this is the output layer
+        if layer == self._layers[-1]:
+            layer.error = y - output
+            # The output = layer.last_activation in this case
+            layer.delta = layer.error * layer.apply_activation_derivative(output)
+        else:
+            next_layer = self._layers[i + 1]
+            layer.error = np.dot(next_layer.weights, next_layer.delta)
+            layer.delta = layer.error * layer.apply_activation_derivative(layer.last_activation)
+</code></pre><h4 id="updating-the-weights">Updating the weights</h4>
+<p>All we have to do now is update our weight matrices using the calculated deltas and a learning rate.</p>
+<p>The learning rate is a number between 0 and 1 that controls how much we adjust the weights. A big learning rate may cause you to miss the global minimum while a small learning rate might be too slow to converge.</p>
+<pre><code>for i in range(len(self._layers)):
+    layer = self._layers[i]
+    # The input is either the previous layers output or X itself (for the first hidden layer)
+    input_to_use = np.atleast_2d(X if i == 0 else self._layers[i - 1].last_activation)
+    layer.weights += layer.delta * input_to_use.T * learning_rate
+</code></pre><ol>
+<li>Loop over the layers (forwardly).</li>
+<li>Choose the input to use ( <!-- raw HTML omitted -->or  <!-- raw HTML omitted -->depending on the current layer.</li>
+<li>Update the layer's weights using <!-- raw HTML omitted -->.</li>
+</ol>
+<p>Our backpropagation function becomes:</p>
+<pre><code>def backpropagation(self, X, y, learning_rate):
+    &quot;&quot;&quot;
+    Performs the backward propagation algorithm and updates the layers weights.
+    :param X: The input values.
+    :param y: The target values.
+    :param float learning_rate: The learning rate (between 0 and 1).
+    &quot;&quot;&quot;
+
+    # Feed forward for the output
+    output = self.feed_forward(X)
+
+    # Loop over the layers backward
+    for i in reversed(range(len(self._layers))):
+        layer = self._layers[i]
+
+        # If this is the output layer
+        if layer == self._layers[-1]:
+            layer.error = y - output
+            # The output = layer.last_activation in this case
+            layer.delta = layer.error * layer.apply_activation_derivative(output)
+        else:
+            next_layer = self._layers[i + 1]
+            layer.error = np.dot(next_layer.weights, next_layer.delta)
+            layer.delta = layer.error * layer.apply_activation_derivative(layer.last_activation)
+
+    # Update the weights
+    for i in range(len(self._layers)):
+        layer = self._layers[i]
+        # The input is either the previous layers output or X itself (for the first hidden layer)
+        input_to_use = np.atleast_2d(X if i == 0 else self._layers[i - 1].last_activation)
+        layer.weights += layer.delta * input_to_use.T * learning_rate
+</code></pre><h3 id="training-the-neural-network">Training the neural network</h3>
+<p>Finally, we need to train our neural network using the backpropagation function we implemented above.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">stochastic gradient descent algorithm</a>, where we update the weights with each row of our input (you can also take mini-batches instead).</p>
+<pre><code>def train(self, X, y, learning_rate, max_epochs):
+    &quot;&quot;&quot;
+    Trains the neural network using backpropagation.
+    :param X: The input values.
+    :param y: The target values.
+    :param float learning_rate: The learning rate (between 0 and 1).
+    :param int max_epochs: The maximum number of epochs (cycles).
+    :return: The list of calculated MSE errors.
+    &quot;&quot;&quot;
+
+    mses = []
+
+    for i in range(max_epochs):
+        for j in range(len(X)):
+            self.backpropagation(X[j], y[j], learning_rate)
+        if i % 10 == 0:
+            mse = np.mean(np.square(y - nn.feed_forward(X)))
+            mses.append(mse)
+            print('Epoch: #%s, MSE: %f' % (i, float(mse)))
+
+    return mses
+</code></pre><p>We repeat the process for `max_epochs` epochs (also called cycles or runs).</p>
+<p>At every 10th epoch, we will print out the Mean Squared Error and save it in `mses` which we will return at the end.</p>
+<p>Here's the complete implementation:</p>
+<pre><code>import numpy as np
+
+np.random.seed(100)
+
+
+class Layer:
+    &quot;&quot;&quot;
+    Represents a layer (hidden or output) in our neural network.
+    &quot;&quot;&quot;
+
+    def __init__(self, n_input, n_neurons, activation=None, weights=None, bias=None):
+        &quot;&quot;&quot;
+        :param int n_input: The input size (coming from the input layer or a previous hidden layer)
+        :param int n_neurons: The number of neurons in this layer.
+        :param str activation: The activation function to use (if any).
+        :param weights: The layer's weights.
+        :param bias: The layer's bias.
+        &quot;&quot;&quot;
+
+        self.weights = weights if weights is not None else np.random.rand(n_input, n_neurons)
+        self.activation = activation
+        self.bias = bias if bias is not None else np.random.rand(n_neurons)
+        self.last_activation = None
+        self.error = None
+        self.delta = None
+
+    def activate(self, x):
+        &quot;&quot;&quot;
+        Calculates the dot product of this layer.
+        :param x: The input.
+        :return: The result.
+        &quot;&quot;&quot;
+
+        r = np.dot(x, self.weights) + self.bias
+        self.last_activation = self._apply_activation(r)
+        return self.last_activation
+
+    def _apply_activation(self, r):
+        &quot;&quot;&quot;
+        Applies the chosen activation function (if any).
+        :param r: The normal value.
+        :return: The &quot;activated&quot; value.
+        &quot;&quot;&quot;
+
+        # In case no activation function was chosen
+        if self.activation is None:
+            return r
+
+        # tanh
+        if self.activation == 'tanh':
+            return np.tanh(r)
+
+        # sigmoid
+        if self.activation == 'sigmoid':
+            return 1 / (1 + np.exp(-r))
+
+        return r
+
+    def apply_activation_derivative(self, r):
+        &quot;&quot;&quot;
+        Applies the derivative of the activation function (if any).
+        :param r: The normal value.
+        :return: The &quot;derived&quot; value.
+        &quot;&quot;&quot;
+
+        # We use 'r' directly here because its already activated, the only values that
+        # are used in this function are the last activations that were saved.
+
+        if self.activation is None:
+            return r
+
+        if self.activation == 'tanh':
+            return 1 - r ** 2
+
+        if self.activation == 'sigmoid':
+            return r * (1 - r)
+
+        return r
+
+
+class NeuralNetwork:
+    &quot;&quot;&quot;
+    Represents a neural network.
+    &quot;&quot;&quot;
+
+    def __init__(self):
+        self._layers = []
+
+    def add_layer(self, layer):
+        &quot;&quot;&quot;
+        Adds a layer to the neural network.
+        :param Layer layer: The layer to add.
+        &quot;&quot;&quot;
+
+        self._layers.append(layer)
+
+    def feed_forward(self, X):
+        &quot;&quot;&quot;
+        Feed forward the input through the layers.
+        :param X: The input values.
+        :return: The result.
+        &quot;&quot;&quot;
+
+        for layer in self._layers:
+            X = layer.activate(X)
+
+        return X
+
+    def predict(self, X):
+        &quot;&quot;&quot;
+        Predicts a class (or classes).
+        :param X: The input values.
+        :return: The predictions.
+        &quot;&quot;&quot;
+
+        ff = self.feed_forward(X)
+
+        # One row
+        if ff.ndim == 1:
+            return np.argmax(ff)
+
+        # Multiple rows
+        return np.argmax(ff, axis=1)
+
+    def backpropagation(self, X, y, learning_rate):
+        &quot;&quot;&quot;
+        Performs the backward propagation algorithm and updates the layers weights.
+        :param X: The input values.
+        :param y: The target values.
+        :param float learning_rate: The learning rate (between 0 and 1).
+        &quot;&quot;&quot;
+
+        # Feed forward for the output
+        output = self.feed_forward(X)
+
+        # Loop over the layers backward
+        for i in reversed(range(len(self._layers))):
+            layer = self._layers[i]
+
+            # If this is the output layer
+            if layer == self._layers[-1]:
+                layer.error = y - output
+                # The output = layer.last_activation in this case
+                layer.delta = layer.error * layer.apply_activation_derivative(output)
+            else:
+                next_layer = self._layers[i + 1]
+                layer.error = np.dot(next_layer.weights, next_layer.delta)
+                layer.delta = layer.error * layer.apply_activation_derivative(layer.last_activation)
+
+        # Update the weights
+        for i in range(len(self._layers)):
+            layer = self._layers[i]
+            # The input is either the previous layers output or X itself (for the first hidden layer)
+            input_to_use = np.atleast_2d(X if i == 0 else self._layers[i - 1].last_activation)
+            layer.weights += layer.delta * input_to_use.T * learning_rate
+
+    def train(self, X, y, learning_rate, max_epochs):
+        &quot;&quot;&quot;
+        Trains the neural network using backpropagation.
+        :param X: The input values.
+        :param y: The target values.
+        :param float learning_rate: The learning rate (between 0 and 1).
+        :param int max_epochs: The maximum number of epochs (cycles).
+        :return: The list of calculated MSE errors.
+        &quot;&quot;&quot;
+
+        mses = []
+
+        for i in range(max_epochs):
+            for j in range(len(X)):
+                self.backpropagation(X[j], y[j], learning_rate)
+            if i % 10 == 0:
+                mse = np.mean(np.square(y - nn.feed_forward(X)))
+                mses.append(mse)
+                print('Epoch: #%s, MSE: %f' % (i, float(mse)))
+
+        return mses
+
+    @staticmethod
+    def accuracy(y_pred, y_true):
+        &quot;&quot;&quot;
+        Calculates the accuracy between the predicted labels and true labels.
+        :param y_pred: The predicted labels.
+        :param y_true: The true labels.
+        :return: The calculated accuracy.
+        &quot;&quot;&quot;
+
+        return (y_pred == y_true).mean()
+</code></pre><h2 id="training-the-neural-network-to-solve-the-binary-and-problem">Training the neural network to solve the Binary AND problem</h2>
+<pre><code>nn = NeuralNetwork()
+nn.add_layer(Layer(2, 3, 'tanh'))
+nn.add_layer(Layer(3, 3, 'sigmoid'))
+nn.add_layer(Layer(3, 2, 'sigmoid'))
+
+# Define dataset
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [0], [0], [1]])
+
+# Train the neural network
+errors = nn.train(X, y, 0.3, 290)
+print('Accuracy: %.2f%%' % (nn.accuracy(nn.predict(X), y.flatten()) * 100))
+
+# Plot changes in mse
+plt.plot(errors)
+plt.title('Changes in MSE')
+plt.xlabel('Epoch (every 10th)')
+plt.ylabel('MSE')
+plt.show()
+</code></pre><p>The learning rate 0.3 and max_epochs 290 were chosen with trial and error, nothing fancy.</p>
+<p>Here's the result of our training:</p>
+<pre><code>Epoch: #0, MSE: 0.493821
+Epoch: #10, MSE: 0.229725
+Epoch: #20, MSE: 0.197990
+Epoch: #30, MSE: 0.194248
+Epoch: #40, MSE: 0.193029
+Epoch: #50, MSE: 0.192013
+Epoch: #60, MSE: 0.190730
+Epoch: #70, MSE: 0.188895
+Epoch: #80, MSE: 0.186293
+Epoch: #90, MSE: 0.182946
+Epoch: #100, MSE: 0.179057
+Epoch: #110, MSE: 0.174675
+Epoch: #120, MSE: 0.169565
+Epoch: #130, MSE: 0.163116
+Epoch: #140, MSE: 0.154368
+Epoch: #150, MSE: 0.143564
+Epoch: #160, MSE: 0.133169
+Epoch: #170, MSE: 0.124437
+Epoch: #180, MSE: 0.117074
+Epoch: #190, MSE: 0.110702
+Epoch: #200, MSE: 0.105110
+Epoch: #210, MSE: 0.100168
+Epoch: #220, MSE: 0.095770
+Epoch: #230, MSE: 0.091825
+Epoch: #240, MSE: 0.088261
+Epoch: #250, MSE: 0.085016
+Epoch: #260, MSE: 0.082037
+Epoch: #270, MSE: 0.079277
+Epoch: #280, MSE: 0.076697
+Accuracy: 100.00%
+</code></pre><!-- raw HTML omitted -->
+<p>Our neural network can successfully do binary AND operations now!</p>
+<h2 id="fun-note">Fun note</h2>
+<p>[table id=2 /]</p>
+<p>Aside from being able to do binary AND operations, the neural network seems to always predict 1 when a positive number is used and 0 when a negative number is used.</p>
+<p>Sadly, this remains a secret from us…</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Implementing a neural network can be challenging at first, especially since a lot of articles makes it seem like its hard and you need to be a math genius to get it done. In reality, it's fairly simple to do it. All you need to have is some basic knowledge in calculus and machine learning.</p>
+<p>I hope this post helped you understand how a neural network functions and especially how it can be trained using the Backpropagation algorithm. If you have any suggestions, improvements, questions or whatever feel free to comment below!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/algorithms" title="View all posts in Algorithms">Algorithms</a>
+    <a href="/categories/deep-learning" title="View all posts in Deep Learning">Deep Learning</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/backpropagation" title="View all posts tagged Backpropagation">Backpropagation</a>
+  
+  <a href="/tags/binary-and" title="View all posts tagged Binary AND">Binary AND</a>
+  
+  <a href="/tags/neural-networks" title="View all posts tagged Neural networks">Neural networks</a>
+  
+  <a href="/tags/numpy" title="View all posts tagged NumPy">NumPy</a>
+  
+  <a href="/tags/python" title="View all posts tagged Python">Python</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="http://example.org/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">A fast &amp; secure theme</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="http://example.org/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/jquerymigrate.js"></script>
+<script src="http://example.org/js/production.min.js?v=1575894832"></script>
+
+</body>
+</html>

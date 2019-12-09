@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Awaiting Bits</title>
+    <link>http://example.org/tags/</link>
+    <description>Recent content in Tags on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.NET Core</title>
+      <link>http://example.org/tags/.net-core/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>http://example.org/tags/.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proxy</title>
+      <link>http://example.org/tags/proxy/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>http://example.org/tags/proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Socks</title>
+      <link>http://example.org/tags/socks/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>http://example.org/tags/socks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Socks5</title>
+      <link>http://example.org/tags/socks5/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>http://example.org/tags/socks5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>colors</title>
+      <link>http://example.org/tags/colors/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/colors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>compression</title>
+      <link>http://example.org/tags/compression/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/compression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>images</title>
+      <link>http://example.org/tags/images/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/images/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k-means</title>
+      <link>http://example.org/tags/k-means/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/k-means/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ml.net</title>
+      <link>http://example.org/tags/ml.net/</link>
+      <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/ml.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google</title>
+      <link>http://example.org/tags/google/</link>
+      <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
+      
+      <guid>http://example.org/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jwt</title>
+      <link>http://example.org/tags/jwt/</link>
+      <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
+      
+      <guid>http://example.org/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oauth</title>
+      <link>http://example.org/tags/oauth/</link>
+      <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
+      
+      <guid>http://example.org/tags/oauth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rest api</title>
+      <link>http://example.org/tags/rest-api/</link>
+      <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
+      
+      <guid>http://example.org/tags/rest-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Core 3.0</title>
+      <link>http://example.org/tags/asp.net-core-3.0/</link>
+      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
+      
+      <guid>http://example.org/tags/asp.net-core-3.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blazor</title>
+      <link>http://example.org/tags/blazor/</link>
+      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
+      
+      <guid>http://example.org/tags/blazor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Breaking Changes</title>
+      <link>http://example.org/tags/breaking-changes/</link>
+      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
+      
+      <guid>http://example.org/tags/breaking-changes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>New Features</title>
+      <link>http://example.org/tags/new-features/</link>
+      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
+      
+      <guid>http://example.org/tags/new-features/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SignalR</title>
+      <link>http://example.org/tags/signalr/</link>
+      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
+      
+      <guid>http://example.org/tags/signalr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Analysis</title>
+      <link>http://example.org/tags/code-analysis/</link>
+      <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/code-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NDepend</title>
+      <link>http://example.org/tags/ndepend/</link>
+      <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/ndepend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Technical Debt</title>
+      <link>http://example.org/tags/technical-debt/</link>
+      <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/technical-debt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clustering</title>
+      <link>http://example.org/tags/clustering/</link>
+      <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
+      
+      <guid>http://example.org/tags/clustering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>outliers detection</title>
+      <link>http://example.org/tags/outliers-detection/</link>
+      <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
+      
+      <guid>http://example.org/tags/outliers-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unsupervised learning</title>
+      <link>http://example.org/tags/unsupervised-learning/</link>
+      <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
+      
+      <guid>http://example.org/tags/unsupervised-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boxplot</title>
+      <link>http://example.org/tags/boxplot/</link>
+      <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/boxplot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iqr</title>
+      <link>http://example.org/tags/iqr/</link>
+      <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
+      
+      <guid>http://example.org/tags/iqr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>email</title>
+      <link>http://example.org/tags/email/</link>
+      <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
+      
+      <guid>http://example.org/tags/email/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>razor</title>
+      <link>http://example.org/tags/razor/</link>
+      <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
+      
+      <guid>http://example.org/tags/razor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sender</title>
+      <link>http://example.org/tags/sender/</link>
+      <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
+      
+      <guid>http://example.org/tags/sender/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>http://example.org/tags/service/</link>
+      <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
+      
+      <guid>http://example.org/tags/service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>templates</title>
+      <link>http://example.org/tags/templates/</link>
+      <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
+      
+      <guid>http://example.org/tags/templates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Benchmarking</title>
+      <link>http://example.org/tags/benchmarking/</link>
+      <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
+      
+      <guid>http://example.org/tags/benchmarking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instanciate</title>
+      <link>http://example.org/tags/instanciate/</link>
+      <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
+      
+      <guid>http://example.org/tags/instanciate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Type</title>
+      <link>http://example.org/tags/type/</link>
+      <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
+      
+      <guid>http://example.org/tags/type/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Agnoster</title>
+      <link>http://example.org/tags/agnoster/</link>
+      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
+      
+      <guid>http://example.org/tags/agnoster/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Powerline</title>
+      <link>http://example.org/tags/powerline/</link>
+      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
+      
+      <guid>http://example.org/tags/powerline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terminal</title>
+      <link>http://example.org/tags/terminal/</link>
+      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
+      
+      <guid>http://example.org/tags/terminal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VS Code</title>
+      <link>http://example.org/tags/vs-code/</link>
+      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
+      
+      <guid>http://example.org/tags/vs-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>http://example.org/tags/zsh/</link>
+      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
+      
+      <guid>http://example.org/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Action Filters</title>
+      <link>http://example.org/tags/action-filters/</link>
+      <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
+      
+      <guid>http://example.org/tags/action-filters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Model Binding</title>
+      <link>http://example.org/tags/model-binding/</link>
+      <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
+      
+      <guid>http://example.org/tags/model-binding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Model Validation</title>
+      <link>http://example.org/tags/model-validation/</link>
+      <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
+      
+      <guid>http://example.org/tags/model-validation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ModelState</title>
+      <link>http://example.org/tags/modelstate/</link>
+      <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
+      
+      <guid>http://example.org/tags/modelstate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Utility</title>
+      <link>http://example.org/tags/utility/</link>
+      <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
+      
+      <guid>http://example.org/tags/utility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Core</title>
+      <link>http://example.org/tags/asp.net-core/</link>
+      <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
+      
+      <guid>http://example.org/tags/asp.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Repository Pattern</title>
+      <link>http://example.org/tags/repository-pattern/</link>
+      <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
+      
+      <guid>http://example.org/tags/repository-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notifications</title>
+      <link>http://example.org/tags/notifications/</link>
+      <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
+      
+      <guid>http://example.org/tags/notifications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows 10</title>
+      <link>http://example.org/tags/windows-10/</link>
+      <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
+      
+      <guid>http://example.org/tags/windows-10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ContextMenu</title>
+      <link>http://example.org/tags/contextmenu/</link>
+      <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
+      
+      <guid>http://example.org/tags/contextmenu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mouseless</title>
+      <link>http://example.org/tags/mouseless/</link>
+      <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
+      
+      <guid>http://example.org/tags/mouseless/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>http://example.org/tags/api/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>http://example.org/tags/c#/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Documentation</title>
+      <link>http://example.org/tags/documentation/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/documentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>REST</title>
+      <link>http://example.org/tags/rest/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Swagger</title>
+      <link>http://example.org/tags/swagger/</link>
+      <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/swagger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GIFs</title>
+      <link>http://example.org/tags/gifs/</link>
+      <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
+      
+      <guid>http://example.org/tags/gifs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PIL Fork</title>
+      <link>http://example.org/tags/pil-fork/</link>
+      <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
+      
+      <guid>http://example.org/tags/pil-fork/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pillow</title>
+      <link>http://example.org/tags/pillow/</link>
+      <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
+      
+      <guid>http://example.org/tags/pillow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://example.org/tags/python/</link>
+      <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
+      
+      <guid>http://example.org/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Backpropagation</title>
+      <link>http://example.org/tags/backpropagation/</link>
+      <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
+      
+      <guid>http://example.org/tags/backpropagation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Binary AND</title>
+      <link>http://example.org/tags/binary-and/</link>
+      <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
+      
+      <guid>http://example.org/tags/binary-and/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neural networks</title>
+      <link>http://example.org/tags/neural-networks/</link>
+      <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
+      
+      <guid>http://example.org/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NumPy</title>
+      <link>http://example.org/tags/numpy/</link>
+      <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
+      
+      <guid>http://example.org/tags/numpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Maps Alternative</title>
+      <link>http://example.org/tags/google-maps-alternative/</link>
+      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/google-maps-alternative/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>http://example.org/tags/javascript/</link>
+      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leaflet</title>
+      <link>http://example.org/tags/leaflet/</link>
+      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/leaflet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenStreetMap</title>
+      <link>http://example.org/tags/openstreetmap/</link>
+      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/openstreetmap/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
