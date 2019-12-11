@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>REST on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/rest/</link>
+    <link>https://blog.zhaytam.com/tags/rest/</link>
     <description>Recent content in REST on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Sep 2018 18:44:00 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Generate a documentation for an ASP.NET Core Web API using Swagger</title>
-      <link>https://zhaytam.github.io/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</link>
+      <link>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
+      <guid>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
       <description>Hi everyone! I hope you&#39;re having a great sunday.
 Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.</description>
     </item>

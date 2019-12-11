@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithms on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/categories/algorithms/</link>
+    <link>https://blog.zhaytam.com/categories/algorithms/</link>
     <description>Recent content in Algorithms on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Color quantization using K-means clustering in ML.NET</title>
-      <link>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
+      <link>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
+      <guid>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
       <description>When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.
 All the code is available in this GitHub repository.
 What is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.</description>
@@ -24,30 +24,30 @@ What is color quantization Color quantization is the usage of quantization, a lo
     
     <item>
       <title>Outliers Detection in PySpark #3 – K-means</title>
-      <link>https://zhaytam.github.io/2019/08/06/outliers-detection-in-pyspark-3-k-means/</link>
+      <link>https://blog.zhaytam.com/2019/08/06/outliers-detection-in-pyspark-3-k-means/</link>
       <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/08/06/outliers-detection-in-pyspark-3-k-means/</guid>
+      <guid>https://blog.zhaytam.com/2019/08/06/outliers-detection-in-pyspark-3-k-means/</guid>
       <description>In parts #1 and #2 of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular K-means clustering algorithm to detect outliers.
 K-means K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering.</description>
     </item>
     
     <item>
       <title>Outliers Detection in PySpark #2 – Interquartile Range</title>
-      <link>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</link>
+      <link>https://blog.zhaytam.com/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</link>
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
+      <guid>https://blog.zhaytam.com/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
       <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection. In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
 Introduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.</description>
     </item>
     
     <item>
       <title>Association Rule Mining using Apriori Algorithm</title>
-      <link>https://zhaytam.github.io/2018/10/23/association-rule-mining-using-apriori-algorithm/</link>
+      <link>https://blog.zhaytam.com/2018/10/23/association-rule-mining-using-apriori-algorithm/</link>
       <pubDate>Tue, 23 Oct 2018 17:52:24 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/10/23/association-rule-mining-using-apriori-algorithm/</guid>
+      <guid>https://blog.zhaytam.com/2018/10/23/association-rule-mining-using-apriori-algorithm/</guid>
       <description>Have you ever wondered how Amazon suggets to us items to buy when we&#39;re looking at a product (labeled as “Frequently bought together”)?
 For example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.
 Which is true because a lot of people buy their components grouped when building a desktop pc.</description>
@@ -55,10 +55,10 @@ Which is true because a lot of people buy their components grouped when building
     
     <item>
       <title>Implementing a flexible neural network with backpropagation from scratch</title>
-      <link>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</link>
+      <link>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</guid>
+      <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
       <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
 Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>

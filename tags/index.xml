@@ -2,615 +2,615 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/</link>
+    <link>https://blog.zhaytam.com/tags/</link>
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>.NET Core</title>
-      <link>https://zhaytam.github.io/tags/.net-core/</link>
+      <link>https://blog.zhaytam.com/tags/.net-core/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/.net-core/</guid>
+      <guid>https://blog.zhaytam.com/tags/.net-core/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Proxy</title>
-      <link>https://zhaytam.github.io/tags/proxy/</link>
+      <link>https://blog.zhaytam.com/tags/proxy/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/proxy/</guid>
+      <guid>https://blog.zhaytam.com/tags/proxy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Socks</title>
-      <link>https://zhaytam.github.io/tags/socks/</link>
+      <link>https://blog.zhaytam.com/tags/socks/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/socks/</guid>
+      <guid>https://blog.zhaytam.com/tags/socks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Socks5</title>
-      <link>https://zhaytam.github.io/tags/socks5/</link>
+      <link>https://blog.zhaytam.com/tags/socks5/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/socks5/</guid>
+      <guid>https://blog.zhaytam.com/tags/socks5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>colors</title>
-      <link>https://zhaytam.github.io/tags/colors/</link>
+      <link>https://blog.zhaytam.com/tags/colors/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/colors/</guid>
+      <guid>https://blog.zhaytam.com/tags/colors/</guid>
       <description></description>
     </item>
     
     <item>
       <title>compression</title>
-      <link>https://zhaytam.github.io/tags/compression/</link>
+      <link>https://blog.zhaytam.com/tags/compression/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/compression/</guid>
+      <guid>https://blog.zhaytam.com/tags/compression/</guid>
       <description></description>
     </item>
     
     <item>
       <title>images</title>
-      <link>https://zhaytam.github.io/tags/images/</link>
+      <link>https://blog.zhaytam.com/tags/images/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/images/</guid>
+      <guid>https://blog.zhaytam.com/tags/images/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k-means</title>
-      <link>https://zhaytam.github.io/tags/k-means/</link>
+      <link>https://blog.zhaytam.com/tags/k-means/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/k-means/</guid>
+      <guid>https://blog.zhaytam.com/tags/k-means/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ml.net</title>
-      <link>https://zhaytam.github.io/tags/ml.net/</link>
+      <link>https://blog.zhaytam.com/tags/ml.net/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/ml.net/</guid>
+      <guid>https://blog.zhaytam.com/tags/ml.net/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google</title>
-      <link>https://zhaytam.github.io/tags/google/</link>
+      <link>https://blog.zhaytam.com/tags/google/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/google/</guid>
+      <guid>https://blog.zhaytam.com/tags/google/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jwt</title>
-      <link>https://zhaytam.github.io/tags/jwt/</link>
+      <link>https://blog.zhaytam.com/tags/jwt/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/jwt/</guid>
+      <guid>https://blog.zhaytam.com/tags/jwt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>oauth</title>
-      <link>https://zhaytam.github.io/tags/oauth/</link>
+      <link>https://blog.zhaytam.com/tags/oauth/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/oauth/</guid>
+      <guid>https://blog.zhaytam.com/tags/oauth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rest api</title>
-      <link>https://zhaytam.github.io/tags/rest-api/</link>
+      <link>https://blog.zhaytam.com/tags/rest-api/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/rest-api/</guid>
+      <guid>https://blog.zhaytam.com/tags/rest-api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ASP.NET Core 3.0</title>
-      <link>https://zhaytam.github.io/tags/asp.net-core-3.0/</link>
+      <link>https://blog.zhaytam.com/tags/asp.net-core-3.0/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/asp.net-core-3.0/</guid>
+      <guid>https://blog.zhaytam.com/tags/asp.net-core-3.0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blazor</title>
-      <link>https://zhaytam.github.io/tags/blazor/</link>
+      <link>https://blog.zhaytam.com/tags/blazor/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/blazor/</guid>
+      <guid>https://blog.zhaytam.com/tags/blazor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Breaking Changes</title>
-      <link>https://zhaytam.github.io/tags/breaking-changes/</link>
+      <link>https://blog.zhaytam.com/tags/breaking-changes/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/breaking-changes/</guid>
+      <guid>https://blog.zhaytam.com/tags/breaking-changes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New Features</title>
-      <link>https://zhaytam.github.io/tags/new-features/</link>
+      <link>https://blog.zhaytam.com/tags/new-features/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/new-features/</guid>
+      <guid>https://blog.zhaytam.com/tags/new-features/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SignalR</title>
-      <link>https://zhaytam.github.io/tags/signalr/</link>
+      <link>https://blog.zhaytam.com/tags/signalr/</link>
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/signalr/</guid>
+      <guid>https://blog.zhaytam.com/tags/signalr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code Analysis</title>
-      <link>https://zhaytam.github.io/tags/code-analysis/</link>
+      <link>https://blog.zhaytam.com/tags/code-analysis/</link>
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/code-analysis/</guid>
+      <guid>https://blog.zhaytam.com/tags/code-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>NDepend</title>
-      <link>https://zhaytam.github.io/tags/ndepend/</link>
+      <link>https://blog.zhaytam.com/tags/ndepend/</link>
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/ndepend/</guid>
+      <guid>https://blog.zhaytam.com/tags/ndepend/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Technical Debt</title>
-      <link>https://zhaytam.github.io/tags/technical-debt/</link>
+      <link>https://blog.zhaytam.com/tags/technical-debt/</link>
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/technical-debt/</guid>
+      <guid>https://blog.zhaytam.com/tags/technical-debt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>clustering</title>
-      <link>https://zhaytam.github.io/tags/clustering/</link>
+      <link>https://blog.zhaytam.com/tags/clustering/</link>
       <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/clustering/</guid>
+      <guid>https://blog.zhaytam.com/tags/clustering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>outliers detection</title>
-      <link>https://zhaytam.github.io/tags/outliers-detection/</link>
+      <link>https://blog.zhaytam.com/tags/outliers-detection/</link>
       <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/outliers-detection/</guid>
+      <guid>https://blog.zhaytam.com/tags/outliers-detection/</guid>
       <description></description>
     </item>
     
     <item>
       <title>unsupervised learning</title>
-      <link>https://zhaytam.github.io/tags/unsupervised-learning/</link>
+      <link>https://blog.zhaytam.com/tags/unsupervised-learning/</link>
       <pubDate>Tue, 06 Aug 2019 10:33:10 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/unsupervised-learning/</guid>
+      <guid>https://blog.zhaytam.com/tags/unsupervised-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>boxplot</title>
-      <link>https://zhaytam.github.io/tags/boxplot/</link>
+      <link>https://blog.zhaytam.com/tags/boxplot/</link>
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/boxplot/</guid>
+      <guid>https://blog.zhaytam.com/tags/boxplot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iqr</title>
-      <link>https://zhaytam.github.io/tags/iqr/</link>
+      <link>https://blog.zhaytam.com/tags/iqr/</link>
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/iqr/</guid>
+      <guid>https://blog.zhaytam.com/tags/iqr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>email</title>
-      <link>https://zhaytam.github.io/tags/email/</link>
+      <link>https://blog.zhaytam.com/tags/email/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/email/</guid>
+      <guid>https://blog.zhaytam.com/tags/email/</guid>
       <description></description>
     </item>
     
     <item>
       <title>razor</title>
-      <link>https://zhaytam.github.io/tags/razor/</link>
+      <link>https://blog.zhaytam.com/tags/razor/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/razor/</guid>
+      <guid>https://blog.zhaytam.com/tags/razor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sender</title>
-      <link>https://zhaytam.github.io/tags/sender/</link>
+      <link>https://blog.zhaytam.com/tags/sender/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/sender/</guid>
+      <guid>https://blog.zhaytam.com/tags/sender/</guid>
       <description></description>
     </item>
     
     <item>
       <title>service</title>
-      <link>https://zhaytam.github.io/tags/service/</link>
+      <link>https://blog.zhaytam.com/tags/service/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/service/</guid>
+      <guid>https://blog.zhaytam.com/tags/service/</guid>
       <description></description>
     </item>
     
     <item>
       <title>templates</title>
-      <link>https://zhaytam.github.io/tags/templates/</link>
+      <link>https://blog.zhaytam.com/tags/templates/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/templates/</guid>
+      <guid>https://blog.zhaytam.com/tags/templates/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Benchmarking</title>
-      <link>https://zhaytam.github.io/tags/benchmarking/</link>
+      <link>https://blog.zhaytam.com/tags/benchmarking/</link>
       <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/benchmarking/</guid>
+      <guid>https://blog.zhaytam.com/tags/benchmarking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Instanciate</title>
-      <link>https://zhaytam.github.io/tags/instanciate/</link>
+      <link>https://blog.zhaytam.com/tags/instanciate/</link>
       <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/instanciate/</guid>
+      <guid>https://blog.zhaytam.com/tags/instanciate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Type</title>
-      <link>https://zhaytam.github.io/tags/type/</link>
+      <link>https://blog.zhaytam.com/tags/type/</link>
       <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/type/</guid>
+      <guid>https://blog.zhaytam.com/tags/type/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Agnoster</title>
-      <link>https://zhaytam.github.io/tags/agnoster/</link>
+      <link>https://blog.zhaytam.com/tags/agnoster/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/agnoster/</guid>
+      <guid>https://blog.zhaytam.com/tags/agnoster/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Powerline</title>
-      <link>https://zhaytam.github.io/tags/powerline/</link>
+      <link>https://blog.zhaytam.com/tags/powerline/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/powerline/</guid>
+      <guid>https://blog.zhaytam.com/tags/powerline/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Terminal</title>
-      <link>https://zhaytam.github.io/tags/terminal/</link>
+      <link>https://blog.zhaytam.com/tags/terminal/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/terminal/</guid>
+      <guid>https://blog.zhaytam.com/tags/terminal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VS Code</title>
-      <link>https://zhaytam.github.io/tags/vs-code/</link>
+      <link>https://blog.zhaytam.com/tags/vs-code/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/vs-code/</guid>
+      <guid>https://blog.zhaytam.com/tags/vs-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zsh</title>
-      <link>https://zhaytam.github.io/tags/zsh/</link>
+      <link>https://blog.zhaytam.com/tags/zsh/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/zsh/</guid>
+      <guid>https://blog.zhaytam.com/tags/zsh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Action Filters</title>
-      <link>https://zhaytam.github.io/tags/action-filters/</link>
+      <link>https://blog.zhaytam.com/tags/action-filters/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/action-filters/</guid>
+      <guid>https://blog.zhaytam.com/tags/action-filters/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Model Binding</title>
-      <link>https://zhaytam.github.io/tags/model-binding/</link>
+      <link>https://blog.zhaytam.com/tags/model-binding/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/model-binding/</guid>
+      <guid>https://blog.zhaytam.com/tags/model-binding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Model Validation</title>
-      <link>https://zhaytam.github.io/tags/model-validation/</link>
+      <link>https://blog.zhaytam.com/tags/model-validation/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/model-validation/</guid>
+      <guid>https://blog.zhaytam.com/tags/model-validation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ModelState</title>
-      <link>https://zhaytam.github.io/tags/modelstate/</link>
+      <link>https://blog.zhaytam.com/tags/modelstate/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/modelstate/</guid>
+      <guid>https://blog.zhaytam.com/tags/modelstate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Utility</title>
-      <link>https://zhaytam.github.io/tags/utility/</link>
+      <link>https://blog.zhaytam.com/tags/utility/</link>
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/utility/</guid>
+      <guid>https://blog.zhaytam.com/tags/utility/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ASP.NET Core</title>
-      <link>https://zhaytam.github.io/tags/asp.net-core/</link>
+      <link>https://blog.zhaytam.com/tags/asp.net-core/</link>
       <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/asp.net-core/</guid>
+      <guid>https://blog.zhaytam.com/tags/asp.net-core/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Repository Pattern</title>
-      <link>https://zhaytam.github.io/tags/repository-pattern/</link>
+      <link>https://blog.zhaytam.com/tags/repository-pattern/</link>
       <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/repository-pattern/</guid>
+      <guid>https://blog.zhaytam.com/tags/repository-pattern/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notifications</title>
-      <link>https://zhaytam.github.io/tags/notifications/</link>
+      <link>https://blog.zhaytam.com/tags/notifications/</link>
       <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/notifications/</guid>
+      <guid>https://blog.zhaytam.com/tags/notifications/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows 10</title>
-      <link>https://zhaytam.github.io/tags/windows-10/</link>
+      <link>https://blog.zhaytam.com/tags/windows-10/</link>
       <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/windows-10/</guid>
+      <guid>https://blog.zhaytam.com/tags/windows-10/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ContextMenu</title>
-      <link>https://zhaytam.github.io/tags/contextmenu/</link>
+      <link>https://blog.zhaytam.com/tags/contextmenu/</link>
       <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/contextmenu/</guid>
+      <guid>https://blog.zhaytam.com/tags/contextmenu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mouseless</title>
-      <link>https://zhaytam.github.io/tags/mouseless/</link>
+      <link>https://blog.zhaytam.com/tags/mouseless/</link>
       <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/mouseless/</guid>
+      <guid>https://blog.zhaytam.com/tags/mouseless/</guid>
       <description></description>
     </item>
     
     <item>
       <title>API</title>
-      <link>https://zhaytam.github.io/tags/api/</link>
+      <link>https://blog.zhaytam.com/tags/api/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/api/</guid>
+      <guid>https://blog.zhaytam.com/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C#</title>
-      <link>https://zhaytam.github.io/tags/c#/</link>
+      <link>https://blog.zhaytam.com/tags/c#/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/c#/</guid>
+      <guid>https://blog.zhaytam.com/tags/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Documentation</title>
-      <link>https://zhaytam.github.io/tags/documentation/</link>
+      <link>https://blog.zhaytam.com/tags/documentation/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/documentation/</guid>
+      <guid>https://blog.zhaytam.com/tags/documentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>REST</title>
-      <link>https://zhaytam.github.io/tags/rest/</link>
+      <link>https://blog.zhaytam.com/tags/rest/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/rest/</guid>
+      <guid>https://blog.zhaytam.com/tags/rest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swagger</title>
-      <link>https://zhaytam.github.io/tags/swagger/</link>
+      <link>https://blog.zhaytam.com/tags/swagger/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/swagger/</guid>
+      <guid>https://blog.zhaytam.com/tags/swagger/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GIFs</title>
-      <link>https://zhaytam.github.io/tags/gifs/</link>
+      <link>https://blog.zhaytam.com/tags/gifs/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/gifs/</guid>
+      <guid>https://blog.zhaytam.com/tags/gifs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PIL Fork</title>
-      <link>https://zhaytam.github.io/tags/pil-fork/</link>
+      <link>https://blog.zhaytam.com/tags/pil-fork/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/pil-fork/</guid>
+      <guid>https://blog.zhaytam.com/tags/pil-fork/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pillow</title>
-      <link>https://zhaytam.github.io/tags/pillow/</link>
+      <link>https://blog.zhaytam.com/tags/pillow/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/pillow/</guid>
+      <guid>https://blog.zhaytam.com/tags/pillow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://zhaytam.github.io/tags/python/</link>
+      <link>https://blog.zhaytam.com/tags/python/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/python/</guid>
+      <guid>https://blog.zhaytam.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Backpropagation</title>
-      <link>https://zhaytam.github.io/tags/backpropagation/</link>
+      <link>https://blog.zhaytam.com/tags/backpropagation/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/backpropagation/</guid>
+      <guid>https://blog.zhaytam.com/tags/backpropagation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Binary AND</title>
-      <link>https://zhaytam.github.io/tags/binary-and/</link>
+      <link>https://blog.zhaytam.com/tags/binary-and/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/binary-and/</guid>
+      <guid>https://blog.zhaytam.com/tags/binary-and/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Neural networks</title>
-      <link>https://zhaytam.github.io/tags/neural-networks/</link>
+      <link>https://blog.zhaytam.com/tags/neural-networks/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/neural-networks/</guid>
+      <guid>https://blog.zhaytam.com/tags/neural-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>NumPy</title>
-      <link>https://zhaytam.github.io/tags/numpy/</link>
+      <link>https://blog.zhaytam.com/tags/numpy/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/numpy/</guid>
+      <guid>https://blog.zhaytam.com/tags/numpy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google Maps Alternative</title>
-      <link>https://zhaytam.github.io/tags/google-maps-alternative/</link>
+      <link>https://blog.zhaytam.com/tags/google-maps-alternative/</link>
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/google-maps-alternative/</guid>
+      <guid>https://blog.zhaytam.com/tags/google-maps-alternative/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>https://zhaytam.github.io/tags/javascript/</link>
+      <link>https://blog.zhaytam.com/tags/javascript/</link>
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/javascript/</guid>
+      <guid>https://blog.zhaytam.com/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Leaflet</title>
-      <link>https://zhaytam.github.io/tags/leaflet/</link>
+      <link>https://blog.zhaytam.com/tags/leaflet/</link>
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/leaflet/</guid>
+      <guid>https://blog.zhaytam.com/tags/leaflet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenStreetMap</title>
-      <link>https://zhaytam.github.io/tags/openstreetmap/</link>
+      <link>https://blog.zhaytam.com/tags/openstreetmap/</link>
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/tags/openstreetmap/</guid>
+      <guid>https://blog.zhaytam.com/tags/openstreetmap/</guid>
       <description></description>
     </item>
     

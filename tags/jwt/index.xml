@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jwt on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/jwt/</link>
+    <link>https://blog.zhaytam.com/tags/jwt/</link>
     <description>Recent content in jwt on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 03 Oct 2019 08:35:40 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google Sign-In for ASP.NET Core Web APIs</title>
-      <link>https://zhaytam.github.io/2019/10/03/google-sign-in-asp-net-core-web-api/</link>
+      <link>https://blog.zhaytam.com/2019/10/03/google-sign-in-asp-net-core-web-api/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
+      <guid>https://blog.zhaytam.com/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
       <description>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.
 Today I&#39;ll be showing how you can add Google Sign-In and still manage users in your back-end.
 Overview Here&#39;s a sequence diagram showing how it all works:</description>

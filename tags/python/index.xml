@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/python/</link>
+    <link>https://blog.zhaytam.com/tags/python/</link>
     <description>Recent content in Python on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Aug 2018 20:09:28 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating GIFs in Python using Pillow (PIL Fork)</title>
-      <link>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</link>
+      <link>https://blog.zhaytam.com/2018/08/21/creating-gifs-using-python-pillow/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</guid>
+      <guid>https://blog.zhaytam.com/2018/08/21/creating-gifs-using-python-pillow/</guid>
       <description>I was working on a personal project the other day and I needed to create some images (frames) and save them as a playable GIF. Working in Python, I excepted to find an easy solution fast but oh boy did it take me too long to find it.
 Here I am now, creating a blog post to help future people looking to create gifs in Python.</description>
     </item>
     
     <item>
       <title>Implementing a flexible neural network with backpropagation from scratch</title>
-      <link>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</link>
+      <link>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</guid>
+      <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
       <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
 Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/categories/programming/</link>
+    <link>https://blog.zhaytam.com/categories/programming/</link>
     <description>Recent content in Programming on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Color quantization using K-means clustering in ML.NET</title>
-      <link>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
+      <link>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
+      <guid>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
       <description>When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.
 All the code is available in this GitHub repository.
 What is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.</description>
@@ -24,20 +24,20 @@ What is color quantization Color quantization is the usage of quantization, a lo
     
     <item>
       <title>NDepend, a powerful static analysis tool for .NET</title>
-      <link>https://zhaytam.github.io/2019/08/26/ndepend-static-analysis-tool-dotnet/</link>
+      <link>https://blog.zhaytam.com/2019/08/26/ndepend-static-analysis-tool-dotnet/</link>
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/08/26/ndepend-static-analysis-tool-dotnet/</guid>
+      <guid>https://blog.zhaytam.com/2019/08/26/ndepend-static-analysis-tool-dotnet/</guid>
       <description>Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&#39;ll be talking about my opinion and thoughts after trying it for the first time.
 Static code analysis Being able to check the quality of your source code before it&#39;s even ran is a very valuable thing to have.</description>
     </item>
     
     <item>
       <title>EmailSender Service using FluentEmail &amp; Razor Templates</title>
-      <link>https://zhaytam.github.io/2019/06/08/emailsender-service-fluent-email-razor-templates/</link>
+      <link>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</link>
       <pubDate>Sat, 08 Jun 2019 12:58:48 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
+      <guid>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
 Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
 EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
@@ -45,10 +45,10 @@ EmailSender interface If you&#39;re working with a project that implements a Cle
     
     <item>
       <title>Instanciating a Type at Runtime – C# Benchmarks</title>
-      <link>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</link>
+      <link>https://blog.zhaytam.com/2019/04/26/fas-to-instanciating-a-type-at-runtime/</link>
       <pubDate>Fri, 26 Apr 2019 00:06:15 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
+      <guid>https://blog.zhaytam.com/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
       <description>Assuming you are familiar with C#;
 If I give you a Type and tell you to create an object with it, you would automatically think of Activator.CreateInstance right?
 What if I tell you that instanciating a Type using Expression Trees is much faster?
@@ -57,10 +57,10 @@ The code for the benchmarks is in this repository.</description>
     
     <item>
       <title>Repository Pattern – Generic Async Repositories in C#</title>
-      <link>https://zhaytam.github.io/2019/03/14/generic-repository-pattern-csharp/</link>
+      <link>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</link>
       <pubDate>Thu, 14 Mar 2019 15:00:44 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/03/14/generic-repository-pattern-csharp/</guid>
+      <guid>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</guid>
       <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
 Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
 The code of this blog post is available here.</description>
@@ -68,50 +68,50 @@ The code of this blog post is available here.</description>
     
     <item>
       <title>Creating a Mouseless Context Menu in Unity</title>
-      <link>https://zhaytam.github.io/2019/02/02/creating-mouseless-context-menu-unity/</link>
+      <link>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</link>
       <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/02/02/creating-mouseless-context-menu-unity/</guid>
+      <guid>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</guid>
       <description>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).
 Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completley mouseless, since my game was mouseless itself.</description>
     </item>
     
     <item>
       <title>Generate a documentation for an ASP.NET Core Web API using Swagger</title>
-      <link>https://zhaytam.github.io/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</link>
+      <link>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</link>
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
+      <guid>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
       <description>Hi everyone! I hope you&#39;re having a great sunday.
 Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.</description>
     </item>
     
     <item>
       <title>Creating GIFs in Python using Pillow (PIL Fork)</title>
-      <link>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</link>
+      <link>https://blog.zhaytam.com/2018/08/21/creating-gifs-using-python-pillow/</link>
       <pubDate>Tue, 21 Aug 2018 20:09:28 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/08/21/creating-gifs-using-python-pillow/</guid>
+      <guid>https://blog.zhaytam.com/2018/08/21/creating-gifs-using-python-pillow/</guid>
       <description>I was working on a personal project the other day and I needed to create some images (frames) and save them as a playable GIF. Working in Python, I excepted to find an easy solution fast but oh boy did it take me too long to find it.
 Here I am now, creating a blog post to help future people looking to create gifs in Python.</description>
     </item>
     
     <item>
       <title>OpenStreetMap, Google Maps alternative using Leaflet</title>
-      <link>https://zhaytam.github.io/2018/07/20/openstreetmap-googlemaps-alternative/</link>
+      <link>https://blog.zhaytam.com/2018/07/20/openstreetmap-googlemaps-alternative/</link>
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
+      <guid>https://blog.zhaytam.com/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
       <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
  Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc&amp;hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
     </item>
     
     <item>
       <title>Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs</title>
-      <link>https://zhaytam.github.io/2018/06/24/asp-net-core-using-smartbreadcrumbs/</link>
+      <link>https://blog.zhaytam.com/2018/06/24/asp-net-core-using-smartbreadcrumbs/</link>
       <pubDate>Sun, 24 Jun 2018 03:04:36 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/06/24/asp-net-core-using-smartbreadcrumbs/</guid>
+      <guid>https://blog.zhaytam.com/2018/06/24/asp-net-core-using-smartbreadcrumbs/</guid>
       <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&#39;s not, unless you want to end up copying the almost-same code in all your pages.
 Today I&#39;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
     </item>

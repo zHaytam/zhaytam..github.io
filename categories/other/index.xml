@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>other on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/categories/other/</link>
+    <link>https://blog.zhaytam.com/categories/other/</link>
     <description>Recent content in other on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 Apr 2019 15:50:27 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/categories/other/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Powerline and ZSH’s Agnoster theme in VS Code</title>
-      <link>https://zhaytam.github.io/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</link>
+      <link>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
+      <guid>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
       <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
 In this post I&#39;ll explain how to quickly fix it.
 The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
@@ -24,10 +24,10 @@ The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#
     
     <item>
       <title>How to lower the volume of the annoying Windows 10 notifications</title>
-      <link>https://zhaytam.github.io/2019/02/08/lower-windows-10-notifications-volume/</link>
+      <link>https://blog.zhaytam.com/2019/02/08/lower-windows-10-notifications-volume/</link>
       <pubDate>Fri, 08 Feb 2019 19:46:21 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/02/08/lower-windows-10-notifications-volume/</guid>
+      <guid>https://blog.zhaytam.com/2019/02/08/lower-windows-10-notifications-volume/</guid>
       <description>I bought a laptop a long time ago but I never really used it enough to notice this.
 I am now using it every day and every time a Windows 10 notification shows up, both my ears bleed (not really but you get the idea).
 The volume of these notifications is EXTREMELY loud.</description>
@@ -35,10 +35,10 @@ The volume of these notifications is EXTREMELY loud.</description>
     
     <item>
       <title>Newborn blog – What’s it about? – Hello World!</title>
-      <link>https://zhaytam.github.io/2018/06/22/newborn-blog-hello-world/</link>
+      <link>https://blog.zhaytam.com/2018/06/22/newborn-blog-hello-world/</link>
       <pubDate>Fri, 22 Jun 2018 04:43:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/06/22/newborn-blog-hello-world/</guid>
+      <guid>https://blog.zhaytam.com/2018/06/22/newborn-blog-hello-world/</guid>
       <description>Hello,
 Since Awaiting bits is a newborn blog, I decided to take this opportunity to present myself as well as the purpose of this blog.
 About me My name is Zanid Haytam and I was born in 1997.
@@ -47,10 +47,10 @@ I have been programming since the age of 13 and never looked back since.</descri
     
     <item>
       <title>About me</title>
-      <link>https://zhaytam.github.io/about/</link>
+      <link>https://blog.zhaytam.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/about/</guid>
+      <guid>https://blog.zhaytam.com/about/</guid>
       <description>TODO</description>
     </item>
     

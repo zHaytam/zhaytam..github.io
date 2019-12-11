@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NumPy on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/numpy/</link>
+    <link>https://blog.zhaytam.com/tags/numpy/</link>
     <description>Recent content in NumPy on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Aug 2018 21:39:58 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/numpy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/numpy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Implementing a flexible neural network with backpropagation from scratch</title>
-      <link>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</link>
+      <link>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2018/08/15/implement-neural-network-backpropagation/</guid>
+      <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
       <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
 Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>

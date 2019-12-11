@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>images on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/tags/images/</link>
+    <link>https://blog.zhaytam.com/tags/images/</link>
     <description>Recent content in images on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/tags/images/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/tags/images/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Color quantization using K-means clustering in ML.NET</title>
-      <link>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
+      <link>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
+      <guid>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</guid>
       <description>When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.
 All the code is available in this GitHub repository.
 What is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.</description>

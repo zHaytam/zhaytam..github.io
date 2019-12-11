@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Awaiting Bits</title>
-    <link>https://zhaytam.github.io/categories/</link>
+    <link>https://blog.zhaytam.com/categories/</link>
     <description>Recent content in Categories on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaytam.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zhaytam.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C#</title>
-      <link>https://zhaytam.github.io/categories/c#/</link>
+      <link>https://blog.zhaytam.com/categories/c#/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/c#/</guid>
+      <guid>https://blog.zhaytam.com/categories/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Protocols</title>
-      <link>https://zhaytam.github.io/categories/protocols/</link>
+      <link>https://blog.zhaytam.com/categories/protocols/</link>
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/protocols/</guid>
+      <guid>https://blog.zhaytam.com/categories/protocols/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Algorithms</title>
-      <link>https://zhaytam.github.io/categories/algorithms/</link>
+      <link>https://blog.zhaytam.com/categories/algorithms/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/algorithms/</guid>
+      <guid>https://blog.zhaytam.com/categories/algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Mining</title>
-      <link>https://zhaytam.github.io/categories/data-mining/</link>
+      <link>https://blog.zhaytam.com/categories/data-mining/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/data-mining/</guid>
+      <guid>https://blog.zhaytam.com/categories/data-mining/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>https://zhaytam.github.io/categories/programming/</link>
+      <link>https://blog.zhaytam.com/categories/programming/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/programming/</guid>
+      <guid>https://blog.zhaytam.com/categories/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ASP.NET Core</title>
-      <link>https://zhaytam.github.io/categories/asp.net-core/</link>
+      <link>https://blog.zhaytam.com/categories/asp.net-core/</link>
       <pubDate>Thu, 03 Oct 2019 08:35:40 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/asp.net-core/</guid>
+      <guid>https://blog.zhaytam.com/categories/asp.net-core/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code Analysis</title>
-      <link>https://zhaytam.github.io/categories/code-analysis/</link>
+      <link>https://blog.zhaytam.com/categories/code-analysis/</link>
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/code-analysis/</guid>
+      <guid>https://blog.zhaytam.com/categories/code-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>other</title>
-      <link>https://zhaytam.github.io/categories/other/</link>
+      <link>https://blog.zhaytam.com/categories/other/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/other/</guid>
+      <guid>https://blog.zhaytam.com/categories/other/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unity 2D/3D</title>
-      <link>https://zhaytam.github.io/categories/unity-2d/3d/</link>
+      <link>https://blog.zhaytam.com/categories/unity-2d/3d/</link>
       <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/unity-2d/3d/</guid>
+      <guid>https://blog.zhaytam.com/categories/unity-2d/3d/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Deep Learning</title>
-      <link>https://zhaytam.github.io/categories/deep-learning/</link>
+      <link>https://blog.zhaytam.com/categories/deep-learning/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
-      <guid>https://zhaytam.github.io/categories/deep-learning/</guid>
+      <guid>https://blog.zhaytam.com/categories/deep-learning/</guid>
       <description></description>
     </item>
     
