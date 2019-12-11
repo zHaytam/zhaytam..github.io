@@ -38,8 +38,7 @@ K-means K-means is one of the easiest and most popular unsupervised algorithms i
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
-      <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection.
-In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
+      <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection. In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
 Introduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.</description>
     </item>
     

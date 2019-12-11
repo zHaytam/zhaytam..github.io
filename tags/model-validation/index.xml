@@ -17,7 +17,7 @@
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
-      <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.
+      <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use ModelState.IsValid for that.
 But that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.</description>
     </item>
     

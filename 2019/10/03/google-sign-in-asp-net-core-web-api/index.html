@@ -15,11 +15,11 @@
         "headline" : "Google Sign-In for ASP.NET Core Web APIs",
         "description" : "There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.\nToday I\x27ll be showing how you can add Google Sign-In and still manage users in your back-end.\nOverview Here\x27s a sequence diagram showing how it all works:",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-10-03 08:35:40 \x2b0000 \x2b0000",
         "dateModified" : "2019-10-03 08:35:40 \x2b0000 \x2b0000",
@@ -34,7 +34,7 @@
  <title>Google Sign-In for ASP.NET Core Web APIs </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055782" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055782" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -280,8 +280,8 @@ Today I'll be showing how you can add Google Sign-In and still manage users in y
 <p>Here are the steps:</p>
 <ol>
 <li>The client sends a login request to Google, using the login window (pop-up).</li>
-<li>Google responds with an `id_token` and some user information.</li>
-<li>The client sends the `id_token` to the back-end server.</li>
+<li>Google responds with an <code>id_token</code> and some user information.</li>
+<li>The client sends the <code>id_token</code> to the back-end server.</li>
 <li>The back-end server validates the token and gets the user information from it.</li>
 <li>Create a user and link the external login to it.
 <ul>
@@ -296,7 +296,7 @@ Today I'll be showing how you can add Google Sign-In and still manage users in y
 </li>
 </ol>
 <p>You can also refer to the official guide from Google: <a href="https://developers.google.com/identity/sign-in/web/backend-auth">Authenticate with a backend server</a>.</p>
-<h2 id="getting-the-idtoken-from-our-client">Getting the `id_token` from our client</h2>
+<h2 id="getting-the-idtoken-from-our-client">Getting the <code>id_token</code> from our client</h2>
 <p>In order to make it possible for the client to use Google’s login window, we’ll have to use their SDK <a href="https://apis.google.com/js/api.js">gapi</a>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">function onSignIn(googleUser) {
   <span style="color:#458;font-weight:bold">var</span> id_token = googleUser.getAuthResponse().id_token;
@@ -307,7 +307,7 @@ Today I'll be showing how you can add Google Sign-In and still manage users in y
 <li>React: <a href="https://www.npmjs.com/package/react-google-login">react-google-login</a></li>
 <li>Angular: <a href="https://www.npmjs.com/package/angularx-social-login">angularx-social-login</a></li>
 </ul>
-<p>Next, we will send the `id_token` to our back-end server:</p>
+<p>Next, we will send the <code>id_token</code> to our back-end server:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">sendGoogleToken (token: <span style="color:#458;font-weight:bold">string</span>)<span style="color:#000;font-weight:bold">:</span> Observable<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span> {
   <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">this</span>.http.post<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span>(<span style="color:#000;font-weight:bold">this</span>.googleAuthUrl, token)
     .pipe(...);
@@ -322,7 +322,7 @@ Today I'll be showing how you can add Google Sign-In and still manage users in y
   <span style="color:#998;font-style:italic">// ...
 </span><span style="color:#998;font-style:italic"></span>}
 </code></pre></div><p>Secondly, we’ll validate the received token using Google’s <a href="https://www.nuget.org/packages/Google.Apis.Auth/">Auth API</a> for .NET.
-To install it, you can use the Package Manager: `Install-Package Google.Apis.Auth -Version 1.41.1`</p>
+To install it, you can use the Package Manager: <code>Install-Package Google.Apis.Auth -Version 1.41.1</code></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Payload payload;
 <span style="color:#000;font-weight:bold">try</span>
 {
@@ -613,7 +613,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055782"></script>
+
 
 </body>
 </html>

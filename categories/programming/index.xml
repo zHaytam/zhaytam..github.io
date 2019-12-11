@@ -50,9 +50,9 @@ EmailSender interface If you&#39;re working with a project that implements a Cle
       
       <guid>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
       <description>Assuming you are familiar with C#;
-If I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?
-What if I tell you that instanciating a Type using Expression Treesis much faster?
-First of all, the code for the benchmarks is here:</description>
+If I give you a Type and tell you to create an object with it, you would automatically think of Activator.CreateInstance right?
+What if I tell you that instanciating a Type using Expression Trees is much faster?
+The code for the benchmarks is in this repository.</description>
     </item>
     
     <item>
@@ -103,7 +103,7 @@ Here I am now, creating a blog post to help future people looking to create gifs
       
       <guid>https://zhaytam.github.io/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
       <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
- Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc…  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
+ Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc&amp;hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
     </item>
     
     <item>

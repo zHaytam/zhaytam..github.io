@@ -15,17 +15,17 @@
         "headline" : "Association Rule Mining using Apriori Algorithm",
         "description" : "Have you ever wondered how Amazon suggets to us items to buy when we\x27re looking at a product (labeled as “Frequently bought together”)?\nFor example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.\nWhich is true because a lot of people buy their components grouped when building a desktop pc.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2018",
         "datePublished": "2018-10-23 17:52:24 \x2b0000 \x2b0000",
         "dateModified" : "2018-10-23 17:52:24 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2018\/10\/23\/association-rule-mining-using-apriori-algorithm\/",
-        "wordCount" : "768",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "930",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ "Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Association Rule Mining using Apriori Algorithm </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">23 October</span>	<span> / </span>
 
@@ -277,7 +278,7 @@
 <p>I always thought of it as a block box that takes a specific product (or specifications of that product, like its category) and outputs a list of related products. Not until I recently started studying Data Mining and came across <a href="https://en.wikipedia.org/wiki/Association_rule_learning">Association Rule Mining/Learning</a>.</p>
 <h2 id="association-rule-mining">Association Rule Mining</h2>
 <p>Given a set of transactions, association rule mining is simply the process of finding relations between a set of items such as an occurence of one (or many) results in the occurence of another (or many).</p>
-<p>An association rule is often represented as  <!-- raw HTML omitted -->where  <!-- raw HTML omitted -->and  <!-- raw HTML omitted -->are itemsets.</p>
+<p>An association rule is often represented as $X \rightarrow Y$ where $X$ and $Y$ are itemsets.</p>
 <p>A popular example used to explain association rules is the store expample.</p>
 <p>In a store, a lot of people come and buy products everyday.</p>
 <p>We can look at the list of products bought in a period, see what products are bought together and create our rules.</p>
@@ -287,11 +288,11 @@
 <h2 id="vocabulary">Vocabulary</h2>
 <ul>
 <li><strong>Itemset</strong>: A list of one or more items (products in our example).</li>
-<li><strong>Support count <!-- raw HTML omitted --></strong>: The number of times an itemset occurs.</li>
+<li><strong>Support count $\sigma$</strong>: The number of times an itemset occurs.</li>
 <li><strong>Support</strong>: The fraction of transactions that contain an itemset.</li>
 <li><strong>Frequent itemset</strong>: An itemset that whose support is above or equal to a threshold (called minimum support).</li>
-<li><strong>Support of an association rule</strong>: The fraction of transactions that contain both  <!-- raw HTML omitted -->and <!-- raw HTML omitted -->.</li>
-<li><strong>Confidence of an association rule</strong>: How often items in  <!-- raw HTML omitted -->appear in transactions that contain <!-- raw HTML omitted -->.</li>
+<li><strong>Support of an association rule</strong>: The fraction of transactions that contain both $X$ and $Y$.</li>
+<li><strong>Confidence of an association rule</strong>: How often items in $Y$ appear in transactions that contain $X$.</li>
 </ul>
 <h2 id="apriori-algorithm">Apriori Algorithm</h2>
 <p>Association rules are great and everything, but how do we generate them?</p>
@@ -300,9 +301,17 @@
 <p>The apriori algorithm reduces the number of candidates thanks to the following principle:</p>
 <p><strong>If an itemset is frequent, ALL of its subsets are frequent.</strong></p>
 <p>We can think of this backwards, every unfrequent itemset cannot be used to generate a frequent itemset.</p>
-<p>In case you're wondering, here's why the Apriori principle holds:</p>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p>In case you're wondering, here's why the Apriori principle holds:<br>
+$$
+\forall X, Y : (X \subseteq Y) \longrightarrow s(X) \geq s(Y)
+$$</p>
+<figure>
+    <img src="/img/IllustratingAprioriPrinciple-768x488.jpg"
+         alt="Illustrating Apriori Principle"/> <figcaption>
+            <h4>Illustrating Apriori Principle</h4>
+        </figcaption>
+</figure>
+
 <p>Steps of the algorithm:</p>
 <ol>
 <li>Extract all the frequent 1-itemsets (unique items in all the transactions).</li>
@@ -313,24 +322,239 @@
 </ol>
 <h2 id="example">Example</h2>
 <p>Let's take for example the following list of transactions:</p>
-<p>[table id=3 /]</p>
+<table>
+<thead>
+<tr>
+<th>TID</th>
+<th>Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Apple, Orange, Lime</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Orange, Lime, Strawberries, Banana</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Blueberries, Lime, Banana, Orange</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Grapes, Orange, Banana</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Apple, Blueberries, Raspberries, Banana</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Orange, Apple, Banana</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Lime, Orange, Apple, Banana</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Avocado, Strawberries, Orange</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Orange, Lime, Banana</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Apple, Banana, Orange, Lime</td>
+</tr>
+</tbody>
+</table>
 <p>In this example, our minimum support is 0.5 and our minimum confidence 0.5.</p>
 <p>Let's extract the 1-itemsets from it and calculate their support:</p>
-<p>[table id=4 /]</p>
+<table>
+<thead>
+<tr>
+<th>Itemsets</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apple</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>Lime</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>Strawberries</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Blueberries</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>Raspberries</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Grapes</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Avocado</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
 <p>As you can see, a lot of itemsets were removed because they don't meet the minimum support threshold.</p>
 <p>Now let's extract the 2-itemsets using the 1-itemsets and calculate their support:</p>
-<p>[table id=5 /]</p>
+<table>
+<thead>
+<tr>
+<th>Itemsets</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apple, Orange</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Apple, Banana</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Apple, Lime</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Orange, Banana</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>Orange, Lime</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>Banana, Lime</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
 <p>We have less elements to consider at each step, which reduces the number of supports we need to calculate.</p>
 <p>Now to our 3-itemsets:</p>
-<p>[table id=6 /]</p>
+<table>
+<thead>
+<tr>
+<th>Itemsets</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banana, Orange, Lime</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
 <p>Finally, we're left with one 3-itemset that happens to be frequent.</p>
 <p>Thanks to the Apriori algorithm, we ended up checking 16 candidate itemsets instead of many more.</p>
 <p>The next and last step is creating the association rules from all the frequent itemsets that have at least 2 items and calculate their confidence.</p>
-<p>[table id=7 /]</p>
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>Y</th>
+<th>Support of X</th>
+<th>Support of X+Y</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orange</td>
+<td>Banana</td>
+<td>0.9</td>
+<td>0.7</td>
+<td>0.77</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>Lime</td>
+<td>0.9</td>
+<td>0.6</td>
+<td>0.66</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>Lime</td>
+<td>0.8</td>
+<td>0.5</td>
+<td>0.62</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>Orange, Lime</td>
+<td>0.8</td>
+<td>0.5</td>
+<td>0.62</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>Banana, Lime</td>
+<td>0.9</td>
+<td>0.5</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>Lime</td>
+<td>Banana, Orange</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Banana, Orange</td>
+<td>Lime</td>
+<td>0.7</td>
+<td>0.5</td>
+<td>0.71</td>
+</tr>
+<tr>
+<td>Orange, Lime</td>
+<td>Banana</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>Banana, Lime</td>
+<td>Orange</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <p>Luckily, all our association rules met our minimum confidence threshold!</p>
 <p>If you noticed, we got an association rule with a confidence equal to 1. This means that WHENEVER we see its X, the Y will be there in the transactions.</p>
 <p>If we check to make sure, all the transactions containing a Banana and a Lime contain indeed an Orange.</p>
-<p> </p>
+<h2 id="conclusion">Conclusion</h2>
 <p>As you can see, association rule minig is very important. It helps us incover relations between items and can help us make better decisions overall.</p>
 <p>If you're interested to see the implementation of the apriori algorithm, here's <a href="https://github.com/zHaytam/AprioriAlgorithm">mine in github</a>.</p>
 
@@ -533,7 +757,37 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
+<script id="MathJax-script" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
 
 </body>
 </html>

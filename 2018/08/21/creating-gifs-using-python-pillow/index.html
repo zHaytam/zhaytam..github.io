@@ -15,17 +15,17 @@
         "headline" : "Creating GIFs in Python using Pillow (PIL Fork)",
         "description" : "I was working on a personal project the other day and I needed to create some images (frames) and save them as a playable GIF. Working in Python, I excepted to find an easy solution fast but oh boy did it take me too long to find it.\nHere I am now, creating a blog post to help future people looking to create gifs in Python.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2018",
         "datePublished": "2018-08-21 20:09:28 \x2b0000 \x2b0000",
         "dateModified" : "2018-08-21 20:09:28 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2018\/08\/21\/creating-gifs-using-python-pillow\/",
-        "wordCount" : "534",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "544",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ ""GIFs"",""PIL Fork"",""Pillow"",""Python"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Creating GIFs in Python using Pillow (PIL Fork) </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">21 August</span>	<span> / </span>
 
@@ -268,66 +269,77 @@
               <p>I was working on a personal project the other day and I needed to create some images (frames) and save them as a playable GIF. Working in Python, I excepted to find an easy solution fast but oh boy did it take me too long to find it.</p>
 <p>Here I am now, creating a blog post to help future people looking to create gifs in Python.</p>
 <p>The code used in this post is available <a href="https://github.com/zHaytam/AwaitingBits_BlogPostsCodes">here</a>.</p>
-<h2 id="what-are-gifs">What are GIFs?</h2>
+<h2 id="what-are-gifs">What are GIFs</h2>
 <p>The **Graphics Interchange Format **is a bitmap image format that was developed in 1987.</p>
 <p>A GIF is basically a series of images that have different settings such as:</p>
 <ul>
 <li>Looping</li>
 <li>Duration per frame (image)</li>
-<li>Others…</li>
+<li>Others&hellip;</li>
 </ul>
 <p>A GIF can also be a static image.</p>
-<h2 id="heading"></h2>
-<!-- raw HTML omitted -->
-<h2 id="what-is-pillow-pil-fork">What is Pillow (PIL Fork)?</h2>
+<figure>
+    <img src="https://steamusercontent-a.akamaihd.net/ugc/82595628823614964/59CA60267C9EF097829F8B6CFDED0CD489F0ECCE/"
+         alt="An example of a GIF (Nyan Cat ♥)"/> <figcaption>
+            <h4>An example of a GIF (Nyan Cat ♥)</h4>
+        </figcaption>
+</figure>
+
+<h2 id="what-is-pillow-pil-fork">What is Pillow (PIL Fork)</h2>
 <p><a href="https://en.wikipedia.org/wiki/Python_Imaging_Library">Python Imaging Library (PIL)</a> is a free library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats.</p>
 <p>On the other hand, <a href="https://github.com/python-pillow/Pillow">Pillow</a> is a fork of the PIL library introducing many changes and enhancements, whether to make the API easier to use or to handle more image formats and requirements.</p>
 <p><em>N.B: PIL and Pillow cannot co-exist, you can only install/use one or the other.</em></p>
 <h2 id="creating-gifs-in-python">Creating GIFs in Python</h2>
 <h3 id="installing-pillow">Installing Pillow</h3>
 <p>You can easily install Pillow using Pip:</p>
-<pre><code>pip install Pillow
-</code></pre><h3 id="creating-gifs">Creating GIFs</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install Pillow
+</code></pre></div><h3 id="creating-gifs">Creating GIFs</h3>
 <p>As an example, I will be creating a GIF where a ball moves down.</p>
 <p>At first, we'll create a method that creates an image and draws a ball on it, this will help us keep things clean.</p>
-<pre><code>from PIL import Image, ImageDraw
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">PIL</span> <span style="color:#000;font-weight:bold">import</span> Image, ImageDraw
 
 
-def create_image_with_ball(width, height, ball_x, ball_y, ball_size):
-    img = Image.new('RGB', (width, height), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    # draw.ellipse takes a 4-tuple (x0, y0, x1, y1) where (x0, y0) is the top-left bound of the box
-    # and (x1, y1) is the lower-right bound of the box.
-    draw.ellipse((ball_x, ball_y, ball_x + ball_size, ball_y + ball_size), fill='red')
-    return img
-</code></pre><p>In the code above, we create a new RGB image using `Image.new` that has a certain size and a white background.</p>
-<p>We then use `ImageDraw` to draw a red ellipse (circle) into our image using the coordinates given in the arguments.</p>
+<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">create_image_with_ball</span>(width, height, ball_x, ball_y, ball_size):
+    img <span style="color:#000;font-weight:bold">=</span> Image<span style="color:#000;font-weight:bold">.</span>new(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">RGB</span><span style="color:#d14">&#39;</span>, (width, height), (<span style="color:#099">255</span>, <span style="color:#099">255</span>, <span style="color:#099">255</span>))
+    draw <span style="color:#000;font-weight:bold">=</span> ImageDraw<span style="color:#000;font-weight:bold">.</span>Draw(img)
+    <span style="color:#998;font-style:italic"># draw.ellipse takes a 4-tuple (x0, y0, x1, y1) where (x0, y0) is the top-left bound of the box</span>
+    <span style="color:#998;font-style:italic"># and (x1, y1) is the lower-right bound of the box.</span>
+    draw<span style="color:#000;font-weight:bold">.</span>ellipse((ball_x, ball_y, ball_x <span style="color:#000;font-weight:bold">+</span> ball_size, ball_y <span style="color:#000;font-weight:bold">+</span> ball_size), fill<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">red</span><span style="color:#d14">&#39;</span>)
+    <span style="color:#000;font-weight:bold">return</span> img
+</code></pre></div><p>In the code above, we create a new RGB image using <code>Image.new</code> that has a certain size and a white background.</p>
+<p>We then use <code>ImageDraw</code> to draw a red ellipse (circle) into our image using the coordinates given in the arguments.</p>
 <p>All we have to do now is create multiple images (frames) while moving the ball down:</p>
-<pre><code># Create the frames
-frames = []
-x, y = 0, 0
-for i in range(10):
-    new_frame = create_image_with_ball(400, 400, x, y, 40)
-    frames.append(new_frame)
-    x += 40
-    y += 40
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic"># Create the frames</span>
+frames <span style="color:#000;font-weight:bold">=</span> []
+x, y <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>, <span style="color:#099">0</span>
+<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">10</span>):
+    new_frame <span style="color:#000;font-weight:bold">=</span> create_image_with_ball(<span style="color:#099">400</span>, <span style="color:#099">400</span>, x, y, <span style="color:#099">40</span>)
+    frames<span style="color:#000;font-weight:bold">.</span>append(new_frame)
+    x <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> <span style="color:#099">40</span>
+    y <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> <span style="color:#099">40</span>
 
-# Save into a GIF file that loops forever
-frames[0].save('moving_ball.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
-</code></pre><p>Here's the breakdown of the code above:</p>
+<span style="color:#998;font-style:italic"># Save into a GIF file that loops forever</span>
+frames[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>save(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">moving_ball.gif</span><span style="color:#d14">&#39;</span>, format<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">GIF</span><span style="color:#d14">&#39;</span>, append_images<span style="color:#000;font-weight:bold">=</span>frames[<span style="color:#099">1</span>:], save_all<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>, duration<span style="color:#000;font-weight:bold">=</span><span style="color:#099">100</span>, loop<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
+</code></pre></div><p>Here's the breakdown of the code above:</p>
 <ol>
-<li>Initialize an empty list `frames` and 0-coordinates `x` and `y`.</li>
+<li>Initialize an empty list <code>frames</code> and 0-coordinates <code>x</code> and <code>y</code>.</li>
 <li>In a for loop (10 runs), we create a 400×400 image with a ball in our coordiantes.</li>
 <li>Change the coordinates so that the ball moves down (in diagonal, since the Y position changes too).</li>
-<li>Save the first frame with the others using `format='GIF&rsquo;` and `append_images=frames[1:]`.
+<li>Save the first frame with the others using <code>format='GIF'</code> and <code>append_images=frames[1:]</code>.
 <ul>
-<li>Every frame will run for 100ms (`duration=100`).</li>
-<li>The GIF image will loop forever (`loop=0`, if loop was set to 1 then it will loop 1 time, 2 = 2 times, etc…).</li>
+<li>Every frame will run for 100ms (<code>duration=100</code>).</li>
+<li>The GIF image will loop forever (<code>loop=0</code>, if loop was set to 1 then it will loop 1 time, 2 = 2 times, etc&hellip;).</li>
 </ul>
 </li>
 </ol>
 <p>Our magnificent moving ball looks like this:</p>
-<!-- raw HTML omitted -->
+<figure>
+    <img src="https://github.com/zHaytam/AwaitingBits_BlogPostsCodes/blob/master/Creating%20GIFs%20in%20Python%20using%20Pillow%20%28PIL%20Fork%29/moving_ball.gif?raw=true"
+         alt="Moving ball"/> <figcaption>
+            <h4>Moving ball</h4>
+        </figcaption>
+</figure>
+
 <p> </p>
 <p>I hope this can help anyone looking for a way to handle images and create GIFs!</p>
 
@@ -537,7 +549,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

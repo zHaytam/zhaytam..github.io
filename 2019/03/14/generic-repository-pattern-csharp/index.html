@@ -15,17 +15,17 @@
         "headline" : "Repository Pattern – Generic Async Repositories in C#",
         "description" : "Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.\nToday I\x27ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).\nThe code of this blog post is available here.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-03-14 15:00:44 \x2b0000 \x2b0000",
         "dateModified" : "2019-03-14 15:00:44 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2019\/03\/14\/generic-repository-pattern-csharp\/",
-        "wordCount" : "860",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "898",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ ""ASP.NET Core"",""Repository Pattern"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Repository Pattern – Generic Async Repositories in C# </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">14 March</span>	<span> / </span>
 
@@ -267,10 +268,12 @@
             <article>
               <p>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.<br>
 Today I'll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).</p>
-<p>The code of this blog post is available <!-- raw HTML omitted -->here<!-- raw HTML omitted -->.</p>
+<p>The code of this blog post is available <a href="https://github.com/zHaytam/RepositoryPatternExample">here</a>.</p>
 <h2 id="ddd--domain-driven-development">DDD - Domain Driven Development</h2>
-<p>Since this blog post isn't specifically about DDD, I will only quote what Steve Smith said in his amazing book <!-- raw HTML omitted -->Architecting Modern Web Apps with ASP.NET Core 2 and Azure<!-- raw HTML omitted --> about it:</p>
-<!-- raw HTML omitted -->
+<p>Since this blog post isn't specifically about DDD, I will only quote what Steve Smith said in his amazing book <a href="https://docs.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/">Architecting Modern Web Apps with ASP.NET Core 2 and Azure</a> about it:</p>
+<blockquote>
+<p>Domain-Driven Design (DDD) is an agile approach to building software that emphasizes focusing on the business domain. It places a heavy emphasis on communication and interaction with business domain expert(s) who can relate to the developers how the real-world system works.</p>
+</blockquote>
 <h2 id="repository-pattern">Repository Pattern</h2>
 <p>The Repository Pattern provides an abstraction (interface) over the data so that your application can work regardless of how the data is persisted, whether it will be saved to a database, a file or even a REDIS cache.</p>
 <p>Repositories act almost like lists that you can add to, update, remove elements from and you would usually have one repository per entity (or value object).<br>
@@ -279,180 +282,180 @@ This is highly useful because:</p>
 <li>The application core doesn't know how the entities are saved, so you end up working with an interface that makes switching things up much easier in the infrastructure.</li>
 <li>It makes the application core testable. All you have to do now is mock the repository interface and test your business logic as much as possible.</li>
 </ol>
-<h3 id="but-what-about-entity-framework-core">But what about Entity Framework Core?</h3>
+<h3 id="about-entity-framework-core">About Entity Framework Core</h3>
 <p>Some people consider EF to implement a repository pattern and/or UoW, which it does.<br>
 But what if you one day to decided to switch to Dapper, a REDIS cache or even a NoSQL database? EF won't help you in that case and your architecture should be flexible enough to allow these kind of changes without breaking anything.</p>
 <h2 id="implementing-a-generic-async-repository">Implementing a Generic Async Repository</h2>
 <h3 id="base-entity">Base Entity</h3>
 <p>In order to implement a generic repository, we will need a base entity class for all the entities/aggregation roots/value objects:</p>
-<pre><code>using System;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System</span>;
 
-namespace ApplicationCore.Entities
+<span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">ApplicationCore.Entities</span>
 {
-    public class BaseEntity
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">BaseEntity</span>
     {
 
-        public int Id { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get;set;}
+        <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> Id { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+        <span style="color:#000;font-weight:bold">public</span> DateTime CreatedDate { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+        <span style="color:#000;font-weight:bold">public</span> DateTime ModifiedDate { <span style="color:#000;font-weight:bold">get</span>;<span style="color:#000;font-weight:bold">set</span>;}
 
     }
 }
-</code></pre><h3 id="interface">Interface</h3>
+</code></pre></div><h3 id="interface">Interface</h3>
 <p>The repository interface should include all the basic/useful functions that are needed from a repository without getting too specific.<br>
 Just because one entity needs a specific function doesn't mean it belongs to the interface (will talk about this later).</p>
-<pre><code>using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using ApplicationCore.Entities;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Collections.Generic</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Linq.Expressions</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Threading.Tasks</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Entities</span>;
 
-namespace ApplicationCore.Interfaces
+<span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">ApplicationCore.Interfaces</span>
 {
-    public interface IAsyncRepository&lt;T&gt; where T : BaseEntity
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> IAsyncRepository&lt;T&gt; <span style="color:#000;font-weight:bold">where</span> T : BaseEntity
     {
 
-        Task&lt;T&gt; GetById(int id);
-        Task&lt;T&gt; FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt; predicate);
+        Task&lt;T&gt; GetById(<span style="color:#458;font-weight:bold">int</span> id);
+        Task&lt;T&gt; FirstOrDefault(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate);
 
         Task Add(T entity);
         Task Update(T entity);
         Task Remove(T entity);
 
         Task&lt;IEnumerable&lt;T&gt;&gt; GetAll();
-        Task&lt;IEnumerable&lt;T&gt;&gt; GetWhere(Expression&lt;Func&lt;T, bool&gt;&gt; predicate);
+        Task&lt;IEnumerable&lt;T&gt;&gt; GetWhere(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate);
 
-        Task&lt;int&gt; CountAll();
-        Task&lt;int&gt; CountWhere(Expression&lt;Func&lt;T, bool&gt;&gt; predicate);
+        Task&lt;<span style="color:#458;font-weight:bold">int</span>&gt; CountAll();
+        Task&lt;<span style="color:#458;font-weight:bold">int</span>&gt; CountWhere(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate);
 
     }
 }
-</code></pre><h3 id="ef-implementation">EF Implementation</h3>
+</code></pre></div><h3 id="ef-implementation">EF Implementation</h3>
 <p>Now when we head to the implementation, regardless of which provider/framework you choose, it should be in the infrastructure and not in the application core.<br>
-A basic implementation of the `IAsyncRepository` in EF would be:</p>
-<pre><code>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using ApplicationCore.Entities;
-using ApplicationCore.Interfaces;
-using Microsoft.EntityFrameworkCore;
+A basic implementation of the <code>IAsyncRepository</code> in EF would be:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Collections.Generic</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Linq</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Linq.Expressions</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Threading.Tasks</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Entities</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Interfaces</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">Microsoft.EntityFrameworkCore</span>;
 
-namespace Infrastructure.Data
+<span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">Infrastructure.Data</span>
 {
-    public class EfRepository&lt;T&gt; : IAsyncRepository&lt;T&gt; where T : BaseEntity
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">EfRepository</span>&lt;T&gt; : IAsyncRepository&lt;T&gt; <span style="color:#000;font-weight:bold">where</span> T : BaseEntity
     {
 
-        #region Fields
+        <span style="color:#999;font-weight:bold;font-style:italic">#region Fields
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+        <span style="color:#000;font-weight:bold">protected</span> DataDbContext Context;
 
-        protected DataDbContext Context;
-
-        #endregion
-
-        public EfRepository(DataDbContext context)
+        <span style="color:#999;font-weight:bold;font-style:italic">#endregion
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+        <span style="color:#000;font-weight:bold">public</span> EfRepository(DataDbContext context)
         {
             Context = context;
         }
 
-        #region Public Methods
+        <span style="color:#999;font-weight:bold;font-style:italic">#region Public Methods
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+        <span style="color:#000;font-weight:bold">public</span> Task&lt;T&gt; GetById(<span style="color:#458;font-weight:bold">int</span> id) =&gt; Context.Set&lt;T&gt;().FindAsync(id);
 
-        public Task&lt;T&gt; GetById(int id) =&gt; Context.Set&lt;T&gt;().FindAsync(id);
-
-        public Task&lt;T&gt; FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt; predicate)
+        <span style="color:#000;font-weight:bold">public</span> Task&lt;T&gt; FirstOrDefault(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate)
             =&gt; Context.Set&lt;T&gt;().FirstOrDefaultAsync(predicate);
 
-        public async Task Add(T entity)
+        <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task Add(T entity)
         {
-            // await Context.AddAsync(entity);
-            await Context.Set&lt;T&gt;().AddAsync(entity);
-            await Context.SaveChangesAsync();
+            <span style="color:#998;font-style:italic">// await Context.AddAsync(entity);
+</span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">await</span> Context.Set&lt;T&gt;().AddAsync(entity);
+            <span style="color:#000;font-weight:bold">await</span> Context.SaveChangesAsync();
         }
 
-        public Task Update(T entity)
+        <span style="color:#000;font-weight:bold">public</span> Task Update(T entity)
         {
-            // In case AsNoTracking is used
-            Context.Entry(entity).State = EntityState.Modified;
-            return Context.SaveChangesAsync();
+            <span style="color:#998;font-style:italic">// In case AsNoTracking is used
+</span><span style="color:#998;font-style:italic"></span>            Context.Entry(entity).State = EntityState.Modified;
+            <span style="color:#000;font-weight:bold">return</span> Context.SaveChangesAsync();
         }
 
-        public Task Remove(T entity)
+        <span style="color:#000;font-weight:bold">public</span> Task Remove(T entity)
         {
             Context.Set&lt;T&gt;().Remove(entity);
-            return Context.SaveChangesAsync();
+            <span style="color:#000;font-weight:bold">return</span> Context.SaveChangesAsync();
         }
 
-        public async Task&lt;IEnumerable&lt;T&gt;&gt; GetAll()
+        <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;IEnumerable&lt;T&gt;&gt; GetAll()
         {
-            return await Context.Set&lt;T&gt;().ToListAsync();
+            <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">await</span> Context.Set&lt;T&gt;().ToListAsync();
         }
 
-        public async Task&lt;IEnumerable&lt;T&gt;&gt; GetWhere(Expression&lt;Func&lt;T, bool&gt;&gt; predicate)
+        <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;IEnumerable&lt;T&gt;&gt; GetWhere(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate)
         {
-            return await Context.Set&lt;T&gt;().Where(predicate).ToListAsync();
+            <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">await</span> Context.Set&lt;T&gt;().Where(predicate).ToListAsync();
         }
 
-        public Task&lt;int&gt; CountAll() =&gt; Context.Set&lt;T&gt;().CountAsync();
+        <span style="color:#000;font-weight:bold">public</span> Task&lt;<span style="color:#458;font-weight:bold">int</span>&gt; CountAll() =&gt; Context.Set&lt;T&gt;().CountAsync();
 
-        public Task&lt;int&gt; CountWhere(Expression&lt;Func&lt;T, bool&gt;&gt; predicate) 
+        <span style="color:#000;font-weight:bold">public</span> Task&lt;<span style="color:#458;font-weight:bold">int</span>&gt; CountWhere(Expression&lt;Func&lt;T, <span style="color:#458;font-weight:bold">bool</span>&gt;&gt; predicate)
             =&gt; Context.Set&lt;T&gt;().CountAsync(predicate);
 
-        #endregion
-
+        <span style="color:#999;font-weight:bold;font-style:italic">#endregion
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
     }
 }
-</code></pre><h3 id="usage-in-aspnet-core">Usage in ASP.NET Core</h3>
-<p>All you have to do to use this generic repository in ASP.NET Core is to add it in `Startup.ConfigureServices` as a scoped service:</p>
-<pre><code>services.AddScoped(typeof(IAsyncRepository&lt;&gt;), typeof(EfRepository&lt;&gt;));
-</code></pre><p>With this, you will be able to inject a repository of a specific entity at any time.</p>
-<h3 id="what-about-specific-functions">What about specific functions?</h3>
-<p>In case you really need a specific function in your repository, for example `GetByFirstName`, you can't really add it to the interface and implement because:</p>
+</code></pre></div><h3 id="usage-in-aspnet-core">Usage in ASP.NET Core</h3>
+<p>All you have to do to use this generic repository in ASP.NET Core is to add it in <code>Startup.ConfigureServices</code> as a scoped service:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services.AddScoped(<span style="color:#000;font-weight:bold">typeof</span>(IAsyncRepository&lt;&gt;), <span style="color:#000;font-weight:bold">typeof</span>(EfRepository&lt;&gt;));
+</code></pre></div><p>With this, you will be able to inject a repository of a specific entity at any time.</p>
+<h3 id="about-specific-functions">About specific functions</h3>
+<p>In case you really need a specific function in your repository, for example <code>GetByFirstName</code>, you can't really add it to the interface and implement because:</p>
 <ol>
 <li>It's bad design since it's specific to a certain entity.</li>
-<li>You won't even be able to implement it since the generic repository works on the `BaseEntity ` which doesn't have a FirstName property (unless you add it, which is more catastrophic…).</li>
+<li>You won't even be able to implement it since the generic repository works on the <code>BaseEntity</code> which doesn't have a FirstName property (unless you add it, which is more catastrophic…).</li>
 </ol>
-<p>What you should do instead is inherit the `IAsyncRepository` and `EfRepository`:</p>
-<pre><code>namespace ApplicationCore.Entities
+<p>What you should do instead is inherit the <code>IAsyncRepository</code> and <code>EfRepository</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">ApplicationCore.Entities</span>
 {
-    public class Worker : BaseEntity
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Worker</span> : BaseEntity
     {
 
-        public string FirstName { get;set;}
+        <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> FirstName { <span style="color:#000;font-weight:bold">get</span>;<span style="color:#000;font-weight:bold">set</span>;}
 
     }
 }
-</code></pre><pre><code>using System.Threading.Tasks;
-using ApplicationCore.Entities;
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Threading.Tasks</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Entities</span>;
 
-namespace ApplicationCore.Interfaces
+<span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">ApplicationCore.Interfaces</span>
 {
-    public interface IWorkerRepository : IAsyncRepository&lt;Worker&gt;
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> IWorkerRepository : IAsyncRepository&lt;Worker&gt;
     {
 
-        Task&lt;Worker&gt; GetByFirstName(string firstName);
+        Task&lt;Worker&gt; GetByFirstName(<span style="color:#458;font-weight:bold">string</span> firstName);
 
     }
 }
-</code></pre><pre><code>using System.Threading.Tasks;
-using ApplicationCore.Entities;
-using ApplicationCore.Interfaces;
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Threading.Tasks</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Entities</span>;
+<span style="color:#000;font-weight:bold">using</span> <span style="color:#555">ApplicationCore.Interfaces</span>;
 
-namespace Infrastructure.Data
+<span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">Infrastructure.Data</span>
 {
-    public class WorkerRepository : EfRepository&lt;Worker&gt;, IWorkerRepository
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">WorkerRepository</span> : EfRepository&lt;Worker&gt;, IWorkerRepository
     {
 
-        public WorkerRepository(DataDbContext context) : base(context) { }
+        <span style="color:#000;font-weight:bold">public</span> WorkerRepository(DataDbContext context) : <span style="color:#000;font-weight:bold">base</span>(context) { }
 
-        public Task&lt;Worker&gt; GetByFirstName(string firstName)
+        <span style="color:#000;font-weight:bold">public</span> Task&lt;Worker&gt; GetByFirstName(<span style="color:#458;font-weight:bold">string</span> firstName)
             =&gt; FirstOrDefault(w =&gt; w.FirstName == firstName);
 
     }
 }
-</code></pre><p>And of course to use it you just add it as a scoped service too.<br>
+</code></pre></div><p>And of course to use it you just add it as a scoped service too.<br>
 This is much elegant than just keep adding functions to the abstraction.</p>
-<pre><code>services.AddScoped&lt;IWorkerRepository, WorkerRepository&gt;();
-</code></pre><p>At first it seems like the Repository Pattern is just a waste of time, even I thought that at first. But after I started working on a large project I understood the importance of not only this pattern but DDD in general.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services.AddScoped&lt;IWorkerRepository, WorkerRepository&gt;();
+</code></pre></div><p>At first it seems like the Repository Pattern is just a waste of time, even I thought that at first. But after I started working on a large project I understood the importance of not only this pattern but DDD in general.</p>
 
             </article>
           </div>
@@ -656,7 +659,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

@@ -15,17 +15,17 @@
         "headline" : "Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs",
         "description" : "Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it\x27s not, unless you want to end up copying the almost-same code in all your pages.\nToday I\x27ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2018",
         "datePublished": "2018-06-24 03:04:36 \x2b0000 \x2b0000",
         "dateModified" : "2018-06-24 03:04:36 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2018\/06\/24\/asp-net-core-using-smartbreadcrumbs\/",
-        "wordCount" : "1010",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "1016",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ ""ASP.NET Core"",""C#"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Managing breadcrumbs in ASP.NET core using SmartBreadcrumbs </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">24 June</span>	<span> / </span>
 
@@ -266,11 +267,11 @@
           <div class="entry-content">
             <article>
               <p>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it's not, unless you want to end up copying the almost-same code in all your pages.</p>
-<p>Today I'll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using <!-- raw HTML omitted -->SmartBreadcrumbs (1.3.0)<!-- raw HTML omitted -->, a library I created to help me add and manage breadcrumbs easily in my projects.</p>
-<h2 id="what-are-breadcrumbs-and-why-use-them">What are breadcrumbs and why use them?</h2>
+<p>Today I'll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using <a href="https://github.com/zHaytam/SmartBreadcrumbs">SmartBreadcrumbs (1.3.0)</a>, a library I created to help me add and manage breadcrumbs easily in my projects.</p>
+<h2 id="what-are-breadcrumbs-and-why-use-them">What are breadcrumbs and why use them</h2>
 <p>A breadcrumb is a type of secondary navigation that shows a user's current location in the website as well as the “history” of how he got there.</p>
 <p>If your website has hierarchically arranged pages or is starting to have a lot of pages (e.g. e-commerce websites), Breadcrumbs can enhance the users navigation by a lot, reducing even the number of actions/clicks it takes them to do so.</p>
-<h2 id="why-isnt-it-simple-to-add-them-in-aspnet-core">Why isn't it simple to add them in ASP.NET Core?</h2>
+<h2 id="why-isnt-it-simple-to-add-them-in-aspnet-core">Why isn't it simple to add them in ASP.NET Core</h2>
 <p>Adding breadcrumbs to ASP.NET Core isn't easy because there is no out-of-the-box solution. Which leaves 2 options:</p>
 <ol>
 <li>Manually adding them in every page.</li>
@@ -283,19 +284,21 @@
 <p>When I was making some websites for a client, I looked for a library that could help me add breadcrumbs to them without a lot of work.</p>
 <p>I stumbled upon 2 interesting options:</p>
 <ol>
-<li><!-- raw HTML omitted -->MvcSiteMapProviders<!-- raw HTML omitted --> is a tool that provides flexible menus, breadcrumb trails and SEO features for the ASP.NET MVC framework.</li>
+<li><a href="https://github.com/maartenba/MvcSiteMapProvider">MvcSiteMapProviders</a> is a tool that provides flexible menus, breadcrumb trails and SEO features for the ASP.NET MVC framework.<br>
+As you might have noticed, it's only for ASP.NET MVC (v3 and v4) and won't work for ASP.NET v5 / Core.</li>
+<li><a href="https://github.com/VahidN/DNTBreadCrumb.Core">DNTBreadCrumb.Core</a> creates custom breadcrumb definitions, based on Twitter bootstrap 3.x features for ASP.NET Core.
+I was happy when I found this library, until I tested it in my projects. DNBreadCrumb.Core works well with simple websites but not with more complex websites, because it doesn't handle breadcrumb items coming from different Controllers (at least not out of the box, if I understood correctly), which is a downside for me since I needed that kind of navigation.</li>
 </ol>
-<pre><code>As you might have noticed, it's only for ASP.NET MVC (v3 and v4) and won't work for ASP.NET v5 / Core.
-</code></pre>
-<ol start="2">
-<li><!-- raw HTML omitted -->DNTBreadCrumb.Core<!-- raw HTML omitted --> creates custom breadcrumb definitions, based on Twitter bootstrap 3.x features for ASP.NET Core.</li>
-</ol>
-<pre><code>I was happy when I found this library, until I tested it in my projects. DNBreadCrumb.Core works well with simple websites but not with more complex websites, because it doesn't handle breadcrumb items coming from different Controllers (at least not out of the box, if I understood correctly), which is a downside for me since I needed that kind of navigation.
-</code></pre>
-<p>So after not finding what I was looking for, I ended up creating my own simple utility library: <!-- raw HTML omitted -->SmartBreadcrumbs<!-- raw HTML omitted -->.</p>
+<p>So after not finding what I was looking for, I ended up creating my own simple utility library: <a href="https://github.com/zHaytam/SmartBreadcrumbs">SmartBreadcrumbs</a>.</p>
 <h2 id="about-smartbreadcrumbs">About SmartBreadcrumbs</h2>
-<p><!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->SmartBreadcrumbs<!-- raw HTML omitted --> is a .NET Core utility library for ASP.NET Core websites to easily add and customize breadcrumbs. It is easy to setup and even easier to use!</p>
+<figure>
+    <img src="/img/SmartBreadcrumbs-300x150.png"
+         alt="Illustration of SmartBreadcrumbs"/> <figcaption>
+            <h4>Illustration of SmartBreadcrumbs</h4>
+        </figcaption>
+</figure>
+
+<p><a href="https://github.com/zHaytam/SmartBreadcrumbs">SmartBreadcrumbs</a> is a .NET Core utility library for ASP.NET Core websites to easily add and customize breadcrumbs. It is easy to setup and even easier to use!</p>
 <h3 id="how-it-works">How it works</h3>
 <p>At initialization, SmartBreadcrumbs will create a node hierarchy using all the breadcrumb attributes used on Actions (taken from all the Controllers in your Assembly).</p>
 <p>You'll then be able to use a TagHelper that will check if the current action/controller has a node and will render the breadcrumb element if found.</p>
@@ -307,75 +310,75 @@
 <p><code>csharp services.UseBreadcrumbs(GetType().Assembly);</code></p>
 <p>This will let SmartBreadcrumbs extract all the Breadcrumb attributes and their Controller.Action and create a node hierarchy of them.</p>
 <p>If you want to customize the css classes, you can do so using the options parameter:</p>
-<pre><code>// These are the classes by default (Bootstrap 4.1)
-services.UseBreadcrumbs(GetType().Assembly, options =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// These are the classes by default (Bootstrap 4.1)
+</span><span style="color:#998;font-style:italic"></span>services.UseBreadcrumbs(GetType().Assembly, options =&gt;
 {
-	TagName = &quot;nav&quot;;
-	TagClasses = &quot;&quot;;
-	OlClasses = &quot;breadcrumb&quot;;
-	LiClasses = &quot;breadcrumb-item&quot;;
-	ActiveLiClasses = &quot;breadcrumb-item active&quot;;
-	SeparatorElement = &quot;&lt;li class=\&quot;separator\&quot;&gt;/&lt;/li&gt;&quot;;
+ TagName = <span style="color:#d14">&#34;nav&#34;</span>;
+ TagClasses = <span style="color:#d14">&#34;&#34;</span>;
+ OlClasses = <span style="color:#d14">&#34;breadcrumb&#34;</span>;
+ LiClasses = <span style="color:#d14">&#34;breadcrumb-item&#34;</span>;
+ ActiveLiClasses = <span style="color:#d14">&#34;breadcrumb-item active&#34;</span>;
+ SeparatorElement = <span style="color:#d14">&#34;&lt;li class=\&#34;separator\&#34;&gt;/&lt;/li&gt;&#34;</span>;
 });
-</code></pre><p>The SeperatorElement will be added after each node, use it when you're using a custom theme/template for example.</p>
+</code></pre></div><p>The SeperatorElement will be added after each node, use it when you're using a custom theme/template for example.</p>
 <h4 id="adding-nodes">Adding nodes</h4>
 <p>First, you'll need a Default node, most of the time (if not always) this will be your Home page.</p>
 <p>The default node will always be present as the parent, even if not explicitly chosen.</p>
-<pre><code>[DefaultBreadcrumb(&quot;My home&quot;)]
-public IActionResult Index()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[DefaultBreadcrumb(&#34;My home&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult Index()
 {
-	// We set the Home.Index as the default node
-	// &quot;My home&quot; is the title that the node will use
-	return View();
+ <span style="color:#998;font-style:italic">// We set the Home.Index as the default node
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#998;font-style:italic">// &#34;My home&#34; is the title that the node will use
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><p>You can then start adding child nodes:</p>
-<pre><code>[Breadcrumb(&quot;About us&quot;)]
-public IActionResult AboutUs()
+</code></pre></div><p>You can then start adding child nodes:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Breadcrumb(&#34;About us&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult AboutUs()
 {
-	// In this case, the DefaultNode will be the parent of this node.
-	return View();
+ <span style="color:#998;font-style:italic">// In this case, the DefaultNode will be the parent of this node.
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#000;font-weight:bold">return</span> View();
 }
-
-[Breadcrumb(&quot;Contact us&quot;, FromAction = &quot;Home.AboutUs&quot;)]
-public IActionResult ContactUs()
+<span style="color:#008080">
+</span><span style="color:#008080">[Breadcrumb(&#34;Contact us&#34;, FromAction = &#34;Home.AboutUs&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult ContactUs()
 {
-	// This page is a child of the About us page
-	return View();
+ <span style="color:#998;font-style:italic">// This page is a child of the About us page
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><p>You can even use the ViewData in case you want your titles to be taken from it:</p>
-<pre><code>[Breadcrumb(&quot;ViewData.Title&quot;)]
-[Breadcrumb(&quot;ViewData.Title&quot;, CacheTitle = true)]
-public IActionResult AboutUs()
+</code></pre></div><p>You can even use the ViewData in case you want your titles to be taken from it:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Breadcrumb(&#34;ViewData.Title&#34;)]</span>
+<span style="color:#008080">[Breadcrumb(&#34;ViewData.Title&#34;, CacheTitle = true)]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult AboutUs()
 {
-        // In this case, the DefaultNode will be the parent of this node.
-	return View();
+ <span style="color:#998;font-style:italic">// In this case, the DefaultNode will be the parent of this node.
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><h4 id="manually-setting-the-current-nodes">Manually setting the current nodes</h4>
+</code></pre></div><h4 id="manually-setting-the-current-nodes">Manually setting the current nodes</h4>
 <p>In some cases, you'll like to set the current nodes yourself. For example, you want the titles of more than one node to be taken from the database or some other source.</p>
 <p>Luckily, SmartBreadcrumbs can trust you on this:</p>
-<pre><code>public IActionResult Product(int id)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> IActionResult Product(<span style="color:#458;font-weight:bold">int</span> id)
 {
-	var product = GetProduct(id);
+ <span style="color:#458;font-weight:bold">var</span> product = GetProduct(id);
 
-	// Manually create the nodes (assuming you used the attribute to create a Default node, otherwise create it manually too).
-	var categoryNode = new BreadcrumbNode(product.Category.Name, &quot;Controller&quot;, &quot;Category&quot;, null, new { id = 10 });
-	// When manually creating nodes, you have the option to use route values in case you need them.
-	var productNode = new BreadcrumbNode(product.Title, &quot;Controller&quot;, &quot;Product&quot;, categoryNode);
+ <span style="color:#998;font-style:italic">// Manually create the nodes (assuming you used the attribute to create a Default node, otherwise create it manually too).
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#458;font-weight:bold">var</span> categoryNode = <span style="color:#000;font-weight:bold">new</span> BreadcrumbNode(product.Category.Name, <span style="color:#d14">&#34;Controller&#34;</span>, <span style="color:#d14">&#34;Category&#34;</span>, <span style="color:#000;font-weight:bold">null</span>, <span style="color:#000;font-weight:bold">new</span> { id = <span style="color:#099">1</span><span style="color:#099">0</span> });
+ <span style="color:#998;font-style:italic">// When manually creating nodes, you have the option to use route values in case you need them.
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#458;font-weight:bold">var</span> productNode = <span style="color:#000;font-weight:bold">new</span> BreadcrumbNode(product.Title, <span style="color:#d14">&#34;Controller&#34;</span>, <span style="color:#d14">&#34;Product&#34;</span>, categoryNode);
 
-	// All you have to do now is tell SmartBreadcrumbs about this
-	ViewData[&quot;BreadcrumbNode&quot;] = productNode; // Use the last node
-	
-	return View();
+ <span style="color:#998;font-style:italic">// All you have to do now is tell SmartBreadcrumbs about this
+</span><span style="color:#998;font-style:italic"></span> ViewData[<span style="color:#d14">&#34;BreadcrumbNode&#34;</span>] = productNode; <span style="color:#998;font-style:italic">// Use the last node
+</span><span style="color:#998;font-style:italic"></span>
+ <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><p>This is an e-commerce example where the result would be something like this: <strong>Home / Laptops / New ACER laptop</strong></p>
+</code></pre></div><p>This is an e-commerce example where the result would be something like this: <strong>Home / Laptops / New ACER laptop</strong></p>
 <h4 id="rendering-the-breadcrumb">Rendering the breadcrumb</h4>
 <p>When you're finished adding all the nodes, the last step is to make use of the TagHelper to render the breadcrumb element:</p>
-<pre><code>&lt;breadcrumb&gt;&lt;/breadcrumb&gt;
-@* In your _Layout.cshtml *@
-</code></pre><p>Don't forget to import SmartBreadcrumbs:</p>
-<pre><code>@addTagHelper *, SmartBreadcrumbs
-@* In your _ViewImports.cshtml *@
-</code></pre><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">&lt;breadcrumb&gt;&lt;/breadcrumb&gt;
+<span style="color:#a61717;background-color:#e3d2d2">@</span>* In your _Layout.cshtml *<span style="color:#a61717;background-color:#e3d2d2">@</span>
+</code></pre></div><p>Don't forget to import SmartBreadcrumbs:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">@addTagHelper *, SmartBreadcrumbs
+<span style="color:#a61717;background-color:#e3d2d2">@</span>* In your _ViewImports.cshtml *<span style="color:#a61717;background-color:#e3d2d2">@</span>
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Breadcrumbs can be very helpful in some situations and to be able to add and manage easily can save you a lot of work/time and keeps your code clean.</p>
 <p>This is why I created SmartBreadcrumbs, which I now use in every project (when needed of course).</p>
 
@@ -581,7 +584,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

@@ -13,19 +13,19 @@
         "articleSection" : "post",
         "name" : "ASP.NET Core – Checking ModelState.IsValid is boring",
         "headline" : "ASP.NET Core – Checking ModelState.IsValid is boring",
-        "description" : "Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.\nBut that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.",
+        "description" : "Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use ModelState.IsValid for that.\nBut that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-04-13 17:12:34 \x2b0000 \x2b0000",
         "dateModified" : "2019-04-13 17:12:34 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2019\/04\/13\/asp-net-core-checking-modelstate-isvalid-is-boring\/",
-        "wordCount" : "644",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "694",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ ""Action Filters"",""Model Binding"",""Model Validation"",""ModelState"",""Utility"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>ASP.NET Core – Checking ModelState.IsValid is boring </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">13 April</span>	<span> / </span>
 
@@ -265,109 +266,138 @@
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.</p>
+              <p>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use <code>ModelState.IsValid</code> for that.</p>
 <p>But that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.<br>
 Why not use an Action Filter to make this easier?</p>
 <h2 id="how-model-validation-works">How model validation works</h2>
 <h3 id="setup">Setup</h3>
 <p>Imagine you have this ViewModel,:</p>
-<pre><code>public class CodeViewModel
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">CodeViewModel</span>
 {
-
-    [Required]
-    public string UserId { get; set; }
-
-    [Required]
-    [StringLength(40, MinimumLength = 40)]
-    public string Code { get; set; }   
+<span style="color:#008080">
+</span><span style="color:#008080">    [Required]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> UserId { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+<span style="color:#008080">
+</span><span style="color:#008080">    [Required]</span>
+<span style="color:#008080">    [StringLength(40, MinimumLength = 40)]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> Code { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
 
 }
-</code></pre><p>This action in your controller:</p>
-<pre><code>[HttpGet]
-public IActionResult ConfirmEmail(CodeViewModel model)
+</code></pre></div><p>This action in your controller:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[HttpGet]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult ConfirmEmail(CodeViewModel model)
 {
-    // Logic here
-    return View();
+    <span style="color:#998;font-style:italic">// Logic here
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><h3 id="model-binding">Model Binding</h3>
+</code></pre></div><h3 id="model-binding">Model Binding</h3>
 <p>Model binding is a step that happens after ASP.NET Core receives an HTTP request and has figured out which action/controller (or razor page) that will handle it.</p>
 <p>It simply tries to bind the route data (e.g. query data if it's a GET request and body data if it's a POST) and checks whether the parameters you're waiting for (either direct parameters or objects) are what was received in the request.</p>
-<p>Model binding errors are mostly casting/conversion errors. For example you're waiting for an integer `userId` but you receive a string containing `”test”`.</p>
+<p>Model binding errors are mostly casting/conversion errors. For example you're waiting for an integer <code>userId</code> but you receive a string containing <code>”test”</code>.</p>
 <h3 id="model-validation">Model validation</h3>
-<p>Now when <!-- raw HTML omitted -->model<!-- raw HTML omitted --> binding is done, the model validation starts (if defined).<br>
-ASP.NET Core looks at your ViewModel, checking if it has any validation attributes and applies them.<br>
-Some of the <!-- raw HTML omitted -->much used<!-- raw HTML omitted --> attributes:</p>
-<p>[table id=8 /]</p>
+<p>Now when model binding is done, the model validation starts (if defined). ASP.NET Core looks at your ViewModel, checking if it has any validation attributes and applies them. Some of the much used attributes are:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required</td>
+<td>A value for this property is required</td>
+</tr>
+<tr>
+<td>DataType</td>
+<td>Specifies the type of the property, e.g. EmailAddress</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>Specifies the range of the property, works on numbers</td>
+</tr>
+<tr>
+<td>Compare</td>
+<td>Compares the value of the property with another one, used to confirm passwords/emails</td>
+</tr>
+</tbody>
+</table>
 <h3 id="modelstate">ModelState</h3>
-<p>The `Controller` class provides a `ModelState` that you can check to see if the model binding and/or model validation succeeded or not, with the list of errors generated.</p>
-<pre><code>if (!ModelState.IsValid)
+<p>The <code>Controller</code> class provides a <code>ModelState</code> that you can check to see if the model binding and/or model validation succeeded or not, with the list of errors generated.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">if</span> (!ModelState.IsValid)
 {
-    // Do something about it!
-    // Usually return the user to the same page
-    // while showing the errors.
-}
-</code></pre><h2 id="using-an-actionfilter-to-check-the-modelstate-for-you">Using an ActionFilter to check the ModelState for you</h2>
-<p>After a couple of years working with ASP.NET Core, I got bored of having to check if the ModelState is valid in almost every request, so I searched a bit and found out that <!-- raw HTML omitted -->Action Filters<!-- raw HTML omitted -->.</p>
+    <span style="color:#998;font-style:italic">// Do something about it!
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// Usually return the user to the same page
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// while showing the errors.
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><h2 id="using-an-actionfilter-to-check-the-modelstate-for-you">Using an ActionFilter to check the ModelState for you</h2>
+<p>After a couple of years working with ASP.NET Core, I got bored of having to check if the ModelState is valid in almost every request, so I searched a bit and found out that <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-2.2#action-filters">Action Filters</a>.</p>
 <p>Action filters execute after model validation, so it's very handy as we can access the ModelState while working with them.</p>
-<!-- raw HTML omitted -->
+<figure>
+    <img src="/img/chrome_2019-04-13_18-29-24.png"
+         alt="ASP.NET MVC Lifecycle - order of execution"/> <figcaption>
+            <h4>ASP.NET MVC Lifecycle - order of execution</h4>
+        </figcaption>
+</figure>
+
 <h3 id="ifmodelisinvalid-attribute">IfModelIsInvalid attribute</h3>
-<p>I ended up creating a `IfModelIsInvalid` attribute that checks if the ModelState is invalid, if yes, it redirects to either an action/controller or a page (in case you're working with a mixed project that includes Razor Pages).</p>
-<pre><code>public class IfModelIsInvalidAttribute : ActionFilterAttribute
+<p>I ended up creating a <code>IfModelIsInvalid</code> attribute that checks if the ModelState is invalid, if yes, it redirects to either an action/controller or a page (in case you're working with a mixed project that includes Razor Pages).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">IfModelIsInvalidAttribute</span> : ActionFilterAttribute
 {
 
-    #region Properties
+    <span style="color:#999;font-weight:bold;font-style:italic">#region Properties
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> RedirectToController { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
 
-    public string RedirectToController { get; set; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> RedirectToAction { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
 
-    public string RedirectToAction { get; set; }
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> RedirectToPage { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
 
-    public string RedirectToPage { get; set; }
-
-    #endregion
-
-    public override void OnActionExecuting(ActionExecutingContext context)
+    <span style="color:#999;font-weight:bold;font-style:italic">#endregion
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">override</span> <span style="color:#000;font-weight:bold">void</span> OnActionExecuting(ActionExecutingContext context)
     {
-        if (!context.ModelState.IsValid)
+        <span style="color:#000;font-weight:bold">if</span> (!context.ModelState.IsValid)
         {
-            context.Result = new RedirectToRouteResult(ConstructRouteValueDictionary());
+            context.Result = <span style="color:#000;font-weight:bold">new</span> RedirectToRouteResult(ConstructRouteValueDictionary());
         }
     }
 
-    #region Private Methods
-
-    private RouteValueDictionary ConstructRouteValueDictionary()
+    <span style="color:#999;font-weight:bold;font-style:italic">#region Private Methods
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+    <span style="color:#000;font-weight:bold">private</span> RouteValueDictionary ConstructRouteValueDictionary()
     {
-        var dict = new RouteValueDictionary();
+        <span style="color:#458;font-weight:bold">var</span> dict = <span style="color:#000;font-weight:bold">new</span> RouteValueDictionary();
 
-        if (!string.IsNullOrWhiteSpace(RedirectToPage))
+        <span style="color:#000;font-weight:bold">if</span> (!<span style="color:#458;font-weight:bold">string</span>.IsNullOrWhiteSpace(RedirectToPage))
         {
-            dict.Add(&quot;page&quot;, RedirectToPage);
+            dict.Add(<span style="color:#d14">&#34;page&#34;</span>, RedirectToPage);
         }
-        // Assuming RedirectToController &amp; RedirectToAction are set
-        else
+        <span style="color:#998;font-style:italic">// Assuming RedirectToController &amp; RedirectToAction are set
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">else</span>
         {
-            dict.Add(&quot;controller&quot;, RedirectToController);
-            dict.Add(&quot;action&quot;, RedirectToAction);
+            dict.Add(<span style="color:#d14">&#34;controller&#34;</span>, RedirectToController);
+            dict.Add(<span style="color:#d14">&#34;action&#34;</span>, RedirectToAction);
         }
 
-        return dict;
+        <span style="color:#000;font-weight:bold">return</span> dict;
     }
 
-    #endregion
-}
-</code></pre><p>The code is pretty simple and straight forward.<br>
-We check `context.ModelState.IsValid` to see if something failed, if yes, we redirect the user to either an action/controller or a razor page.</p>
-<p>To set the result of the request to a redirect in an Action Filter, we have to create a `RedirectToRouteResuilt` that contains a `RouteValueDictionary` containing where we want to redirect.</p>
+    <span style="color:#999;font-weight:bold;font-style:italic">#endregion
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>}
+</code></pre></div><p>The code is pretty simple and straight forward.<br>
+We check <code>context.ModelState.IsValid</code> to see if something failed, if yes, we redirect the user to either an action/controller or a razor page.</p>
+<p>To set the result of the request to a redirect in an Action Filter, we have to create a <code>RedirectToRouteResuilt</code> that contains a <code>RouteValueDictionary</code> containing where we want to redirect.</p>
 <h3 id="usage">Usage</h3>
 <p>Lastly, the time comes where you forget about checking the ModelState in every request and use the attribute:</p>
-<pre><code>[HttpGet]
-[IfModelIsInvalid(RedirectToAction = &quot;Index&quot;, RedirectToController = &quot;Account&quot;)]
-public IActionResult ConfirmEmail(CodeViewModel model)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[HttpGet]</span>
+<span style="color:#008080">[IfModelIsInvalid(RedirectToAction = &#34;Index&#34;, RedirectToController = &#34;Account&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IActionResult ConfirmEmail(CodeViewModel model)
 {
-    // Logic here
-    return View();
+    <span style="color:#998;font-style:italic">// Logic here
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">return</span> View();
 }
-</code></pre><p>If something fails on the model validation, the user will be redirected to the `Index` action of the `Account` controller.</p>
+</code></pre></div><p>If something fails on the model validation, the user will be redirected to the <code>Index</code> action of the <code>Account</code> controller.</p>
 <p>This results in a pretty readable solution that saves us the trouble to write the same code on every request.<br>
 Of course, the Action Filter can be personalized however you like!</p>
 
@@ -579,7 +609,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

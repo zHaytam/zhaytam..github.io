@@ -13,19 +13,19 @@
         "articleSection" : "post",
         "name" : "Outliers Detection in PySpark #2 – Interquartile Range",
         "headline" : "Outliers Detection in PySpark #2 – Interquartile Range",
-        "description" : "In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection.\nIn this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.\nIntroduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.",
+        "description" : "In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection. In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.\nIntroduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-07-15 13:31:51 \x2b0000 \x2b0000",
         "dateModified" : "2019-07-15 13:31:51 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2019\/07\/15\/outliers-detection-in-pyspark-2-interquartile-range\/",
-        "wordCount" : "416",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "441",
+        "image" : "https://zhaytam.github.io/img/outliers_detection_p2.webp"",
         "keywords" : [ ""boxplot"",""iqr"",""outliers detection"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Outliers Detection in PySpark #2 – Interquartile Range </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/outliers_detection_p2.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">15 July</span>	<span> / </span>
 
@@ -271,67 +272,71 @@
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>In the <!-- raw HTML omitted -->first part<!-- raw HTML omitted -->, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection.<br>
-In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.</p>
+              <p>In the <a href="https://zhaytam.github.io/2019/06/21/outliers-detection-pyspark-1-intro/">first part</a>, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection. In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.</p>
 <h2 id="introduction">Introduction</h2>
 <p>The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.</p>
-<p>IQR is a measure of statistical dispersion, which is equal to the difference between the 75th <!-- raw HTML omitted -->percentile <!-- raw HTML omitted -->and the 25th <!-- raw HTML omitted -->percentile<!-- raw HTML omitted -->.<br>
-In other words:</p>
-<!-- raw HTML omitted -->
-<h2 id="how-interquartile-range-worksfigure-classwpblockimage">How Interquartile Range works<!-- raw HTML omitted --></h2>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Representation of the Interquartile Range - Wikipedia<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>IQR is a measure of statistical dispersion, which is equal to the difference between the 75th <a href="https://en.wikipedia.org/wiki/Percentile">percentile</a> and the 25th <a href="https://en.wikipedia.org/wiki/Percentile">percentile</a>. In other words:</p>
+<p>$$IQR = Q3 - Q1$$</p>
+<h2 id="how-interquartile-range-works">How Interquartile Range works</h2>
+<figure>
+    <img src="/img/800px-Boxplot_vs_PDF.svg-1-768x557.webp"
+         alt="Representation of the Interquartile Range - Wikipedia"/> <figcaption>
+            <h4>Representation of the Interquartile Range - Wikipedia</h4>
+        </figcaption>
+</figure>
+
 <p>IQR is a fairly interpretable method, often used to draw Box Plots and display the distribution of a dataset.</p>
 <p>IQR Can also be used to detect outliers in a few easy and straightforward steps:</p>
 <ol>
-<li>Calculate the 1st quartile <!-- raw HTML omitted -->.</li>
-<li>Calculate the 3rd quartile <!-- raw HTML omitted -->.</li>
-<li>Calculate <!-- raw HTML omitted -->.</li>
+<li>Calculate the 1st quartile $Q1$.</li>
+<li>Calculate the 3rd quartile $Q3$.</li>
+<li>Calculate $IQR = Q3 - Q1$.</li>
 <li>Calculate the bounds:
-<ol>
-<li>Lower bound: <!-- raw HTML omitted --></li>
-<li>Upper bound: <!-- raw HTML omitted --></li>
-</ol>
+<ul>
+<li>Lower bound: $Q1 - 1.5 * IQR$</li>
+<li>Upper bound: $Q3 + 1.5 * IQR$</li>
+</ul>
 </li>
 <li>Flag any points outside the bounds as suspected outliers.</li>
 </ol>
-<p>If you're wondering why John chose  <!-- raw HTML omitted -->and not some other value, it can be explained in the Wikipedia picture and also this <!-- raw HTML omitted -->post<!-- raw HTML omitted -->.</p>
-<p>If we look at the picture, we can see that the lower bound and the upper bound correspond, respectively, to  <!-- raw HTML omitted -->and <!-- raw HTML omitted -->.<br>
-This reminds me of the `68-95-99.7 rule`, which says that about 99.7% of points are within  <!-- raw HTML omitted -->and that the rest can be considered as outliers.</p>
+<p>If you're wondering why John chose $1.5 * IQR$ and not some other value, it can be explained in the Wikipedia picture and also this <a href="https://math.stackexchange.com/questions/966331/why-john-tukey-set-1-5-iqr-to-detect-outliers-instead-of-1-or-2">post</a>.</p>
+<p>If we look at the picture, we can see that the lower bound and the upper bound correspond, respectively, to $-2.698\sigma$ and $2.698\sigma$.<br>
+This reminds me of the <code>68-95-99.7 rule</code>, which says that about 99.7% of points are within $3\sigma$ and that the rest can be considered as outliers.</p>
 <h2 id="pyspark-implementation">PySpark Implementation</h2>
 <p>This PySpark implementation can work on any <code>Dataframe</code> and all of its columns. The Dataframe should have a unique column used to identify outliers.</p>
 <h3 id="imports">Imports</h3>
-<pre><code>import pyspark.sql.functions as f
-</code></pre><h3 id="calculating-the-bounds">Calculating the bounds</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">pyspark.sql.functions</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">f</span>
+</code></pre></div><h3 id="calculating-the-bounds">Calculating the bounds</h3>
 <p>Firstly, we calculate the lower and upper bounds for each column:</p>
-<pre><code>def calculate_bounds(df):
-	bounds = {
-        c: dict(
-            zip([&quot;q1&quot;, &quot;q3&quot;], df.approxQuantile(c, [0.25, 0.75], 0))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">calculate_bounds</span>(df):
+  bounds <span style="color:#000;font-weight:bold">=</span> {
+        c: <span style="color:#0086b3">dict</span>(
+            <span style="color:#0086b3">zip</span>([<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">q1</span><span style="color:#d14">&#34;</span>, <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">q3</span><span style="color:#d14">&#34;</span>], df<span style="color:#000;font-weight:bold">.</span>approxQuantile(c, [<span style="color:#099">0.25</span>, <span style="color:#099">0.75</span>], <span style="color:#099">0</span>))
         )
-        for c,d in zip(df.columns, df.dtypes) if d[1] == &quot;int&quot;
+        <span style="color:#000;font-weight:bold">for</span> c,d <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(df<span style="color:#000;font-weight:bold">.</span>columns, df<span style="color:#000;font-weight:bold">.</span>dtypes) <span style="color:#000;font-weight:bold">if</span> d[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">int</span><span style="color:#d14">&#34;</span>
     }
 
-    for c in bounds:
-        iqr = bounds[c]['q3'] - bounds[c]['q1']
-        bounds[c]['min'] = bounds[c]['q1'] - (iqr * 1.5)
-        bounds[c]['max'] = bounds[c]['q3'] + (iqr * 1.5)
+    <span style="color:#000;font-weight:bold">for</span> c <span style="color:#000;font-weight:bold">in</span> bounds:
+        iqr <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q3</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">-</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q1</span><span style="color:#d14">&#39;</span>]
+        bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">min</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q1</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">-</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
+        bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">max</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q3</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">+</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
 
-    return bounds
-</code></pre><h3 id="flagging-outliers">Flagging outliers</h3>
-<p>Then we flag outliers based on the calculated bounds. For each column, we create a new column named <code>columnName_outlier</code> that contains `yes` or `no`.</p>
-<pre><code>def flag_outliers(df, id_col):
-	bounds = calculate_bounds(df)
-	outliers = {}
+    <span style="color:#000;font-weight:bold">return</span> bounds
+</code></pre></div><h3 id="flagging-outliers">Flagging outliers</h3>
+<p>Then we flag outliers based on the calculated bounds. For each column, we create a new column named <code>columnName_outlier</code> that contains <code>yes</code> or <code>no</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">flag_outliers</span>(df, id_col):
+  bounds <span style="color:#000;font-weight:bold">=</span> calculate_bounds(df)
+  outliers <span style="color:#000;font-weight:bold">=</span> {}
 
-	return df.select(c, id_col,
-        *[
-            f.when(
-                ~f.col(c).between(bounds[c]['min'], bounds[c]['max']),
-                &quot;yes&quot;
-            ).otherwise(&quot;no&quot;).alias(c+'_outlier')
+  <span style="color:#000;font-weight:bold">return</span> df<span style="color:#000;font-weight:bold">.</span>select(c, id_col,
+        <span style="color:#000;font-weight:bold">*</span>[
+            f<span style="color:#000;font-weight:bold">.</span>when(
+                <span style="color:#000;font-weight:bold">~</span>f<span style="color:#000;font-weight:bold">.</span>col(c)<span style="color:#000;font-weight:bold">.</span>between(bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">min</span><span style="color:#d14">&#39;</span>], bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">max</span><span style="color:#d14">&#39;</span>]),
+                <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">yes</span><span style="color:#d14">&#34;</span>
+            )<span style="color:#000;font-weight:bold">.</span>otherwise(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">no</span><span style="color:#d14">&#34;</span>)<span style="color:#000;font-weight:bold">.</span>alias(c<span style="color:#000;font-weight:bold">+</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">_outlier</span><span style="color:#d14">&#39;</span>)
         ]
     )
-</code></pre><h2 id="conclusion">Conclusion</h2>
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>To sum up, IQR or Interquartile Range is a very interpretable method to detect outliers. In this blog post, I explained how the method works and showed how we can easily implement it in PySpark.</p>
 
             </article>
@@ -539,7 +544,37 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
+<script id="MathJax-script" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
 
 </body>
 </html>

@@ -79,8 +79,7 @@ K-means K-means is one of the easiest and most popular unsupervised algorithms i
       <pubDate>Mon, 15 Jul 2019 13:31:51 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/</guid>
-      <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection.
-In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
+      <description>In the first part, I talked about what Data Quality, Anomaly Detection and Outliers Detection are and what’s the difference between outliers detection and novelty detection. In this part, I will talk about a very known and easy method to detect outliers called Interquartile Range.
 Introduction The Interquartile Range method, also known as IQR, was developed by John Widler Turky, an American mathematician best known for development of the FFT algorithm and box plot.</description>
     </item>
     
@@ -112,9 +111,9 @@ EmailSender interface If you&#39;re working with a project that implements a Cle
       
       <guid>https://zhaytam.github.io/2019/04/26/fas-to-instanciating-a-type-at-runtime/</guid>
       <description>Assuming you are familiar with C#;
-If I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?
-What if I tell you that instanciating a Type using Expression Treesis much faster?
-First of all, the code for the benchmarks is here:</description>
+If I give you a Type and tell you to create an object with it, you would automatically think of Activator.CreateInstance right?
+What if I tell you that instanciating a Type using Expression Trees is much faster?
+The code for the benchmarks is in this repository.</description>
     </item>
     
     <item>
@@ -123,9 +122,9 @@ First of all, the code for the benchmarks is here:</description>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
-      <description>Today I was installing Oh My ZSHand the theme Agnosterand it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerlineisn&#39;t one.
+      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
 In this post I&#39;ll explain how to quickly fix it.
-The problem ProblemVS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
+The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
     </item>
     
     <item>
@@ -134,7 +133,7 @@ The problem ProblemVS Code defaults the terminal&#39;s font to the editor&#39;s 
       <pubDate>Sat, 13 Apr 2019 17:12:34 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/</guid>
-      <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use `ModelState.IsValid` for that.
+      <description>Checking if a model is valid is pretty an automatic behavior at this point. Whenever a request expects a model, we need to make sure that the validation is good, and we use ModelState.IsValid for that.
 But that becomes boring, most of the time (if not always) we redirect to the same page, another page or return a bad request in case of an API.</description>
     </item>
     
@@ -218,7 +217,7 @@ Today I&#39;ll show you how easy it is to implement a flexible neural network an
       
       <guid>https://zhaytam.github.io/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
       <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
- Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc…  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
+ Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc&amp;hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
     </item>
     
     <item>
@@ -238,7 +237,7 @@ Today I&#39;ll be talking about how to add and manage breadcrumbs in an ASP.NET 
       
       <guid>https://zhaytam.github.io/2018/06/22/newborn-blog-hello-world/</guid>
       <description>Hello,
-Since **Awaiting bits **is a newborn blog, I decided to take this opportunity to present myself as well as the purpose of this blog.
+Since Awaiting bits is a newborn blog, I decided to take this opportunity to present myself as well as the purpose of this blog.
 About me My name is Zanid Haytam and I was born in 1997.
 I have been programming since the age of 13 and never looked back since.</description>
     </item>

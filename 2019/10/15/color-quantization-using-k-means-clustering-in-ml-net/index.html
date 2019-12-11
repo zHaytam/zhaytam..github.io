@@ -15,11 +15,11 @@
         "headline" : "Color quantization using K-means clustering in ML.NET",
         "description" : "When I was looking for K-means use cases, I found out about Color quantization, a very interesting . I implemented it in Python and was wondering whether it would be as easy to implement in ML.NET.\nAll the code is available in this GitHub repository.\nWhat is color quantization Color quantization is the usage of quantization, a lossy compression technique, in color spaces in order to reduce the number of unique colors in an image.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-10-15 09:39:51 \x2b0000 \x2b0000",
         "dateModified" : "2019-10-15 09:39:51 \x2b0000 \x2b0000",
@@ -34,7 +34,7 @@
  <title>Color quantization using K-means clustering in ML.NET </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055782" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055782" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -353,7 +353,7 @@
         };
     }
 }
-</code></pre></div><p>The method takes as input the image (file) to load and returns the loaded image, with normalized data, as an `ImageEntry` instance.</p>
+</code></pre></div><p>The method takes as input the image (file) to load and returns the loaded image, with normalized data, as an <code>ImageEntry</code> instance.</p>
 <h3 id="training-kmeans">Training K-means</h3>
 <p>This step is made very easy by ML.NET. The input is the data and the number of clusters, and the output is a trained model.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ClusteringPredictionTransformer&lt;KMeansModelParameters&gt; Train(MLContext mlContext, IDataView data, <span style="color:#458;font-weight:bold">int</span> numberOfClusters)
@@ -396,7 +396,7 @@
     }
 }
 </code></pre></div><p>The predictions are basically which cluster this data belongs to. We use this information to select the centroid of that cluster and use it as a color.</p>
-<p>The `Rgba32` constructor can handle values between 0 and 1 for RGB, but you can also multiply them by 255 if you want to.</p>
+<p>The <code>Rgba32</code> constructor can handle values between 0 and 1 for RGB, but you can also multiply them by 255 if you want to.</p>
 <h3 id="putting-everything-together">Putting everything together</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#000;font-weight:bold">void</span> Main(<span style="color:#458;font-weight:bold">string</span>[] args)
 {
@@ -682,7 +682,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055782"></script>
+
 
 </body>
 </html>

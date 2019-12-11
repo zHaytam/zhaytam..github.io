@@ -13,19 +13,19 @@
         "articleSection" : "post",
         "name" : "Powerline and ZSH’s Agnoster theme in VS Code",
         "headline" : "Powerline and ZSH’s Agnoster theme in VS Code",
-        "description" : "Today I was installing Oh My ZSHand the theme Agnosterand it worked in the the normal terminal but not in Visual Studio Code\x27s terminal, as it needs a monospaced font and Powerlineisn\x27t one.\nIn this post I\x27ll explain how to quickly fix it.\nThe problem ProblemVS Code defaults the terminal\x27s font to the editor\x27s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.",
+        "description" : "Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code\x27s terminal, as it needs a monospaced font and Powerline isn\x27t one.\nIn this post I\x27ll explain how to quickly fix it.\nThe problem   Problem   VS Code defaults the terminal\x27s font to the editor\x27s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-04-19 15:50:27 \x2b0000 \x2b0000",
         "dateModified" : "2019-04-19 15:50:27 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2019\/04\/19\/powerline-and-zshs-agnoster-theme-in-vs-code\/",
-        "wordCount" : "178",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "193",
+        "image" : "https://zhaytam.github.io/img/powerline_zsh_agnoster_theme.png"",
         "keywords" : [ ""Agnoster"",""Powerline"",""Terminal"",""VS Code"",""Zsh"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Powerline and ZSH’s Agnoster theme in VS Code </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/powerline_zsh_agnoster_theme.png">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">19 April</span>	<span> / </span>
 
@@ -265,10 +266,16 @@
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>Today I was installing <!-- raw HTML omitted -->Oh My ZSH<!-- raw HTML omitted --> and the theme <!-- raw HTML omitted -->Agnoster<!-- raw HTML omitted --> and it worked in the the normal terminal but not in Visual Studio Code's terminal, as it needs a monospaced font and <!-- raw HTML omitted -->Powerline<!-- raw HTML omitted --> isn't one.</p>
+              <p>Today I was installing <a href="https://ohmyz.sh/">Oh My ZSH</a> and the theme <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster">Agnoster</a> and it worked in the the normal terminal but not in Visual Studio Code's terminal, as it needs a monospaced font and <a href="https://github.com/powerline/fonts">Powerline</a> isn't one.</p>
 <p>In this post I'll explain how to quickly fix it.</p>
-<h2 id="the-problemfigure-classwpblockimage-alignwide">The problem<!-- raw HTML omitted --></h2>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Problem<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="the-problem">The problem</h2>
+<figure>
+    <img src="/img/Screenshot-from-2019-04-19-16-13-49-1024x176.png"
+         alt="Problem"/> <figcaption>
+            <h4>Problem</h4>
+        </figcaption>
+</figure>
+
 <p>VS Code defaults the terminal's font to the editor's font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
@@ -276,19 +283,30 @@
 <li>VS Code, obviously…</li>
 </ul>
 <h2 id="installing-a-monospaced-version-of-powerline">Installing a monospaced version of Powerline</h2>
-<p>After searching for a bit, I found <!-- raw HTML omitted -->Menlo for Powerline<!-- raw HTML omitted -->, a Menlo font patched to work with the font Agnoster needs.<br>
-Since <!-- raw HTML omitted -->Menlo<!-- raw HTML omitted --> is monospaced, jackpot!</p>
+<p>After searching for a bit, I found <a href="https://github.com/abertsch/Menlo-for-Powerline">Menlo for Powerline</a>, a Menlo font patched to work with the font Agnoster needs. Since <a href="https://en.wikipedia.org/wiki/Menlo_(typeface)">Menlo</a> is monospaced, jackpot!</p>
 <h3 id="clone-the-github-repository">Clone the github repository</h3>
-<pre><code>git clone https://github.com/abertsch/Menlo-for-Powerline.git
-</code></pre><h3 id="move-the-font-to-the-fonts-folder">Move the font to the fonts folder</h3>
-<pre><code>sudo mv &quot;Menlo for Powerline.ttf&quot; /usr/share/fonts/
-</code></pre><h3 id="refresh-the-fonts-cache">Refresh the fonts cache</h3>
-<pre><code>sudo fc-cache -vf /usr/share/fonts/
-</code></pre><h2 id="setting-the-font-in-vs-code">Setting the font in VS Code</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/abertsch/Menlo-for-Powerline.git
+</code></pre></div><h3 id="move-the-font-to-the-fonts-folder">Move the font to the fonts folder</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mv <span style="color:#d14">&#34;Menlo for Powerline.ttf&#34;</span> /usr/share/fonts/
+</code></pre></div><h3 id="refresh-the-fonts-cache">Refresh the fonts cache</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo fc-cache -vf /usr/share/fonts/
+</code></pre></div><h2 id="setting-the-font-in-vs-code">Setting the font in VS Code</h2>
 <p>Go to your UI Settings: <strong>CTRL + SHIFT + P &gt; UI Settings</strong></p>
-<!-- raw HTML omitted -->
+<figure>
+    <img src="/img/Screenshot-from-2019-04-19-16-41-49-1024x527.png"
+         alt="VS Code - UI Settings"/> <figcaption>
+            <h4>VS Code - UI Settings</h4>
+        </figcaption>
+</figure>
+
 <p>Search for <strong>Terminal Font</strong> and set the new font:</p>
-<!-- raw HTML omitted -->
+<figure>
+    <img src="/img/Screenshot-from-2019-04-19-16-46-16-1024x527.png"
+         alt="VS Code - UI Settings"/> <figcaption>
+            <h4>VS Code - UI Settings</h4>
+        </figcaption>
+</figure>
+
 <p>As you can see in the terminal, the new font gets applied and everything works as expected.</p>
 
             </article>
@@ -499,7 +517,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

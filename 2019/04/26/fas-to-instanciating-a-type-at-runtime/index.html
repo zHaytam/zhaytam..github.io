@@ -13,19 +13,19 @@
         "articleSection" : "post",
         "name" : "Instanciating a Type at Runtime – C# Benchmarks",
         "headline" : "Instanciating a Type at Runtime – C# Benchmarks",
-        "description" : "Assuming you are familiar with C#;\nIf I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?\nWhat if I tell you that instanciating a Type using Expression Treesis much faster?\nFirst of all, the code for the benchmarks is here:",
+        "description" : "Assuming you are familiar with C#;\nIf I give you a Type and tell you to create an object with it, you would automatically think of Activator.CreateInstance right?\nWhat if I tell you that instanciating a Type using Expression Trees is much faster?\nThe code for the benchmarks is in this repository.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-04-26 00:06:15 \x2b0000 \x2b0000",
         "dateModified" : "2019-04-26 00:06:15 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2019\/04\/26\/fas-to-instanciating-a-type-at-runtime\/",
-        "wordCount" : "428",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "632",
+        "image" : "https://zhaytam.github.io/img/default.webp"",
         "keywords" : [ ""Benchmarking"",""Instanciate"",""Type"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Instanciating a Type at Runtime – C# Benchmarks </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/default.webp">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">26 April</span>	<span> / </span>
 
@@ -272,74 +273,272 @@
           <div class="entry-content">
             <article>
               <p>Assuming you are familiar with C#;<br>
-If I give you a `Type` and tell you to create an object with it, you would automatically think of `Activator.CreateInstance` right?<br>
-What if I tell you that instanciating a Type using <!-- raw HTML omitted -->Expression Trees<!-- raw HTML omitted --> is much faster?</p>
-<p>First of all, the code for the benchmarks is here:<br>
-<a href="https://github.com/zHaytam/InstanciateBenchmarks">https://github.com/zHaytam/InstanciateBenchmarks</a></p>
+If I give you a <code>Type</code> and tell you to create an object with it, you would automatically think of <code>Activator.CreateInstance</code> right?<br>
+What if I tell you that instanciating a Type using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/expression-trees/">Expression Trees</a> is much faster?</p>
+<p>The code for the benchmarks is in this <a href="https://github.com/zHaytam/InstanciateBenchmarks">repository</a>.</p>
 <h2 id="background">Background</h2>
 <p>I am currently in an internship and the project I'm working on needs to be as extensible as possible.<br>
 Meaning that users/developers should have the possiblity to add new functionalities (or at least a variant of a functionality) easily.</p>
-<p>For instance, I have a `Manager` class and a couple of default classes that inherit implement, each of them does something specific.<br>
-Now the idea is to make it possible for people to plug-in their `SomethingManager` class.</p>
-<p>I ended up with a list of `Type` that inherit from `Manager`.<br>
-Now all I have to do is instanciate and execute these types when I need them.<br>
-Like most C# programmers, I immediately thought of `Activator.CreateInstance`!</p>
+<p>For instance, I have a <code>Manager</code> class and a couple of default classes that inherit implement, each of them does something specific.<br>
+Now the idea is to make it possible for people to plug-in their <code>SomethingManager</code> class.</p>
+<p>I ended up with a list of <code>Type</code> that inherit from <code>Manager</code>. Now all I have to do is instanciate and execute these types when I need them. Like most C# programmers, I immediately thought of <code>Activator.CreateInstance</code>!</p>
 <p>However, there must be a faster way for instanciating a type right?</p>
 <h2 id="instaciating-a-type--some-of-the-ways">Instaciating a type - some of the ways</h2>
-<p>Let's imagine that our base class is `TestClass`.</p>
-<h3 id="activator">`Activator`:</h3>
-<pre><code>[Benchmark]
-public TestClass Activator()
+<p>Let's imagine that our base class is <code>TestClass</code>.</p>
+<h3 id="activator"><code>Activator</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Benchmark]</span>
+<span style="color:#000;font-weight:bold">public</span> TestClass Activator()
 {
-    return (TestClass)System.Activator.CreateInstance(_type);
+    <span style="color:#000;font-weight:bold">return</span> (TestClass)System.Activator.CreateInstance(_type);
 }
-</code></pre><h3 id="constructorinfo-reflection">`ConstructorInfo` (Reflection)</h3>
-<pre><code>// This line should only be ran once
-var _constructor = _type.GetConstructor(Type.EmptyTypes);
+</code></pre></div><h3 id="constructorinfo-reflection"><code>ConstructorInfo</code> (Reflection)</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// This line should only be ran once
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">var</span> _constructor = _type.GetConstructor(Type.EmptyTypes);
+<span style="color:#008080">
+</span><span style="color:#008080">[Benchmark]</span>
+<span style="color:#000;font-weight:bold">public</span> TestClass Constructor()
+{
+    <span style="color:#000;font-weight:bold">return</span> (TestClass)_constructor.Invoke(<span style="color:#000;font-weight:bold">null</span>);
+}
+</code></pre></div><h3 id="expression-trees">Expression Trees</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// This line should only be ran once
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">var</span> _delegate = Expression.Lambda(Expression.New(_type)).Compile();
+<span style="color:#008080">
+</span><span style="color:#008080">[Benchmark]</span>
+<span style="color:#000;font-weight:bold">public</span> TestClass Delegate()
+{
+    <span style="color:#000;font-weight:bold">return</span> (TestClass)_delegate.DynamicInvoke();
+}
+</code></pre></div><h3 id="funcobject-expression-trees"><code>Func&lt;object&gt;</code> (Expression Trees)</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// This line should only be ran once
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">var</span> _func = Expression.Lambda&lt;Func&lt;<span style="color:#458;font-weight:bold">object</span>&gt;&gt;(Expression.New(_type)).Compile();
+<span style="color:#008080">
+</span><span style="color:#008080">[Benchmark]</span>
+<span style="color:#000;font-weight:bold">public</span> TestClass Func()
+{
+    <span style="color:#000;font-weight:bold">return</span> (TestClass)_func();
+}
+</code></pre></div><h3 id="functestclass-expression-trees"><code>Func&lt;TestClass&gt;</code> (Expression Trees)</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// This line should only be ran once
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">var</span> _typedFunc = Expression.Lambda&lt;Func&lt;TestClass&gt;&gt;(Expression.New(_type)).Compile();
+<span style="color:#008080">
+</span><span style="color:#008080">[Benchmark]</span>
+<span style="color:#000;font-weight:bold">public</span> TestClass TypedFunc()
+{
+    <span style="color:#000;font-weight:bold">return</span> _typedFunc();
+}
+</code></pre></div><h2 id="results">Results</h2>
+<figure>
+    <img src="/img/InstanciateBenchmarks.Benchmarks-barplot-768x768.png"
+         alt="Benchmark results"/> <figcaption>
+            <h4>Benchmark results</h4>
+        </figcaption>
+</figure>
 
-[Benchmark]
-public TestClass Constructor()
-{
-    return (TestClass)_constructor.Invoke(null);
-}
-</code></pre><h3 id="expression-trees">Expression Trees</h3>
-<pre><code>// This line should only be ran once
-var _delegate = Expression.Lambda(Expression.New(_type)).Compile();
-
-[Benchmark]
-public TestClass Delegate()
-{
-    return (TestClass)_delegate.DynamicInvoke();
-}
-</code></pre><h3 id="funcobject-expression-trees">Func<!-- raw HTML omitted -->` (Expression Trees)</h3>
-<pre><code>// This line should only be ran once
-var _func = Expression.Lambda&lt;Func&lt;object&gt;&gt;(Expression.New(_type)).Compile();
-
-[Benchmark]
-public TestClass Func()
-{
-    return (TestClass)_func();
-}
-</code></pre><h3 id="functestclass-expression-trees">`Func<!-- raw HTML omitted -->` (Expression Trees)</h3>
-<pre><code>// This line should only be ran once
-var _typedFunc = Expression.Lambda&lt;Func&lt;TestClass&gt;&gt;(Expression.New(_type)).Compile();
-
-[Benchmark]
-public TestClass TypedFunc()
-{
-    return _typedFunc();
-}
-</code></pre><h2 id="results">Results</h2>
-<!-- raw HTML omitted -->
-<p>I added the `new TestClass()` benchmark as a baseline.<br>
-As you can see, <strong>Expression Trees</strong> compiled `Func<!-- raw HTML omitted -->` or `Func<!-- raw HTML omitted -->` are so close to being as fast as the baseline.</p>
-<p>On the other hand, <strong>Expression Trees</strong> compiled to a plain `Delegate` and called using `DynamicInvoke()` are extremely slow.<br>
-This is due to the fact that a `Delegate` is dynamically invoked, .net has to use Reflection to figure out the Type and other informations, and this happens everytime.</p>
-<p>For more informations, check this <!-- raw HTML omitted -->Stackoverflow question<!-- raw HTML omitted -->.</p>
+<p>I added the <code>new TestClass()</code> benchmark as a baseline.<br>
+As you can see, <strong>Expression Trees</strong> compiled <code>Func&lt;object&gt;</code> or <code>Func&lt;TestClass&gt;</code> are so close to being as fast as the baseline.</p>
+<p>On the other hand, <strong>Expression Trees</strong> compiled to a plain <code>Delegate</code> and called using <code>DynamicInvoke()</code> are extremely slow.<br>
+This is due to the fact that a <code>Delegate</code> is dynamically invoked, .net has to use Reflection to figure out the Type and other informations, and this happens everytime.</p>
+<p>For more informations, check this <a href="https://stackoverflow.com/questions/12858340/difference-between-invoke-and-dynamicinvoke">Stackoverflow question</a>.</p>
 <h2 id="raw-results">Raw results</h2>
-<p>[table id=9 /]</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Job</th>
+<th>Mean</th>
+<th>Error</th>
+<th>StdDev</th>
+<th>Ratio</th>
+<th>RatioSD</th>
+<th>Rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New</td>
+<td>Clr</td>
+<td>3.722 ns</td>
+<td>0.0581 ns</td>
+<td>0.0544 ns</td>
+<td>1.00</td>
+<td>0.00</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Activator</td>
+<td>Clr</td>
+<td>48.439 ns</td>
+<td>0.1852 ns</td>
+<td>0.1733 ns</td>
+<td>13.02</td>
+<td>0.20</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>Clr</td>
+<td>137.333 ns</td>
+<td>0.3617 ns</td>
+<td>0.3383 ns</td>
+<td>36.91</td>
+<td>0.54</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Delegate</td>
+<td>Clr</td>
+<td>727.431 ns</td>
+<td>1.6431 ns</td>
+<td>1.2829 ns</td>
+<td>195.50</td>
+<td>3.15</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Func</td>
+<td>Clr</td>
+<td>11.439 ns</td>
+<td>0.0742 ns</td>
+<td>0.0658 ns</td>
+<td>3.07</td>
+<td>0.04</td>
+<td>7</td>
+</tr>
+<tr>
+<td>TypedFunc</td>
+<td>Clr</td>
+<td>10.749 ns</td>
+<td>0.0752 ns</td>
+<td>0.0703 ns</td>
+<td>2.89</td>
+<td>0.04</td>
+<td>6</td>
+</tr>
+<tr>
+<td>New</td>
+<td>Core</td>
+<td>3.973 ns</td>
+<td>0.0417 ns</td>
+<td>0.0370 ns</td>
+<td>1.07</td>
+<td>0.02</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Activator</td>
+<td>Core</td>
+<td>43.673 ns</td>
+<td>0.1425 ns</td>
+<td>0.1333 ns</td>
+<td>11.74</td>
+<td>0.16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>Core</td>
+<td>96.602 ns</td>
+<td>0.3215 ns</td>
+<td>0.3007 ns</td>
+<td>25.96</td>
+<td>0.39</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Delegate</td>
+<td>Core</td>
+<td>524.034 ns</td>
+<td>1.1478 ns</td>
+<td>1.0736 ns</td>
+<td>140.84</td>
+<td>2.10</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Func</td>
+<td>Core</td>
+<td>6.282 ns</td>
+<td>0.2092 ns</td>
+<td>0.3195 ns</td>
+<td>1.72</td>
+<td>0.09</td>
+<td>5</td>
+</tr>
+<tr>
+<td>TypedFunc</td>
+<td>Core</td>
+<td>4.538 ns</td>
+<td>0.0891 ns</td>
+<td>0.0833 ns</td>
+<td>1.22</td>
+<td>0.02</td>
+<td>4</td>
+</tr>
+<tr>
+<td>New</td>
+<td>CoreRT</td>
+<td>3.187 ns</td>
+<td>0.0759 ns</td>
+<td>0.0710 ns</td>
+<td>0.86</td>
+<td>0.02</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Activator</td>
+<td>CoreRT</td>
+<td>328.310 ns</td>
+<td>1.3142 ns</td>
+<td>1.2293 ns</td>
+<td>88.23</td>
+<td>1.24</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>CoreRT</td>
+<td>142.282 ns</td>
+<td>0.7171 ns</td>
+<td>0.6708 ns</td>
+<td>38.24</td>
+<td>0.55</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Delegate</td>
+<td>CoreRT</td>
+<td>298.431 ns</td>
+<td>2.0301 ns</td>
+<td>1.8990 ns</td>
+<td>80.21</td>
+<td>1.36</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Func</td>
+<td>CoreRT</td>
+<td>220.747 ns</td>
+<td>0.5149 ns</td>
+<td>0.4816 ns</td>
+<td>59.33</td>
+<td>0.84</td>
+<td>13</td>
+</tr>
+<tr>
+<td>TypedFunc</td>
+<td>CoreRT</td>
+<td>219.806 ns</td>
+<td>1.5278 ns</td>
+<td>1.4291 ns</td>
+<td>59.08</td>
+<td>1.02</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
 <p>To sum up, instanciating a type at runtime can be done in multiple ways.<br>
-The fasted way (in these benchmarks) is using Expression Trees to generate a typed `Func<!-- raw HTML omitted -->` and invoke it when needed.</p>
+The fasted way (in these benchmarks) is using Expression Trees to generate a typed <code>Func&lt;X&gt;</code> and invoke it when needed.</p>
 <p>For the future, I should also benchmark running IL Code directly.</p>
 
             </article>
@@ -547,7 +746,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

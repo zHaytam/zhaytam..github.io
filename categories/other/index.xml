@@ -17,9 +17,9 @@
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
       <guid>https://zhaytam.github.io/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
-      <description>Today I was installing Oh My ZSHand the theme Agnosterand it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerlineisn&#39;t one.
+      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
 In this post I&#39;ll explain how to quickly fix it.
-The problem ProblemVS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
+The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@ The volume of these notifications is EXTREMELY loud.</description>
       
       <guid>https://zhaytam.github.io/2018/06/22/newborn-blog-hello-world/</guid>
       <description>Hello,
-Since **Awaiting bits **is a newborn blog, I decided to take this opportunity to present myself as well as the purpose of this blog.
+Since Awaiting bits is a newborn blog, I decided to take this opportunity to present myself as well as the purpose of this blog.
 About me My name is Zanid Haytam and I was born in 1997.
 I have been programming since the age of 13 and never looked back since.</description>
     </item>

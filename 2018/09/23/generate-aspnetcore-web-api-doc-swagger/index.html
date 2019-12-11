@@ -15,17 +15,17 @@
         "headline" : "Generate a documentation for an ASP.NET Core Web API using Swagger",
         "description" : "Hi everyone! I hope you\x27re having a great sunday.\nMe and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2018",
         "datePublished": "2018-09-23 18:44:00 \x2b0000 \x2b0000",
         "dateModified" : "2018-09-23 18:44:00 \x2b0000 \x2b0000",
         "url" : "https:\/\/zhaytam.github.io\/2018\/09\/23\/generate-aspnetcore-web-api-doc-swagger\/",
-        "wordCount" : "1161",
-        "image" : "https://zhaytam.github.io/%!s(\u003cnil\u003e)"",
+        "wordCount" : "1176",
+        "image" : "https://zhaytam.github.io/img/Meq6TvA.png"",
         "keywords" : [ ""API"",""ASP.NET Core"",""C#"",""Documentation"",""REST"",""Swagger"","Blog" ]   
     }
     </script>
@@ -34,7 +34,7 @@
  <title>Generate a documentation for an ASP.NET Core Web API using Swagger </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -237,10 +237,11 @@
   
   <div id="loop-container" class="loop-container">
     
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class="post type-post status-publish format-standard hentry category-standard category-travel entry full-without-featured odd excerpt-1">
-
-        
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://zhaytam.github.io/img/Meq6TvA.png">
+      </div>
+      
         <div class="entry-meta">
           <span class="date">23 September</span>	<span> / </span>
 
@@ -270,42 +271,48 @@
 <p>Today I will show how you can automatically generate a documentation (with a UI) for your ASP.NET Core Web APIs using Swagger, as well as some configurations you might be intrested in.</p>
 <p>The code using in this post is available <a href="https://github.com/zHaytam/AwaitingBits_BlogPostsCodes">here</a>.</p>
 <h2 id="creating-a-web-api">Creating a Web API</h2>
-<!-- raw HTML omitted -->
+<figure>
+    <img src="/img/HqQsZbE.png"
+         alt="New project dialog"/> <figcaption>
+            <h4>New project dialog</h4>
+        </figcaption>
+</figure>
+
 <p>Go ahead and create a new ASP.NET Core Web Application project, then choose Web API in the next dialog.</p>
-<p>This will spin up a fresh project for you, containing a single example controller <strong>`</strong>ValuesController**`** which we will modify and use. It should look like this:</p>
-<pre><code>[Route(&quot;api/[action]&quot;)]
-public class ValuesController : Controller
+<p>This will spin up a fresh project for you, containing a single example controller <strong><code>**ValuesController**</code></strong> which we will modify and use. It should look like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Route(&#34;api/[action]</span><span style="color:#d14">&#34;)]
+</span><span style="color:#d14"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ValuesController</span> : Controller
 {
-
-    [HttpGet]
-    public IEnumerable&lt;string&gt; Values()
+<span style="color:#008080">
+</span><span style="color:#008080">    [HttpGet]</span>
+    <span style="color:#000;font-weight:bold">public</span> IEnumerable&lt;<span style="color:#458;font-weight:bold">string</span>&gt; Values()
     {
-        return new string[] { &quot;value1&quot;, &quot;value2&quot; };
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">string</span>[] { <span style="color:#d14">&#34;value1&#34;</span>, <span style="color:#d14">&#34;value2&#34;</span> };
     }
-
-    [HttpGet]
-    public string Get(int id)
+<span style="color:#008080">
+</span><span style="color:#008080">    [HttpGet]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> Get(<span style="color:#458;font-weight:bold">int</span> id)
     {
-        return &quot;value&quot;;
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;value&#34;</span>;
     }
-
-    [HttpPost]
-    public void Post([FromBody]string value)
-    {
-    }
-
-    [HttpPut]
-    public void Put(int id, [FromBody]string value)
+<span style="color:#008080">
+</span><span style="color:#008080">    [HttpPost]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Post([FromBody]<span style="color:#458;font-weight:bold">string</span> <span style="color:#000;font-weight:bold">value</span>)
     {
     }
-
-    [HttpDelete]
-    public void Delete(int id)
+<span style="color:#008080">
+</span><span style="color:#008080">    [HttpPut]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Put(<span style="color:#458;font-weight:bold">int</span> id, [FromBody]<span style="color:#458;font-weight:bold">string</span> <span style="color:#000;font-weight:bold">value</span>)
+    {
+    }
+<span style="color:#008080">
+</span><span style="color:#008080">    [HttpDelete]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Delete(<span style="color:#458;font-weight:bold">int</span> id)
     {
     }
 
 }
-</code></pre><h2 id="swagger-openapi">Swagger (OpenAPI)</h2>
+</code></pre></div><h2 id="swagger-openapi">Swagger (OpenAPI)</h2>
 <p>From the specifications:</p>
 <blockquote>
 <p>Swagger™ is a project used to describe and document RESTful APIs.</p>
@@ -313,179 +320,197 @@ public class ValuesController : Controller
 </blockquote>
 <p>Basically, <a href="https://swagger.io/">Swagger</a> is just a <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md">specification file</a> (which is generated or manually written), which can then be used for many applications (e.g. tests, documentation).</p>
 <p>One of the tools we will be used is <a href="https://swagger.io/tools/swagger-ui/">Swagger-UI</a>, which generates a HTML documentation.</p>
-<h3 id="in-aspnet-core">In ASP.NET Core?</h3>
+<h3 id="in-aspnet-core">In ASP.NET Core</h3>
 <p>Fortunatelly, there are many packages to help us integrate swagger to our web api. Two of them are very known:</p>
 <ul>
 <li><a href="https://github.com/domaindrivendev/Swashbuckle">Swashbuckle</a>: Generate beautiful API documentation, including a UI to explore and test operations, directly from your routes, controllers and models.</li>
 <li><a href="https://github.com/RSuter/NSwag">NSwag</a>: An OpenAPI 2.0 and 3.0 a LOT of platforms.</li>
 </ul>
 <p>We'll be using Swashbuckle, which can be easily installed using NuGet Package Manager:</p>
-<pre><code>Install-Package Swashbuckle.AspNetCore
-</code></pre><h3 id="integrating-swashbuckle">Integrating Swashbuckle</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Install-Package Swashbuckle.AspNetCore
+</code></pre></div><h3 id="integrating-swashbuckle">Integrating Swashbuckle</h3>
 <p>First of all, we have to setup the swagger specification file generation:</p>
-<pre><code>// In ConfigureServices
-services.AddSwaggerGen(c =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// In ConfigureServices
+</span><span style="color:#998;font-style:italic"></span>services.AddSwaggerGen(c =&gt;
 {
-    c.SwaggerDoc(&quot;v1&quot;, new Info
+    c.SwaggerDoc(<span style="color:#d14">&#34;v1&#34;</span>, <span style="color:#000;font-weight:bold">new</span> Info
     {
-        Title = &quot;Example API&quot;,
-        Version = &quot;v1&quot;
+        Title = <span style="color:#d14">&#34;Example API&#34;</span>,
+        Version = <span style="color:#d14">&#34;v1&#34;</span>
     });
 });
-</code></pre><p>This will inject the services Swashbuckle needs to generate it.</p>
+</code></pre></div><p>This will inject the services Swashbuckle needs to generate it.</p>
 <p>We also have to use it in our app:</p>
-<pre><code>// In Configure
-app.UseSwagger();
-</code></pre><p>Lastly, we add the HTML documentation generation:</p>
-<pre><code>app.UseSwaggerUI(c =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// In Configure
+</span><span style="color:#998;font-style:italic"></span>app.UseSwagger();
+</code></pre></div><p>Lastly, we add the HTML documentation generation:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseSwaggerUI(c =&gt;
 {
-    c.SwaggerEndpoint(&quot;/swagger/v1/swagger.json&quot;, &quot;Example API v1&quot;);
+    c.SwaggerEndpoint(<span style="color:#d14">&#34;/swagger/v1/swagger.json&#34;</span>, <span style="color:#d14">&#34;Example API v1&#34;</span>);
 });
-</code></pre><p>`/swagger/v1/swagger.json` is the path to the generated specifications file by default (we will see later how to change it).</p>
-<p>If you start debugging and go to `localhost:port/swagger` you should see:</p>
-<!-- raw HTML omitted -->
+</code></pre></div><p><code>/swagger/v1/swagger.json</code> is the path to the generated specifications file by default (we will see later how to change it).</p>
+<p>If you start debugging and go to <code>localhost:port/swagger</code> you should see:</p>
+<figure>
+    <img src="/img/Meq6TvA.png"
+         alt="Swagger UI"/> <figcaption>
+            <h4>Swagger UI</h4>
+        </figcaption>
+</figure>
+
 <p>Which honestly, looks magnificent, considering we didn't do any work.</p>
 <p>In the interactive documentation, you can see routes grouped by their controllers (by default) and you can even try requests by clicking “Try it out”.</p>
 <h2 id="xml-documentation">XML Documentation</h2>
 <p>Another feature of Swashbuckle is the ability to use the XML documentation of our project to get more informations about the routes.</p>
 <p>First, activate the XML documentation by adding this to your csproj file:</p>
-<pre><code>&lt;PropertyGroup&gt;
-    &lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt;
-&lt;/PropertyGroup&gt;
-</code></pre><p>Visual Studio will start giving you a warning, saying that X method doesn't have a XML comment. To suppress it, add `<!-- raw HTML omitted -->$(NoWarn);1591<!-- raw HTML omitted -->` in the same PropertyGroup.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;PropertyGroup</span><span style="color:#000080">&gt;</span>
+    <span style="color:#000080">&lt;GenerateDocumentationFile</span><span style="color:#000080">&gt;</span>true<span style="color:#000080">&lt;/GenerateDocumentationFile&gt;</span>
+<span style="color:#000080">&lt;/PropertyGroup&gt;</span>
+</code></pre></div><p>Visual Studio will start giving you a warning, saying that X method doesn't have a XML comment. To suppress it, add <code>&lt;NoWarn&gt;$(NoWarn);1591&lt;/NoWarn&gt;</code> in the same PropertyGroup.</p>
 <p>You can now start commenting your requests (sorry for the lack of imagination):</p>
-<pre><code>[Route(&quot;api/[action]&quot;)]
-public class ValuesController : Controller
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Route(&#34;api/[action]</span><span style="color:#d14">&#34;)]
+</span><span style="color:#d14"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ValuesController</span> : Controller
 {
 
-    /// &lt;summary&gt;
-    /// Gets two values.
-    /// &lt;/summary&gt;
-    [HttpGet]
-    public IEnumerable&lt;string&gt; Values()
+    <span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// Gets two values.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [HttpGet]</span>
+    <span style="color:#000;font-weight:bold">public</span> IEnumerable&lt;<span style="color:#458;font-weight:bold">string</span>&gt; Values()
     {
-        return new string[] { &quot;value1&quot;, &quot;value2&quot; };
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">string</span>[] { <span style="color:#d14">&#34;value1&#34;</span>, <span style="color:#d14">&#34;value2&#34;</span> };
     }
 
-    /// &lt;summary&gt;
-    /// Gets a value.
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;id&quot;&gt;The id !!&lt;/param&gt;x
-    [HttpGet]
-    public string Get(int id)
+    <span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// Gets a value.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;param name=&#34;id&#34;&gt;The id !!&lt;/param&gt;x
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [HttpGet]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">string</span> Get(<span style="color:#458;font-weight:bold">int</span> id)
     {
-        return &quot;value&quot;;
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;value&#34;</span>;
     }
 
-    /// &lt;summary&gt;
-    /// Posts a value.
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;value&quot;&gt;The value !!&lt;/param&gt;
-    [HttpPost]
-    public void Post([FromBody]string value)
-    {
-    }
-
-    /// &lt;summary&gt;
-    /// Puts a value.
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;id&quot;&gt;The id !!&lt;/param&gt;
-    /// &lt;param name=&quot;value&quot;&gt;The value !!&lt;/param&gt;
-    [HttpPut]
-    public void Put(int id, [FromBody]string value)
+    <span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// Posts a value.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;param name=&#34;value&#34;&gt;The value !!&lt;/param&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [HttpPost]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Post([FromBody]<span style="color:#458;font-weight:bold">string</span> <span style="color:#000;font-weight:bold">value</span>)
     {
     }
 
-    /// &lt;summary&gt;
-    /// Deletes an entry.
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;id&quot;&gt;The id !!&lt;/param&gt;
-    [HttpDelete]
-    public void Delete(int id)
+    <span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// Puts a value.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;param name=&#34;id&#34;&gt;The id !!&lt;/param&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;param name=&#34;value&#34;&gt;The value !!&lt;/param&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [HttpPut]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Put(<span style="color:#458;font-weight:bold">int</span> id, [FromBody]<span style="color:#458;font-weight:bold">string</span> <span style="color:#000;font-weight:bold">value</span>)
+    {
+    }
+
+    <span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// Deletes an entry.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">/// &lt;param name=&#34;id&#34;&gt;The id !!&lt;/param&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">    [HttpDelete]</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Delete(<span style="color:#458;font-weight:bold">int</span> id)
     {
     }
 
 }
-</code></pre><p>Finally, tell Swashbuckle to use the XML documentation file:</p>
-<pre><code>services.AddSwaggerGen(c =&gt;
+</code></pre></div><p>Finally, tell Swashbuckle to use the XML documentation file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services.AddSwaggerGen(c =&gt;
 {
-    c.SwaggerDoc(&quot;v1&quot;, new Info
+    c.SwaggerDoc(<span style="color:#d14">&#34;v1&#34;</span>, <span style="color:#000;font-weight:bold">new</span> Info
     {
-        Title = &quot;Example API&quot;,
-        Version = &quot;v1&quot;
+        Title = <span style="color:#d14">&#34;Example API&#34;</span>,
+        Version = <span style="color:#d14">&#34;v1&#34;</span>
     });
 
-    // XML Documentation
-    var xmlFile = $&quot;{Assembly.GetExecutingAssembly().GetName().Name}.xml&quot;;
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    <span style="color:#998;font-style:italic">// XML Documentation
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#458;font-weight:bold">var</span> xmlFile = <span style="color:#d14">$&#34;{Assembly.GetExecutingAssembly().GetName().Name}.xml&#34;</span>;
+    <span style="color:#458;font-weight:bold">var</span> xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 });
-</code></pre><p>Start debugging and enjoy the results.</p>
-<!-- raw HTML omitted -->
+</code></pre></div><p>Start debugging and enjoy the results.</p>
+<figure>
+    <img src="/img/T44os3p.png"
+         alt="Swagger UI with XML documentation"/> <figcaption>
+            <h4>Swagger UI with XML documentation</h4>
+        </figcaption>
+</figure>
+
 <h2 id="changing-the-default-routes">Changing the default routes</h2>
-<p>If you want to change where the specification file is generated (by default `/swagger/v1/swagger/json`), Swashbuckle got you covered!</p>
+<p>If you want to change where the specification file is generated (by default <code>/swagger/v1/swagger/json</code>), Swashbuckle got you covered!</p>
 <p>First, we change the route template:</p>
-<pre><code>app.UseSwagger(c =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseSwagger(c =&gt;
 {
-    c.RouteTemplate = &quot;docs/{documentName}/docs.json&quot;;
+    c.RouteTemplate = <span style="color:#d14">&#34;docs/{documentName}/docs.json&#34;</span>;
 });
-</code></pre><p>The `{documentName}` here tells Swashbuckle where to put the version (e.g. `/docs/v1/docs.json`).</p>
+</code></pre></div><p>The <code>{documentName}</code> here tells Swashbuckle where to put the version (e.g. <code>/docs/v1/docs.json</code>).</p>
 <p>Lastly, we change the end point in the UI:</p>
-<pre><code>app.UseSwaggerUI(c =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseSwaggerUI(c =&gt;
 {
-    c.SwaggerEndpoint(&quot;/docs/v1/docs.json&quot;, &quot;Exampl API v1&quot;);
+    c.SwaggerEndpoint(<span style="color:#d14">&#34;/docs/v1/docs.json&#34;</span>, <span style="color:#d14">&#34;Exampl API v1&#34;</span>);
 });
-</code></pre><p>If you start debugging, you'll see no changes except in the path where the specification file gets generated, which is now `/docs/v1/docs./json`.</p>
+</code></pre></div><p>If you start debugging, you'll see no changes except in the path where the specification file gets generated, which is now <code>/docs/v1/docs./json</code>.</p>
 <p>Also, it's possible to change the route of the HTML documentation:</p>
-<pre><code>c.RoutePrefix = &quot;docs&quot;;
-</code></pre><p>You will have to navigate to `localhost:port//docs` for the interactive documentation.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">c.RoutePrefix = <span style="color:#d14">&#34;docs&#34;</span>;
+</code></pre></div><p>You will have to navigate to <code>localhost:port//docs</code> for the interactive documentation.</p>
 <h2 id="annotations">Annotations</h2>
 <p>Swashbuckle proposes some useful annotations to enrich documentation.</p>
 <p>First, install the appropriate package:</p>
-<pre><code>Install-Package Swashbuckle.AspNetCore.Annotations
-</code></pre><p>Then tell Swashbuckle to use them:</p>
-<pre><code>services.AddSwaggerGen(c =&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Install-Package Swashbuckle.AspNetCore.Annotations
+</code></pre></div><p>Then tell Swashbuckle to use them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services.AddSwaggerGen(c =&gt;
 {
-   // ...
-   c.EnableAnnotations();
+   <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>   c.EnableAnnotations();
 });
-</code></pre><h3 id="operations">Operations</h3>
+</code></pre></div><h3 id="operations">Operations</h3>
 <p><code>SwaggerOperation</code> is a useful attribute where you can set the summary, description, id and the tags of a certain request/route, for example:</p>
-<pre><code>/// &lt;summary&gt;
-/// Gets two values.
-/// &lt;/summary&gt;
-[HttpGet]
-[SwaggerOperation(Summary = &quot;Gets two values&quot;, Description = &quot;Gets two hardcoded values&quot;)]
-public IEnumerable&lt;string&gt; Values()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// Gets two values.
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">[HttpGet]</span>
+<span style="color:#008080">[SwaggerOperation(Summary = &#34;Gets two values&#34;, Description = &#34;Gets two hardcoded values&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IEnumerable&lt;<span style="color:#458;font-weight:bold">string</span>&gt; Values()
 {
-    return new string[] { &quot;value1&quot;, &quot;value2&quot; };
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">string</span>[] { <span style="color:#d14">&#34;value1&#34;</span>, <span style="color:#d14">&#34;value2&#34;</span> };
 }
-</code></pre><p>The summary is the same as the XML documentation and the description is show under the request (in the interactive documentation).</p>
+</code></pre></div><p>The summary is the same as the XML documentation and the description is show under the request (in the interactive documentation).</p>
 <h3 id="responses">Responses</h3>
-<p>`SwaggerResponse` is an attribute where you can set for each status code a description, for example:</p>
-<pre><code>/// &lt;summary&gt;
-/// Gets two values.
-/// &lt;/summary&gt;
-[HttpGet]
-[SwaggerOperation(Summary = &quot;Gets two values&quot;, Description = &quot;Gets two hardcoded values&quot;)]
-[SwaggerResponse(200, &quot;I guess everything worked&quot;)]
-[SwaggerResponse(400, &quot;BAD REQUUUUEST&quot;)]
-public IEnumerable&lt;string&gt; Values()
+<p><code>SwaggerResponse</code> is an attribute where you can set for each status code a description, for example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/// &lt;summary&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// Gets two values.
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">[HttpGet]</span>
+<span style="color:#008080">[SwaggerOperation(Summary = &#34;Gets two values&#34;, Description = &#34;Gets two hardcoded values&#34;)]</span>
+<span style="color:#008080">[SwaggerResponse(200, &#34;I guess everything worked&#34;)]</span>
+<span style="color:#008080">[SwaggerResponse(400, &#34;BAD REQUUUUEST&#34;)]</span>
+<span style="color:#000;font-weight:bold">public</span> IEnumerable&lt;<span style="color:#458;font-weight:bold">string</span>&gt; Values()
 {
-    return new string[] { &quot;value1&quot;, &quot;value2&quot; };
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">string</span>[] { <span style="color:#d14">&#34;value1&#34;</span>, <span style="color:#d14">&#34;value2&#34;</span> };
 }
-</code></pre><p>The will show in the Responses part of every request (where the status code 200 is present by default).</p>
+</code></pre></div><p>The will show in the Responses part of every request (where the status code 200 is present by default).</p>
 <h3 id="tags">Tags</h3>
-<p>`SwaggerTag` is an attribute where you can set a tag for a controller, which can be then used to group requests by something other than the controller's name:</p>
-<pre><code>[SwaggerTag(&quot;Requests about values&quot;)]
-[Route(&quot;api/[action]&quot;)]
-public class ValuesController : Controller
-</code></pre><p>The tag is also shown next to the controller's name:</p>
-<!-- raw HTML omitted -->
+<p><code>SwaggerTag</code> is an attribute where you can set a tag for a controller, which can be then used to group requests by something other than the controller's name:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[SwaggerTag(&#34;Requests about values&#34;)]</span>
+<span style="color:#008080">[Route(&#34;api/[action]</span><span style="color:#d14">&#34;)]
+</span><span style="color:#d14"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ValuesController</span> : Controller
+</code></pre></div><p>The tag is also shown next to the controller's name:</p>
+<figure>
+    <img src="/img/b7X4pae.png"
+         alt="Swagger UI with annotations"/> <figcaption>
+            <h4>Swagger UI with annotations</h4>
+        </figcaption>
+</figure>
+
 <p> </p>
 <p>This concludes today's post!</p>
 <p>In my opinion, Swashbuckle makes it easier to concentrate on the actual API and leave the documentation writing to it, which honestly it does a great job at.</p>
-<p>Richard Morris is doing a great job developping and maintaining the library, it has everything you need and I advise you to use whenever you need it.</p>
+<p>Richard Morris is doing a great job developping and maintaining the library, it has everything you need and I advise you to use it whenever you need to.</p>
 <p>Have a good Monday!</p>
 
             </article>
@@ -698,7 +723,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>

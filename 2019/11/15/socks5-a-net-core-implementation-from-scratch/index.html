@@ -15,11 +15,11 @@
         "headline" : "Socks5 – A .NET Core implementation from scratch",
         "description" : "A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn\x27t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.\nThe implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-11-15 11:23:57 \x2b0000 \x2b0000",
         "dateModified" : "2019-11-15 11:23:57 \x2b0000 \x2b0000",
@@ -34,7 +34,7 @@
  <title>Socks5 – A .NET Core implementation from scratch </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055782" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055782" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -407,7 +407,7 @@ Here are the authentication methods that Socks5 supports:</p>
     <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">&#34;The proxy destination requires a username and password for authentication.&#34;</span>);
 }
 </code></pre></div><h4 id="usernamepassword-authentication">Username/Password authentication</h4>
-<p>Secondly, we check if the server chose the Username/Password method (`0x02`) and if so, we send him the authentication credentials:</p>
+<p>Secondly, we check if the server chose the Username/Password method (<code>0x02</code>) and if so, we send him the authentication credentials:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
 </span><span style="color:#998;font-style:italic">+-----+------+----------+------+----------+
 </span><span style="color:#998;font-style:italic">| VER | ULEN | UNAME    | PLEN | PASSWD   |
@@ -417,7 +417,7 @@ Here are the authentication methods that Socks5 supports:</p>
 </span><span style="color:#998;font-style:italic">*/</span>
 <span style="color:#458;font-weight:bold">var</span> buffer = ConstructAuthBuffer(options.Credentials.Username, options.Credentials.Password);
 <span style="color:#000;font-weight:bold">await</span> socket.SendAsync(buffer, SocketFlags.None);
-</code></pre></div><p>The `ConstructAuthBuffer`, as you can understand from its name, constructs a `byte[]` buffer that contains the command.</p>
+</code></pre></div><p>The <code>ConstructAuthBuffer</code>, as you can understand from its name, constructs a <code>byte[]</code> buffer that contains the command.</p>
 <p>The proxy server then responds with either a success or a fail:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
 </span><span style="color:#998;font-style:italic">+----+--------+
@@ -687,7 +687,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055782"></script>
+
 
 </body>
 </html>

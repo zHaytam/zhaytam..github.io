@@ -15,11 +15,11 @@
         "headline" : "Outliers Detection in PySpark #3 – K-means",
         "description" : "In parts #1 and #2 of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular K-means clustering algorithm to detect outliers.\nK-means K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering.",
         "inLanguage" : "en",
-        "author" : "zHaytam",
-        "creator" : "zHaytam",
-        "publisher": "zHaytam",
-        "accountablePerson" : "zHaytam",
-        "copyrightHolder" : "zHaytam",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
         "copyrightYear" : "2019",
         "datePublished": "2019-08-06 10:33:10 \x2b0000 \x2b0000",
         "dateModified" : "2019-08-06 10:33:10 \x2b0000 \x2b0000",
@@ -34,7 +34,7 @@
  <title>Outliers Detection in PySpark #3 – K-means </title>
 
 
-<meta name="description" content="Describe your website" />
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
@@ -45,9 +45,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://zhaytam.github.io/css/style.css?v=1575895548" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/style.css?v=1576055783" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://zhaytam.github.io/css/custom.css?v=1575895548" rel="stylesheet" type='text/css' media='all'>
+<link href="https://zhaytam.github.io/css/custom.css?v=1576055783" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://zhaytam.github.io/img/favicon.ico" type="image/x-icon">
 
@@ -332,10 +332,10 @@ model <span style="color:#000;font-weight:bold">=</span> KMeans<span style="colo
 preds <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>predict(training_rdd)
 </code></pre></div><p>Secondly, calculate the distance between each point and the centroid of the cluster it belongs to:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">to_distances</span>(entry):
-	data_point <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">0</span>]
-	prediction <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">1</span>]
-	centroid <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>centers[prediction]
-	<span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>linalg<span style="color:#000;font-weight:bold">.</span>norm(data_point <span style="color:#000;font-weight:bold">-</span> centroid)
+  data_point <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">0</span>]
+  prediction <span style="color:#000;font-weight:bold">=</span> entry[<span style="color:#099">1</span>]
+  centroid <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>centers[prediction]
+  <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>linalg<span style="color:#000;font-weight:bold">.</span>norm(data_point <span style="color:#000;font-weight:bold">-</span> centroid)
 
 <span style="color:#998;font-style:italic"># Calculate the distances</span>
 distances <span style="color:#000;font-weight:bold">=</span> training_rdd<span style="color:#000;font-weight:bold">.</span>zip(preds)<span style="color:#000;font-weight:bold">.</span>map(to_distances)
@@ -555,7 +555,8 @@ title="github icon"></i>
   </div>
   <script src="https://zhaytam.github.io/js/jquery.min.js"></script>
 <script src="https://zhaytam.github.io/js/jquerymigrate.js"></script>
-<script src="https://zhaytam.github.io/js/production.min.js?v=1575895548"></script>
+<script src="https://zhaytam.github.io/js/production.min.js?v=1576055783"></script>
+
 
 </body>
 </html>
