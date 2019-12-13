@@ -3,27 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.zhaytam.com/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/categories/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/github-pages/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/hugo/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/categories/other/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/wordpress/</loc>
+    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.zhaytam.com/tags/.net-core/</loc>
     <lastmod>2019-11-15T11:23:57+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2019-11-15T11:23:57+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.zhaytam.com/categories/c#/</loc>
-    <lastmod>2019-11-15T11:23:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/</loc>
-    <lastmod>2019-11-15T11:23:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
     <lastmod>2019-11-15T11:23:57+00:00</lastmod>
   </url>
   
@@ -49,11 +79,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</loc>
-    <lastmod>2019-11-15T11:23:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
     <lastmod>2019-11-15T11:23:57+00:00</lastmod>
   </url>
   
@@ -163,12 +188,12 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   
@@ -279,11 +304,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/tags/agnoster/</loc>
-    <lastmod>2019-04-19T15:50:27+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/other/</loc>
     <lastmod>2019-04-19T15:50:27+00:00</lastmod>
   </url>
   

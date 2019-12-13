@@ -6,10 +6,20 @@
     <description>Recent content on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>From Wordpress to Hugo, Self Hosting to Github Pages</title>
+      <link>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</link>
+      <pubDate>Fri, 13 Dec 2019 10:26:06 +0100</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</guid>
+      <description>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.
+Today I&#39;ll talk about that decision, its advantages and disadvantages.</description>
+    </item>
     
     <item>
       <title>Socks5 – A .NET Core implementation from scratch</title>

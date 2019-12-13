@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "From Wordpress to Hugo, Self Hosting to Github Pages",
+        "headline" : "From Wordpress to Hugo, Self Hosting to Github Pages",
+        "description" : "These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.\nToday I\x27ll talk about that decision, its advantages and disadvantages.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-12-13 10:26:06 \x2b0100 WEST",
+        "dateModified" : "2019-12-13 10:26:06 \x2b0100 WEST",
+        "url" : "https:\/\/blog.zhaytam.com\/2019\/12\/13\/wordpress-to-hugo-self-hosting-to-github-pages\/",
+        "wordCount" : "596",
+        "image" : "https://blog.zhaytam.com/img/default.jpg"",
+        "keywords" : [ ""Wordpress"",""Hugo"",""Github Pages"","Blog" ]   
+    }
+    </script>
+
+
+ <title>From Wordpress to Hugo, Self Hosting to Github Pages </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1576231447" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1576231447" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/default.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">13 December</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/other">Other</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> From Wordpress to Hugo, Self Hosting to Github Pages</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic.
+So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.<br>
+Today I'll talk about that decision, its advantages and disadvantages.</p>
+<h2 id="problems">Problems</h2>
+<h3 id="huge-ttfb">Huge TTFB</h3>
+<p>Whenever someone visits <a href="https://blog.zhaytam.com">https://blog.zhaytam.com</a>, they wouldn't receive the first byte until 4+ seconds later, regardless of whether the page was cached or not, which is HUGE. I suspect that this happens in mobile too, which is a deal breaker for most users.</p>
+<p>Suspected reasons:</p>
+<ul>
+<li>The VPS where I'm hosting the blog is far from where the users are. However this doesn't explain the issue since if you ping the server it responds withing 150ms max.</li>
+<li>Wordpress takes too long to generate the pages. This can explain the issue, knowing that many plugins are installed and Wordpress is slow by nature.</li>
+</ul>
+<h3 id="bad-quality-plugins-broken-plugins-lots-of-ads">Bad quality plugins, broken plugins, lots of Ads</h3>
+<p>There are a lot of Wordpress plugins, some of them are GREAT, others are not so. Sometimes I need a functionality but find a really bad plugin (vote-wise) or an outdated one, which creates this difference of quality between plugins.</p>
+<p>Whenever I opened my Wordpress Dashboard I was bombarded by ads from multiple plugins. I get that creators are trying to get sales on their plugins but these types of ads do not go away even if you close them, a good portion of the dashboard is always filled with them unless you close them everytime.</p>
+<h3 id="self-hosting-costs-money">Self hosting costs money</h3>
+<p>Even though it costs close to nothing (2.99$ per month), for a small blog like mine, it might not even be necessary. So why not save that money for something else?</p>
+<h2 id="switching-to-hugo">Switching to Hugo</h2>
+<blockquote>
+<p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.</p>
+</blockquote>
+<p>I have heard about static site generators for a while, but didn't think they fit my need until I read more about them, especially Hugo. For a blog, this might be the easiest way to get up and going. Depending on themes, you can find anything you need.</p>
+<p>What's even better is that you can customize everything yourself as a developper, which is very handy when you need something custom.</p>
+<p>To help you switch from Wordpress to Hugo, there is this <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">plugin</a>. One problem (or not, depending on your case) is that it lets other plugins generate content and so you end up with markdown posts that contain html that doesn't respect rules and non-local images.<br>
+I spent about 3 days manually cleaning posts and setting up images.</p>
+<h2 id="using-github-pages">Using Github Pages</h2>
+<p>I think everyone knows Github Pages by now. You can host a static site in a repository and let people visit it at <code>&lt;username&gt;.github.io</code> or <code>&lt;username&gt;.github.io/&lt;project&gt;</code>.</p>
+<p>What I didn't know is that you can replace Github's domain with your own, while enforcing HTTPS! This makes everything easier as I only need to build the blog into a repository and the changes are online.</p>
+<p>Everything went smoothly, apart from the HTTPS part. I couldn't enforce it from the Github repository directly and so I'm currently relying on <a href="https://www.cloudflare.com/">Cloudflare</a> to do so, using Page Rules and their free SSL plan.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I think that this switch was a very good decision. My <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> speed went from a horrible 23 on mobile to 92! I advise every blogger that uses Wordpress to at least consider static site generators as a solution, most don't really need that much functionnality.</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/other" title="View all posts in Other">Other</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/wordpress" title="View all posts tagged Wordpress">Wordpress</a>
+  
+  <a href="/tags/hugo" title="View all posts tagged Hugo">Hugo</a>
+  
+  <a href="/tags/github-pages" title="View all posts tagged Github Pages">Github Pages</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1576231447"></script>
+
+
+</body>
+</html>

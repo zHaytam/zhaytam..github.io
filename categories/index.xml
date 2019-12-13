@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>other</title>
+      <link>https://blog.zhaytam.com/categories/other/</link>
+      <pubDate>Fri, 13 Dec 2019 10:26:06 +0100</pubDate>
+      
+      <guid>https://blog.zhaytam.com/categories/other/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C#</title>
@@ -71,15 +80,6 @@
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/categories/code-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>other</title>
-      <link>https://blog.zhaytam.com/categories/other/</link>
-      <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/categories/other/</guid>
       <description></description>
     </item>
     
