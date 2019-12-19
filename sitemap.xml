@@ -3,13 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.zhaytam.com/tags/analysis/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/categories/c#/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
-    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/dataframe/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/categories/programming/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2019/12/17/trying-out-dataframe-package-netcore/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,27 +68,12 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
-    <lastmod>2019-12-13T10:26:06+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.zhaytam.com/tags/wordpress/</loc>
     <lastmod>2019-12-13T10:26:06+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/tags/.net-core/</loc>
-    <lastmod>2019-11-15T11:23:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/c#/</loc>
     <lastmod>2019-11-15T11:23:57+00:00</lastmod>
   </url>
   
@@ -119,11 +139,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/tags/ml.net/</loc>
-    <lastmod>2019-10-15T09:39:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/programming/</loc>
     <lastmod>2019-10-15T09:39:51+00:00</lastmod>
   </url>
   

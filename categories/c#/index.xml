@@ -6,10 +6,20 @@
     <description>Recent content in C# on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2019 11:23:57 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/categories/c#/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trying out the new DataFrame package in .NET Core</title>
+      <link>https://blog.zhaytam.com/2019/12/17/trying-out-dataframe-package-netcore/</link>
+      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2019/12/17/trying-out-dataframe-package-netcore/</guid>
+      <description>Yesterday, Prashanth Govindarajan posted an article about DataFrame on the .NET Blog. I got excited and wanted to try the library as soon as I could. In this post, I will explain what the library is intended for and what are my thoughts on it.
+The package The DataFrame related classes were introduced in the package Microsoft.</description>
+    </item>
     
     <item>
       <title>Socks5 – A .NET Core implementation from scratch</title>

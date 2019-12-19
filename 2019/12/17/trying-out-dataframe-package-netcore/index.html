@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Trying out the new DataFrame package in .NET Core",
+        "headline" : "Trying out the new DataFrame package in .NET Core",
+        "description" : "Yesterday, Prashanth Govindarajan posted an article about DataFrame on the .NET Blog. I got excited and wanted to try the library as soon as I could. In this post, I will explain what the library is intended for and what are my thoughts on it.\nThe package The DataFrame related classes were introduced in the package Microsoft.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": "Zanid Haytam",
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-12-17 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-12-17 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/blog.zhaytam.com\/2019\/12\/17\/trying-out-dataframe-package-netcore\/",
+        "wordCount" : "919",
+        "image" : "https://blog.zhaytam.com/img/default.jpg"",
+        "keywords" : [ ""DataFrame"",""Analysis"","Blog" ]   
+    }
+    </script>
+
+
+ <title>Trying out the new DataFrame package in .NET Core </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1576767563" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1576767563" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/unity-2d/3d">unity-2d/3d</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/default.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">17 December</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/c">C#</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Trying out the new DataFrame package in .NET Core</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Yesterday, Prashanth Govindarajan posted an article about <strong>DataFrame</strong> on the .NET Blog. I got excited and wanted to try the library as soon as I could. In this post, I will explain what the library is intended for and what are my thoughts on it.</p>
+<h2 id="the-package">The package</h2>
+<p>The DataFrame related classes were introduced in the package <a href="https://www.nuget.org/packages/Microsoft.Data.Analysis/">Microsoft.Data.Analysis</a>. The source code is available in the corefxlab repository, <a href="https://github.com/dotnet/corefxlab/blob/master/src/Microsoft.Data.Analysis/DataFrame.Join.cs">Microsoft.Data.Analysis</a>.</p>
+<p>This means that the package is experimental and is currently in preview.</p>
+<h3 id="installing">Installing</h3>
+<p>As with all NuGet packages, you can install it either by using the Visual Studio NuGet Package Manager or using the CLI: <code>dotnet add package Microsoft.Data.Analysis</code>.<br>
+<em>Note: You can also install the package in a .NET Jupyter Notebook.</em></p>
+<h2 id="functionalities">Functionalities</h2>
+<ul>
+<li>Loading data from CSV (not mature enough).</li>
+<li>Easy column/row selection.</li>
+<li>Join/Merge DataFrames.</li>
+<li>GroupBy.</li>
+<li>Handle Null values.</li>
+<li>And others&hellip;</li>
+</ul>
+<h2 id="example">Example</h2>
+<h3 id="creating-data">Creating Data</h3>
+<p>In this example, we'll be creating data instead of loading it from a CSV, since <code>DataFrame.LoadCsv</code> doesn't handle null values and all structs (e.g. <code>DateTime</code>) yet.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">string</span>[] names = { <span style="color:#d14">&#34;John&#34;</span>, <span style="color:#d14">&#34;Ahmed&#34;</span>, <span style="color:#d14">&#34;Chris&#34;</span>, <span style="color:#d14">&#34;Albert&#34;</span> };
+<span style="color:#458;font-weight:bold">int</span>[] salaries = { <span style="color:#099">2</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">3</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">4</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span> };
+DateTime[] birthdays = { DateTime.Parse(<span style="color:#d14">&#34;23/4/1990&#34;</span>), DateTime.Parse(<span style="color:#d14">&#34;4/5/1982&#34;</span>),
+    DateTime.Parse(<span style="color:#d14">&#34;2/1/1980&#34;</span>), DateTime.Parse(<span style="color:#d14">&#34;9/10/1994&#34;</span>) };
+<span style="color:#458;font-weight:bold">string</span>[] departments = { <span style="color:#d14">&#34;Development&#34;</span>, <span style="color:#d14">&#34;Development&#34;</span>, <span style="color:#d14">&#34;HR&#34;</span>, <span style="color:#000;font-weight:bold">null</span> };
+
+<span style="color:#458;font-weight:bold">var</span> idColumn1 = <span style="color:#000;font-weight:bold">new</span> PrimitiveDataFrameColumn&lt;<span style="color:#458;font-weight:bold">int</span>&gt;(<span style="color:#d14">&#34;Id&#34;</span>, <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">int</span>[] { <span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#099">4</span> });
+<span style="color:#458;font-weight:bold">var</span> nameColumn = <span style="color:#000;font-weight:bold">new</span> StringDataFrameColumn(<span style="color:#d14">&#34;Name&#34;</span>, names);
+<span style="color:#458;font-weight:bold">var</span> birthdayColumn = <span style="color:#000;font-weight:bold">new</span> PrimitiveDataFrameColumn&lt;DateTime&gt;(<span style="color:#d14">&#34;Birthday&#34;</span>, birthdays);
+<span style="color:#458;font-weight:bold">var</span> salaryColumn = <span style="color:#000;font-weight:bold">new</span> PrimitiveDataFrameColumn&lt;<span style="color:#458;font-weight:bold">int</span>&gt;(<span style="color:#d14">&#34;Salary&#34;</span>, salaries);
+
+<span style="color:#458;font-weight:bold">var</span> idColumn2 = <span style="color:#000;font-weight:bold">new</span> PrimitiveDataFrameColumn&lt;<span style="color:#458;font-weight:bold">int</span>&gt;(<span style="color:#d14">&#34;EmployeeId&#34;</span>, <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">int</span>[] { <span style="color:#099">3</span>, <span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">4</span> });
+<span style="color:#458;font-weight:bold">var</span> departmentColumn = <span style="color:#000;font-weight:bold">new</span> StringDataFrameColumn(<span style="color:#d14">&#34;Department&#34;</span>, departments);
+
+<span style="color:#458;font-weight:bold">var</span> employeesDf = <span style="color:#000;font-weight:bold">new</span> DataFrame(idColumn1, nameColumn, birthdayColumn, salaryColumn);
+<span style="color:#458;font-weight:bold">var</span> departmentsDf = <span style="color:#000;font-weight:bold">new</span> DataFrame(idColumn2, departmentColumn);
+</code></pre></div><p>The example data is very simple, we have employees (id, name, birthday and salary) and which department they belong to.</p>
+<p><em>Note: This code would change to 2 lines when <code>LoadCsv</code> works properly.</em></p>
+<h3 id="dataframe-information-and-description">DataFrame information and description</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">employeesDf.PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>23/04/1990</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ahmed</td>
+<td>04/05/1982</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chris</td>
+<td>02/01/1980</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Albert</td>
+<td>09/10/1994</td>
+<td>10000</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">departmentsDf.PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>EmployeeId</th>
+<th>Department</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>4</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">employeesDf.Info().PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Info</th>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataType</td>
+<td>System.Int32</td>
+<td>System.String</td>
+<td>System.DateTime</td>
+<td>System.Int32</td>
+</tr>
+<tr>
+<td>Length (excluding null values)</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">departmentsDf.Info().PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Info</th>
+<th>EmployeeId</th>
+<th>Department</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataType</td>
+<td>System.Int32</td>
+<td>System.String</td>
+</tr>
+<tr>
+<td>Length (excluding null values)</td>
+<td>4</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>I would've hoped to see more information in <code>Info</code>, for example the memory usage like in pandas.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">employeesDf.Description().PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Id</th>
+<th>Birthday</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length (excluding null values)</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>4</td>
+<td>null</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>Min</td>
+<td>1</td>
+<td>null</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>Mean</td>
+<td>2.5</td>
+<td>null</td>
+<td>25000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="prettyprint">PrettyPrint</h4>
+<p><code>DataFrame.ToString</code> only takes into account the maximum length of columns when printing the dataframe, which doesn't always work since some column values might be longer.<br>
+I created a function that does the opposite to get some good looking tables, the code is available at the end of the post.</p>
+<h3 id="fill-nulls-with-a-value">Fill nulls with a value</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">departmentColumn.FillNulls(<span style="color:#d14">&#34;Other&#34;</span>, inPlace: <span style="color:#000;font-weight:bold">true</span>);
+</code></pre></div><p>In the future, it would be nice to have more ways to fill nulls, for example the most present value (in this case Development).</p>
+<h3 id="creating-a-column-from-an-existing-one-by-applying-a-function">Creating a column from an existing one by applying a function</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> currentYear = DateTime.Now.Year;
+employeesDf[<span style="color:#d14">&#34;Age&#34;</span>] = birthdayColumn.Apply(d =&gt; currentYear - d.Year);
+employeesDf.PrettyPrint();
+</code></pre></div><p>For now, <code>DataFrame.Apply</code> only handle same-type function, meaning that if your colum is of type <code>DateTime</code>, the output needs to be the same, which doesn't work for our example (and for other use cases).</p>
+<p>I opened an issue in the repo (<a href="https://github.com/dotnet/corefxlab/issues/2805">here</a>) and I'm working on an PR, for now, I'm using a custom extension method that will be available at the end of the post too.</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>23/04/1990 00:00:00</td>
+<td>20000</td>
+<td>29</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ahmed</td>
+<td>04/05/1982 00:00:00</td>
+<td>30000</td>
+<td>37</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chris</td>
+<td>02/01/1980 00:00:00</td>
+<td>40000</td>
+<td>39</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Albert</td>
+<td>09/10/1994 00:00:00</td>
+<td>10000</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normalize-a-column">Normalize a column</h3>
+<p><em>Note: This example intends to show how the columns can handle operations.</em></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> minSalary = (<span style="color:#458;font-weight:bold">float</span>)(<span style="color:#458;font-weight:bold">int</span>)salaryColumn.Min();
+<span style="color:#458;font-weight:bold">var</span> maxSalary = (<span style="color:#458;font-weight:bold">int</span>)salaryColumn.Max();
+employeesDf[<span style="color:#d14">&#34;NormalizedSalary&#34;</span>] = (salaryColumn - minSalary) / (maxSalary - minSalary);
+employeesDf.PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+<th>Age</th>
+<th>NormalizedSalary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>23/04/1990 00:00:00</td>
+<td>20000</td>
+<td>29</td>
+<td>0.3333333333333333</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ahmed</td>
+<td>04/05/1982 00:00:00</td>
+<td>30000</td>
+<td>37</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chris</td>
+<td>02/01/1980 00:00:00</td>
+<td>40000</td>
+<td>39</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Albert</td>
+<td>09/10/1994 00:00:00</td>
+<td>10000</td>
+<td>25</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="join-2-dataframes">Join 2 DataFrames</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> df = employeesDf.Merge&lt;<span style="color:#458;font-weight:bold">int</span>&gt;(departmentsDf, <span style="color:#d14">&#34;Id&#34;</span>, <span style="color:#d14">&#34;EmployeeId&#34;</span>, joinAlgorithm: JoinAlgorithm.Inner);
+df.PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+<th>Age</th>
+<th>NormalizedSalary</th>
+<th>EmployeeId</th>
+<th>Department</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Chris</td>
+<td>02/01/1980 00:00:00</td>
+<td>40000</td>
+<td>39</td>
+<td>1</td>
+<td>3</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>23/04/1990 00:00:00</td>
+<td>20000</td>
+<td>29</td>
+<td>0.3333333333333333</td>
+<td>1</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ahmed</td>
+<td>04/05/1982 00:00:00</td>
+<td>30000</td>
+<td>37</td>
+<td>0.6666666666666666</td>
+<td>2</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Albert</td>
+<td>09/10/1994 00:00:00</td>
+<td>10000</td>
+<td>25</td>
+<td>0</td>
+<td>4</td>
+<td>Other</td>
+</tr>
+</tbody>
+</table>
+<p>I'll have to admit that I got confused at first, thinking that <code>Join</code> should do this while <code>Merge</code> would only merge without a condition.</p>
+<h3 id="drop-a-column-and-sort-by-a-column">Drop a column and sort by a column</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">df.Columns.Remove(<span style="color:#d14">&#34;EmployeeId&#34;</span>);
+df = df.Sort(<span style="color:#d14">&#34;Id&#34;</span>);
+df.PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Birthday</th>
+<th>Salary</th>
+<th>Age</th>
+<th>NormalizedSalary</th>
+<th>Department</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>23/04/1990 00:00:00</td>
+<td>20000</td>
+<td>29</td>
+<td>0.3333333333333333</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ahmed</td>
+<td>04/05/1982 00:00:00</td>
+<td>30000</td>
+<td>37</td>
+<td>0.6666666666666666</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chris</td>
+<td>02/01/1980 00:00:00</td>
+<td>40000</td>
+<td>39</td>
+<td>1</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Albert</td>
+<td>09/10/1994 00:00:00</td>
+<td>10000</td>
+<td>25</td>
+<td>0</td>
+<td>Other</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mean-salary-by-department">Mean salary by department</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> employeesByDepartment = df.GroupBy(<span style="color:#d14">&#34;Department&#34;</span>);
+employeesByDepartment.Mean(<span style="color:#d14">&#34;Salary&#34;</span>).PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Department</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>10000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="value-counts-of-department">Value counts of department</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">departmentColumn.ValueCounts().PrettyPrint();
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Values</th>
+<th>Counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development</td>
+<td>2</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-rows">Sample rows</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">df.Sample(<span style="color:#099">2</span>).PrettyPrint();
+</code></pre></div><p><em>Note: This method can give duplicate rows. I created an issue and hopefully it'll be fixed next preview.</em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I'm excited to see what this library becomes in the future. It still needs a lot of work but I hope it gets mature enough to get out of the lab and be officially supported, it can be a nice addition to .NET.</p>
+<p>If you're interested in the code used in this post:</p>
+<ul>
+<li><a href="https://gist.github.com/zHaytam/75c8de95fba4e8158cf7945bd316bbb1">Main code</a></li>
+<li><a href="https://gist.github.com/zHaytam/f2a30eeb91b92981e9020dda91ea2697">DataFrame utils</a></li>
+</ul>
+<p>See you soon!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+    <a href="/categories/c" title="View all posts in C#">C#</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/dataframe" title="View all posts tagged DataFrame">DataFrame</a>
+  
+  <a href="/tags/analysis" title="View all posts tagged Analysis">Analysis</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1576767563"></script>
+
+
+</body>
+</html>

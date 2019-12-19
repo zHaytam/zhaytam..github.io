@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analysis</title>
+      <link>https://blog.zhaytam.com/tags/analysis/</link>
+      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DataFrame</title>
+      <link>https://blog.zhaytam.com/tags/dataframe/</link>
+      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/dataframe/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Github Pages</title>
