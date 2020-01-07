@@ -83,7 +83,7 @@ The code of this blog post is available here.</description>
       
       <guid>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</guid>
       <description>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).
-Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completley mouseless, since my game was mouseless itself.</description>
+Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
     </item>
     
     <item>

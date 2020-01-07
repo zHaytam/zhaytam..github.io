@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artificial Intelligence on Awaiting Bits</title>
+    <link>https://blog.zhaytam.com/categories/artificial-intelligence/</link>
+    <description>Recent content in Artificial Intelligence on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.zhaytam.com/categories/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Behavior Trees - Introduction</title>
+      <link>https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/</link>
+      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/</guid>
+      <description>Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I&#39;ll be talking about what they are, why they are used and how.
+Behavior Trees Originally, behavior trees were used in the game industry to model the behavior of NPC characters, it then started getting used in other domains, such as robotics.</description>
+    </item>
+    
+  </channel>
+</rss>

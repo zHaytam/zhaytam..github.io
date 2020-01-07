@@ -6,10 +6,20 @@
     <description>Recent content on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Behavior Trees - Introduction</title>
+      <link>https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/</link>
+      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/</guid>
+      <description>Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I&#39;ll be talking about what they are, why they are used and how.
+Behavior Trees Originally, behavior trees were used in the game industry to model the behavior of NPC characters, it then started getting used in other domains, such as robotics.</description>
+    </item>
     
     <item>
       <title>Trying out the new DataFrame package in .NET Core</title>
@@ -186,7 +196,7 @@ The volume of these notifications is EXTREMELY loud.</description>
       
       <guid>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</guid>
       <description>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).
-Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completley mouseless, since my game was mouseless itself.</description>
+Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
     </item>
     
     <item>

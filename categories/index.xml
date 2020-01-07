@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>https://blog.zhaytam.com/categories/artificial-intelligence/</link>
+      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C#</title>
@@ -80,15 +89,6 @@
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/categories/code-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Unity 2D/3D</title>
-      <link>https://blog.zhaytam.com/categories/unity-2d/3d/</link>
-      <pubDate>Sat, 02 Feb 2019 14:50:31 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/categories/unity-2d/3d/</guid>
       <description></description>
     </item>
     

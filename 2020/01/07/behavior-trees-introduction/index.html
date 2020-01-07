@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Behavior Trees - Introduction",
+        "headline" : "Behavior Trees - Introduction",
+        "description" : "Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I'll be talking about what they are, why they are used and how.\nBehavior Trees Originally, behavior trees were used in the game industry to model the behavior of NPC characters, it then started getting used in other domains, such as robotics.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-01-07T00:00:00Z",
+        "dateModified" : "2020-01-07T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/01\/07\/behavior-trees-introduction\/",
+        "wordCount" : "693",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/default.jpg",
+        "keywords" : [ "Control Systems","Video Games","Behavior Tree","Blog" ]   
+    }
+    </script>
+
+
+ <title>Behavior Trees - Introduction </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Behavior Trees - Introduction | Awaiting Bits</title>
+<meta property="og:title" content="Behavior Trees - Introduction | Awaiting Bits" />
+<meta name="twitter:title" content="Behavior Trees - Introduction | Awaiting Bits" />
+<meta itemprop="name" content="Behavior Trees - Introduction | Awaiting Bits" />
+<meta name="application-name" content="Behavior Trees - Introduction | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/default.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/default.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/default.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/default.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2020-01-07T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Control Systems,Video Games,Behavior Tree" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1578387957" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1578387957" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/default.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">07 January</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/artificial-intelligence">Artificial Intelligence</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Behavior Trees - Introduction</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I'll be talking about what they are, why they are used and how.</p>
+<h2 id="behavior-trees">Behavior Trees</h2>
+<p>Originally, behavior trees were used in the game industry to model the behavior of NPC characters, it then started getting used in other domains, such as robotics.</p>
+<p>Ultimately, it is a tree of predefined node types (root, control flow and execution) aimed to represent how &ldquo;something&rdquo; behaves. Each node returns either Success, Failure or Running.</p>
+<p>Imagine you're hungry and you're trying to decide if you're going to cook a meal or just order food. We can represent that with a behavior tree, like the following one:</p>
+<figure>
+    <img src="/img/BehaviorTreeExample.png"
+         alt="An example of a Behavior Tree"/> <figcaption>
+            <h4>An example of a Behavior Tree</h4>
+        </figcaption>
+</figure>
+
+<p>It's normal if you don't understand what <code>SELECTOR</code> and <code>SEQUENCE</code> mean, but I'm sure you get the feeling of what this tree is trying to model.</p>
+<p>Only one of the 2 actions can succeed, either you'll cook a meal or order food.<br>
+You'll only cook a meal if you're motivated and have time.</p>
+<h2 id="types-of-nodes">Types of nodes</h2>
+<h3 id="actiontaskleaf-nodes">Action/Task/Leaf nodes</h3>
+<p>Leaf nodes can be split to two types:</p>
+<ul>
+<li>Actions: Perform some kind of action, e.g. open a door.</li>
+<li>Conditions: Check some kind of condition.</li>
+</ul>
+<p>These nodes are typically user defined since they change depending on the usage/context.</p>
+<h3 id="composite-nodes">Composite nodes</h3>
+<p>Composite nodes are nodes that contain one or more children and dictate how they are run and when to stop. The 3 most known and used ones are:</p>
+<h4 id="sequence">Sequence</h4>
+<p>Sequence nodes contain one or more children. Upon execution, it executes every child and fails when one of the children fails.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">for</span> child <span style="color:#000;font-weight:bold">in</span> children:
+    status <span style="color:#000;font-weight:bold">=</span> child<span style="color:#000;font-weight:bold">.</span>run()
+    <span style="color:#000;font-weight:bold">if</span> status <span style="color:#000;font-weight:bold">==</span> RUNNING <span style="color:#000;font-weight:bold">or</span> status <span style="color:#000;font-weight:bold">==</span> FAILURE:
+        <span style="color:#000;font-weight:bold">return</span> status
+
+<span style="color:#000;font-weight:bold">return</span> SUCCESS
+</code></pre></div><figure>
+    <img src="/img/ExampleSequenceNode.png"
+         alt="An example of a Sequence Node"/> <figcaption>
+            <h4>An example of a Sequence Node</h4>
+        </figcaption>
+</figure>
+
+<p>In order for this node to be successful, all its children must succeed.</p>
+<h4 id="selector">Selector</h4>
+<p>Selector nodes contain one or more children. Upon execution, it executes every child until one of them succeeds, otherwise it fails. You could look at it as the opposite of the sequence node.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">for</span> child <span style="color:#000;font-weight:bold">in</span> children:
+    status <span style="color:#000;font-weight:bold">=</span> child<span style="color:#000;font-weight:bold">.</span>run()
+    <span style="color:#000;font-weight:bold">if</span> status <span style="color:#000;font-weight:bold">==</span> RUNNING <span style="color:#000;font-weight:bold">or</span> status <span style="color:#000;font-weight:bold">==</span> SUCCESS:
+        <span style="color:#000;font-weight:bold">return</span> status
+
+<span style="color:#000;font-weight:bold">return</span> FAILURE
+</code></pre></div><figure>
+    <img src="/img/ExampleSelectorNode.png"
+         alt="An example of a Selector Node"/> <figcaption>
+            <h4>An example of a Selector Node</h4>
+        </figcaption>
+</figure>
+
+<p>You can only do one of these actions.</p>
+<h4 id="decorator">Decorator</h4>
+<p>Decorator nodes can only have a single child. They are mostly used as utility nodes, for example:</p>
+<ul>
+<li><strong>Repeater</strong>: Runs the child node indefinitely or a number of times.</li>
+<li><strong>Inverter</strong>: Inverts the result of the child node.</li>
+<li><strong>AlwaysSucceed</strong>: Failure becomes Success.</li>
+<li><strong>UntilFail</strong>: Runs the child node until it fails.</li>
+</ul>
+<p><em>Note: Decorators can have any kind of node as a child, it doesn't need to be a leaf node.</em></p>
+<h2 id="blackboard">Blackboard</h2>
+<p>In almost all scenarios, some nodes will want to &ldquo;talk&rdquo; to other nodes. Behavior Trees can have some kind of data store (blackboard, also called data context) that is global and accessible from all nodes to do so.</p>
+<p>For example: Imagine you have a node that finds the closest enemy and another one that attacks it. The one that finds the enemy would put its coordinates in the blackboard and the one attacking it would retrieve the information and proceed.</p>
+<figure>
+    <img src="/img/BlackboardExample.png"
+         alt="An example of using a blackboard"/> <figcaption>
+            <h4>An example of using a blackboard</h4>
+        </figcaption>
+</figure>
+
+<p>This data store can be as simple as a dictionary of <code>&lt;string, object&gt;</code>.</p>
+<h2 id="usage">Usage</h2>
+<ul>
+<li><strong>Video games</strong>: To model the behaviors of enemies and non-player characters.<br>
+This is where behavior trees shine.</li>
+<li><strong>Conversational AI</strong>: I recently read a blog post about building a conversational AI using behavior trees and the result is quite impressive. <a href="https://www.freecodecamp.org/news/how-to-build-an-end-to-end-conversational-ai-system-using-behavior-trees-658a7122e794/">How to Build an End-to-End Conversational AI System using Behavior Trees</a></li>
+<li><strong>Robotics Systems</strong>: These last years behavior trees have also received attention in the robotics domain. If you want to learn more, here's an interesting paper: <a href="https://arxiv.org/abs/1709.00084">Behavior Trees in Robotics and AI: An Introduction</a>.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Behavior Trees are an easy way to model and represent some kind of behavior. Each tree consists of composite nodes (sequences, selectors and decorators) and leaf/task nodes. They are very easy to make/create and super easy to visualize.</p>
+<p>Behavior Trees are widely used in video game AIs but can also be used in other domains.<br>
+Happy coding!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/artificial-intelligence" title="View all posts in Artificial Intelligence">Artificial Intelligence</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/control-systems" title="View all posts tagged Control Systems">Control Systems</a>
+  
+  <a href="/tags/video-games" title="View all posts tagged Video Games">Video Games</a>
+  
+  <a href="/tags/behavior-tree" title="View all posts tagged Behavior Tree">Behavior Tree</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1578387957"></script>
+
+
+</body>
+</html>
