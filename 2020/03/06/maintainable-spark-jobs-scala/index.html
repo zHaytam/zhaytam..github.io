@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Writing maintainable Spark jobs in Scala",
+        "headline" : "Writing maintainable Spark jobs in Scala",
+        "description" : "When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it's tested.\nToday I'll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-03-06T00:00:00Z",
+        "dateModified" : "2020-03-06T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/03\/06\/maintainable-spark-jobs-scala\/",
+        "wordCount" : "2117",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/BackgroundData.jpg",
+        "keywords" : [ "DataFrames","Scala","Spark","Tests","Blog" ]   
+    }
+    </script>
+
+
+ <title>Writing maintainable Spark jobs in Scala </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Writing maintainable Spark jobs in Scala | Awaiting Bits</title>
+<meta property="og:title" content="Writing maintainable Spark jobs in Scala | Awaiting Bits" />
+<meta name="twitter:title" content="Writing maintainable Spark jobs in Scala | Awaiting Bits" />
+<meta itemprop="name" content="Writing maintainable Spark jobs in Scala | Awaiting Bits" />
+<meta name="application-name" content="Writing maintainable Spark jobs in Scala | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/BackgroundData.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/BackgroundData.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/BackgroundData.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/BackgroundData.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2020-03-06T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="DataFrames,Scala,Spark,Tests" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1583514323" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1583514323" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/BackgroundData.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">06 March</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/programming">Programming</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Writing maintainable Spark jobs in Scala</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and  forgetting how our code is structured or even if it's tested.</p>
+<p>Today I'll be talking about how I <strong>personally</strong> like to structure and design my Spark jobs, such as they are highly maintainable and testable.</p>
+<p>All the code is available in this <a href="https://github.com/zHaytam/maintainable-spark-job-sample">GitHub Repository</a>.</p>
+<h2 id="example-spark-job">Example Spark job</h2>
+<p>The example Spark job that I'll be using throughout the article is very simple:</p>
+<ol>
+<li>Loads 2 csv files: customers and transactions.</li>
+<li>Joins the two dataframes and performs aggregations:
+<ol>
+<li>Items bought by customers and their last purchase date.</li>
+<li>How many times each item has been bought and its popularity (high or low).</li>
+</ol>
+</li>
+</ol>
+<div class="note info">
+    This is just an example. In reality, this job would be fine as it is but I&#39;m using it because it&#39;s short and has a bit of meaning.
+    
+</div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">object</span> <span style="color:#458;font-weight:bold">NormalJob</span> <span style="color:#000;font-weight:bold">extends</span> <span style="color:#458;font-weight:bold">Logging</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">def</span> main<span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">String</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Unit</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#000;font-weight:bold">val</span> spark <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">SparkSession</span>
+      <span style="color:#000;font-weight:bold">.</span>builder
+      <span style="color:#000;font-weight:bold">.</span>appName<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;SparkPageRank&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>getOrCreate<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Load data
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">val</span> customersDf <span style="color:#000;font-weight:bold">=</span> spark
+      <span style="color:#000;font-weight:bold">.</span>read
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;delimiter&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>csv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/customers.csv&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> spark
+      <span style="color:#000;font-weight:bold">.</span>read
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;delimiter&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>csv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/transactions.csv&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">,</span> split<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Customer based aggregations
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">val</span> customersAndTransactionsDf <span style="color:#000;font-weight:bold">=</span> customersDf<span style="color:#000;font-weight:bold">.</span>join<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>drop<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;id&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;joinDate&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#000;font-weight:bold">val</span> cbaDf <span style="color:#000;font-weight:bold">=</span> customersAndTransactionsDf<span style="color:#000;font-weight:bold">.</span>groupBy<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>agg<span style="color:#000;font-weight:bold">(</span>
+        flatten<span style="color:#000;font-weight:bold">(</span>collect_list<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        max<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;time&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;lastPurchaseTime&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Item based aggregations
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">val</span> itemsDf <span style="color:#000;font-weight:bold">=</span> transactionsDf<span style="color:#000;font-weight:bold">.</span>select<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">,</span> explode<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>drop<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#000;font-weight:bold">var</span> ibaDf <span style="color:#000;font-weight:bold">=</span> itemsDf<span style="color:#000;font-weight:bold">.</span>groupBy<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span>agg<span style="color:#000;font-weight:bold">(</span>count<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;*&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span>orderBy<span style="color:#000;font-weight:bold">(</span>desc<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+
+    ibaDf <span style="color:#000;font-weight:bold">=</span> ibaDf<span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;popularity&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      when<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">&gt;=</span> <span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;high&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>otherwise<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Save results
+</span><span style="color:#998;font-style:italic"></span>    cbaDf<span style="color:#000;font-weight:bold">.</span>coalesce<span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>write<span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>parquet<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/cba&#34;</span><span style="color:#000;font-weight:bold">)</span>
+    ibaDf<span style="color:#000;font-weight:bold">.</span>coalesce<span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>write<span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>parquet<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/iba&#34;</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>This way of writing jobs introduces the following problems:</p>
+<ul>
+<li>Unless you move the code outside the main method, this is untestable.</li>
+<li>If you do move the code into its own class, what kind of tests will you do? Most likely, you'll be testing the output of the job.</li>
+<li>A developer joining the team won't be able to understand what the job does just from reading the test, because it doesn't show what transformations are done to the data.</li>
+<li>Testing the output of a job is not granular enough. I wouldn't even call it a unit test.</li>
+<li>If you're refactoring the code, all you have to do is match the output at the end, which cannot handle all the possible cases your code might fall into, because we'll tend to give it the right input data for it to succeed.</li>
+</ul>
+<p>Let's try and do better!</p>
+<h2 id="redesigning-the-job">Redesigning the job</h2>
+<figure>
+    <img src="/img/NewSparkJobDesign.png"
+         alt="Redesigned job"/> <figcaption>
+            <h4>Redesigned job</h4>
+        </figcaption>
+</figure>
+
+<p>To better understand this structure, let's zoom at each component.</p>
+<h3 id="io-handler">IO Handler</h3>
+<p>This class will handle everything related to IO, be it reading data from Hive or writing data to HDFS, it can do it all. Of course, you can create more specific classes depending on your needs.</p>
+<p>This class is useful because:</p>
+<ul>
+<li>It's an abstraction on top of <code>SparkSession</code>, which is easier to test and mock.</li>
+<li>It can contain some logic, for example: loading the last version of a dataset or setting common read/write options.</li>
+<li>In scenarios where you have multiple jobs (or sub jobs), IO operations are usually the same. This handler will remove a lot of duplicated code.</li>
+</ul>
+<p>Let's apply this to our old job:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">(</span>spark<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">SparkSession</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">def</span> loadCsv<span style="color:#000;font-weight:bold">(</span>filename<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">String</span><span style="color:#000;font-weight:bold">,</span> header<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Boolean</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span> delimiter<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">String</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    spark<span style="color:#000;font-weight:bold">.</span>read
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> header<span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;delimiter&#34;</span><span style="color:#000;font-weight:bold">,</span> delimiter<span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>csv<span style="color:#000;font-weight:bold">(</span>filename<span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">def</span> saveParquet<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">,</span> filename<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">String</span><span style="color:#000;font-weight:bold">,</span> header<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Boolean</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Unit</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    df<span style="color:#000;font-weight:bold">.</span>coalesce<span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>write
+      <span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> header<span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>parquet<span style="color:#000;font-weight:bold">(</span>filename<span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="transformations">Transformations</h3>
+<p>This is an object (somewhat like a static class) that contains every transformation our job needs. The idea here is to put every transformation in it's method so that we can test it alone.</p>
+<p>This is a &ldquo;static class&rdquo; because I see transformations as pure functions,  giving them the same input gives you the same result.</p>
+<p>I personally split and use transformations in two ways:</p>
+<ul>
+<li><code>val resultDf = Transformations.doSomething(...)</code>.</li>
+<li><code>val df = df.transform(Transformations.doSomething)</code>.
+<ul>
+<li>Thanks to Scala, the following will also work: <code>val df = df.transform(Transformations.doSomething(arg1, arg2))</code> when the transformation needs outside arguments. Your method will need to be declared like this: <code>doSomething(arg1, arg2)(df: DataFrame)</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Here are all the transformations extracted from the old job:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">object</span> <span style="color:#458;font-weight:bold">Transformations</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#998;font-style:italic">/*</span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic"> Joins the two dataframes while dropping unnecessary columns </span><span style="color:#998;font-style:italic">*/</span>
+  <span style="color:#000;font-weight:bold">def</span> prepare<span style="color:#000;font-weight:bold">(</span>customersDf<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">,</span> transactionsDf<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    customersDf<span style="color:#000;font-weight:bold">.</span>join<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>drop<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;id&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#998;font-style:italic">/*</span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic"> Calculates, for each customer, the items he bought and the date of his last purchase.
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic">
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic">  Returns: DataFrame[name string, allItemsBought array&lt;string&gt;, lastPurchaseTime string]
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*/</span>
+  <span style="color:#000;font-weight:bold">def</span> calculateCustomerBasedAggs<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    df<span style="color:#000;font-weight:bold">.</span>groupBy<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>agg<span style="color:#000;font-weight:bold">(</span>
+        flatten<span style="color:#000;font-weight:bold">(</span>collect_list<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        max<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;time&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;lastPurchaseTime&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">,</span> array_distinct<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#998;font-style:italic">/*</span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic"> Calculates, for each item, the number of times it was bought.
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic">
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic">  Returns: DataFrame[item string, count int]
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*/</span>
+  <span style="color:#000;font-weight:bold">def</span> calculateItemBasedAggs<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#000;font-weight:bold">val</span> itemsDf <span style="color:#000;font-weight:bold">=</span> transactionsDf<span style="color:#000;font-weight:bold">.</span>select<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">,</span> explode<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>drop<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+    itemsDf<span style="color:#000;font-weight:bold">.</span>groupBy<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>agg<span style="color:#000;font-weight:bold">(</span>count<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;*&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>as<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>orderBy<span style="color:#000;font-weight:bold">(</span>desc<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#998;font-style:italic">/*</span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic"> Casts the &#34;items&#34; column into an array&lt;string&gt;. </span><span style="color:#998;font-style:italic">*/</span>
+  <span style="color:#000;font-weight:bold">def</span> castItemsToArray<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    transactionsDf<span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">,</span> split<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#998;font-style:italic">/*</span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic"> Assigns the popularity of each item based on the number of times it was bought.&lt;br </span><span style="color:#998;font-style:italic">/</span><span style="color:#998;font-style:italic">&gt;
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*</span><span style="color:#998;font-style:italic">  &#34;high&#34; if the item was bought 4 or more times, &#34;low&#34; otherwise.
+</span><span style="color:#998;font-style:italic">   </span><span style="color:#998;font-style:italic">*/</span>
+  <span style="color:#000;font-weight:bold">def</span> assignPopularity<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">DataFrame</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    df<span style="color:#000;font-weight:bold">.</span>withColumn<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;popularity&#34;</span><span style="color:#000;font-weight:bold">,</span> when<span style="color:#000;font-weight:bold">(</span>col<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">&gt;=</span> <span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;high&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>otherwise<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><div class="note info">
+    While it&#39;s not mandatory, it&#39;s nice to document transformations. You can view them while using the methods depending on your IDE.
+    
+</div>
+<p>As you can see, each method does one specific thing. Even if transformations are related, they can still be split up. Obviously, your business rules will be the main driver here.</p>
+<h3 id="job">Job</h3>
+<p>This class is like an orchestrator, using the other components to serve a use case. It's responsible for loading the data, transforming it then saving the results.<br>
+We are grouping everything in a separate class because it's much easier to test.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MaintainableJob</span><span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">extends</span> <span style="color:#458;font-weight:bold">Logging</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">def</span> run<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Unit</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#998;font-style:italic">// Load &amp; prepare data
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">val</span> customersDf <span style="color:#000;font-weight:bold">=</span> ioHandler<span style="color:#000;font-weight:bold">.</span>loadCsv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/customers.csv&#34;</span><span style="color:#000;font-weight:bold">,</span> delimiter <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> ioHandler<span style="color:#000;font-weight:bold">.</span>loadCsv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/transactions.csv&#34;</span><span style="color:#000;font-weight:bold">,</span> delimiter <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>transform<span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>castItemsToArray<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">val</span> df <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>prepare<span style="color:#000;font-weight:bold">(</span>customersDf<span style="color:#000;font-weight:bold">,</span> transactionsDf<span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Aggregations
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">val</span> cbaDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>calculateCustomerBasedAggs<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">val</span> ibaDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>calculateItemBasedAggs<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>transform<span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>assignPopularity<span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// Save results
+</span><span style="color:#998;font-style:italic"></span>    ioHandler<span style="color:#000;font-weight:bold">.</span>saveParquet<span style="color:#000;font-weight:bold">(</span>cbaDf<span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;C:/sample_data/cba&#34;</span><span style="color:#000;font-weight:bold">)</span>
+    ioHandler<span style="color:#000;font-weight:bold">.</span>saveParquet<span style="color:#000;font-weight:bold">(</span>ibaDf<span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;C:/sample_data/iba&#34;</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Simple, clean and right to the point. You can further split the <code>run</code> method if it gets too long.</p>
+<h3 id="main">Main</h3>
+<p>I'm sure I don't have to introduce you to the main class/method, what I will say though is this:</p>
+<ul>
+<li>Do not put logic or transformations here because it's almost impossible to test this (I say almost because there are some workarounds that nobody really likes&hellip;).</li>
+<li>If your job requires arguments, then you might want to unit test that.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">object</span> <span style="color:#458;font-weight:bold">Main</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">def</span> main<span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">String</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#458;font-weight:bold">Unit</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#000;font-weight:bold">val</span> spark <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">SparkSession</span>
+      <span style="color:#000;font-weight:bold">.</span>builder<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>appName<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Maintainable Job&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span>getOrCreate<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#000;font-weight:bold">val</span> ioHandler <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">(</span>spark<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">val</span> job <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">MaintainableJob</span><span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">)</span>
+    job<span style="color:#000;font-weight:bold">.</span>run<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+
+    spark<span style="color:#000;font-weight:bold">.</span>stop<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>As you can see, the main method simply handles the <code>SparkSession</code> and runs our job.</p>
+<h2 id="unit-tests">Unit tests</h2>
+<p>Now to the <strong>fun</strong> (or not so much) part. This is where we build our confidence, where we become certain that our job will do exactly what we want it to do.</p>
+<p>Here are the libraries I used in the tests:</p>
+<ul>
+<li><a href="http://www.scalatest.org/">scalatest</a>: The core testing library in Scala.</li>
+<li><a href="https://github.com/mockito/mockito-scala">mockito-scala</a>: The popular mocking framework in Java, but in Scala!</li>
+<li><a href="https://github.com/MrPowers/spark-fast-tests">spark-fast-tests</a>: A fast Spark testing helper.</li>
+</ul>
+<p>We'll be testing our <strong>testable</strong> components one by one:</p>
+<h3 id="io-handler-tests">IO Handler Tests</h3>
+<p>Since the IO Handler depends on the <code>SparkSession</code>, we only want to make sure it calls the right methods. Other test cases are already handled by Spark.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">IOHandlerTests</span> <span style="color:#000;font-weight:bold">extends</span> <span style="color:#458;font-weight:bold">WordSpec</span> <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">MockitoSugar</span> <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">Matchers</span> <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">ArgumentMatchersSugar</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#d14">&#34;loadCsv&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;call spark.read.csv with correct option values&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> spark <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">SparkSession</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> mockReader <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">DataFrameReader</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> ioHandler <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">(</span>spark<span style="color:#000;font-weight:bold">)</span>
+
+      when<span style="color:#000;font-weight:bold">(</span>spark<span style="color:#000;font-weight:bold">.</span>read<span style="color:#000;font-weight:bold">)</span> thenReturn mockReader
+      when<span style="color:#000;font-weight:bold">(</span>mockReader<span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn mockReader
+      when<span style="color:#000;font-weight:bold">(</span>mockReader<span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;delimiter&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn mockReader
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      ioHandler<span style="color:#000;font-weight:bold">.</span>loadCsv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;filename&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      verify<span style="color:#000;font-weight:bold">(</span>mockReader<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>csv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;filename&#34;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#d14">&#34;saveParquet&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;call write.parquet with correct options&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> spark <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">SparkSession</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> mockWriter <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">DataFrameWriter</span><span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">Row</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> mockDf <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> ioHandler <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">(</span>spark<span style="color:#000;font-weight:bold">)</span>
+
+      when<span style="color:#000;font-weight:bold">(</span>mockDf<span style="color:#000;font-weight:bold">.</span>coalesce<span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn mockDf
+      when<span style="color:#000;font-weight:bold">(</span>mockDf<span style="color:#000;font-weight:bold">.</span>write<span style="color:#000;font-weight:bold">)</span> thenReturn mockWriter
+      when<span style="color:#000;font-weight:bold">(</span>mockWriter<span style="color:#000;font-weight:bold">.</span>option<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;header&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn mockWriter
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      ioHandler<span style="color:#000;font-weight:bold">.</span>saveParquet<span style="color:#000;font-weight:bold">(</span>mockDf<span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;filename&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      verify<span style="color:#000;font-weight:bold">(</span>mockWriter<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>parquet<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;filename&#34;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><div class="note warning">
+    DataFrameWriter is a final class, you will need to use mock-maker-inline to make this work.
+    
+    <div class="more-info">
+        <a href="https://stackoverflow.com/questions/14292863/how-to-mock-a-final-class-with-mockito/40018295#40018295" target="_blank">Tell me more.</a>
+    </div>
+    
+</div>
+<h3 id="transformations-tests">Transformations Tests</h3>
+<p>These are the most important tests. Here, I'm only giving example tests, but you should be testing all the possible cases to ensure that each transformation works as expected.</p>
+<p>Most of the tests will have the same structure:</p>
+<ul>
+<li>Create fake <strong>small</strong> dataframes using <code>toDF</code>.</li>
+<li>Execute the transformation and get an <code>actualDf</code>.</li>
+<li>Use the <code>assertSmallDatasetEquality</code> method to ensure the desired output.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TransformationsTests</span> <span style="color:#000;font-weight:bold">extends</span> <span style="color:#458;font-weight:bold">WordSpec</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">MockitoSugar</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">Matchers</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">ArgumentMatchersSugar</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">SparkSessionTestWrapper</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">DatasetComparer</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">import</span> <span style="color:#555">spark.implicits._</span>
+
+  <span style="color:#d14">&#34;prepare&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;join the two dataframes and drop the id column&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> customersDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">0</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;id&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> expectedDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>prepare<span style="color:#000;font-weight:bold">(</span>customersDf<span style="color:#000;font-weight:bold">,</span> transactionsDf<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">,</span> expectedDf<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+    <span style="color:#d14">&#34;throw a NullPointerException when customersDf is null&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> customersDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>
+      <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">0</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;id&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act &amp; Assert
+</span><span style="color:#998;font-style:italic"></span>      assertThrows<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">NullPointerException</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>prepare<span style="color:#000;font-weight:bold">(</span>customersDf<span style="color:#000;font-weight:bold">,</span> transactionsDf<span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#d14">&#34;calculateCustomerBasedAggs&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;aggregate by name&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> df <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;05/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;08/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;time&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> expectedDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;08/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;lastPurchaseTime&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>calculateCustomerBasedAggs<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">,</span> expectedDf<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+    <span style="color:#d14">&#34;remove duplicates in allItemsBought column&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> df <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;05/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;08/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;time&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> expectedDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;08/03/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;lastPurchaseTime&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>calculateCustomerBasedAggs<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">,</span> expectedDf<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#d14">&#34;calculateItemBasedAggs&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;aggregate by item and calculate count per item (ordered by count)&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> expectedDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">2L</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>calculateItemBasedAggs<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">,</span> expectedDf<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#d14">&#34;castItemsToArray&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;cast items column into array&lt;string&gt;&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a, b, c&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>castItemsToArray<span style="color:#000;font-weight:bold">(</span>transactionsDf<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      assert<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">.</span>schema<span style="color:#000;font-weight:bold">.</span>fields<span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>dataType <span style="color:#000;font-weight:bold">==</span> <span style="color:#458;font-weight:bold">DataTypes</span><span style="color:#000;font-weight:bold">.</span>createArrayType<span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">DataTypes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#458;font-weight:bold">StringType</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#d14">&#34;assignPopularity&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;assign popularity correctly&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> df <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> expectedDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;high&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;high&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;popularity&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> actualDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Transformations</span><span style="color:#000;font-weight:bold">.</span>assignPopularity<span style="color:#000;font-weight:bold">(</span>df<span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assign
+</span><span style="color:#998;font-style:italic"></span>      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>actualDf<span style="color:#000;font-weight:bold">,</span> expectedDf<span style="color:#000;font-weight:bold">,</span> ignoreNullable <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="job-tests">Job Tests</h3>
+<p>Since our <code>Job</code> class acts like an orchestrator, we only have to make sure it calls the right methods with the right arguments. Everything else is already tested above.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MaintainableJobTests</span> <span style="color:#000;font-weight:bold">extends</span> <span style="color:#458;font-weight:bold">WordSpec</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">MockitoSugar</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">Matchers</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">ArgumentMatchersSugar</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">SparkSessionTestWrapper</span>
+  <span style="color:#000;font-weight:bold">with</span> <span style="color:#458;font-weight:bold">DatasetComparer</span> <span style="color:#000;font-weight:bold">{</span>
+
+  <span style="color:#000;font-weight:bold">import</span> <span style="color:#555">spark.implicits._</span>
+
+  <span style="color:#d14">&#34;run&#34;</span> should <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#d14">&#34;transform data and save results as parquet&#34;</span> in <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#998;font-style:italic">// Arrange
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">val</span> customersDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;Sam&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;01/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;Samantha&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;02/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;joinDate&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> transactionsDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">20</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;a,b,c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;01/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">10</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c,e,f&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;02/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">39</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b,c,c,d&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;03/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;id&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;total&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;items&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;time&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> cbaDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Sam&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;03/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Samantha&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;e&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;f&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;02/01/2020&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;name&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;allItemsBought&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;lastPurchaseTime&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">val</span> ibaDf <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Seq</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">4L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;high&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">2L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;e&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;f&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;d&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">1L</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;low&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>toDF<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;item&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;count&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;popularity&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#000;font-weight:bold">val</span> ioHandler <span style="color:#000;font-weight:bold">=</span> mock<span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">IOHandler</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> cbaCaptor <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">ArgCaptor</span><span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">]</span>
+      <span style="color:#000;font-weight:bold">val</span> ibaCaptor <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">ArgCaptor</span><span style="color:#000;font-weight:bold">[</span><span style="color:#458;font-weight:bold">DataFrame</span><span style="color:#000;font-weight:bold">]</span>
+
+      when<span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">.</span>loadCsv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/customers.csv&#34;</span><span style="color:#000;font-weight:bold">,</span> delimiter <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn customersDf
+      when<span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">.</span>loadCsv<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/transactions.csv&#34;</span><span style="color:#000;font-weight:bold">,</span> delimiter <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;;&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span> thenReturn transactionsDf
+
+      <span style="color:#998;font-style:italic">// Act
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">MaintainableJob</span><span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>run<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">)</span>
+
+      <span style="color:#998;font-style:italic">// Assert
+</span><span style="color:#998;font-style:italic"></span>      verify<span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>saveParquet<span style="color:#000;font-weight:bold">(</span>cbaCaptor<span style="color:#000;font-weight:bold">,</span> eqTo<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/cba&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> eqTo<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      verify<span style="color:#000;font-weight:bold">(</span>ioHandler<span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">.</span>saveParquet<span style="color:#000;font-weight:bold">(</span>ibaCaptor<span style="color:#000;font-weight:bold">,</span> eqTo<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;C:/sample_data/iba&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">,</span> eqTo<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span><span style="color:#000;font-weight:bold">)</span>
+      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>cbaCaptor<span style="color:#000;font-weight:bold">.</span>value<span style="color:#000;font-weight:bold">,</span> cbaDf<span style="color:#000;font-weight:bold">,</span> ignoreNullable <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span>
+      assertSmallDatasetEquality<span style="color:#000;font-weight:bold">(</span>ibaCaptor<span style="color:#000;font-weight:bold">.</span>value<span style="color:#000;font-weight:bold">,</span> ibaDf<span style="color:#000;font-weight:bold">,</span> ignoreNullable <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+
+  <span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="multiple-jobs">Multiple jobs</h2>
+<p>Having multiple jobs isn't a sign of bad design, your jobs might share a common theme or use case, it's quiet logical to put them in the same project.</p>
+<p>The good thing is that you can still apply this approach! Here's a demonstration:</p>
+<figure>
+    <img src="/img/NewSparkJobDesign_MultipleJobs.png"
+         alt="Multiple jobs design"/> <figcaption>
+            <h4>Multiple jobs design</h4>
+        </figcaption>
+</figure>
+
+<p>As you can see, each job is separate, with its own transformations class, but they all share the same <code>IOHandler</code>. Everything can be tested separately.</p>
+<p>A possible improvement is some kind of &ldquo;main&rdquo; job. It will be the one running all the jobs, and we can use it directly in <code>Main</code>. This will give us the ability to test that all the jobs are ran correctly, especially if we have outside arguments.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I'd like to remind the readers that this article is very opinionated. Many people agree (or will do, hopefully) with this approach, others won't like it, and that's completely fine.</p>
+<p>As you can see, it doesn't take a lot of effort to make a Spark job testable. The used example might not show the need enough, but imagine this with a bigger job/code base. Your Spark jobs (and you) can and should get the same goodness as all other software.</p>
+<p>If there are other (better) approaches, please let me know and I'll happily try them!<br>
+Happy coding!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/programming" title="View all posts in Programming">Programming</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/dataframes" title="View all posts tagged DataFrames">DataFrames</a>
+  
+  <a href="/tags/scala" title="View all posts tagged Scala">Scala</a>
+  
+  <a href="/tags/spark" title="View all posts tagged Spark">Spark</a>
+  
+  <a href="/tags/tests" title="View all posts tagged Tests">Tests</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1583514323"></script>
+
+
+</body>
+</html>
