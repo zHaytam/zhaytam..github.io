@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DataFrames</title>
+      <link>https://blog.zhaytam.com/tags/dataframes/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/dataframes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scala</title>
+      <link>https://blog.zhaytam.com/tags/scala/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/scala/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spark</title>
+      <link>https://blog.zhaytam.com/tags/spark/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tests</title>
+      <link>https://blog.zhaytam.com/tags/tests/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/tests/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Behavior Tree</title>

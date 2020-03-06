@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spark on Awaiting Bits</title>
+    <link>https://blog.zhaytam.com/tags/spark/</link>
+    <description>Recent content in Spark on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.zhaytam.com/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Writing maintainable Spark jobs in Scala</title>
+      <link>https://blog.zhaytam.com/2020/03/03/maintainable-spark-jobs-scala/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/03/03/maintainable-spark-jobs-scala/</guid>
+      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&#39;s tested.
+Today I&#39;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
+    </item>
+    
+  </channel>
+</rss>

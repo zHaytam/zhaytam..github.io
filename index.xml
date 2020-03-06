@@ -6,10 +6,20 @@
     <description>Recent content on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing maintainable Spark jobs in Scala</title>
+      <link>https://blog.zhaytam.com/2020/03/03/maintainable-spark-jobs-scala/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/03/03/maintainable-spark-jobs-scala/</guid>
+      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&#39;s tested.
+Today I&#39;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
+    </item>
     
     <item>
       <title>Behavior Trees - Introduction</title>
