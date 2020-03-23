@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1583514323" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1584966720" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1583514323" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1584966720" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -389,10 +389,10 @@ if (!doNotTrack) {
 <p>Firstly, we'll run K-means on all the data points and predict the clusters they belong to:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyspark.mllib.clustering</span> <span style="color:#000;font-weight:bold">import</span> KMeans
 
-k <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
-maxIterations <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
-data_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing all the data</span>
-training_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing, for each row, a tuple with all the values (except the row key)</span>
+k <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+maxIterations <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+data_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing all the data</span>
+training_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing, for each row, a tuple with all the values (except the row key)</span>
 model <span style="color:#000;font-weight:bold">=</span> KMeans<span style="color:#000;font-weight:bold">.</span>train(training_rdd, k, maxIterations<span style="color:#000;font-weight:bold">=</span>maxIterations)
 preds <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>predict(training_rdd)
 </code></pre></div><p>Secondly, calculate the distance between each point and the centroid of the cluster it belongs to:</p>
@@ -402,9 +402,9 @@ preds <span style="color:#000;font-weight:bold">=</span> model<span style="color
   centroid <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>centers[prediction]
   <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>linalg<span style="color:#000;font-weight:bold">.</span>norm(data_point <span style="color:#000;font-weight:bold">-</span> centroid)
 
-<span style="color:#998;font-style:italic"># Calculate the distances</span>
+<span style="color:#998;font-style:italic"># Calculate the distances</span>
 distances <span style="color:#000;font-weight:bold">=</span> training_rdd<span style="color:#000;font-weight:bold">.</span>zip(preds)<span style="color:#000;font-weight:bold">.</span>map(to_distances)
-<span style="color:#998;font-style:italic"># Zip each row with its key so that they can be identified later on</span>
+<span style="color:#998;font-style:italic"># Zip each row with its key so that they can be identified later on</span>
 distances_and_keys <span style="color:#000;font-weight:bold">=</span> distances<span style="color:#000;font-weight:bold">.</span>zip(data_rdd)<span style="color:#000;font-weight:bold">.</span>map(<span style="color:#000;font-weight:bold">lambda</span> (distance, data_tuple): (data_tuple[key_col], distance))
 </code></pre></div><p>Lastly, calculate the number of outliers based on the given fraction and flag outliers:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">number_of_outliers <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">int</span>(outliers_fraction <span style="color:#000;font-weight:bold">*</span> distances<span style="color:#000;font-weight:bold">.</span>count())
@@ -620,7 +620,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1583514323"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1584966720"></script>
 
 
 </body>

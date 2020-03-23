@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1583514324" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1584966721" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1583514324" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1584966721" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -367,14 +367,14 @@ if (!doNotTrack) {
 <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">create_image_with_ball</span>(width, height, ball_x, ball_y, ball_size):
     img <span style="color:#000;font-weight:bold">=</span> Image<span style="color:#000;font-weight:bold">.</span>new(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">RGB</span><span style="color:#d14">&#39;</span>, (width, height), (<span style="color:#099">255</span>, <span style="color:#099">255</span>, <span style="color:#099">255</span>))
     draw <span style="color:#000;font-weight:bold">=</span> ImageDraw<span style="color:#000;font-weight:bold">.</span>Draw(img)
-    <span style="color:#998;font-style:italic"># draw.ellipse takes a 4-tuple (x0, y0, x1, y1) where (x0, y0) is the top-left bound of the box</span>
-    <span style="color:#998;font-style:italic"># and (x1, y1) is the lower-right bound of the box.</span>
+    <span style="color:#998;font-style:italic"># draw.ellipse takes a 4-tuple (x0, y0, x1, y1) where (x0, y0) is the top-left bound of the box</span>
+    <span style="color:#998;font-style:italic"># and (x1, y1) is the lower-right bound of the box.</span>
     draw<span style="color:#000;font-weight:bold">.</span>ellipse((ball_x, ball_y, ball_x <span style="color:#000;font-weight:bold">+</span> ball_size, ball_y <span style="color:#000;font-weight:bold">+</span> ball_size), fill<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">red</span><span style="color:#d14">&#39;</span>)
     <span style="color:#000;font-weight:bold">return</span> img
 </code></pre></div><p>In the code above, we create a new RGB image using <code>Image.new</code> that has a certain size and a white background.</p>
 <p>We then use <code>ImageDraw</code> to draw a red ellipse (circle) into our image using the coordinates given in the arguments.</p>
 <p>All we have to do now is create multiple images (frames) while moving the ball down:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic"># Create the frames</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic"># Create the frames</span>
 frames <span style="color:#000;font-weight:bold">=</span> []
 x, y <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>, <span style="color:#099">0</span>
 <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">10</span>):
@@ -383,7 +383,7 @@ x, y <span style="color:#000;font-weight:bold">=</span> <span style="color:#099"
     x <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> <span style="color:#099">40</span>
     y <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> <span style="color:#099">40</span>
 
-<span style="color:#998;font-style:italic"># Save into a GIF file that loops forever</span>
+<span style="color:#998;font-style:italic"># Save into a GIF file that loops forever</span>
 frames[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>save(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">moving_ball.gif</span><span style="color:#d14">&#39;</span>, format<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">GIF</span><span style="color:#d14">&#39;</span>, append_images<span style="color:#000;font-weight:bold">=</span>frames[<span style="color:#099">1</span>:], save_all<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>, duration<span style="color:#000;font-weight:bold">=</span><span style="color:#099">100</span>, loop<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
 </code></pre></div><p>Here's the breakdown of the code above:</p>
 <ol>
@@ -614,7 +614,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1583514324"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1584966721"></script>
 
 
 </body>
