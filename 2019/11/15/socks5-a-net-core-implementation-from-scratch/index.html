@@ -31,7 +31,7 @@
         "datePublished": "2019-11-15T11:23:57Z",
         "dateModified" : "2019-11-15T11:23:57Z",
         "url" : "https:\/\/blog.zhaytam.com\/2019\/11\/15\/socks5-a-net-core-implementation-from-scratch\/",
-        "wordCount" : "1080",
+        "wordCount" : "1090",
         "image" : "https:\/\/blog.zhaytam.com\/img\/network.jpg",
         "keywords" : [ ".NET Core","Proxy","Socks","Socks5","Blog" ]   
     }
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1584966720" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1584970258" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1584966720" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1584970258" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -471,7 +471,18 @@ Here are the authentication methods that Socks5 supports:</p>
     socket.Close();
     <span style="color:#000;font-weight:bold">throw</span> <span style="color:#000;font-weight:bold">new</span> SocksocketException(<span style="color:#d14">&#34;The proxy destination requires a username and password for authentication.&#34;</span>);
 }
-</code></pre></div><h4 id="usernamepassword-authentication">Username/Password authentication</h4>
+</code></pre></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7791906607953978"
+     data-ad-slot="3008419838"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<h4 id="usernamepassword-authentication">Username/Password authentication</h4>
 <p>Secondly, we check if the server chose the Username/Password method (<code>0x02</code>) and if so, we send him the authentication credentials:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
 </span><span style="color:#998;font-style:italic">+-----+------+----------+------+----------+
@@ -544,6 +555,17 @@ destPort.CopyTo(buffer, <span style="color:#099">4</span> + destAddr.Length);
 <p>As you can see, implementing the Socks5 internet protocol is fairly easy and understandable. The implementation is small and well documented in the RFCs.<br>
 The protocol can be used to connect to servers using a VPN that provides Socks5 proxies, for whatever reason you may need.</p>
 <p>Once again, the code of this implementation is available in this <a href="https://gist.github.com/zHaytam/3730d512eb5eaf37fb3bd3d176185541">Gist</a> and is ready to use!</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7791906607953978"
+     data-ad-slot="3008419838"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
             </article>
           </div>
@@ -752,7 +774,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1584966720"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1584970258"></script>
 
 
 </body>
