@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Health Checks in ASP.NET Core",
+        "headline" : "Health Checks in ASP.NET Core",
+        "description" : "Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running \u0026amp; healthy or not. It's usually one or more endpoints that reports the status, the response differs from language/framework to an other.\nHealth checks are very useful especially when your application depends on other things like a database or even other services.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-04-30T00:00:00Z",
+        "dateModified" : "2020-04-30T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/04\/30\/health-checks-aspnetcore\/",
+        "wordCount" : "1248",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/AspNetCoreHealthChecks.jpg",
+        "keywords" : [ "Health Checks","Diagnostics","Blog" ]   
+    }
+    </script>
+
+
+ <title>Health Checks in ASP.NET Core </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Health Checks in ASP.NET Core | Awaiting Bits</title>
+<meta property="og:title" content="Health Checks in ASP.NET Core | Awaiting Bits" />
+<meta name="twitter:title" content="Health Checks in ASP.NET Core | Awaiting Bits" />
+<meta itemprop="name" content="Health Checks in ASP.NET Core | Awaiting Bits" />
+<meta name="application-name" content="Health Checks in ASP.NET Core | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/AspNetCoreHealthChecks.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/AspNetCoreHealthChecks.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/AspNetCoreHealthChecks.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/AspNetCoreHealthChecks.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2020-04-30T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Health Checks,Diagnostics" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1588352235" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1588352235" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/c">c#</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/AspNetCoreHealthChecks.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">30 April</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/asp.net-core">ASP.NET Core</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Health Checks in ASP.NET Core</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp; healthy or not.
+It's usually one or more endpoints that reports the status, the response differs from language/framework to an other.</p>
+<p>Health checks are very useful especially when your application depends on other things like a database or even other services.
+Usually, you'll find the generated endpoint(s) used by an Orchestrator to figure out whether the app is still up or not (liveness).</p>
+<p>Today we'll see how we can add health checks to an ASP.NET Core API.<br>
+All the code is available in this <a href="https://github.com/zHaytam/HealthChecksExample">GitHub repository</a>.</p>
+<h2 id="builtin-health-checks">Built-in health checks</h2>
+<p>In ASP.NET Core, the package <code>Microsoft.AspNetCore.Diagnostics.HealthChecks</code> is used to add health checks to your application.
+This means that in every project, you have the ability to add health checks out of the box.</p>
+<div class="note info">
+    The package is referenced implicitly in ASP.NET Core 3&#43;
+    
+</div>
+<p>Adding health checks is straightforward:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ConfigureServices(IServiceCollection services)
+{
+  services.AddHealthChecks();
+}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+  app.UseEndpoints(endpoints =&gt;
+  {
+    endpoints.MapControllers();
+    endpoints.MapHealthChecks(<span style="color:#d14">&#34;/health&#34;</span>);
+  });
+}
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>This will inject a middleware that will, for now since we didn't configure any checks, report that the app is healthy.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Healthy
+</code></pre></div><div class="highlight-footer">
+    https://localhost:44318/health
+</div>
+<h3 id="custom-checks">Custom checks</h3>
+<p>The package doesn't come with any built-in checks, it only provides the base.
+In order to add your own checks, there are two ways:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
+  .AddCheck(<span style="color:#d14">&#34;AlwaysHealthy&#34;</span>, () =&gt; HealthCheckResult.Healthy())
+  .AddCheck&lt;MyCustomCheck&gt;(<span style="color:#d14">&#34;My Custom Check&#34;</span>);
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<ul>
+<li><code>AddCheck(string name, Func&lt;HealthCheckResult&gt; check)</code>, which takes no arguments and returns a status.</li>
+<li><code>AddCheck&lt;IHealthCheck&gt;(string name)</code>, which takes a class that implements the interface <code>IHealthCheck</code>, where you can put your logic.</li>
+</ul>
+<div class="note info">
+    Your IHealthCheck classes are registered in the DI container, so you can resolve dependencies in the constructor!
+    
+</div>
+<p>This lets you perform all possible checks, but you'll have to write them manually.<br>
+Another downside is that the endpoint's response doesn't provide more information by default, maybe one day you'll want to know which checks fail and you'll have to write your own <code>ResponseWriter</code>.</p>
+<h3 id="filtering-checks">Filtering checks</h3>
+<p>Imagine you have multiple custom checks:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
+  .AddCheck(<span style="color:#d14">&#34;AlwaysHealthy&#34;</span>, () =&gt; HealthCheckResult.Healthy(), tags: <span style="color:#000;font-weight:bold">new</span>[] { <span style="color:#d14">&#34;Tag1&#34;</span> })
+  .AddCheck(<span style="color:#d14">&#34;AlwaysHealthyToo&#34;</span>, () =&gt; HealthCheckResult.Healthy(), tags: <span style="color:#000;font-weight:bold">new</span>[] { <span style="color:#d14">&#34;Tag1&#34;</span> })
+  .AddCheck(<span style="color:#d14">&#34;AlwaysUnhealthy&#34;</span>, () =&gt; HealthCheckResult.Unhealthy(), tags: <span style="color:#000;font-weight:bold">new</span>[] { <span style="color:#d14">&#34;Tag2&#34;</span> });
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>We can create two endpoints, each one handling a tag:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">app.UseEndpoints(endpoints =&gt;
+{
+  endpoints.MapControllers();
+
+  endpoints.MapHealthChecks(<span style="color:#d14">&#34;/health1&#34;</span>, <span style="color:#000;font-weight:bold">new</span> HealthCheckOptions()
+  {
+      Predicate = (check) =&gt; check.Tags.Contains(<span style="color:#d14">&#34;Tag1&#34;</span>)
+  });
+
+  endpoints.MapHealthChecks(<span style="color:#d14">&#34;/health2&#34;</span>, <span style="color:#000;font-weight:bold">new</span> HealthCheckOptions()
+  {
+      Predicate = (check) =&gt; check.Tags.Contains(<span style="color:#d14">&#34;Tag2&#34;</span>)
+  });
+});
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>If you visit <code>/health1</code>, it'll return <code>Healthy</code> and if you visit <code>/health2</code>, it'll return <code>Unhealthy</code>.<br>
+This is very useful if you want different health endpoints to check different things.</p>
+<h2 id="advanced-health-checks">Advanced health checks</h2>
+<p>Instead of writing every check ourselves, the package <a href="https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks">AspNetCore.Diagnostics.HealthChecks</a> comes to the rescue! It's an ASP.NET Core package that plugs into the existing health checks base and adds many custom checks, including:</p>
+<ul>
+<li>SQL Server</li>
+<li>MySQL</li>
+<li>SQLite</li>
+<li>RabbitMQ</li>
+<li>Elasticsearch</li>
+<li>Redis</li>
+<li>System: Disk Storage, Private Memory, Virtual Memory, Process, Windows Service</li>
+<li>Azure Storage: Blob, Queue and Table</li>
+<li>Amazon S3</li>
+<li>Network: Ftp, SFtp, DNS, TCP port, Smtp, Imap</li>
+<li>MongoDB</li>
+<li>Kafka</li>
+<li>Kubernetes</li>
+<li>&hellip;</li>
+</ul>
+<p>The full list, which is a lot bigger, can be found in the repositories&rsquo; README.<br>
+What's even better is that it contains a UI too!</p>
+<h3 id="database-checks">Database checks</h3>
+<p><code>AspNetCore.HealthChecks</code> contains checks for the most popular database providers.
+Today we'll try the SQL Server one by installing the package <code>AspNetCore.HealthChecks.SqlServer</code>.</p>
+<div class="note info">
+    To keep the example short, I will not include the DbContext creation but you should have one, as well as the ConnectionString in appsettings.json
+    
+</div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
+  .AddSqlServer(Configuration[<span style="color:#d14">&#34;ConnectionString&#34;</span>]); <span style="color:#998;font-style:italic">// Your database connection string
+</span></code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>It's as simple as this. If you configured your <code>DbContext</code> and your SQL Server is running, the <code>/health</code> endpoint should return the status <code>Healthy</code>.</p>
+<h3 id="system-checks">System checks</h3>
+<p><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.System/">AspNetCore.HealthChecks.System</a> contains many system related checks, let's look at a few of them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
+  .AddSqlServer(Configuration[<span style="color:#d14">&#34;ConnectionString&#34;</span>]) <span style="color:#998;font-style:italic">// Your database connection string
+</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">5</span><span style="color:#099">1</span><span style="color:#099">2</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessHealthCheck(<span style="color:#d14">&#34;ProcessName&#34;</span>, p =&gt; p.Length &gt; <span style="color:#099">0</span>) <span style="color:#998;font-style:italic">// check if process is running
+</span><span style="color:#998;font-style:italic"></span>  .AddWindowsServiceHealthCheck(<span style="color:#d14">&#34;someservice&#34;</span>, s =&gt; s.Status == ServiceControllerStatus.Running); <span style="color:#998;font-style:italic">// check if a windows service is running
+</span></code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>As you can see, there is a lot of useful checks! It would've been better if the Storage check checked the storage used instead of free, it can be very useful when working with containers.</p>
+<h3 id="url-checks">URL checks</h3>
+<p>Imagine your app's health depends on an external API, you're using one of its endpoints in one of your functionalities. There is a health check for that scenario too!<br>
+By installing the package <a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.Uris">AspNetCore.HealthChecks.Uris</a>, you can use:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
+  .AddSqlServer(Configuration[<span style="color:#d14">&#34;ConnectionString&#34;</span>]) <span style="color:#998;font-style:italic">// Your database connection string
+</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">5</span><span style="color:#099">1</span><span style="color:#099">2</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessHealthCheck(<span style="color:#d14">&#34;ProcessName&#34;</span>, p =&gt; p.Length &gt; <span style="color:#099">0</span>) <span style="color:#998;font-style:italic">// check if process is running
+</span><span style="color:#998;font-style:italic"></span>  .AddWindowsServiceHealthCheck(<span style="color:#d14">&#34;someservice&#34;</span>, s =&gt; s.Status == ServiceControllerStatus.Running) <span style="color:#998;font-style:italic">// check if a windows service is running
+</span><span style="color:#998;font-style:italic"></span>  .AddUrlGroup(<span style="color:#000;font-weight:bold">new</span> Uri(<span style="color:#d14">&#34;https://localhost:44318/weatherforecast&#34;</span>), <span style="color:#d14">&#34;Example endpoint&#34;</span>); <span style="color:#998;font-style:italic">// should return status code 200
+</span></code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>You can configure much more using the provided <code>UriHealthCheckOptions</code>, for example what status codes are considered good or bad, more than one URLs, etc&hellip;</p>
+<h3 id="ui">UI</h3>
+<p>There is also a package that adds a monitoring UI that shows you the status of all the checks you added, as well as their history.</p>
+<p>First, let's install the packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI">AspNetCore.HealthChecks.UI</a> which adds the UI.</li>
+<li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.Client">AspNetCore.HealthChecks.UI.Client</a> which turns our old response (e.g. <code>Healthy</code>) into a more detailed response.</li>
+<li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.InMemory.Storage">AspNetCore.HealthChecks.UI.InMemory.Storage</a> which saves the results in memory for the UI to use.</li>
+</ul>
+<p>Then let's register the UI:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ConfigureServices(IServiceCollection services)
+{
+  <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>
+  services
+    .AddHealthChecksUI(s =&gt;
+    {
+        s.AddHealthCheckEndpoint(<span style="color:#d14">&#34;endpoint1&#34;</span>, <span style="color:#d14">&#34;https://localhost:44318/health&#34;</span>);
+    })
+    .AddInMemoryStorage();
+
+  <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>}
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+  <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>
+  pp.UseEndpoints(endpoints =&gt;
+  {
+      endpoints.MapControllers();
+      endpoints.MapHealthChecksUI();
+
+      endpoints.MapHealthChecks(<span style="color:#d14">&#34;/health&#34;</span>, <span style="color:#000;font-weight:bold">new</span> HealthCheckOptions()
+      {
+          Predicate = _ =&gt; <span style="color:#000;font-weight:bold">true</span>,
+          ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+      });
+  });
+
+  <span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>Here's what you'll find when you visit the <code>/health</code> endpoint:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Unhealthy&#34;</span>,
+  <span style="color:#000080">&#34;totalDuration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0531378&#34;</span>,
+  <span style="color:#000080">&#34;entries&#34;</span>: {
+    <span style="color:#000080">&#34;diskstorage&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0003344&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Healthy&#34;</span>
+    },
+    <span style="color:#000080">&#34;process_allocated_memory&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;description&#34;</span>: <span style="color:#d14">&#34;Allocated megabytes in memory: 11 mb&#34;</span>,
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0002289&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Healthy&#34;</span>
+    },
+    <span style="color:#000080">&#34;process&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0162908&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Unhealthy&#34;</span>
+    },
+    <span style="color:#000080">&#34;windowsservice&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0001123&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Healthy&#34;</span>
+    },
+    <span style="color:#000080">&#34;Example endpoint&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0514370&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Healthy&#34;</span>
+    },
+    <span style="color:#000080">&#34;sqlserver&#34;</span>: {
+      <span style="color:#000080">&#34;data&#34;</span>: {},
+      <span style="color:#000080">&#34;duration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0319841&#34;</span>,
+      <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Healthy&#34;</span>
+    }
+  }
+}
+</code></pre></div><p>And if you visit <code>/healthchecks-ui</code>, which is the default URL for the UI:</p>
+<figure>
+    <img src="/img/HealthChecksUI.png"
+         alt="Health Checks UI"/> <figcaption>
+            <h4>Health Checks UI</h4>
+        </figcaption>
+</figure>
+
+<p>We can also tell the UI to save the results in an actual database, let's try the SQLite one available in the package <a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.SQLite.Storage">AspNetCore.HealthChecks.UI.SQLite.Storage</a>.</p>
+<p>All we have to do is replace the in memory call:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services
+  .AddHealthChecksUI(s =&gt;
+  {
+      s.AddHealthCheckEndpoint(<span style="color:#d14">&#34;endpoint1&#34;</span>, <span style="color:#d14">&#34;https://localhost:44318/health&#34;</span>);
+  })
+  .AddSqliteStorage(<span style="color:#d14">&#34;Data Source = healthchecks.db&#34;</span>);
+</code></pre></div><div class="highlight-footer">
+    Startup.cs
+</div>
+<p>Now every time the UI fetches the health checks at <code>/health</code>, it will also use the SQLite database to save a bunch of information.</p>
+<figure>
+    <img src="/img/HealthChecksDB.png"
+         alt="Health Checks DB"/> <figcaption>
+            <h4>Health Checks DB</h4>
+        </figcaption>
+</figure>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post, we saw what ASP.NET Core provides by default regarding health checks. Microsoft made a very extensible system where other developers can create all sorts of checks while keeping the same infrastructure.</p>
+<p>We also saw some of the <code>AspNetCore.HealthChecks</code> packages that plug on top of ASP.NET Core's health checks to add the most popular checks anyone would ever need. Not only that, but also a monitoring UI that is customizable when you provide it your CSS file.</p>
+<p>What we didn't see in this post is the ability to have hooks (e.g. Slack) that listen on the application's health, which <code>AspNetCore.HealthChecks</code> also provides.</p>
+<p>As a reminder, all the code is available in this <a href="https://github.com/zHaytam/HealthChecksExample">GitHub repository</a>.
+I hope this post was useful, see you around!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/asp.net-core" title="View all posts in ASP.NET Core">ASP.NET Core</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/health-checks" title="View all posts tagged Health Checks">Health Checks</a>
+  
+  <a href="/tags/diagnostics" title="View all posts tagged Diagnostics">Diagnostics</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1588352235"></script>
+
+
+</body>
+</html>

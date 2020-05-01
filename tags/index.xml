@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Diagnostics</title>
+      <link>https://blog.zhaytam.com/tags/diagnostics/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/diagnostics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Health Checks</title>
+      <link>https://blog.zhaytam.com/tags/health-checks/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/health-checks/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>DataFrames</title>

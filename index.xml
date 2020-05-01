@@ -6,10 +6,20 @@
     <description>Recent content on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Health Checks in ASP.NET Core</title>
+      <link>https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/</guid>
+      <description>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp;amp; healthy or not. It&#39;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.
+Health checks are very useful especially when your application depends on other things like a database or even other services.</description>
+    </item>
     
     <item>
       <title>Writing maintainable Spark jobs in Scala</title>
