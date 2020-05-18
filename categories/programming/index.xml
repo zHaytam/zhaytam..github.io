@@ -32,6 +32,16 @@ The package The DataFrame related classes were introduced in the package Microso
     </item>
     
     <item>
+      <title>Socks5 – A .NET Core implementation from scratch</title>
+      <link>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</link>
+      <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
+      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
+The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
+    </item>
+    
+    <item>
       <title>Color quantization using K-means clustering in ML.NET</title>
       <link>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
       <pubDate>Tue, 15 Oct 2019 09:39:51 +0000</pubDate>

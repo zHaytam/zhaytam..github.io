@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSharp</title>
+      <link>https://blog.zhaytam.com/categories/csharp/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/categories/csharp/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ASP.NET Core</title>
@@ -35,15 +44,6 @@
       <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/categories/artificial-intelligence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C#</title>
-      <link>https://blog.zhaytam.com/categories/c#/</link>
-      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/categories/c#/</guid>
       <description></description>
     </item>
     
