@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Github Pages on Awaiting Bits</title>
+    <title>GitHub Pages on Awaiting Bits</title>
     <link>https://blog.zhaytam.com/tags/github-pages/</link>
-    <description>Recent content in Github Pages on Awaiting Bits</description>
+    <description>Recent content in GitHub Pages on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deploy Blazor WASM to GitHub Pages using GitHub Actions</title>
+      <link>https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/</guid>
+      <description>Blazor WebAssembly was out a couple of weeks ago, and I can&#39;t stop playing with it! It&#39;s such a refreshing pause from all the JavaScript SPA frameworks.
+As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I&#39;ll be showing you step by step how to do so.</description>
+    </item>
     
     <item>
       <title>From Wordpress to Hugo, Self Hosting to Github Pages</title>

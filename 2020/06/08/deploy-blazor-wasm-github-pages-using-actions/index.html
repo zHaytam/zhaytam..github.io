@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Deploy Blazor WASM to GitHub Pages using GitHub Actions",
+        "headline" : "Deploy Blazor WASM to GitHub Pages using GitHub Actions",
+        "description" : "Blazor WebAssembly was out a couple of weeks ago, and I can't stop playing with it! It's such a refreshing pause from all the JavaScript SPA frameworks.\nAs with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I'll be showing you step by step how to do so.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-06-08T00:00:00Z",
+        "dateModified" : "2020-06-08T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/06\/08\/deploy-blazor-wasm-github-pages-using-actions\/",
+        "wordCount" : "531",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/BlazorGithubDeploy.jpg",
+        "keywords" : [ "Blazor","WebAssembly","GitHub Pages","GitHub Actions","Blog" ]   
+    }
+    </script>
+
+
+ <title>Deploy Blazor WASM to GitHub Pages using GitHub Actions </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Deploy Blazor WASM to GitHub Pages using GitHub Actions | Awaiting Bits</title>
+<meta property="og:title" content="Deploy Blazor WASM to GitHub Pages using GitHub Actions | Awaiting Bits" />
+<meta name="twitter:title" content="Deploy Blazor WASM to GitHub Pages using GitHub Actions | Awaiting Bits" />
+<meta itemprop="name" content="Deploy Blazor WASM to GitHub Pages using GitHub Actions | Awaiting Bits" />
+<meta name="application-name" content="Deploy Blazor WASM to GitHub Pages using GitHub Actions | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/BlazorGithubDeploy.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/BlazorGithubDeploy.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/BlazorGithubDeploy.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/BlazorGithubDeploy.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2020-06-08T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Blazor,WebAssembly,GitHub Pages,GitHub Actions" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1591643330" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1591643330" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/csharp">csharp</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/devops">devops</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/BlazorGithubDeploy.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">08 June</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/devops">DevOps</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Deploy Blazor WASM to GitHub Pages using GitHub Actions</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Blazor WebAssembly was out a couple of weeks ago, and I can't stop playing with it! It's such a refreshing pause from all the JavaScript SPA frameworks.</p>
+<p>As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I'll be showing you step by step how to do so. We will be using GitHub Actions to automate the deployment process.</p>
+<h2 id="project-preparations">Project preparations</h2>
+<h3 id="404html">404.html</h3>
+<p>Let's begin with the most important file that lets a SPA work on GitHub Pages, the <code>404.html</code> file.<br>
+As you know, SPAs only have one entry file, which is the <code>index.html</code> file. The JavaScript is the one handling routing. Because of this, links to specific pages (e.g. <code>mywebsite.com/page1</code>) won't work, because there is no <code>page1.html</code> nor <code>page1/index.html</code>.</p>
+<p>GitHub Pages will try and return a 404 status code with an error page. The good thing is that it can be customized! Let's go ahead and add a custom <code>404.html</code> in our <strong>wwwroot</strong> folder (taken from <a href="https://github.com/rafrex/spa-github-pages">spa-github-pages</a>).</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/50a31559e5a8220bf4f8bec9a5be0602.js"></script>
+
+<p>There are two important things to note here, which are explained very well by the description:</p>
+<ul>
+<li>An url like <code>https://username.github.io/repo-name/one/two?a=b&amp;c=d#qwe becomes</code> will become <code>https://username.github.io/repo-name/?p=/one/two&amp;q=a=b~and~c=d#qwe</code>. Notice that the path <code>/one/two</code> becomes a parameter, so this essentially redirects to the <code>index.html</code> with extra parameters.</li>
+<li>Pay attention to the comment about <code>segmentCount</code>, you might need to change it to <code>1</code>.</li>
+</ul>
+<div class="note info">
+    Don't forget to change the title in the file!
+    
+</div>
+<h3 id="indexhtml">index.html</h3>
+<p>As we saw in the previous section, the <code>404.html</code> file adds a <code>p</code> parameter that contains the page the user asked for. We would need to use that in our <code>index.html</code> file. Let's modify our <strong>wwwroot/index.html</strong> file to add this script:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/3a27cde534a25f0270fc7e1ed9bd375f.js"></script>
+
+<h3 id="disabling-jekyll">Disabling Jekyll</h3>
+<p>GitHub Pages uses Jekyll, and by default, directories that start with an underscore are treated specially. This means that our two important folders, <code>_content</code> and <code>_framework</code> won't get served.</p>
+<p>To fix this, we only need to create the empty file <strong>wwwroot/.nojekyll</strong>.</p>
+<h2 id="github-actions">GitHub Actions</h2>
+<p>Now for the deployment part!</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>To keep the repository clean, we will be deploying the website in a separate branch <code>gh-pages</code>. Let's create an empty one now:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/8b5be17d00f5d4645791e29da3af48a8.js"></script>
+
+<p>Next, configure GitHub Pages to use this branch in the repository:</p>
+<figure>
+    <img src="/img/GitHubPagesBranchToUse.png"
+         alt="GitHub Pages repository settings"/> <figcaption>
+            <h4>GitHub Pages repository settings</h4>
+        </figcaption>
+</figure>
+
+<h3 id="workflow">Workflow</h3>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/6ea7a9b45f1dec89584b664a2f382061.js"></script>
+
+<p>Let's go over this step by step:</p>
+<ol>
+<li><strong>Publish app</strong>: We publish the project using <code>dotnet publish</code> . If your project is in a subfolder, add <code>cd Path/To/Project &amp;&amp;</code> in the start.</li>
+<li><strong>Rewrite base href</strong>: In the <code>index.html</code> file, there is <code>&lt;base href=&quot;/&quot; /&gt;</code>. We need to change the <code>/</code> into our GitHub Repository name in order for the navigation to work.</li>
+<li><strong>GitHub Pages</strong>: Lastly, we push our published website into the <code>gh-pages</code> branch.</li>
+</ol>
+<div class="note warning">
+    If you're using a custom domain (e.g. mywebsite.com, without subfolders), then you should delete the <b>Rewrite base href</b> step!
+    
+</div>
+<p>If you configured everything right, running this should deploy the project successfully!</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>Steve Sanderson's helpful repository <a href="https://github.com/SteveSandersonMS/BlazorOnGitHubPages">BlazorOnGitHubPages</a>.</li>
+<li>rafrex's famous repository <a href="https://github.com/rafrex/spa-github-pages">spa-github-pages</a>.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>As you can see, it's fairly easy to deploy a Blazor Wasm project in GitHub Pages. You can, if you want to, skip the GitHub Actions step and publish the project locally, then uploading it whenever needed. But you might as well use the free GitHub Actions minutes!</p>
+<p>Hope you liked the post, see you next time.</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/devops" title="View all posts in DevOps">DevOps</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/blazor" title="View all posts tagged Blazor">Blazor</a>
+  
+  <a href="/tags/webassembly" title="View all posts tagged WebAssembly">WebAssembly</a>
+  
+  <a href="/tags/github-pages" title="View all posts tagged GitHub Pages">GitHub Pages</a>
+  
+  <a href="/tags/github-actions" title="View all posts tagged GitHub Actions">GitHub Actions</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1591643330"></script>
+
+
+</body>
+</html>

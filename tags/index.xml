@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blazor</title>
+      <link>https://blog.zhaytam.com/tags/blazor/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/blazor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub Actions</title>
+      <link>https://blog.zhaytam.com/tags/github-actions/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/github-actions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub Pages</title>
+      <link>https://blog.zhaytam.com/tags/github-pages/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebAssembly</title>
+      <link>https://blog.zhaytam.com/tags/webassembly/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/webassembly/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C#</title>
@@ -143,15 +179,6 @@
       <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/tags/dataframe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github Pages</title>
-      <link>https://blog.zhaytam.com/tags/github-pages/</link>
-      <pubDate>Fri, 13 Dec 2019 10:26:06 +0100</pubDate>
-      
-      <guid>https://blog.zhaytam.com/tags/github-pages/</guid>
       <description></description>
     </item>
     
@@ -296,15 +323,6 @@
       <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/tags/asp.net-core-3.0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blazor</title>
-      <link>https://blog.zhaytam.com/tags/blazor/</link>
-      <pubDate>Fri, 13 Sep 2019 18:06:20 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/tags/blazor/</guid>
       <description></description>
     </item>
     
