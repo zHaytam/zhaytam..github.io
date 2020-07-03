@@ -4,16 +4,56 @@
   
   <url>
     <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/categories/csharp/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/immutability/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/init-only/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/initializers/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/records/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,27 +78,12 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.zhaytam.com/tags/webassembly/</loc>
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/tags/c#/</loc>
-    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/csharp/</loc>
     <lastmod>2020-05-17T00:00:00+00:00</lastmod>
   </url>
   

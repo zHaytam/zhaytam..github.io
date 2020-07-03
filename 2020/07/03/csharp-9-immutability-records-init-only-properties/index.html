@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "C# 9 - Immutability - Records \u0026 Init-only Properties",
+        "headline" : "C# 9 - Immutability - Records \u0026 Init-only Properties",
+        "description" : "Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.\nIt's an important concept for many reasons, but I won't get into it in this blog post because it's not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet's The changing state of immutability in c# video, which explain it in details.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-07-03T00:00:00Z",
+        "dateModified" : "2020-07-03T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/07\/03\/csharp-9-immutability-records-init-only-properties\/",
+        "wordCount" : "790",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/CsharpNineRecords.png",
+        "keywords" : [ "Records","Initializers","Init-only","Immutability","Blog" ]   
+    }
+    </script>
+
+
+ <title>C# 9 - Immutability - Records &amp; Init-only Properties </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">C# 9 - Immutability - Records &amp; Init-only Properties | Awaiting Bits</title>
+<meta property="og:title" content="C# 9 - Immutability - Records &amp; Init-only Properties | Awaiting Bits" />
+<meta name="twitter:title" content="C# 9 - Immutability - Records &amp; Init-only Properties | Awaiting Bits" />
+<meta itemprop="name" content="C# 9 - Immutability - Records &amp; Init-only Properties | Awaiting Bits" />
+<meta name="application-name" content="C# 9 - Immutability - Records &amp; Init-only Properties | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/CsharpNineRecords.png" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/CsharpNineRecords.png" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/CsharpNineRecords.png" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/CsharpNineRecords.png" /> 
+
+
+
+<meta property="og:updated_time" content=2020-07-03T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Records,Initializers,Init-only,Immutability" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1593774111" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1593774111" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/csharp">csharp</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/devops">devops</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/CsharpNineRecords.png">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">03 July</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/csharp">CSharp</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> C# 9 - Immutability - Records &amp; Init-only Properties</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.</p>
+<p>It's an important concept for many reasons, but I won't get into it in this blog post because it's not the point. Although I would urge you to either read <a href="https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd">The Dao of Immutability</a> or watch Jon Skeet's <a href="https://www.youtube.com/watch?v=O89-zG84QK4">The changing state of immutability in c#</a> video, which explain it in details.</p>
+<blockquote>
+<p>The true constant is change. Mutation hides change. Hidden change manifests chaos. Therefore, the wise embrace history.</p>
+</blockquote>
+<p>C# 9 is trying to embrace Immutability more, by introducing a new type, <code>record</code> and <code>init</code>-only properties. I finally had the time to play with them, and I'm very excited for when C# 9 will be officially out!</p>
+<h2 id="how-to-try-c-9-features">How to try C# 9 features</h2>
+<p>I'm sure some of you would like to try the new C# 9 features, here's how/where I do it:</p>
+<ul>
+<li><a href="https://www.linqpad.net/LINQPad6.aspx">LINQPad 6 Beta</a>: by activating the experimental .NET 5 runtime.</li>
+<li><a href="https://sharplab.io/">SharpLab</a>: by choosing the master Roslyn branch.</li>
+</ul>
+<h2 id="initonly-properties">Init-only Properties</h2>
+<p>Imagine you have the following class:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Rectangle</span>
+{
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Width { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Height { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
+}
+</code></pre></div><p>Now you can create instances of it:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> item1 = <span style="color:#000;font-weight:bold">new</span> Rectangle
+{
+  Width = <span style="color:#099">1</span><span style="color:#099">0</span>,
+  Height = <span style="color:#099">5</span>
+};
+</code></pre></div><p>Which is fine, but we can change <code>Width</code> and <code>Height</code> whenever we want. What if we don't want that? What if we want our <code>Rectangle</code> to be immutable?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Rectangle</span>
+{
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Width { <span style="color:#000;font-weight:bold">get</span>; }
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Height { <span style="color:#000;font-weight:bold">get</span>; }
+
+  <span style="color:#000;font-weight:bold">public</span> Rectangle(<span style="color:#458;font-weight:bold">double</span> width, <span style="color:#458;font-weight:bold">double</span> height)
+  {
+    Width = width;
+    Height = height;
+  }
+}
+</code></pre></div><p>As you can see, we'll need to make the properties read-only and add a constructor that fills them. This just adds boilerplate (a parameterized constructor) and removes the possibility to use object initializers.</p>
+<p>The new <code>init</code> keyword comes to the rescue:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/b27196d2cdc61b67086bdf08393f9bd5.js"></script>
+
+<p>This means that we can only change (set) the values of <code>Width</code> and <code>Height</code> when instantiating <code>Rectangle</code>. After that, you can't change the values of these properties, which essentially makes our class immutable!</p>
+<h2 id="records">Records</h2>
+<p>If you want to read the official proposal, which contains the full details, visit <a href="https://github.com/dotnet/csharplang/blob/master/proposals/records.md">records.md</a>.</p>
+<p>Init-only properties are already doing a good job to promote immutability in C#, so you might be wondering why records are such an important addition to the language.</p>
+<p>Records are here for two main reasons:</p>
+<ol>
+<li>A lot of our classes are &ldquo;data-holders&rdquo;, and creating them requires a lot of boilerplate.</li>
+<li>Immutability can be enhanced by things like value-based equality and deep cloning, which are automatically generated for you.</li>
+</ol>
+<h3 id="deep-dive">Deep dive</h3>
+<p>In order to make our <code>Rectangle</code> a record, all we need is to change the <code>class</code> keyword:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> record Rectangle
+{
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Width { <span style="color:#000;font-weight:bold">get</span>; init; }
+  <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Height { <span style="color:#000;font-weight:bold">get</span>; init; }
+}
+</code></pre></div><p>Which will be turned to this by the compiler:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/29e722f76eb77225a93b191efc0175a0.js"></script>
+
+<p>Here are the key things that you need to know about:</p>
+<ul>
+<li><strong>Line 11</strong>: A generated property used in the <code>Equals</code> method to only compare two instances of the same type, so inheritance won't matter.</li>
+<li><strong>Line 49</strong>: A generated <code>Clone</code> method that uses the copy constructor to clone the instance.</li>
+<li><strong>Line 60</strong>: A generated override of <code>Object.Equals</code>.</li>
+<li><strong>Line 65</strong>: A generated virtual <code>Equals</code> method that does a full value-based comparison.</li>
+<li><strong>Line 70</strong>: A generated copy constructor that copies the values of all the fields.</li>
+<li><strong>Line 80</strong>: A generated <code>IEquatable&lt;Rectangle&gt;.Equals</code> that uses the generated <code>Equals</code> method, since our generated class implements <code>IEquatable&lt;Rectangle&gt;</code>.</li>
+</ul>
+<div class="note info">
+    If your record already contains a method/constructor that is supposed to be generated, for example the copy constructor, then the compiler will use your implementation and not generate a new one.
+    
+</div>
+<h3 id="ways-to-define-records">Ways to define records</h3>
+<p>There are a couple of ways to define records:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/27eb7119d5fe35c3dda015a53e52bcaa.js"></script>
+
+<h3 id="withexpressions">With-expressions</h3>
+<p>Since we're working with immutable data, a core concept is to create new object from existing one, by changing one or more properties. C# 9 adds the <code>with</code> expression, which is just a syntax sugar:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/66a722f280798fef0c3d297fe7af0c9e.js"></script>
+
+<p>Here's the actual generated code:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/2a2da566e9019e599396b48b5e35d694.js"></script>
+
+<p>As you can see, the <code>with</code> expressions turn into a <code>Clone</code> + manual set of the changed properties. Note that <code>with</code> works with <code>init</code> properties because it uses the object initializer syntax.</p>
+<div class="note info">
+    If you noticed, the generated code contains duplicate objects, for example rectangle3. If anyone knows why, please send me a message!
+    
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Init-only properties and Records will boost our productivity and help us embrace immutability into our software. Personally, I can't wait to use this in Blazor to manage state.</p>
+<p>C# 9 is without a doubt a great milestone for the language. I only presented two features, but the version comes with a lot more! Make sure to check them out <a href="https://devblogs.microsoft.com/dotnet/welcome-to-c-9-0/">here</a>.</p>
+<p>Hope you enjoyed the post, see you soon!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/csharp" title="View all posts in CSharp">CSharp</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/records" title="View all posts tagged Records">Records</a>
+  
+  <a href="/tags/initializers" title="View all posts tagged Initializers">Initializers</a>
+  
+  <a href="/tags/init-only" title="View all posts tagged Init-only">Init-only</a>
+  
+  <a href="/tags/immutability" title="View all posts tagged Immutability">Immutability</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "awaiting-bits" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1593774111"></script>
+
+
+</body>
+</html>

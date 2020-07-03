@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Immutability</title>
+      <link>https://blog.zhaytam.com/tags/immutability/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/immutability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Init-only</title>
+      <link>https://blog.zhaytam.com/tags/init-only/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/init-only/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Initializers</title>
+      <link>https://blog.zhaytam.com/tags/initializers/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/initializers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Records</title>
+      <link>https://blog.zhaytam.com/tags/records/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/records/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blazor</title>

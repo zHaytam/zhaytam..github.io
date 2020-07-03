@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Initializers on Awaiting Bits</title>
+    <link>https://blog.zhaytam.com/tags/initializers/</link>
+    <description>Recent content in Initializers on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.zhaytam.com/tags/initializers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C# 9 - Immutability - Records &amp; Init-only Properties</title>
+      <link>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</guid>
+      <description>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.
+It&#39;s an important concept for many reasons, but I won&#39;t get into it in this blog post because it&#39;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&#39;s The changing state of immutability in c# video, which explain it in details.</description>
+    </item>
+    
+  </channel>
+</rss>
