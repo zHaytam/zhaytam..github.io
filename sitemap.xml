@@ -3,17 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/tags/aop/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</loc>
-    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/categories/asp.net-core/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/aspect-oriented-programming/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2020/08/16/aspnetcore-dynamic-proxies-for-aop/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/castle-project/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/dynamic/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/proxy-pattern/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2020-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</loc>
     <lastmod>2020-07-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,17 +83,7 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.zhaytam.com/tags/records/</loc>
-    <lastmod>2020-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
     <lastmod>2020-07-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -105,11 +140,6 @@
   <url>
     <loc>https://blog.zhaytam.com/tags/queryable/</loc>
     <lastmod>2020-05-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/categories/asp.net-core/</loc>
-    <lastmod>2020-04-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -338,12 +368,12 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   
