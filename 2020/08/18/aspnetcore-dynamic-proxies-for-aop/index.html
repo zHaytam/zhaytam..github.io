@@ -11,9 +11,9 @@
              "@id": "https:\/\/blog.zhaytam.com\/"
         },
         "articleSection" : "post",
-        "name" : "From Wordpress to Hugo, Self Hosting to Github Pages",
-        "headline" : "From Wordpress to Hugo, Self Hosting to Github Pages",
-        "description" : "These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.\nToday I'll talk about that decision, its advantages and disadvantages.",
+        "name" : "Aspect Oriented Programming using proxies in ASP.NET Core",
+        "headline" : "Aspect Oriented Programming using proxies in ASP.NET Core",
+        "description" : "After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).\n In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a \u0026ldquo;pointcut\u0026rdquo; specification, such as \u0026ldquo;log all function calls when the function's name begins with \u0026lsquo;set\u0026rsquo;\u0026quot;.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -27,29 +27,29 @@
         },
         "accountablePerson" : "Zanid Haytam",
         "copyrightHolder" : "Zanid Haytam",
-        "copyrightYear" : "2019",
-        "datePublished": "2019-12-13T10:26:06+01:00",
-        "dateModified" : "2019-12-13T10:26:06+01:00",
-        "url" : "https:\/\/blog.zhaytam.com\/2019\/12\/13\/wordpress-to-hugo-self-hosting-to-github-pages\/",
-        "wordCount" : "596",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-08-18T00:00:00Z",
+        "dateModified" : "2020-08-18T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/08\/18\/aspnetcore-dynamic-proxies-for-aop\/",
+        "wordCount" : "670",
         "image" : "https:\/\/blog.zhaytam.com\/img\/default.jpg",
-        "keywords" : [ "Wordpress","Hugo","Github Pages","Blog" ]   
+        "keywords" : [ "AOP","Aspect Oriented Programming","Dynamic","Proxy pattern","Castle Project","Blog" ]   
     }
     </script>
 
 
- <title>From Wordpress to Hugo, Self Hosting to Github Pages </title>
+ <title>Aspect Oriented Programming using proxies in ASP.NET Core </title>
 
 
 <meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
 
-<title itemprop="name">From Wordpress to Hugo, Self Hosting to Github Pages | Awaiting Bits</title>
-<meta property="og:title" content="From Wordpress to Hugo, Self Hosting to Github Pages | Awaiting Bits" />
-<meta name="twitter:title" content="From Wordpress to Hugo, Self Hosting to Github Pages | Awaiting Bits" />
-<meta itemprop="name" content="From Wordpress to Hugo, Self Hosting to Github Pages | Awaiting Bits" />
-<meta name="application-name" content="From Wordpress to Hugo, Self Hosting to Github Pages | Awaiting Bits" />
+<title itemprop="name">Aspect Oriented Programming using proxies in ASP.NET Core | Awaiting Bits</title>
+<meta property="og:title" content="Aspect Oriented Programming using proxies in ASP.NET Core | Awaiting Bits" />
+<meta name="twitter:title" content="Aspect Oriented Programming using proxies in ASP.NET Core | Awaiting Bits" />
+<meta itemprop="name" content="Aspect Oriented Programming using proxies in ASP.NET Core | Awaiting Bits" />
+<meta name="application-name" content="Aspect Oriented Programming using proxies in ASP.NET Core | Awaiting Bits" />
 <meta property="og:site_name" content="" />
 
 
@@ -59,11 +59,11 @@
 <meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
 
 
-<base href="https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/">
-<link rel="canonical" href="https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/" itemprop="url" /> 
-<meta name="url" content="https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/" />
-<meta name="twitter:url" content="https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/" /> 
-<meta property="og:url" content="https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/" />
+<base href="https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/" />
 
 
 <meta property="og:locale" content="en">
@@ -79,14 +79,14 @@
 
 
 
-<meta property="og:updated_time" content=2019-12-13T10:26:06&#43;0100 />
+<meta property="og:updated_time" content=2020-08-18T00:00:00Z />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
 
 
 
 
 
-    <meta name="keywords" content="Wordpress,Hugo,Github Pages" />
+    <meta name="keywords" content="AOP,Aspect Oriented Programming,Dynamic,Proxy pattern,Castle Project" />
 
 <meta name="imagemode" content="force" />
 <meta name="coverage" content="Worldwide" /> 
@@ -312,7 +312,7 @@ if (!doNotTrack) {
       </div>
       
         <div class="entry-meta">
-          <span class="date">13 December</span>	<span> / </span>
+          <span class="date">18 August</span>	<span> / </span>
 
           <span class="author">
             <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
@@ -323,48 +323,80 @@ if (!doNotTrack) {
           <span class="category">
             <span> / </span>
 
-            <a href="/categories/other">Other</a>
+            <a href="/categories/asp.net-core">ASP.NET Core</a>
           </span>
           
 
 
         </div>
         <div class='entry-header'>
-          <h1 class='entry-title'> From Wordpress to Hugo, Self Hosting to Github Pages</h1>
+          <h1 class='entry-title'> Aspect Oriented Programming using proxies in ASP.NET Core</h1>
         </div>
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic.
-So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.<br>
-Today I'll talk about that decision, its advantages and disadvantages.</p>
-<h2 id="problems">Problems</h2>
-<h3 id="huge-ttfb">Huge TTFB</h3>
-<p>Whenever someone visits <a href="https://blog.zhaytam.com">https://blog.zhaytam.com</a>, they wouldn't receive the first byte until 4+ seconds later, regardless of whether the page was cached or not, which is HUGE. I suspect that this happens in mobile too, which is a deal breaker for most users.</p>
-<p>Suspected reasons:</p>
-<ul>
-<li>The VPS where I'm hosting the blog is far from where the users are. However this doesn't explain the issue since if you ping the server it responds withing 150ms max.</li>
-<li>Wordpress takes too long to generate the pages. This can explain the issue, knowing that many plugins are installed and Wordpress is slow by nature.</li>
-</ul>
-<h3 id="bad-quality-plugins-broken-plugins-lots-of-ads">Bad quality plugins, broken plugins, lots of Ads</h3>
-<p>There are a lot of Wordpress plugins, some of them are GREAT, others are not so. Sometimes I need a functionality but find a really bad plugin (vote-wise) or an outdated one, which creates this difference of quality between plugins.</p>
-<p>Whenever I opened my Wordpress Dashboard I was bombarded by ads from multiple plugins. I get that creators are trying to get sales on their plugins but these types of ads do not go away even if you close them, a good portion of the dashboard is always filled with them unless you close them everytime.</p>
-<h3 id="self-hosting-costs-money">Self hosting costs money</h3>
-<p>Even though it costs close to nothing (2.99$ per month), for a small blog like mine, it might not even be necessary. So why not save that money for something else?</p>
-<h2 id="switching-to-hugo">Switching to Hugo</h2>
+              <p>After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).</p>
 <blockquote>
-<p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.</p>
+<p>In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &ldquo;pointcut&rdquo; specification, such as &ldquo;log all function calls when the function's name begins with &lsquo;set&rsquo;&quot;. This allows behaviors that are not central to the business logic (such as logging) to be added to a program without cluttering the code, core to the functionality. AOP forms a basis for aspect-oriented software development.
+&ndash; <!-- raw HTML omitted -->Wikipedia<!-- raw HTML omitted --></p>
 </blockquote>
-<p>I have heard about static site generators for a while, but didn't think they fit my need until I read more about them, especially Hugo. For a blog, this might be the easiest way to get up and going. Depending on themes, you can find anything you need.</p>
-<p>What's even better is that you can customize everything yourself as a developper, which is very handy when you need something custom.</p>
-<p>To help you switch from Wordpress to Hugo, there is this <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">plugin</a>. One problem (or not, depending on your case) is that it lets other plugins generate content and so you end up with markdown posts that contain html that doesn't respect rules and non-local images.<br>
-I spent about 3 days manually cleaning posts and setting up images.</p>
-<h2 id="using-github-pages">Using Github Pages</h2>
-<p>I think everyone knows Github Pages by now. You can host a static site in a repository and let people visit it at <code>&lt;username&gt;.github.io</code> or <code>&lt;username&gt;.github.io/&lt;project&gt;</code>.</p>
-<p>What I didn't know is that you can replace Github's domain with your own, while enforcing HTTPS! This makes everything easier as I only need to build the blog into a repository and the changes are online.</p>
-<p>Everything went smoothly, apart from the HTTPS part. I couldn't enforce it from the Github repository directly and so I'm currently relying on <a href="https://www.cloudflare.com/">Cloudflare</a> to do so, using Page Rules and their free SSL plan.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>I think that this switch was a very good decision. My <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> speed went from a horrible 23 on mobile to 92! I advise every blogger that uses Wordpress to at least consider static site generators as a solution, most don't really need that much functionnality.</p>
+<p>There are a couple use cases where AOP can be used:</p>
+<ul>
+<li>Logging or Auditing</li>
+<li>Transactions management</li>
+<li>Security (rarely)</li>
+</ul>
+<div class="note info">
+    The proxy pattern is also used for Mocking (e.g. Moq, NSubstitute, ...) and Lazy loading (e.g. EF Core, NHibernate, ...).
+    
+</div>
+<p>All the code in this blog post is demonstrated in this <a href="https://github.com/zHaytam/AspNetCore.DynamicProxies">repository</a>.</p>
+<h2 id="aop-in-c">AOP in C#.</h2>
+<p>It's already possible to do AOP in C#, a quick search in Google will show you how: <code>RealProxy</code> and <code>MarshalByRefObject</code>. Technically, it can be used both locally and remotely, which is very nice until you understand that all your target objects <strong>must</strong> inherit <code>MarshalByRefObject</code>. That alone drives people to not even consider it.</p>
+<h2 id="the-better-way">The better way</h2>
+<p>Thankfully, there is a better way to create proxies of objects in C#, using <a href="http://www.castleproject.org/projects/dynamicproxy/">Castle.DynamicProxy</a>.</p>
+<blockquote>
+<p>Castle DynamicProxy is a library for generating lightweight .NET proxies on the fly at runtime. Proxy objects allow calls to members of an object to be intercepted without modifying the code of the class. Both classes and interfaces can be proxied, however only virtual members can be intercepted.
+&ndash; <!-- raw HTML omitted -->Castle Project<!-- raw HTML omitted --></p>
+</blockquote>
+<p>Using Castle's dynamic proxies, you can create proxies of abstract classes, interfaces (while providing the implementation) and classes (only virtual methods/properties).</p>
+<p>As an example, let's say we're making a server that handles blog posts:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/a74c5342116bea30f33f818464af6795.js"></script>
+
+<p>Usually, you would register <code>IBlogService</code> with the implementation <code>BlogService</code>, and everything will work well. But now, you want to proxy the interface and do something whenever a method is called.</p>
+<p>First, we need to create an interceptor that intercepts method calls, just like <code>RealProxy</code>:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/3c658602699e84c99b5af687f56be29e.js"></script>
+
+<p>Then, we'll create the proxy object using a generator:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/87ab88584b408f29f9200b7e05107403.js"></script>
+
+<p>We have now created a proxy object that implements <code>IBlogService</code> and has the inner implementation <code>BlogService</code>. Whenever an interface method is called, the <code>LoggingInterceptor.Intercept</code> method will be called and when it calls <code>invocation.Proceed()</code>, the implemented method in <code>BlogService</code> will be called.</p>
+<h2 id="using-it-in-aspnet-core">Using it in ASP.NET Core</h2>
+<p>The idea here is to always serve proxies of services using the IOC Container of ASP.NET Core. Castle Project does have its own IOC Container <a href="https://github.com/castleproject/Windsor">Castle Windsor</a> which makes injecting proxies much easier, but we won't use it for now.</p>
+<p>First, we'll add a simple dependency to our <code>LoggingInterceptor</code> to show how we can handle them using DI. In reality, most of your interceptors will require one or more dependencies.</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/7a1e38255aeb751eefda6d138353bded.js"></script>
+
+<p>Second, we'll register a singleton <code>ProxyGenerator</code> and all the interceptors we're working with (<code>LoggingInterceptor</code> for now):</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/42b5f44b551ea77e9a583f2615ee34e0.js"></script>
+
+<p>Lastly, we'll register everything:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/c5b1c5eeaf2f915dd416ed1ae1fee75c.js"></script>
+
+<p>Here's how it works:</p>
+<ol>
+<li>We register the implementation (e.g. <code>BlogService</code>). This is because the implementation might have dependencies that need to be resolved using DI, (there might be a better way).</li>
+<li>Whenever the interface is asked for:
+<ol>
+<li>We get the instance of <code>ProxyGenerator</code>.</li>
+<li>We get an instance of the implementation.</li>
+<li>We get all the registered interceptors.</li>
+<li>We create and return a proxy of the interface with the inner implementation and the interceptors.</li>
+</ol>
+</li>
+</ol>
+<p>Now, whenever we ask for <code>IBlogService</code>, we'll receive a proxy object that passes through all the interceptors, and then call the actual methods in <code>BlogService</code>.</p>
+<p>Unfortunately, this isn't very easy nor straightforward to do in ASP.NET Core compared to Spring, but we can easily turn this into a simple &ldquo;framework&rdquo;. We can hook into specific methods using Castle's DynamicProxy and do more advanced things.</p>
+<p>I hope this helps some of you &amp; Happy Coding!</p>
 
             </article>
           </div>
@@ -374,7 +406,7 @@ I spent about 3 days manually cleaning posts and setting up images.</p>
 
   <div class="entry-categories"><p><span>Categories</span>
     
-    <a href="/categories/other" title="View all posts in Other">Other</a>
+    <a href="/categories/asp.net-core" title="View all posts in ASP.NET Core">ASP.NET Core</a>
   </p>
 </div>
 
@@ -382,11 +414,15 @@ I spent about 3 days manually cleaning posts and setting up images.</p>
 
 <div class="entry-tags"><p><span>Tags</span>
   
-  <a href="/tags/wordpress" title="View all posts tagged Wordpress">Wordpress</a>
+  <a href="/tags/aop" title="View all posts tagged AOP">AOP</a>
   
-  <a href="/tags/hugo" title="View all posts tagged Hugo">Hugo</a>
+  <a href="/tags/aspect-oriented-programming" title="View all posts tagged Aspect Oriented Programming">Aspect Oriented Programming</a>
   
-  <a href="/tags/github-pages" title="View all posts tagged Github Pages">Github Pages</a>
+  <a href="/tags/dynamic" title="View all posts tagged Dynamic">Dynamic</a>
+  
+  <a href="/tags/proxy-pattern" title="View all posts tagged Proxy pattern">Proxy pattern</a>
+  
+  <a href="/tags/castle-project" title="View all posts tagged Castle Project">Castle Project</a>
   
 
 </p></div>	</div>
