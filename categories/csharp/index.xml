@@ -6,10 +6,19 @@
     <description>Recent content in CSharp on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Extract Available Settings Using C#</title>
+      <link>https://blog.zhaytam.com/2020/10/19/available-settings-extraction/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/10/19/available-settings-extraction/</guid>
+      <description>I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could&#39;ve done it manually, but there was quiet a few settings and I didn&#39;t want to have to update the table every time new ones are added.</description>
+    </item>
     
     <item>
       <title>C# 9 - Immutability - Records &amp; Init-only Properties</title>
