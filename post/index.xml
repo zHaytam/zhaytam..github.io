@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.zhaytam.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C# Expression Trees: Property Getters</title>
+      <link>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</guid>
+      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&#39;t get me wrong, Reflection does the job most of the time, but it&#39;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
+    </item>
     
     <item>
       <title>Extract Available Settings Using C#</title>

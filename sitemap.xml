@@ -4,21 +4,46 @@
   
   <url>
     <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/csharp/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/expression-trees/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/performance/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
     <lastmod>2020-10-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -33,17 +58,7 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.zhaytam.com/tags/reflection/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
     <lastmod>2020-10-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -139,11 +154,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</loc>
-    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/expression-trees/</loc>
     <lastmod>2020-05-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -383,12 +393,12 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/tags/code-analysis/</loc>
+    <loc>https://blog.zhaytam.com/categories/code-analysis/</loc>
     <lastmod>2019-08-26T12:57:51+00:00</lastmod>
   </url>
   

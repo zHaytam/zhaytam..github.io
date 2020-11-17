@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "C# Expression Trees: Property Getters",
+        "headline" : "C# Expression Trees: Property Getters",
+        "description" : "There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don't get me wrong, Reflection does the job most of the time, but it's known to be very slow in almost all cases. I happen to have a bit of experience in the former.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-11-17T00:00:00Z",
+        "dateModified" : "2020-11-17T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2020\/11\/17\/expression-trees-property-getter\/",
+        "wordCount" : "774",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/expression_trees\/ExpressionTreesHeader1.jpg",
+        "keywords" : [ "Expression Trees","Performance","Blog" ]   
+    }
+    </script>
+
+
+ <title>C# Expression Trees: Property Getters </title>
+
+
+<meta name="description" content="How to dynamically retrieve the values of properties using Expression Trees" />
+
+
+
+<title itemprop="name">C# Expression Trees: Property Getters | Awaiting Bits</title>
+<meta property="og:title" content="C# Expression Trees: Property Getters | Awaiting Bits" />
+<meta name="twitter:title" content="C# Expression Trees: Property Getters | Awaiting Bits" />
+<meta itemprop="name" content="C# Expression Trees: Property Getters | Awaiting Bits" />
+<meta name="application-name" content="C# Expression Trees: Property Getters | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/">
+<link rel="canonical" href="https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/expression_trees/ExpressionTreesHeader1.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/expression_trees/ExpressionTreesHeader1.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/expression_trees/ExpressionTreesHeader1.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/expression_trees/ExpressionTreesHeader1.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2020-11-17T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Expression Trees,Performance" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/csharp">csharp</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/devops">devops</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/expression_trees/ExpressionTreesHeader1.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">17 November</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/csharp">CSharp</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> C# Expression Trees: Property Getters</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don't get me wrong, Reflection does the job most of the time, but it's known to be very slow in almost all cases. I happen to have a bit of experience in the former.</p>
+<p>This blog post is the start of a series about Expression Trees and some use cases I found myself needing them. If you're interested to know more about this topic, then stay tuned!</p>
+<h2 id="what-are-expression-trees">What are Expression Trees</h2>
+<blockquote>
+<p>Expression trees represent code in a tree-like data structure, where each node is an expression, for example, a method call or a binary operation such as x &lt; y.<br>
+You can compile and run code represented by expression trees. This enables dynamic modification of executable code, the execution of LINQ queries in various databases, and the creation of dynamic queries.<br>
+&ndash; <!-- raw HTML omitted -->Microsoft<!-- raw HTML omitted --></p>
+</blockquote>
+<p>They can be used to solve a lot of problems where you need to do things dynamically or some things are only available at runtime.</p>
+<ul>
+<li>They are way more performant than Reflection. As with manually written code, expression trees generate IL which gets optimized further along the way (JIT).</li>
+<li>They can do a lot more than Reflection.</li>
+<li>They are easy to understand and create due to their nature (trees).</li>
+</ul>
+<h2 id="todays-problem">Today's problem</h2>
+<p>Imagine we have the following class:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/0af44a82888e8223b7d349ecd3804cb6.js"></script>
+
+<p>We would like to extract the following:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/c5650f2c898948facbdea74c4f18ba79.js"></script>
+
+<p>Basically, we would like to extract all the properties of a class and their values. For my case, I needed to create query strings (e.g. <code>categoryId=qgq65s1d6qs5d1g&amp;page=1&amp;size=10&amp;filter=price&gt;10</code>) based on request classes. It can be done manually for each class, but I'm too lazy.</p>
+<h2 id="solution">Solution</h2>
+<p>In this section, I'll explain how I personally solve these kind of problems using Expression Trees and how exactly I create the trees.</p>
+<p>Firstly, we'll look at the manual approach:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/1a5860756f86a9a7483d3ac145cbaa71.js"></script>
+
+<p>Standard property getter. Now let's imagine that, for some reason, the type of <code>instance</code> is <code>object</code>. We can't access <code>CategoryId</code> directly anymore, but since we know the actual type, we can do the following:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/2ab3324b29724aa4de1b4a9ac6c1e6b7.js"></script>
+
+<p>Simple enough, right?<br>
+Now you want to create a function out of this in order to get the full picture:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/2df773102a43e2864ba2f1370a4bfe11.js"></script>
+
+<p>Writing what we want as a lambda expression helps us picture how our compiled Expression Tree will look like. In all of these examples, we assumed that <code>instance</code> is always of type <code>ListProductsRequest</code>. But in reality, it's not, and this is where dynamic code comes into play.</p>
+<div class="note info">
+    You could cast the lambda expression from <code>Func&lt;object, object&gt;</code> to <code>Expression&lt;Func&lt;object, object&gt;&gt;</code> and debug the expression directly. It will give you a better idea of how the tree is constructed, but it won't help with the unkown type problem.
+    
+</div>
+<p>If we represent the last lambda expression as a tree, it'll look like this:</p>
+<figure>
+    <img src="/img/expression_trees/PropertyGetterRepresentation.png"
+         alt="Expression Tree Representation"/> <figcaption>
+            <h4>Expression Tree Representation</h4>
+        </figcaption>
+</figure>
+
+<p><code>instance</code> is the <strong>parameter</strong> that we want to retrieve the values of the properties from.</p>
+<ol>
+<li>Cast the instance object to the correct type (e.g. <code>instance as ListCustomersRequest</code>).</li>
+<li>Retrieve the value of the property (e.g. <code>(instance as ListCustomersRequest).Page</code>).</li>
+<li>Convert the value to <code>object</code> (e.g. <code>(object)((instance as ListCustomersRequest).Page)</code>).</li>
+</ol>
+<p>Of course, the whole Expression Tree is then compiled into a <code>Func&lt;object, object&gt;</code>.</p>
+<p>You might be wondering by now, where exactly do we specify what property do we want?<br>
+We will be embedding it inside the Expression Tree, so that we don't have to add an extra parameter to our function and looking for the property every time it's called.</p>
+<h3 id="implementation">Implementation</h3>
+<p>Now for the fun part! Let's create the Expression Tree:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/d6a7c7fa1c8157feed76536324e5f6db.js"></script>
+
+<p>As you can see, the method takes a <code>PropertyInfo</code> as an argument and returns a single getter.</p>
+<p>An example usage would be:</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/b4ca1b4f5e43559f32fb923d430c0819.js"></script>
+
+<p>Of course, this needs to run only once per <code>Type</code> and be cached in memory.</p>
+<h3 id="performance">Performance</h3>
+<p>Just to get an idea of how better Expression Trees are from other solutions, I set up a quick &amp; simple benchmark that tests 3 ways to get a property's value and calculate the total time taken on 1 000 000 calls (in ms).</p>
+<figure>
+    <img src="/img/expression_trees/PropertyGetterPerformance.png"/> 
+</figure>
+
+<ol>
+<li>Store <code>typeof(X).GetProperty(&quot;Y&quot;)</code> and call <code>property.GetValue(instance, null)</code>.</li>
+<li>Store <code>typeof(X).GetProperty(&quot;Y&quot;).GetGetMethod()</code> and call <code>method.Invoke(instance, null)</code>.</li>
+<li>Store a compiled getter lambda created with our previous code.</li>
+</ol>
+<p>As you can see, Expression Trees outperform Reflection by far.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Running code dynamically can be done in a lot of ways, today we saw how we can do it using Expression Trees and how performant it is over plain Reflection. While you probably won't need to dynamically run code a lot in your developer journey, I believe it's something worth learning and it's a lot of fun!</p>
+<p>I have a couple of use cases more that I'll be sharing in future posts.<br>
+Stay tuned!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/csharp" title="View all posts in CSharp">CSharp</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/expression-trees" title="View all posts tagged Expression Trees">Expression Trees</a>
+  
+  <a href="/tags/performance" title="View all posts tagged Performance">Performance</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "awaiting-bits" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+
+
+</body>
+</html>
