@@ -6,19 +6,15 @@
     <description>Recent content in Tests on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/tests/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/tests/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writing maintainable Spark jobs in Scala</title>
       <link>https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/</guid>
-      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&#39;s tested.
-Today I&#39;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
+      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&amp;rsquo;s tested.
+Today I&amp;rsquo;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
     </item>
     
   </channel>

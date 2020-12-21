@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Association Rule Mining using Apriori Algorithm",
         "headline" : "Association Rule Mining using Apriori Algorithm",
-        "description" : "Have you ever wondered how Amazon suggets to us items to buy when we're looking at a product (labeled as “Frequently bought together”)?\nFor example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.\nWhich is true because a lot of people buy their components grouped when building a desktop pc.",
+        "description" : "Have you ever wondered how Amazon suggets to us items to buy when we\u0026rsquo;re looking at a product (labeled as “Frequently bought together”)?\nFor example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.\nWhich is true because a lot of people buy their components grouped when building a desktop pc.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -97,9 +97,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -134,15 +134,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -339,7 +343,7 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>Have you ever wondered how Amazon suggets to us items to buy when we're looking at a product (labeled as “Frequently bought together”)?</p>
+              <p>Have you ever wondered how Amazon suggets to us items to buy when we&rsquo;re looking at a product (labeled as “Frequently bought together”)?</p>
 <p>For example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.</p>
 <p>Which is true because a lot of people buy their components grouped when building a desktop pc.</p>
 <p>I always thought of it as a block box that takes a specific product (or specifications of that product, like its category) and outputs a list of related products. Not until I recently started studying Data Mining and came across <a href="https://en.wikipedia.org/wiki/Association_rule_learning">Association Rule Mining/Learning</a>.</p>
@@ -350,7 +354,7 @@ if (!doNotTrack) {
 <p>In a store, a lot of people come and buy products everyday.</p>
 <p>We can look at the list of products bought in a period, see what products are bought together and create our rules.</p>
 <p>We can then use these rules to help us make decisions, e.g. put certain products together, add collective discounts.</p>
-<p>Of course it's not as easy as picking whatever products that come together.</p>
+<p>Of course it&rsquo;s not as easy as picking whatever products that come together.</p>
 <p>Not only the generation of such rules takes time, but the rules also have to reflect on frequent products and not random products bought together.</p>
 <h2 id="vocabulary">Vocabulary</h2>
 <ul>
@@ -363,12 +367,12 @@ if (!doNotTrack) {
 </ul>
 <h2 id="apriori-algorithm">Apriori Algorithm</h2>
 <p>Association rules are great and everything, but how do we generate them?</p>
-<p>The easiest answer that comes to mind is to bruteforce all possible rules. This is VERY inefficent because we'll have to compute the support and confidence of all these rules, which is computationally infeasable in medium to large datasets.</p>
+<p>The easiest answer that comes to mind is to bruteforce all possible rules. This is VERY inefficent because we&rsquo;ll have to compute the support and confidence of all these rules, which is computationally infeasable in medium to large datasets.</p>
 <p>A more “sophisticated” way to generate the rules is to use the Apriori algorithm.</p>
 <p>The apriori algorithm reduces the number of candidates thanks to the following principle:</p>
 <p><strong>If an itemset is frequent, ALL of its subsets are frequent.</strong></p>
 <p>We can think of this backwards, every unfrequent itemset cannot be used to generate a frequent itemset.</p>
-<p>In case you're wondering, here's why the Apriori principle holds:<br>
+<p>In case you&rsquo;re wondering, here&rsquo;s why the Apriori principle holds:<br>
 $$
 \forall X, Y : (X \subseteq Y) \longrightarrow s(X) \geq s(Y)
 $$</p>
@@ -384,11 +388,11 @@ $$</p>
 <li>Extract all the frequent 1-itemsets (unique items in all the transactions).</li>
 <li>Create new candidates (itemsets) using the previous frequent itemsets.</li>
 <li>Calculate their supports and eliminate unfrequent ones.</li>
-<li>Repeat 2 and 3 until we don't have any more candidates.</li>
+<li>Repeat 2 and 3 until we don&rsquo;t have any more candidates.</li>
 <li>Extract all the association rules from all the frequent itemsets and eliminate those who have low confidence.</li>
 </ol>
 <h2 id="example">Example</h2>
-<p>Let's take for example the following list of transactions:</p>
+<p>Let&rsquo;s take for example the following list of transactions:</p>
 <table>
 <thead>
 <tr>
@@ -440,7 +444,7 @@ $$</p>
 </tbody>
 </table>
 <p>In this example, our minimum support is 0.5 and our minimum confidence 0.5.</p>
-<p>Let's extract the 1-itemsets from it and calculate their support:</p>
+<p>Let&rsquo;s extract the 1-itemsets from it and calculate their support:</p>
 <table>
 <thead>
 <tr>
@@ -487,8 +491,8 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<p>As you can see, a lot of itemsets were removed because they don't meet the minimum support threshold.</p>
-<p>Now let's extract the 2-itemsets using the 1-itemsets and calculate their support:</p>
+<p>As you can see, a lot of itemsets were removed because they don&rsquo;t meet the minimum support threshold.</p>
+<p>Now let&rsquo;s extract the 2-itemsets using the 1-itemsets and calculate their support:</p>
 <table>
 <thead>
 <tr>
@@ -539,7 +543,7 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<p>Finally, we're left with one 3-itemset that happens to be frequent.</p>
+<p>Finally, we&rsquo;re left with one 3-itemset that happens to be frequent.</p>
 <p>Thanks to the Apriori algorithm, we ended up checking 16 candidate itemsets instead of many more.</p>
 <p>The next and last step is creating the association rules from all the frequent itemsets that have at least 2 items and calculate their confidence.</p>
 <table>
@@ -623,7 +627,7 @@ $$</p>
 <p>If we check to make sure, all the transactions containing a Banana and a Lime contain indeed an Orange.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>As you can see, association rule minig is very important. It helps us incover relations between items and can help us make better decisions overall.</p>
-<p>If you're interested to see the implementation of the apriori algorithm, here's <a href="https://github.com/zHaytam/AprioriAlgorithm">mine in github</a>.</p>
+<p>If you&rsquo;re interested to see the implementation of the apriori algorithm, here&rsquo;s <a href="https://github.com/zHaytam/AprioriAlgorithm">mine in github</a>.</p>
 
             </article>
           </div>
@@ -843,7 +847,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 <script id="MathJax-script" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full">

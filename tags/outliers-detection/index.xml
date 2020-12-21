@@ -6,11 +6,7 @@
     <description>Recent content in outliers detection on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Aug 2019 10:33:10 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/outliers-detection/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 06 Aug 2019 10:33:10 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/outliers-detection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Outliers Detection in PySpark #3 – K-means</title>
       <link>https://blog.zhaytam.com/2019/08/06/outliers-detection-in-pyspark-3-k-means/</link>

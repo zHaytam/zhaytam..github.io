@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -359,7 +363,7 @@ if (!doNotTrack) {
 </figure>
 
 <p>A colorful image reduced to 4 colors using spatial color quantization.</p>
-<h2 id="the-use-of-kmeans">The use of K-means</h2>
+<h2 id="the-use-of-k-means">The use of K-means</h2>
 <p>K-means is an unsupervised clustering technique used to group N points into K clusters. In the past, it was computationally expensive to use it for quantization, until these recent years, as demonstrated by M. Emre Celebi.</p>
 <ol>
 <li>Firstly, we load the RGB image and normalize the values (divide them by 255).</li>
@@ -368,7 +372,7 @@ if (!doNotTrack) {
 </ol>
 <h2 id="implementation-in-mlnet">Implementation in ML.NET</h2>
 <h3 id="loading-the-image">Loading the image</h3>
-<p>First, we'll create a couple of classes to hold our data. It is useful to hold on to the width and height of the image so we can reconstruct the image later.</p>
+<p>First, we&rsquo;ll create a couple of classes to hold our data. It is useful to hold on to the width and height of the image so we can reconstruct the image later.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">PixelEntry</span>
 {
 
@@ -393,7 +397,7 @@ if (!doNotTrack) {
     <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">uint</span> PredictedLabel { <span style="color:#000;font-weight:bold">get</span>; <span style="color:#000;font-weight:bold">set</span>; }
 
 }
-</code></pre></div><p>Then we'll add a method to load the image. For this, we'll be using the <a href="https://github.com/SixLabors/ImageSharp">SixLabors.ImageSharp</a> package.</p>
+</code></pre></div><p>Then we&rsquo;ll add a method to load the image. For this, we&rsquo;ll be using the <a href="https://github.com/SixLabors/ImageSharp">SixLabors.ImageSharp</a> package.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ImageEntry LoadImage(FileInfo file)
 {
     <span style="color:#000;font-weight:bold">using</span> (Image&lt;Rgba32&gt; img = Image.Load&lt;Rgba32&gt;(file.FullName))
@@ -407,9 +411,9 @@ if (!doNotTrack) {
             {
                 Features = <span style="color:#000;font-weight:bold">new</span>[]
                 {
-                    (<span style="color:#458;font-weight:bold">float</span>)pixel.R / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>,
-                    (<span style="color:#458;font-weight:bold">float</span>)pixel.G / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>,
-                    (<span style="color:#458;font-weight:bold">float</span>)pixel.B / <span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5.0f</span>
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.R / <span style="color:#099">255.0f</span>,
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.G / <span style="color:#099">255.0f</span>,
+                    (<span style="color:#458;font-weight:bold">float</span>)pixel.B / <span style="color:#099">255.0f</span>
                 }
             };
         }
@@ -423,7 +427,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>The method takes as input the image (file) to load and returns the loaded image, with normalized data, as an <code>ImageEntry</code> instance.</p>
-<h3 id="training-kmeans">Training K-means</h3>
+<h3 id="training-k-means">Training K-means</h3>
 <p>This step is made very easy by ML.NET. The input is the data and the number of clusters, and the output is a trained model.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ClusteringPredictionTransformer&lt;KMeansModelParameters&gt; Train(MLContext mlContext, IDataView data, <span style="color:#458;font-weight:bold">int</span> numberOfClusters)
 {
@@ -476,8 +480,8 @@ if (!doNotTrack) {
     <span style="color:#458;font-weight:bold">var</span> img = LoadImage(inputFile);
 
     <span style="color:#458;font-weight:bold">var</span> fullData = mlContext.Data.LoadFromEnumerable(img.Data);
-    <span style="color:#458;font-weight:bold">var</span> trainingData = mlContext.Data.LoadFromEnumerable(SelectRandom(img.Data, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>));
-    <span style="color:#458;font-weight:bold">var</span> model = Train(mlContext, trainingData, numberOfClusters: <span style="color:#099">3</span><span style="color:#099">2</span>);
+    <span style="color:#458;font-weight:bold">var</span> trainingData = mlContext.Data.LoadFromEnumerable(SelectRandom(img.Data, <span style="color:#099">1000</span>));
+    <span style="color:#458;font-weight:bold">var</span> model = Train(mlContext, trainingData, numberOfClusters: <span style="color:#099">32</span>);
 
     VBuffer&lt;<span style="color:#458;font-weight:bold">float</span>&gt;[] centroidsBuffer = <span style="color:#000;font-weight:bold">default</span>;
     model.Model.GetClusterCentroids(<span style="color:#000;font-weight:bold">ref</span> centroidsBuffer, <span style="color:#000;font-weight:bold">out</span> <span style="color:#458;font-weight:bold">int</span> k);
@@ -490,8 +494,8 @@ if (!doNotTrack) {
     <span style="color:#000;font-weight:bold">using</span> <span style="color:#555">var</span> reconstructedImg = ReconstructImage(labels, centroidsBuffer, img.Width, img.Height);
     SaveImage(reconstructedImg, outputFile);
 
-    Console.WriteLine(<span style="color:#d14">&#34;Original size: {0:F2} KB.&#34;</span>, inputFile.Length / <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4.0</span>);
-    Console.WriteLine(<span style="color:#d14">&#34;Result size: {0:F2} KB.&#34;</span>, outputFile.Length / <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4.0</span>);
+    Console.WriteLine(<span style="color:#d14">&#34;Original size: {0:F2} KB.&#34;</span>, inputFile.Length / <span style="color:#099">1024.0</span>);
+    Console.WriteLine(<span style="color:#d14">&#34;Result size: {0:F2} KB.&#34;</span>, outputFile.Length / <span style="color:#099">1024.0</span>);
 }
 
 <span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> T[] SelectRandom&lt;T&gt;(T[] array, <span style="color:#458;font-weight:bold">int</span> count)
@@ -536,10 +540,10 @@ if (!doNotTrack) {
         </figcaption>
 </figure>
 
-<p>In this last image, we don't gain much space (~9KB) and the quality of the result image is obviously pixelized, increasing K to 64 would definitely help.</p>
+<p>In this last image, we don&rsquo;t gain much space (~9KB) and the quality of the result image is obviously pixelized, increasing K to 64 would definitely help.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Color quantization is an interesting technique that can be used to compress images, especially thumbnails to save a good amount of disk space in small amount of time (milliseconds).</p>
-<p>We can use K-means for this technique, which performs well and fast and is fairly easy to implement. ML.NET ended up a lot easier to use than I anticipated and I can't wait to try it on other tasks!</p>
+<p>We can use K-means for this technique, which performs well and fast and is fairly easy to implement. ML.NET ended up a lot easier to use than I anticipated and I can&rsquo;t wait to try it on other tasks!</p>
 
             </article>
           </div>
@@ -770,7 +774,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

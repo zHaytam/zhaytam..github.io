@@ -6,10 +6,15 @@
     <description>Recent content on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blazor vs React: Passing values to all children</title>
+      <link>https://blog.zhaytam.com/2020/12/21/blazor-vs-react-passing-values-to-all-children/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/12/21/blazor-vs-react-passing-values-to-all-children/</guid>
+      <description>How to pass values to all children (multiple levels), both in Blazor and React, and what are the differences between the two</description>
+    </item>
     
     <item>
       <title>C# Expression Trees: Property Getters</title>
@@ -17,7 +22,7 @@
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</guid>
-      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&#39;t get me wrong, Reflection does the job most of the time, but it&#39;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
+      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&amp;rsquo;t get me wrong, Reflection does the job most of the time, but it&amp;rsquo;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
     </item>
     
     <item>
@@ -26,7 +31,7 @@
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/10/19/available-settings-extraction/</guid>
-      <description>I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could&#39;ve done it manually, but there was quiet a few settings and I didn&#39;t want to have to update the table every time new ones are added.</description>
+      <description>I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could&amp;rsquo;ve done it manually, but there was quiet a few settings and I didn&amp;rsquo;t want to have to update the table every time new ones are added.</description>
     </item>
     
     <item>
@@ -36,7 +41,7 @@
       
       <guid>https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/</guid>
       <description>After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).
- In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&#39;s name begins with &amp;lsquo;set&amp;rsquo;&amp;quot;.</description>
+ In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&amp;rsquo;s name begins with &amp;lsquo;set&amp;rsquo;&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -46,7 +51,7 @@
       
       <guid>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</guid>
       <description>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.
-It&#39;s an important concept for many reasons, but I won&#39;t get into it in this blog post because it&#39;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&#39;s The changing state of immutability in c# video, which explain it in details.</description>
+It&amp;rsquo;s an important concept for many reasons, but I won&amp;rsquo;t get into it in this blog post because it&amp;rsquo;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&amp;rsquo;s The changing state of immutability in c# video, which explain it in details.</description>
     </item>
     
     <item>
@@ -55,8 +60,8 @@ It&#39;s an important concept for many reasons, but I won&#39;t get into it in t
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/</guid>
-      <description>Blazor WebAssembly was out a couple of weeks ago, and I can&#39;t stop playing with it! It&#39;s such a refreshing pause from all the JavaScript SPA frameworks.
-As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I&#39;ll be showing you step by step how to do so.</description>
+      <description>Blazor WebAssembly was out a couple of weeks ago, and I can&amp;rsquo;t stop playing with it! It&amp;rsquo;s such a refreshing pause from all the JavaScript SPA frameworks.
+As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I&amp;rsquo;ll be showing you step by step how to do so.</description>
     </item>
     
     <item>
@@ -65,8 +70,8 @@ As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Tod
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</guid>
-      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&#39;ve come to the right place!
-Today we&#39;ll see how we can generate these types of operations at runtime and on the fly.</description>
+      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&amp;rsquo;ve come to the right place!
+Today we&amp;rsquo;ll see how we can generate these types of operations at runtime and on the fly.</description>
     </item>
     
     <item>
@@ -75,7 +80,7 @@ Today we&#39;ll see how we can generate these types of operations at runtime and
       <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/</guid>
-      <description>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp;amp; healthy or not. It&#39;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.
+      <description>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp;amp; healthy or not. It&amp;rsquo;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.
 Health checks are very useful especially when your application depends on other things like a database or even other services.</description>
     </item>
     
@@ -85,8 +90,8 @@ Health checks are very useful especially when your application depends on other 
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/</guid>
-      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&#39;s tested.
-Today I&#39;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
+      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&amp;rsquo;s tested.
+Today I&amp;rsquo;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
     </item>
     
     <item>
@@ -95,7 +100,7 @@ Today I&#39;ll be talking about how I personally like to structure and design my
       <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/01/07/behavior-trees-introduction/</guid>
-      <description>Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I&#39;ll be talking about what they are, why they are used and how.
+      <description>Two months ago, I was looking for a way to program an AI for a video game and I stumbled upon Behavior Trees. Today I&amp;rsquo;ll be talking about what they are, why they are used and how.
 Behavior Trees Originally, behavior trees were used in the game industry to model the behavior of NPC characters, it then started getting used in other domains, such as robotics.</description>
     </item>
     
@@ -116,7 +121,7 @@ The package The DataFrame related classes were introduced in the package Microso
       
       <guid>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</guid>
       <description>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.
-Today I&#39;ll talk about that decision, its advantages and disadvantages.</description>
+Today I&amp;rsquo;ll talk about that decision, its advantages and disadvantages.</description>
     </item>
     
     <item>
@@ -125,7 +130,7 @@ Today I&#39;ll talk about that decision, its advantages and disadvantages.</desc
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
-      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
+      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&amp;rsquo;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
 The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
     </item>
     
@@ -147,8 +152,8 @@ What is color quantization Color quantization is the usage of quantization, a lo
       
       <guid>https://blog.zhaytam.com/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
       <description>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.
-Today I&#39;ll be showing how you can add Google Sign-In and still manage users in your back-end.
-Overview Here&#39;s a sequence diagram showing how it all works:</description>
+Today I&amp;rsquo;ll be showing how you can add Google Sign-In and still manage users in your back-end.
+Overview Here&amp;rsquo;s a sequence diagram showing how it all works:</description>
     </item>
     
     <item>
@@ -167,8 +172,8 @@ I compiled this list to have all the new features, improvements and breaking cha
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/08/26/ndepend-static-analysis-tool-dotnet/</guid>
-      <description>Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&#39;ll be talking about my opinion and thoughts after trying it for the first time.
-Static code analysis Being able to check the quality of your source code before it&#39;s even ran is a very valuable thing to have.</description>
+      <description>Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&amp;rsquo;ll be talking about my opinion and thoughts after trying it for the first time.
+Static code analysis Being able to check the quality of your source code before it&amp;rsquo;s even ran is a very valuable thing to have.</description>
     </item>
     
     <item>
@@ -208,8 +213,8 @@ In these series, I will be explaining what outliers are, the difference between 
       
       <guid>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
-Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
-EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
+Today I&amp;rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
+EmailSender interface If you&amp;rsquo;re working with a project that implements a Clean Architecture, you&amp;rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
     </item>
     
     <item>
@@ -230,9 +235,9 @@ The code for the benchmarks is in this repository.</description>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
-      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
-In this post I&#39;ll explain how to quickly fix it.
-The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
+      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&amp;rsquo;s terminal, as it needs a monospaced font and Powerline isn&amp;rsquo;t one.
+In this post I&amp;rsquo;ll explain how to quickly fix it.
+The problem   Problem   VS Code defaults the terminal&amp;rsquo;s font to the editor&amp;rsquo;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
     </item>
     
     <item>
@@ -252,7 +257,7 @@ But that becomes boring, most of the time (if not always) we redirect to the sam
       
       <guid>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</guid>
       <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
-Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
+Today I&amp;rsquo;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
 The code of this blog post is available here.</description>
     </item>
     
@@ -274,7 +279,7 @@ The volume of these notifications is EXTREMELY loud.</description>
       
       <guid>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</guid>
       <description>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).
-Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
+Unfortunately, Unity didn&amp;rsquo;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
     </item>
     
     <item>
@@ -283,7 +288,7 @@ Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched
       <pubDate>Tue, 23 Oct 2018 17:52:24 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/10/23/association-rule-mining-using-apriori-algorithm/</guid>
-      <description>Have you ever wondered how Amazon suggets to us items to buy when we&#39;re looking at a product (labeled as “Frequently bought together”)?
+      <description>Have you ever wondered how Amazon suggets to us items to buy when we&amp;rsquo;re looking at a product (labeled as “Frequently bought together”)?
 For example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.
 Which is true because a lot of people buy their components grouped when building a desktop pc.</description>
     </item>
@@ -294,7 +299,7 @@ Which is true because a lot of people buy their components grouped when building
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
-      <description>Hi everyone! I hope you&#39;re having a great sunday.
+      <description>Hi everyone! I hope you&amp;rsquo;re having a great sunday.
 Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.</description>
     </item>
     
@@ -314,8 +319,8 @@ Here I am now, creating a blog post to help future people looking to create gifs
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
-      <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
-Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
+      <description>Implementing your own neural network can be hard, especially if you&amp;rsquo;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
+Today I&amp;rsquo;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>
     
     <item>
@@ -324,7 +329,7 @@ Today I&#39;ll show you how easy it is to implement a flexible neural network an
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
-      <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
+      <description>In result of Google&amp;rsquo;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
  Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc&amp;hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
     </item>
     
@@ -334,8 +339,8 @@ Today I&#39;ll show you how easy it is to implement a flexible neural network an
       <pubDate>Sun, 24 Jun 2018 03:04:36 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/06/24/asp-net-core-using-smartbreadcrumbs/</guid>
-      <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&#39;s not, unless you want to end up copying the almost-same code in all your pages.
-Today I&#39;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
+      <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&amp;rsquo;s not, unless you want to end up copying the almost-same code in all your pages.
+Today I&amp;rsquo;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
     </item>
     
     <item>

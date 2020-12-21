@@ -6,19 +6,15 @@
     <description>Recent content in Programming on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writing maintainable Spark jobs in Scala</title>
       <link>https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/03/06/maintainable-spark-jobs-scala/</guid>
-      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&#39;s tested.
-Today I&#39;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
+      <description>When working on Spark jobs (in Scala), we often sequentially write the code in a single class, giving more attention to the transformations we do and forgetting how our code is structured or even if it&amp;rsquo;s tested.
+Today I&amp;rsquo;ll be talking about how I personally like to structure and design my Spark jobs, such as they are highly maintainable and testable.</description>
     </item>
     
     <item>
@@ -37,7 +33,7 @@ The package The DataFrame related classes were introduced in the package Microso
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
-      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
+      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&amp;rsquo;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
 The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
     </item>
     
@@ -58,8 +54,8 @@ What is color quantization Color quantization is the usage of quantization, a lo
       <pubDate>Mon, 26 Aug 2019 12:57:51 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/08/26/ndepend-static-analysis-tool-dotnet/</guid>
-      <description>Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&#39;ll be talking about my opinion and thoughts after trying it for the first time.
-Static code analysis Being able to check the quality of your source code before it&#39;s even ran is a very valuable thing to have.</description>
+      <description>Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&amp;rsquo;ll be talking about my opinion and thoughts after trying it for the first time.
+Static code analysis Being able to check the quality of your source code before it&amp;rsquo;s even ran is a very valuable thing to have.</description>
     </item>
     
     <item>
@@ -69,8 +65,8 @@ Static code analysis Being able to check the quality of your source code before 
       
       <guid>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
-Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
-EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
+Today I&amp;rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
+EmailSender interface If you&amp;rsquo;re working with a project that implements a Clean Architecture, you&amp;rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
     </item>
     
     <item>
@@ -92,7 +88,7 @@ The code for the benchmarks is in this repository.</description>
       
       <guid>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</guid>
       <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
-Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
+Today I&amp;rsquo;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
 The code of this blog post is available here.</description>
     </item>
     
@@ -103,7 +99,7 @@ The code of this blog post is available here.</description>
       
       <guid>https://blog.zhaytam.com/2019/02/02/creating-mouseless-context-menu-unity/</guid>
       <description>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).
-Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
+Unfortunately, Unity didn&amp;rsquo;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</description>
     </item>
     
     <item>
@@ -112,7 +108,7 @@ Unfortunately, Unity didn&#39;t have a Context Menu out of the box so I searched
       <pubDate>Sun, 23 Sep 2018 18:44:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/09/23/generate-aspnetcore-web-api-doc-swagger/</guid>
-      <description>Hi everyone! I hope you&#39;re having a great sunday.
+      <description>Hi everyone! I hope you&amp;rsquo;re having a great sunday.
 Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.</description>
     </item>
     
@@ -132,7 +128,7 @@ Here I am now, creating a blog post to help future people looking to create gifs
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/07/20/openstreetmap-googlemaps-alternative/</guid>
-      <description>In result of Google&#39;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
+      <description>In result of Google&amp;rsquo;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.
  Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc&amp;hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</description>
     </item>
     
@@ -142,8 +138,8 @@ Here I am now, creating a blog post to help future people looking to create gifs
       <pubDate>Sun, 24 Jun 2018 03:04:36 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/06/24/asp-net-core-using-smartbreadcrumbs/</guid>
-      <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&#39;s not, unless you want to end up copying the almost-same code in all your pages.
-Today I&#39;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
+      <description>Adding breadcrumbs to a website seems like an easy task and honestly, it should be. Unfortunately it&amp;rsquo;s not, unless you want to end up copying the almost-same code in all your pages.
+Today I&amp;rsquo;ll be talking about how to add and manage breadcrumbs in an ASP.NET Core website using SmartBreadcrumbs (1.</description>
     </item>
     
   </channel>

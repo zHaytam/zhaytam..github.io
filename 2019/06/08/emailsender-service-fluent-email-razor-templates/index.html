@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "EmailSender Service using FluentEmail \u0026 Razor Templates",
         "headline" : "EmailSender Service using FluentEmail \u0026 Razor Templates",
-        "description" : "Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.\nToday I'll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.\nEmailSender interface If you're working with a project that implements a Clean Architecture, you'll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.",
+        "description" : "Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.\nToday I\u0026rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.\nEmailSender interface If you\u0026rsquo;re working with a project that implements a Clean Architecture, you\u0026rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -342,9 +346,9 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.<br>
-Today I'll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.</p>
+Today I&rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.</p>
 <h2 id="emailsender-interface">EmailSender interface</h2>
-<p>If you're working with a project that implements a Clean Architecture, you'll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</p>
+<p>If you&rsquo;re working with a project that implements a Clean Architecture, you&rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> IEmailSender
 {
 
@@ -355,20 +359,20 @@ Today I'll be showing how you can create your own EmailSender Service in ASP.NET
 <ul>
 <li><code>Task&lt;bool&gt;</code>, the method is async and will return true if the email was successfully sent or false otherwise.</li>
 <li><code>string to</code>, the recipient email address.</li>
-<li><code>string subject</code>, the email's subject/title.</li>
+<li><code>string subject</code>, the email&rsquo;s subject/title.</li>
 <li><code>EmailTemplate template</code>, which template to use (enum).</li>
-<li><code>object model</code>, since most of the time you'll want to send more information in the email, you can pass a model (or an anonymous object) to the template.</li>
+<li><code>object model</code>, since most of the time you&rsquo;ll want to send more information in the email, you can pass a model (or an anonymous object) to the template.</li>
 </ul>
-<p><em>Note: the method doesn't require a <code>from</code> email address, that's because we'll configure it in our <code>Startup</code> class since we usually only use one.</em></p>
+<p><em>Note: the method doesn&rsquo;t require a <code>from</code> email address, that&rsquo;s because we&rsquo;ll configure it in our <code>Startup</code> class since we usually only use one.</em></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">enum</span> EmailTemplate
 {
     EmailConfirmation,
     ChangeEmail
 }
-</code></pre></div><p>I use an enum for the template names to remove the chance of someone getting the template's name wrong. Magic strings are always a bad idea.</p>
+</code></pre></div><p>I use an enum for the template names to remove the chance of someone getting the template&rsquo;s name wrong. Magic strings are always a bad idea.</p>
 <h2 id="emailsender-implementation">EmailSender Implementation</h2>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>For the implementation of the service, you'll only need the <code>FluentEmail.Core</code> NuGet package: <code>Install-Package FluentEmail.Core</code></p>
+<p>For the implementation of the service, you&rsquo;ll only need the <code>FluentEmail.Core</code> NuGet package: <code>Install-Package FluentEmail.Core</code></p>
 <h3 id="implementation">Implementation</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">EmailSender</span> : IEmailSender
 {
@@ -399,10 +403,10 @@ Today I'll be showing how you can create your own EmailSender Service in ASP.NET
     }
 
 }
-</code></pre></div><p>The code is pretty straight-forward, we use FluentEmail's <code>IFluentEmail</code> object (that gets injected) to send the email asynchronously.<br>
-I often prefer to log the errors in the service and only return a boolean response. I don't think the client needs to know why the email wasn't sent, the developpers need to deal with that.</p>
-<p>The only thing you'll need to change is the <code>TemplatePath</code> constant, which needs to contain the full namespace name where your template files (.cshtml files) reside.</p>
-<p>In order to be able to use anonymous objects in the templates, we'll need to convert them into <a href="https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=netframework-4.8">Expando objects</a>. This is a “limitation” that <a href="https://github.com/toddams/RazorLight">RazorLight</a> (the library that FluentEmail uses to handle Razor Templates) has.</p>
+</code></pre></div><p>The code is pretty straight-forward, we use FluentEmail&rsquo;s <code>IFluentEmail</code> object (that gets injected) to send the email asynchronously.<br>
+I often prefer to log the errors in the service and only return a boolean response. I don&rsquo;t think the client needs to know why the email wasn&rsquo;t sent, the developpers need to deal with that.</p>
+<p>The only thing you&rsquo;ll need to change is the <code>TemplatePath</code> constant, which needs to contain the full namespace name where your template files (.cshtml files) reside.</p>
+<p>In order to be able to use anonymous objects in the templates, we&rsquo;ll need to convert them into <a href="https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=netframework-4.8">Expando objects</a>. This is a “limitation” that <a href="https://github.com/toddams/RazorLight">RazorLight</a> (the library that FluentEmail uses to handle Razor Templates) has.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">static</span> ExpandoObject ToExpando(<span style="color:#458;font-weight:bold">object</span> model)
 {
     <span style="color:#000;font-weight:bold">if</span> (model <span style="color:#000;font-weight:bold">is</span> ExpandoObject exp)
@@ -449,8 +453,8 @@ I often prefer to log the errors in the service and only return a boolean respon
 </figure>
 
 <h2 id="configuration">Configuration</h2>
-<h3 id="prerequisites1">Prerequisites</h3>
-<p>When configuring the EmailSender service, you'll need the following NuGet packages:</p>
+<h3 id="prerequisites-1">Prerequisites</h3>
+<p>When configuring the EmailSender service, you&rsquo;ll need the following NuGet packages:</p>
 <ul>
 <li>FluentEmail.Smtp</li>
 <li>FluentEmail.Razor</li>
@@ -459,7 +463,7 @@ I often prefer to log the errors in the service and only return a boolean respon
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// Configure IFluentEmail
 </span><span style="color:#998;font-style:italic"></span>services.AddFluentEmail(Configuration[<span style="color:#d14">&#34;email_address&#34;</span>])
 .AddRazorRenderer()
-.AddSmtpSender(<span style="color:#000;font-weight:bold">new</span> SmtpClient(<span style="color:#d14">&#34;smtp.gmail.com&#34;</span>, <span style="color:#099">5</span><span style="color:#099">8</span><span style="color:#099">7</span>)
+.AddSmtpSender(<span style="color:#000;font-weight:bold">new</span> SmtpClient(<span style="color:#d14">&#34;smtp.gmail.com&#34;</span>, <span style="color:#099">587</span>)
 {
     Credentials = <span style="color:#000;font-weight:bold">new</span> NetworkCredential(Configuration[<span style="color:#d14">&#34;email_address&#34;</span>], Configuration[<span style="color:#d14">&#34;email_password&#34;</span>]),
     EnableSsl = <span style="color:#000;font-weight:bold">true</span>
@@ -467,7 +471,7 @@ I often prefer to log the errors in the service and only return a boolean respon
 
 <span style="color:#998;font-style:italic">// Add our service
 </span><span style="color:#998;font-style:italic"></span>services.TryAddScoped&lt;IEmailSender, EmailSender&gt;();
-</code></pre></div><p>In this example I'm using a GMAIL account to send the emails, you can use whatever email server you want, even your own.</p>
+</code></pre></div><p>In this example I&rsquo;m using a GMAIL account to send the emails, you can use whatever email server you want, even your own.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>As you can see, creating an EmailSender service is pretty easy and straight-forward and can be used in all your projects. Having the ability to send rich HTML emails is a must for every website nowdays.</p>
 
@@ -699,7 +703,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

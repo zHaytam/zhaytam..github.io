@@ -4,16 +4,56 @@
   
   <url>
     <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</loc>
-    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/categories/blazor/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2020/12/21/blazor-vs-react-passing-values-to-all-children/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/cascadingparameter/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/cascadingvalue/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/context-api/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/react/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,16 +69,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/tags/performance/</loc>
-    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -213,7 +243,7 @@
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/categories/artificial-intelligence/</loc>
+    <loc>https://blog.zhaytam.com/categories/ai/</loc>
     <lastmod>2020-01-07T00:00:00+00:00</lastmod>
   </url>
   

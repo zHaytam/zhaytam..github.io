@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -340,7 +344,7 @@ All of this is also present in this <a href="https://github.com/zHaytam/aspnetco
 <p><strong>Disclaimer</strong><br>
 The content present here is not mine, it is mostly taken from github issues and .NET blog posts.</p>
 <h2 id="signalr">SignalR</h2>
-<h3 id="clienttoserver-streaming">Client-to-server streaming</h3>
+<h3 id="client-to-server-streaming">Client-to-server streaming</h3>
 <p>In Preview2, a new feature has been added to SignalR which gives the ability for the server to listen to streams.</p>
 <h4 id="example-source1">Example (<a href="https://devblogs.microsoft.com/aspnet/aspnet-core-3-preview-2/">source</a>)</h4>
 <p>Server (Hub):</p>
@@ -357,7 +361,7 @@ The content present here is not mine, it is mostly taken from github issues and 
 }
 </code></pre></div><p>Client:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">let</span> subject <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> signalR.Subject();
-await connection.send(<span style="color:#d14">&#34;StartStream&#34;</span>, <span style="color:#d14">&#34;MyAsciiArtStream&#34;</span>, subject);
+<span style="color:#000;font-weight:bold">await</span> connection.send(<span style="color:#d14">&#34;StartStream&#34;</span>, <span style="color:#d14">&#34;MyAsciiArtStream&#34;</span>, subject);
 subject.next(<span style="color:#d14">&#34;example&#34;</span>);
 subject.complete();
 </code></pre></div><p>For more information, please check the <a href="https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-2.2">documentation page</a>.</p>
@@ -428,7 +432,7 @@ subject.complete();
 <h3 id="systemiopipelines-on-httpcontext">System.IO.Pipelines on HttpContext</h3>
 <p>The body request and response pipes on the <code>HttpContext</code> are now exposed to users looking to write high performance code.</p>
 <p>These pipes are using the new <a href="https://blogs.msdn.microsoft.com/dotnet/2018/07/09/system-io-pipelines-high-performance-io-in-net/">System.IO.Pipelines API</a>.</p>
-<h4 id="example-source11">Example (<a href="https://devblogs.microsoft.com/aspnet/aspnet-core-3-preview-2/">source</a>)</h4>
+<h4 id="example-source1-1">Example (<a href="https://devblogs.microsoft.com/aspnet/aspnet-core-3-preview-2/">source</a>)</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     <span style="color:#000;font-weight:bold">if</span> (env.IsDevelopment())
@@ -520,7 +524,7 @@ subject.complete();
 <p>ASP.NET Core adds a new template for worker services for long running tasks such as Windows Services or Linux Systemd daemons.</p>
 <h3 id="grpc">gRPC</h3>
 <p>A new project template has been added for users interested in creating <a href="https://grpc.io/">gRPC</a> servers, which use HTTP/2 for transport and protocol buffers, and supports HTTPs by default.</p>
-<p>A package <code>Grpc.Net.ClientFactory</code> is available for developers interested in a gRPC Client Factory. It's intented to use in scenarios that don't include ASP.NET Core.</p>
+<p>A package <code>Grpc.Net.ClientFactory</code> is available for developers interested in a gRPC Client Factory. It&rsquo;s intented to use in scenarios that don&rsquo;t include ASP.NET Core.</p>
 <p>The package also gives the possibility to include interceptors.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services
     .AddGrpcClient&lt;GreeterClient&gt;(options =&gt;
@@ -630,12 +634,12 @@ Certificate authentication requires you to configure your server to accept certi
 <p><code>dotnet counters monitor -p &lt;PID&gt; Microsoft.AspNetCore.Hosting System.Runtime</code></p>
 <h3 id="razor-pages-support-for-attribute">Razor Pages support for <code>@attribute</code></h3>
 <p>This is a feature that was added to Blazor that lets developers include attributes (e.g. Authorize) on their components. It is now also available in Razor Pages!</p>
-<h3 id="new-networking-primitives-for-nonhttp-servers">New networking primitives for non-HTTP Servers</h3>
+<h3 id="new-networking-primitives-for-non-http-servers">New networking primitives for non-HTTP Servers</h3>
 <blockquote>
 <p>As part of the effort to decouple the components of Kestrel, we are introducing new networking primitives allowing you to add support for non-HTTP protocols.</p>
 <p>You can bind to an endpoint (System.Net.EndPoint) by calling Bind on an IConnectionListenerFactory. This returns a IConnectionListener which can be used to accept new connections. Calling AcceptAsync returns a ConnectionContext with details on the connection. A ConnectionContext is similar to HttpContext except it represents a connection instead of an HTTP request and response.</p>
 </blockquote>
-<h4 id="example-source111">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/">source</a></h4>
+<h4 id="example-source11">Example <a href="https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-8/">source</a></h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TcpEchoServer</span> : BackgroundService
 {
     <span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">readonly</span> ILogger&lt;TcpEchoServer&gt; _logger;
@@ -650,7 +654,7 @@ Certificate authentication requires you to configure your server to accept certi
 
     <span style="color:#000;font-weight:bold">protected</span> <span style="color:#000;font-weight:bold">override</span> <span style="color:#000;font-weight:bold">async</span> Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _listener = <span style="color:#000;font-weight:bold">await</span> _factory.BindAsync(<span style="color:#000;font-weight:bold">new</span> IPEndPoint(IPAddress.Loopback, <span style="color:#099">6</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>), stoppingToken);
+        _listener = <span style="color:#000;font-weight:bold">await</span> _factory.BindAsync(<span style="color:#000;font-weight:bold">new</span> IPEndPoint(IPAddress.Loopback, <span style="color:#099">6000</span>), stoppingToken);
 
         <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">true</span>)
         {
@@ -714,7 +718,7 @@ Certificate authentication requires you to configure your server to accept certi
 <p>You can also manually specify the culture to use for data binding using the new @bind:culture parameter, where the value of the parameter is a CultureInfo instance. For example, to bind using the invariant culture:</p>
 </blockquote>
 <p><code>&lt;input @bind=&quot;amount&quot; @bind:culture=&quot;CultureInfo.InvariantCulture&quot; /&gt;</code></p>
-<h3 id="casesensitive-component-binding">Case-sensitive component binding</h3>
+<h3 id="case-sensitive-component-binding">Case-sensitive component binding</h3>
 <blockquote>
 <p>Components in .razor files are now case-sensitive. This enables some useful new scenarios and improves diagnostics from the Razor compiler.</p>
 <p>For example, the Counter has a button for incrementing the count that is styled as a primary button. What if we wanted a Button component that is styled as a primary button by default? Creating a component named Button in previous Blazor releases was problematic because it clashed with the button HTML element, but now that component matching is case-sensitive we can create our Button component and use it in Counter without issue.</p>
@@ -739,12 +743,12 @@ Certificate authentication requires you to configure your server to accept certi
 <blockquote>
 <p>Blazor now has built-in support for handling authentication and authorization. The server-side Blazor template now supports options for enabling all of the standard authentication configurations using ASP.NET Core Identity, Azure AD, and Azure AD B2C. We haven’t updated the Blazor WebAssembly templates to support these options yet, but we plan to do so after .NET Core 3.0 has shipped.</p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;AuthorizeView</span><span style="color:#000080">&gt;</span>
-    <span style="color:#000080">&lt;Authorized</span><span style="color:#000080">&gt;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;AuthorizeView&gt;</span>
+    <span style="color:#000080">&lt;Authorized&gt;</span>
         <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Manage&#34;</span><span style="color:#000080">&gt;</span>Hello, @context.User.Identity.Name!<span style="color:#000080">&lt;/a&gt;</span>
         <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/LogOut&#34;</span><span style="color:#000080">&gt;</span>Log out<span style="color:#000080">&lt;/a&gt;</span>
     <span style="color:#000080">&lt;/Authorized&gt;</span>
-    <span style="color:#000080">&lt;NotAuthorized</span><span style="color:#000080">&gt;</span>
+    <span style="color:#000080">&lt;NotAuthorized&gt;</span>
         <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Register&#34;</span><span style="color:#000080">&gt;</span>Register<span style="color:#000080">&lt;/a&gt;</span>
         <span style="color:#000080">&lt;a</span> <span style="color:#008080">href=</span><span style="color:#d14">&#34;Identity/Account/Login&#34;</span><span style="color:#000080">&gt;</span>Log in<span style="color:#000080">&lt;/a&gt;</span>
     <span style="color:#000080">&lt;/NotAuthorized&gt;</span>
@@ -807,7 +811,7 @@ Certificate authentication requires you to configure your server to accept certi
 <li>It improves the perceived performance of the site, because the UI can appear sooner, without waiting to make any WebSocket connections or even running any client-side script. This makes a bigger difference for users on slow connections, such as 2G/3G mobiles.</li>
 <li>It can make your application easily crawlable by search engines.</li>
 </ul>
-<h3 id="reconnecting-in-blazor-serverside">Reconnecting in Blazor (server-side)</h3>
+<h3 id="reconnecting-in-blazor-server-side">Reconnecting in Blazor (server-side)</h3>
 <p>Since Blazor (server-side) requires SignalR to run, it will now attempt to reconnect whenever it gets disconnected.</p>
 <p>The reconnection timings can be changed, for example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">const</span> connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> signalR.HubConnectionBuilder()
@@ -844,7 +848,7 @@ Certificate authentication requires you to configure your server to accept certi
 <li><a href="https://github.com/aspnet/AspNetCore/issues/3753">Discussion</a></li>
 </ul>
 <h3 id="microsoftaspnetcoreall-has-been-deprecated"><code>Microsoft.AspNetCore.All</code> has been deprecated</h3>
-<p>A new meta-package was introduced: <code>Microsoft.AspNetCore.App</code>, which doesn't include Json.NET, EF Core and CodeAnalysis.</p>
+<p>A new meta-package was introduced: <code>Microsoft.AspNetCore.App</code>, which doesn&rsquo;t include Json.NET, EF Core and CodeAnalysis.</p>
 <p>Links:</p>
 <ul>
 <li><a href="https://github.com/aspnet/Announcements/issues/314">Announcement</a></li>
@@ -857,7 +861,7 @@ Certificate authentication requires you to configure your server to accept certi
 <p>Most NuGet packages provide both compilation and runtime assets. Microsoft.NETCore.App and Microsoft.AspNetCore.App effectively only provide the first - compilation references. Users must install other runtime assets to make .NET Core apps work but this is not obvious or intuitive, and not always possible: for example, Azure Web Apps, AWS, Google Cloud, etc. This violates a reasonable expectation of using a NuGet package, and has been a continual source of confusion for users.</p>
 </blockquote>
 <p>Usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;ItemGroup</span><span style="color:#000080">&gt;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;ItemGroup&gt;</span>
    <span style="color:#000080">&lt;FrameworkReference</span> <span style="color:#008080">Include=</span><span style="color:#d14">&#34;Microsoft.AspNetCore.App&#34;</span> <span style="color:#000080">/&gt;</span>
 <span style="color:#000080">&lt;/ItemGroup&gt;</span>
 </code></pre></div><p>Links:</p>
@@ -926,14 +930,14 @@ Certificate authentication requires you to configure your server to accept certi
 <li><a href="https://github.com/aspnet/AspNetCore/issues/7644">Discussion issue</a></li>
 </ul>
 <h3 id="runtime-complication-of-razor-viewspages-is-not-available-by-default-anymore">Runtime complication of Razor Views/Pages is not available by default anymore</h3>
-<p>Since the ASP.NET Core framework doesn't depend on Roslyn anymore, compiling views and pages at runtime is not possible anymore.</p>
+<p>Since the ASP.NET Core framework doesn&rsquo;t depend on Roslyn anymore, compiling views and pages at runtime is not possible anymore.</p>
 <p>A new package has been added later, <code>Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation</code>, which is the same behaviour. To use it, call <code>AddMvcRazorRuntimeCompilation</code> on an <code>IMvcBuilder</code>.</p>
 <p>Links:</p>
 <ul>
 <li><a href="https://github.com/aspnet/Announcements/issues/343">Announcement issue</a></li>
 <li><a href="https://github.com/aspnet/AspNetCore/issues/7647">Discussion issue</a></li>
 </ul>
-<h3 id="ihostingenvironments-and-iapplicationlifetimes-marked-obsolete-and-replaced">IHostingEnvironment's and IApplicationLifetime's marked obsolete and replaced</h3>
+<h3 id="ihostingenvironments-and-iapplicationlifetimes-marked-obsolete-and-replaced">IHostingEnvironment&rsquo;s and IApplicationLifetime&rsquo;s marked obsolete and replaced</h3>
 <p>Quoting <strong>Tratcher</strong>:</p>
 <blockquote>
 <p>When Microsoft.Extensions.Hosting was introduced in 2.1 some types like IHostingEnvironment and IApplicationLifetime were copied from Microsoft.AspNetCore.Hosting. Some 3.0 changes cause apps to include both the Microsoft.Extensions.Hosting and Microsoft.AspNetCore.Hosting namespaces. Any use of those duplicate types causes an “ambiguous reference” compiler error when both namespaces are referenced.</p>
@@ -990,7 +994,7 @@ Certificate authentication requires you to configure your server to accept certi
 <li>Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingKeyProvider</li>
 <li>Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingPolicyProvider</li>
 </ul>
-<p>Since these types are now internal, <code>AddResponseCaching</code> doesn't add a default implementation of <code>IResponseCachingPolicyProvider</code> nor <code>IResponseCachingKeyProvider</code>.</p>
+<p>Since these types are now internal, <code>AddResponseCaching</code> doesn&rsquo;t add a default implementation of <code>IResponseCachingPolicyProvider</code> nor <code>IResponseCachingKeyProvider</code>.</p>
 <p>Links:</p>
 <ul>
 <li><a href="https://github.com/aspnet/Announcements/issues/354">Announcement</a></li>
@@ -1251,7 +1255,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

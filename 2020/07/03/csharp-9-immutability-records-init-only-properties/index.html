@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "C# 9 - Immutability - Records \u0026 Init-only Properties",
         "headline" : "C# 9 - Immutability - Records \u0026 Init-only Properties",
-        "description" : "Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.\nIt's an important concept for many reasons, but I won't get into it in this blog post because it's not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet's The changing state of immutability in c# video, which explain it in details.",
+        "description" : "Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.\nIt\u0026rsquo;s an important concept for many reasons, but I won\u0026rsquo;t get into it in this blog post because it\u0026rsquo;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet\u0026rsquo;s The changing state of immutability in c# video, which explain it in details.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -336,18 +340,18 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.</p>
-<p>It's an important concept for many reasons, but I won't get into it in this blog post because it's not the point. Although I would urge you to either read <a href="https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd">The Dao of Immutability</a> or watch Jon Skeet's <a href="https://www.youtube.com/watch?v=O89-zG84QK4">The changing state of immutability in c#</a> video, which explain it in details.</p>
+<p>It&rsquo;s an important concept for many reasons, but I won&rsquo;t get into it in this blog post because it&rsquo;s not the point. Although I would urge you to either read <a href="https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd">The Dao of Immutability</a> or watch Jon Skeet&rsquo;s <a href="https://www.youtube.com/watch?v=O89-zG84QK4">The changing state of immutability in c#</a> video, which explain it in details.</p>
 <blockquote>
 <p>The true constant is change. Mutation hides change. Hidden change manifests chaos. Therefore, the wise embrace history.</p>
 </blockquote>
-<p>C# 9 is trying to embrace Immutability more, by introducing a new type, <code>record</code> and <code>init</code>-only properties. I finally had the time to play with them, and I'm very excited for when C# 9 will be officially out!</p>
+<p>C# 9 is trying to embrace Immutability more, by introducing a new type, <code>record</code> and <code>init</code>-only properties. I finally had the time to play with them, and I&rsquo;m very excited for when C# 9 will be officially out!</p>
 <h2 id="how-to-try-c-9-features">How to try C# 9 features</h2>
-<p>I'm sure some of you would like to try the new C# 9 features, here's how/where I do it:</p>
+<p>I&rsquo;m sure some of you would like to try the new C# 9 features, here&rsquo;s how/where I do it:</p>
 <ul>
 <li><a href="https://www.linqpad.net/LINQPad6.aspx">LINQPad 6 Beta</a>: by activating the experimental .NET 5 runtime.</li>
 <li><a href="https://sharplab.io/">SharpLab</a>: by choosing the master Roslyn branch.</li>
 </ul>
-<h2 id="initonly-properties">Init-only Properties</h2>
+<h2 id="init-only-properties">Init-only Properties</h2>
 <p>Imagine you have the following class:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Rectangle</span>
 {
@@ -357,10 +361,10 @@ if (!doNotTrack) {
 </code></pre></div><p>Now you can create instances of it:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> item1 = <span style="color:#000;font-weight:bold">new</span> Rectangle
 {
-  Width = <span style="color:#099">1</span><span style="color:#099">0</span>,
+  Width = <span style="color:#099">10</span>,
   Height = <span style="color:#099">5</span>
 };
-</code></pre></div><p>Which is fine, but we can change <code>Width</code> and <code>Height</code> whenever we want. What if we don't want that? What if we want our <code>Rectangle</code> to be immutable?</p>
+</code></pre></div><p>Which is fine, but we can change <code>Width</code> and <code>Height</code> whenever we want. What if we don&rsquo;t want that? What if we want our <code>Rectangle</code> to be immutable?</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Rectangle</span>
 {
   <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">double</span> Width { <span style="color:#000;font-weight:bold">get</span>; }
@@ -372,11 +376,11 @@ if (!doNotTrack) {
     Height = height;
   }
 }
-</code></pre></div><p>As you can see, we'll need to make the properties read-only and add a constructor that fills them. This just adds boilerplate (a parameterized constructor) and removes the possibility to use object initializers.</p>
+</code></pre></div><p>As you can see, we&rsquo;ll need to make the properties read-only and add a constructor that fills them. This just adds boilerplate (a parameterized constructor) and removes the possibility to use object initializers.</p>
 <p>The new <code>init</code> keyword comes to the rescue:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/b27196d2cdc61b67086bdf08393f9bd5.js"></script>
 
-<p>This means that we can only change (set) the values of <code>Width</code> and <code>Height</code> when instantiating <code>Rectangle</code>. After that, you can't change the values of these properties, which essentially makes our class immutable!</p>
+<p>This means that we can only change (set) the values of <code>Width</code> and <code>Height</code> when instantiating <code>Rectangle</code>. After that, you can&rsquo;t change the values of these properties, which essentially makes our class immutable!</p>
 <h2 id="records">Records</h2>
 <p>If you want to read the official proposal, which contains the full details, visit <a href="https://github.com/dotnet/csharplang/blob/master/proposals/records.md">records.md</a>.</p>
 <p>Init-only properties are already doing a good job to promote immutability in C#, so you might be wondering why records are such an important addition to the language.</p>
@@ -397,7 +401,7 @@ if (!doNotTrack) {
 
 <p>Here are the key things that you need to know about:</p>
 <ul>
-<li><strong>Line 11</strong>: A generated property used in the <code>Equals</code> method to only compare two instances of the same type, so inheritance won't matter.</li>
+<li><strong>Line 11</strong>: A generated property used in the <code>Equals</code> method to only compare two instances of the same type, so inheritance won&rsquo;t matter.</li>
 <li><strong>Line 49</strong>: A generated <code>Clone</code> method that uses the copy constructor to clone the instance.</li>
 <li><strong>Line 60</strong>: A generated override of <code>Object.Equals</code>.</li>
 <li><strong>Line 65</strong>: A generated virtual <code>Equals</code> method that does a full value-based comparison.</li>
@@ -412,11 +416,11 @@ if (!doNotTrack) {
 <p>There are a couple of ways to define records:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/27eb7119d5fe35c3dda015a53e52bcaa.js"></script>
 
-<h3 id="withexpressions">With-expressions</h3>
-<p>Since we're working with immutable data, a core concept is to create new object from existing one, by changing one or more properties. C# 9 adds the <code>with</code> expression, which is just a syntax sugar:</p>
+<h3 id="with-expressions">With-expressions</h3>
+<p>Since we&rsquo;re working with immutable data, a core concept is to create new object from existing one, by changing one or more properties. C# 9 adds the <code>with</code> expression, which is just a syntax sugar:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/66a722f280798fef0c3d297fe7af0c9e.js"></script>
 
-<p>Here's the actual generated code:</p>
+<p>Here&rsquo;s the actual generated code:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/2a2da566e9019e599396b48b5e35d694.js"></script>
 
 <p>As you can see, the <code>with</code> expressions turn into a <code>Clone</code> + manual set of the changed properties. Note that <code>with</code> works with <code>init</code> properties because it uses the object initializer syntax.</p>
@@ -425,7 +429,7 @@ if (!doNotTrack) {
     
 </div>
 <h2 id="conclusion">Conclusion</h2>
-<p>Init-only properties and Records will boost our productivity and help us embrace immutability into our software. Personally, I can't wait to use this in Blazor to manage state.</p>
+<p>Init-only properties and Records will boost our productivity and help us embrace immutability into our software. Personally, I can&rsquo;t wait to use this in Blazor to manage state.</p>
 <p>C# 9 is without a doubt a great milestone for the language. I only presented two features, but the version comes with a lot more! Make sure to check them out <a href="https://devblogs.microsoft.com/dotnet/welcome-to-c-9-0/">here</a>.</p>
 <p>Hope you enjoyed the post, see you soon!</p>
 
@@ -654,7 +658,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

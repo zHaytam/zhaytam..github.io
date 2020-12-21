@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -346,14 +350,14 @@ If I give you a <code>Type</code> and tell you to create an object with it, you 
 What if I tell you that instanciating a Type using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/expression-trees/">Expression Trees</a> is much faster?</p>
 <p>The code for the benchmarks is in this <a href="https://github.com/zHaytam/InstanciateBenchmarks">repository</a>.</p>
 <h2 id="background">Background</h2>
-<p>I am currently in an internship and the project I'm working on needs to be as extensible as possible.<br>
+<p>I am currently in an internship and the project I&rsquo;m working on needs to be as extensible as possible.<br>
 Meaning that users/developers should have the possiblity to add new functionalities (or at least a variant of a functionality) easily.</p>
 <p>For instance, I have a <code>Manager</code> class and a couple of default classes that inherit implement, each of them does something specific.<br>
 Now the idea is to make it possible for people to plug-in their <code>SomethingManager</code> class.</p>
 <p>I ended up with a list of <code>Type</code> that inherit from <code>Manager</code>. Now all I have to do is instanciate and execute these types when I need them. Like most C# programmers, I immediately thought of <code>Activator.CreateInstance</code>!</p>
 <p>However, there must be a faster way for instanciating a type right?</p>
-<h2 id="instaciating-a-type--some-of-the-ways">Instaciating a type - some of the ways</h2>
-<p>Let's imagine that our base class is <code>TestClass</code>.</p>
+<h2 id="instaciating-a-type---some-of-the-ways">Instaciating a type - some of the ways</h2>
+<p>Let&rsquo;s imagine that our base class is <code>TestClass</code>.</p>
 <h3 id="activator"><code>Activator</code></h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Benchmark]</span>
 <span style="color:#000;font-weight:bold">public</span> TestClass Activator()
@@ -836,7 +840,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

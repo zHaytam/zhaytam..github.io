@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -361,8 +365,8 @@ Why not use an Action Filter to make this easier?</p>
 }
 </code></pre></div><h3 id="model-binding">Model Binding</h3>
 <p>Model binding is a step that happens after ASP.NET Core receives an HTTP request and has figured out which action/controller (or razor page) that will handle it.</p>
-<p>It simply tries to bind the route data (e.g. query data if it's a GET request and body data if it's a POST) and checks whether the parameters you're waiting for (either direct parameters or objects) are what was received in the request.</p>
-<p>Model binding errors are mostly casting/conversion errors. For example you're waiting for an integer <code>userId</code> but you receive a string containing <code>”test”</code>.</p>
+<p>It simply tries to bind the route data (e.g. query data if it&rsquo;s a GET request and body data if it&rsquo;s a POST) and checks whether the parameters you&rsquo;re waiting for (either direct parameters or objects) are what was received in the request.</p>
+<p>Model binding errors are mostly casting/conversion errors. For example you&rsquo;re waiting for an integer <code>userId</code> but you receive a string containing <code>”test”</code>.</p>
 <h3 id="model-validation">Model validation</h3>
 <p>Now when model binding is done, the model validation starts (if defined). ASP.NET Core looks at your ViewModel, checking if it has any validation attributes and applies them. Some of the much used attributes are:</p>
 <table>
@@ -401,7 +405,7 @@ Why not use an Action Filter to make this easier?</p>
 </span><span style="color:#998;font-style:italic"></span>}
 </code></pre></div><h2 id="using-an-actionfilter-to-check-the-modelstate-for-you">Using an ActionFilter to check the ModelState for you</h2>
 <p>After a couple of years working with ASP.NET Core, I got bored of having to check if the ModelState is valid in almost every request, so I searched a bit and found out that <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-2.2#action-filters">Action Filters</a>.</p>
-<p>Action filters execute after model validation, so it's very handy as we can access the ModelState while working with them.</p>
+<p>Action filters execute after model validation, so it&rsquo;s very handy as we can access the ModelState while working with them.</p>
 <figure>
     <img src="/img/chrome_2019-04-13_18-29-24.png"
          alt="ASP.NET MVC Lifecycle - order of execution"/> <figcaption>
@@ -410,7 +414,7 @@ Why not use an Action Filter to make this easier?</p>
 </figure>
 
 <h3 id="ifmodelisinvalid-attribute">IfModelIsInvalid attribute</h3>
-<p>I ended up creating a <code>IfModelIsInvalid</code> attribute that checks if the ModelState is invalid, if yes, it redirects to either an action/controller or a page (in case you're working with a mixed project that includes Razor Pages).</p>
+<p>I ended up creating a <code>IfModelIsInvalid</code> attribute that checks if the ModelState is invalid, if yes, it redirects to either an action/controller or a page (in case you&rsquo;re working with a mixed project that includes Razor Pages).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">IfModelIsInvalidAttribute</span> : ActionFilterAttribute
 {
 
@@ -697,7 +701,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

@@ -6,20 +6,16 @@
     <description>Recent content in Terminal on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Apr 2019 15:50:27 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 19 Apr 2019 15:50:27 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Powerline and ZSH’s Agnoster theme in VS Code</title>
       <link>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</link>
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
-      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
-In this post I&#39;ll explain how to quickly fix it.
-The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
+      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&amp;rsquo;s terminal, as it needs a monospaced font and Powerline isn&amp;rsquo;t one.
+In this post I&amp;rsquo;ll explain how to quickly fix it.
+The problem   Problem   VS Code defaults the terminal&amp;rsquo;s font to the editor&amp;rsquo;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
     </item>
     
   </channel>

@@ -6,11 +6,7 @@
     <description>Recent content in Castle Project on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/castle-project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/castle-project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aspect Oriented Programming using proxies in ASP.NET Core</title>
       <link>https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/</guid>
       <description>After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).
- In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&#39;s name begins with &amp;lsquo;set&amp;rsquo;&amp;quot;.</description>
+ In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&amp;rsquo;s name begins with &amp;lsquo;set&amp;rsquo;&amp;rdquo;.</description>
     </item>
     
   </channel>

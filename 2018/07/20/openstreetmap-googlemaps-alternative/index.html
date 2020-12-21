@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "OpenStreetMap, Google Maps alternative using Leaflet",
         "headline" : "OpenStreetMap, Google Maps alternative using Leaflet",
-        "description" : "In result of Google's latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.\n Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc\u0026hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).",
+        "description" : "In result of Google\u0026rsquo;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.\n Increase in the price. Decrease in the free map loads. Obligation of adding a billing account. Etc\u0026hellip;  Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -335,7 +339,7 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>In result of Google's latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.</p>
+              <p>In result of Google&rsquo;s latest updates to its Maps API services (June 11, 2018), a lot of people are unhappy with these shocking changes.</p>
 <ul>
 <li>Increase in the price.</li>
 <li>Decrease in the free map loads.</li>
@@ -343,7 +347,7 @@ if (!doNotTrack) {
 <li>Etc&hellip;</li>
 </ul>
 <p>Therefore, a lot of those people are looking to replace their use of Google Maps to something as good (or at least remotely as good).</p>
-<p>Today, I'll talk about <a href="https://www.openstreetmap.org">OpenStreetMap</a>, a possible alternative to Google Maps. Why is it good and how to use it using the <a href="https://leafletjs.com/">Leaflet javascript library</a>.</p>
+<p>Today, I&rsquo;ll talk about <a href="https://www.openstreetmap.org">OpenStreetMap</a>, a possible alternative to Google Maps. Why is it good and how to use it using the <a href="https://leafletjs.com/">Leaflet javascript library</a>.</p>
 <p>The code used in this post is available <a href="https://github.com/zHaytam/AwaitingBits_BlogPostsCodes/tree/master/OpenStreetMap%2C%20Google%20Maps%20alternative%20using%20Leaflet">here</a> and the demo page is <a href="https://zhaytam.github.io/AwaitingBits_BlogPostsCodes/OpenStreetMap,%20Google%20Maps%20alternative%20using%20Leaflet/">here</a>.</p>
 <h2 id="changes-to-google-maps">Changes to Google Maps</h2>
 <p>Here are some of the changes Google did:</p>
@@ -351,25 +355,25 @@ if (!doNotTrack) {
 <li>Standard and Premium plans have been merged into a pay-as-you-go plan.</li>
 <li>Google raised its price by more than 1400%!</li>
 <li>All projects now need valid API keys, there is no more keyless access.</li>
-<li>In order to be able to use the Maps API, you'll have to add a billing account (even for “free” use).</li>
-<li>Every month, you'll get 200$ of free usage. This is equal to 28,000 requests per MONTH (while before, it was 25,000 requests per DAY).</li>
+<li>In order to be able to use the Maps API, you&rsquo;ll have to add a billing account (even for “free” use).</li>
+<li>Every month, you&rsquo;ll get 200$ of free usage. This is equal to 28,000 requests per MONTH (while before, it was 25,000 requests per DAY).</li>
 <li>The support is now free for both usages.</li>
 <li>Upon exceeding the 200$, your account will be charged <strong>7$</strong> per 1000 requests (yes, 7 dollars).</li>
 </ul>
 <h2 id="openstreetmap">OpenStreetMap</h2>
-<p>Before starting the integration part, let's talk about OSM.</p>
+<p>Before starting the integration part, let&rsquo;s talk about OSM.</p>
 <h3 id="what-is-it">What is it</h3>
 <p><a href="https://www.openstreetmap.org">OpenStreetMap</a> is a collaborative project to create a free editable map of the world. Rather than the map itself, the data generated by the project is considered its primary output.</p>
 <p>It is built by a community of mappers that contribute and maintain data about roads, trails, cafés, railway stations, and much more, all over the world.</p>
 <h3 id="why-is-it-good">Why is it good</h3>
 <ul>
 <li><strong>Local Knowledge</strong>: OpenStreetMap emphasizes local knowledge. Contributors use aerial imagery, GPS devices, and low-tech field maps to verify that OSM is accurate and up to date.</li>
-<li><strong>Community Driven:</strong> OpenStreetMap's community is diverse, passionate, and growing every day. Our contributors include enthusiast mappers, GIS professionals, engineers running the OSM servers, humanitarians mapping disaster-affected areas, and many more.</li>
+<li><strong>Community Driven:</strong> OpenStreetMap&rsquo;s community is diverse, passionate, and growing every day. Our contributors include enthusiast mappers, GIS professionals, engineers running the OSM servers, humanitarians mapping disaster-affected areas, and many more.</li>
 <li><strong>Open Data:</strong> OpenStreetMap is <em>open data</em>: you are free to use it for any purpose as long as you credit OpenStreetMap and its contributors. If you alter or build upon the data in certain ways, you may distribute the result only under the same license.</li>
 </ul>
-<p>What makes it great is that it's open source, free to use and highly customizable. Actual people helped making it thanks to their contributions and even you can help in the process!</p>
+<p>What makes it great is that it&rsquo;s open source, free to use and highly customizable. Actual people helped making it thanks to their contributions and even you can help in the process!</p>
 <h2 id="integrating-openstreetmap-to-your-website-using-leaflet">Integrating OpenStreetMap to your website using Leaflet</h2>
-<p>In this part, we're going to look at how to:</p>
+<p>In this part, we&rsquo;re going to look at how to:</p>
 <ol>
 <li>Add a map to your website.</li>
 <li>Add markers to our map.</li>
@@ -387,11 +391,11 @@ if (!doNotTrack) {
 <li>A basic knowledge of HTML, CSS and Javascript (nothing fancy).</li>
 <li>The leaflet library (<a href="https://leafletjs.com/download.html">download here</a>).</li>
 </ul>
-<p>My project's structure is as follow:</p>
+<p>My project&rsquo;s structure is as follow:</p>
 <ul>
 <li>leaflet
 <ul>
-<li>library's files</li>
+<li>library&rsquo;s files</li>
 </ul>
 </li>
 <li>index.html</li>
@@ -410,7 +414,7 @@ if (!doNotTrack) {
 
 &lt;/<span style="color:#000080">body</span>&gt;
 &lt;/<span style="color:#000080">html</span>&gt;
-</code></pre></div><p>We'll then go ahead and import leaflet and our javascript file:</p>
+</code></pre></div><p>We&rsquo;ll then go ahead and import leaflet and our javascript file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">...
     &lt;<span style="color:#000080">link</span> <span style="color:#008080">rel</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;stylesheet&#34;</span> <span style="color:#008080">href</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;leaflet/leaflet.css&#34;</span> /&gt;
 ...
@@ -418,7 +422,7 @@ if (!doNotTrack) {
     &lt;<span style="color:#000080">script</span> <span style="color:#008080">src</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;leaflet/leaflet.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
     &lt;<span style="color:#000080">script</span> <span style="color:#008080">src</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;main.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
 ...
-</code></pre></div><p>We'll then add a div element that will contain the map. This element has to have a height in order for the map to show and an Id.</p>
+</code></pre></div><p>We&rsquo;ll then add a div element that will contain the map. This element has to have a height in order for the map to show and an Id.</p>
 <p>In my case, I went ahead and added a title and centered everything on the page.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#999;font-weight:bold;font-style:italic">&lt;!DOCTYPE html&gt;</span>
 
@@ -470,10 +474,10 @@ if (!doNotTrack) {
     map.addLayer(osmLayer);
     <span style="color:#000;font-weight:bold">return</span> map;
 }
-</code></pre></div><p>Here's what this code does:</p>
+</code></pre></div><p>Here&rsquo;s what this code does:</p>
 <ol>
 <li>Creates a Map instance using the element id specified.</li>
-<li>Creates a TileLayer that uses OSM's url as a provider (we also add the custom attribution for copyright).</li>
+<li>Creates a TileLayer that uses OSM&rsquo;s url as a provider (we also add the custom attribution for copyright).</li>
 <li>Sets the view of the map (center location and zoom).</li>
 <li>Adds our OSM layer to the map and return it.</li>
 </ol>
@@ -486,7 +490,7 @@ if (!doNotTrack) {
 </span><span style="color:#998;font-style:italic"></span>});
 </code></pre></div><p>If you launch your index.html file in the browser, you should be able to see the map.</p>
 <h3 id="adding-markers">Adding markers</h3>
-<p>First, we'll store some positions (latLng) for our markers:</p>
+<p>First, we&rsquo;ll store some positions (latLng) for our markers:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">markersLatLng <span style="color:#000;font-weight:bold">=</span> [
     [<span style="color:#000;font-weight:bold">-</span><span style="color:#099">18.586379</span>, <span style="color:#099">45.878906</span>],
     [<span style="color:#000;font-weight:bold">-</span><span style="color:#099">22.311967</span>, <span style="color:#099">47.373047</span>],
@@ -501,7 +505,7 @@ if (!doNotTrack) {
     <span style="color:#000;font-weight:bold">return</span> marker;
 }
 </code></pre></div><p>The code is pretty straightforward, it creates a marker instance using a latLng and adds it to the map.</p>
-<p>I'll talk about the onClick parameter in the next part.</p>
+<p>I&rsquo;ll talk about the onClick parameter in the next part.</p>
 <p>Now all we have to do is loop on our markers positions and use this function to add them after we create our map.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#000;font-weight:bold">var</span> map <span style="color:#000;font-weight:bold">=</span> createMap(<span style="color:#d14">&#39;map&#39;</span>, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">21.208312</span>, <span style="color:#099">46.262851</span>, <span style="color:#099">6</span>);
 
@@ -518,10 +522,10 @@ markersLatLng.forEach(<span style="color:#000;font-weight:bold">function</span>(
 
 <h3 id="handling-click-events-on-the-mapmarkers">Handling click events on the map/markers</h3>
 <p>Sometimes you want to make your map more interactive, maybe show more informations when the user clicks somewhere on the map or on a certain marker.</p>
-<p>Thanks to Leaflet, it's very easy to do so.</p>
-<p>Let's say we want to show the latLng of where the user clicks, we would either use html elements or simply use the popup element that Leaflet provides.</p>
+<p>Thanks to Leaflet, it&rsquo;s very easy to do so.</p>
+<p>Let&rsquo;s say we want to show the latLng of where the user clicks, we would either use html elements or simply use the popup element that Leaflet provides.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#000;font-weight:bold">var</span> popup <span style="color:#000;font-weight:bold">=</span> L.popup(); <span style="color:#998;font-style:italic">// Create a popup instance
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// NB: The popup should be created outside the for loop, we only need 1 popup
+</span><span style="color:#998;font-style:italic">// NB: The popup should be created outside the for loop, we only need 1 popup
 </span><span style="color:#998;font-style:italic"></span>
 map.on(<span style="color:#d14">&#39;click&#39;</span>, <span style="color:#000;font-weight:bold">function</span> (e) {
     <span style="color:#998;font-style:italic">// When the map is clicked, this function is executed
@@ -533,7 +537,7 @@ map.on(<span style="color:#d14">&#39;click&#39;</span>, <span style="color:#000;
 </span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// Then set its content and open it on our map
 </span><span style="color:#998;font-style:italic"></span>});
 </code></pre></div><p>What if we want to show some kind of informations when the user clicks markers? Also simple.</p>
-<p>I added a span element with the Id <code>markerInfos</code> where I'll be showing the latLng where the user clicked everytime.</p>
+<p>I added a span element with the Id <code>markerInfos</code> where I&rsquo;ll be showing the latLng where the user clicked everytime.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#000;font-weight:bold">var</span> markerInfos <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">document</span>.getElementById(<span style="color:#d14">&#34;markerInfos&#34;</span>);
 <span style="color:#000;font-weight:bold">var</span> map <span style="color:#000;font-weight:bold">=</span> createMap(<span style="color:#d14">&#39;map&#39;</span>, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">21.208312</span>, <span style="color:#099">46.262851</span>, <span style="color:#099">6</span>);
 
@@ -546,12 +550,12 @@ markersLatLng.forEach(<span style="color:#000;font-weight:bold">function</span>(
     addMarker(map, latLng, onMarkerClick);
     <span style="color:#998;font-style:italic">// Now we use the onClick parameter to pass our function
 </span><span style="color:#998;font-style:italic"></span>});
-</code></pre></div><p>Now if you refresh the page and click somewhere on the map, the popup will appear and if you click on one of the three markers, the span's text will change depending on the clicked marker.</p>
+</code></pre></div><p>Now if you refresh the page and click somewhere on the map, the popup will appear and if you click on one of the three markers, the span&rsquo;s text will change depending on the clicked marker.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Google Maps was used by a LOT of people, until they changed their service and made it a lot more expensive to use.</p>
 <p>For small websites this can be fine, but for larger websites or simply websites that get a lot of hits per day, the bill can easily shock you.</p>
 <p>This is why I went looking for an alternative and I found OpenStreetMap, the open-source and free map.</p>
-<p>Coupled with Leaflet, It's very easy to integrate and customize and I urge people to try it.</p>
+<p>Coupled with Leaflet, It&rsquo;s very easy to integrate and customize and I urge people to try it.</p>
 
             </article>
           </div>
@@ -778,7 +782,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

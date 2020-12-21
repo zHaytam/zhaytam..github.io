@@ -6,10 +6,42 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CascadingParameter</title>
+      <link>https://blog.zhaytam.com/tags/cascadingparameter/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/cascadingparameter/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CascadingValue</title>
+      <link>https://blog.zhaytam.com/tags/cascadingvalue/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/cascadingvalue/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Context API</title>
+      <link>https://blog.zhaytam.com/tags/context-api/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/context-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://blog.zhaytam.com/tags/react/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/react/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Expression Trees</title>
@@ -147,7 +179,7 @@
     </item>
     
     <item>
-      <title>GitHub Pages</title>
+      <title>Github Pages</title>
       <link>https://blog.zhaytam.com/tags/github-pages/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       

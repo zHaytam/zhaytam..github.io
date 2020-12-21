@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Dynamic Sorting and Filtering in C#",
         "headline" : "Dynamic Sorting and Filtering in C#",
-        "description" : "If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you've come to the right place!\nToday we'll see how we can generate these types of operations at runtime and on the fly.",
+        "description" : "If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you\u0026rsquo;ve come to the right place!\nToday we\u0026rsquo;ll see how we can generate these types of operations at runtime and on the fly.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -335,11 +339,11 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you've come to the right place!</p>
-<p>Today we'll see how we can generate these types of operations at runtime and on the fly. I have packaged everything in this <a href="https://www.nuget.org/packages/DynamicExpressions.NET/1.0.0">NuGet package</a>, it's code is available in this <a href="https://github.com/zHaytam/DynamicExpressions">GitHub repository</a>.</p>
-<p>For the sake of this blog post, let's assume that we're building an E-Commerce website.</p>
+              <p>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&rsquo;ve come to the right place!</p>
+<p>Today we&rsquo;ll see how we can generate these types of operations at runtime and on the fly. I have packaged everything in this <a href="https://www.nuget.org/packages/DynamicExpressions.NET/1.0.0">NuGet package</a>, it&rsquo;s code is available in this <a href="https://github.com/zHaytam/DynamicExpressions">GitHub repository</a>.</p>
+<p>For the sake of this blog post, let&rsquo;s assume that we&rsquo;re building an E-Commerce website.</p>
 <h2 id="sorting">Sorting</h2>
-<p>Imagine that in your Administration dashboard, you're displaying a list of products in a table. You were asked to add the ability to sort that table based on multiple fields.</p>
+<p>Imagine that in your Administration dashboard, you&rsquo;re displaying a list of products in a table. You were asked to add the ability to sort that table based on multiple fields.</p>
 <h3 id="manual-approach">Manual Approach</h3>
 <p>The simplest and most straightforward approach would be the following:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/c97dccf923440a5820ba7032b2a5783b.js"></script>
@@ -347,9 +351,9 @@ if (!doNotTrack) {
 <p>Which can be used like this:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/2113ebadee4331997786bf83c4f2ea23.js"></script>
 
-<p>As you can see, it's &ldquo;a lot&rdquo; of code for something so straightforward.<br>
-If you want to order by other properties, you'll have to add them to the switch statement and repeat the same thing over and over.<br>
-Again, if you want to perform a descending order by, you'll have to add even more code.</p>
+<p>As you can see, it&rsquo;s &ldquo;a lot&rdquo; of code for something so straightforward.<br>
+If you want to order by other properties, you&rsquo;ll have to add them to the switch statement and repeat the same thing over and over.<br>
+Again, if you want to perform a descending order by, you&rsquo;ll have to add even more code.</p>
 <h3 id="dynamic-approach">Dynamic Approach</h3>
 <p>Using <code>DynamicExpressions.NET</code>, all you have to do is this:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/20b52ba9690786d2a9772aa74144c7ea.js"></script>
@@ -357,12 +361,12 @@ Again, if you want to perform a descending order by, you'll have to add even mor
 <p>And voila! In 2 lines, we get a dynamic property getter (which replaces that &ldquo;huge&rdquo; switch statement) and the ability to use it wherever we want.</p>
 <p>The library generates an Expression Tree almost the same as the one that gets generated in the manual approach, so the performance is practically the same!</p>
 <h2 id="filtering">Filtering</h2>
-<p>Imagine now that you're working on the client-side of the E-Commerce website. You've been tasked to add the ability for users/customers to filter the products list.</p>
-<h3 id="manual-approach1">Manual Approach</h3>
+<p>Imagine now that you&rsquo;re working on the client-side of the E-Commerce website. You&rsquo;ve been tasked to add the ability for users/customers to filter the products list.</p>
+<h3 id="manual-approach-1">Manual Approach</h3>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/0f707e5c82a733955231877ad0c7d17e.js"></script>
 
-<p>The above approach assumes that it's the backend who decides what filters to apply, but what if it's the frontend who does? You will then have to add a <code>FilterOperator</code> and add a lot more code to handle all the cases for all the fields.</p>
-<h3 id="dynamic-approach1">Dynamic Approach</h3>
+<p>The above approach assumes that it&rsquo;s the backend who decides what filters to apply, but what if it&rsquo;s the frontend who does? You will then have to add a <code>FilterOperator</code> and add a lot more code to handle all the cases for all the fields.</p>
+<h3 id="dynamic-approach-1">Dynamic Approach</h3>
 <p>Using <code>DynamicExpressions.NET</code>, all you have to do is this:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/ff714ab68515b91b23a6466c5c3ddb22.js"></script>
 
@@ -372,18 +376,18 @@ Again, if you want to perform a descending order by, you'll have to add even mor
 <p>As I said earlier, a manual approach handling multiple fields and multiple operators will turn out to be a LOT of code.</p>
 <p>Imagine you want to apply the following filter:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">(Product.Brand == <span style="color:#d14">&#34;Nike&#34;</span> || Product.Brand == <span style="color:#d14">&#34;Adidas&#34;</span>)
-&amp;&amp; (Product.Price &gt;= <span style="color:#099">2</span><span style="color:#099">0</span> &amp;&amp; Product.Price &lt;= <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">0</span>)
+&amp;&amp; (Product.Price &gt;= <span style="color:#099">20</span> &amp;&amp; Product.Price &lt;= <span style="color:#099">100</span>)
 &amp;&amp; Product.Enabled
 </code></pre></div><p>Using <code>DynamicExpressions.NET</code>, you can do it like this:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/4eac0564b10aeef35a663bed7a4f06c5.js"></script>
 
-<p>Of course, all the fields, values and operators can be provided by a user/frontend and it'll just work! The <code>DynamicFilterBuilder</code> lets you build complicated filters, which gives you everything you need for a fully dynamic filtering system!</p>
-<p>As with all the other examples, the generated Expression Tree matches closely the one generated with lambdas, so you don't even have to worry about performance.</p>
+<p>Of course, all the fields, values and operators can be provided by a user/frontend and it&rsquo;ll just work! The <code>DynamicFilterBuilder</code> lets you build complicated filters, which gives you everything you need for a fully dynamic filtering system!</p>
+<p>As with all the other examples, the generated Expression Tree matches closely the one generated with lambdas, so you don&rsquo;t even have to worry about performance.</p>
 <h2 id="how-does-it-work">How does it work?</h2>
-<p>Let's take the example of the <code>GetPropertyGetter</code> method, used in the sorting example:</p>
+<p>Let&rsquo;s take the example of the <code>GetPropertyGetter</code> method, used in the sorting example:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/7894be5035e2b96c2d1c80da8c4a1a74.js"></script>
 
-<p>Here's what the code does, starting from line number 6:</p>
+<p>Here&rsquo;s what the code does, starting from line number 6:</p>
 <ol>
 <li>Create a <code>ParameterExpression</code>, which represents an instance, e.g. a product.
 <ul>
@@ -410,7 +414,7 @@ Again, if you want to perform a descending order by, you'll have to add even mor
 <h2 id="conclusion">Conclusion</h2>
 <p>All the examples that I showed in this blog post were about a <code>Product</code> entity. What if you want to be able to sort and/or filter on multiple entities? You will need to write custom code/switch statements for every one of them, and it can quickly become tedious.</p>
 <p><code>DynamicExpressions.NET</code> is here to remove all that straightforward and boring code out of your way, so that you focus more on the things that matter!</p>
-<p>I hope you had a good read, don't hesitate to leave a feedback!<br>
+<p>I hope you had a good read, don&rsquo;t hesitate to leave a feedback!<br>
 See you soon.</p>
 
             </article>
@@ -638,7 +642,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

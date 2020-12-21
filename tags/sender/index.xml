@@ -6,11 +6,7 @@
     <description>Recent content in sender on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Jun 2019 12:58:48 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/sender/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 08 Jun 2019 12:58:48 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/sender/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EmailSender Service using FluentEmail &amp; Razor Templates</title>
       <link>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</link>
@@ -18,8 +14,8 @@
       
       <guid>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
-Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
-EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
+Today I&amp;rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
+EmailSender interface If you&amp;rsquo;re working with a project that implements a Clean Architecture, you&amp;rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
     </item>
     
   </channel>

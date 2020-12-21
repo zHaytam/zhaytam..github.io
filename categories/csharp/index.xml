@@ -6,18 +6,14 @@
     <description>Recent content in CSharp on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C# Expression Trees: Property Getters</title>
       <link>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</guid>
-      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&#39;t get me wrong, Reflection does the job most of the time, but it&#39;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
+      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&amp;rsquo;t get me wrong, Reflection does the job most of the time, but it&amp;rsquo;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
     </item>
     
     <item>
@@ -26,7 +22,7 @@
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/10/19/available-settings-extraction/</guid>
-      <description>I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could&#39;ve done it manually, but there was quiet a few settings and I didn&#39;t want to have to update the table every time new ones are added.</description>
+      <description>I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could&amp;rsquo;ve done it manually, but there was quiet a few settings and I didn&amp;rsquo;t want to have to update the table every time new ones are added.</description>
     </item>
     
     <item>
@@ -36,7 +32,7 @@
       
       <guid>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</guid>
       <description>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.
-It&#39;s an important concept for many reasons, but I won&#39;t get into it in this blog post because it&#39;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&#39;s The changing state of immutability in c# video, which explain it in details.</description>
+It&amp;rsquo;s an important concept for many reasons, but I won&amp;rsquo;t get into it in this blog post because it&amp;rsquo;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&amp;rsquo;s The changing state of immutability in c# video, which explain it in details.</description>
     </item>
     
     <item>
@@ -45,8 +41,8 @@ It&#39;s an important concept for many reasons, but I won&#39;t get into it in t
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</guid>
-      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&#39;ve come to the right place!
-Today we&#39;ll see how we can generate these types of operations at runtime and on the fly.</description>
+      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&amp;rsquo;ve come to the right place!
+Today we&amp;rsquo;ll see how we can generate these types of operations at runtime and on the fly.</description>
     </item>
     
     <item>
@@ -65,7 +61,7 @@ The package The DataFrame related classes were introduced in the package Microso
       <pubDate>Fri, 15 Nov 2019 11:23:57 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/11/15/socks5-a-net-core-implementation-from-scratch/</guid>
-      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&#39;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
+      <description>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&amp;rsquo;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.
 The implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.</description>
     </item>
     

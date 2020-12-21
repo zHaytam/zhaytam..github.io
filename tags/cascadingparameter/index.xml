@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CascadingParameter on Awaiting Bits</title>
+    <link>https://blog.zhaytam.com/tags/cascadingparameter/</link>
+    <description>Recent content in CascadingParameter on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/cascadingparameter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blazor vs React: Passing values to all children</title>
+      <link>https://blog.zhaytam.com/2020/12/21/blazor-vs-react-passing-values-to-all-children/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2020/12/21/blazor-vs-react-passing-values-to-all-children/</guid>
+      <description>How to pass values to all children (multiple levels), both in Blazor and React, and what are the differences between the two</description>
+    </item>
+    
+  </channel>
+</rss>

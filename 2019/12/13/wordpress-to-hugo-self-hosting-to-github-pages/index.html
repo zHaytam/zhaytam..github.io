@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "From Wordpress to Hugo, Self Hosting to Github Pages",
         "headline" : "From Wordpress to Hugo, Self Hosting to Github Pages",
-        "description" : "These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.\nToday I'll talk about that decision, its advantages and disadvantages.",
+        "description" : "These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.\nToday I\u0026rsquo;ll talk about that decision, its advantages and disadvantages.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -337,13 +341,13 @@ if (!doNotTrack) {
             <article>
               <p>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic.
 So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.<br>
-Today I'll talk about that decision, its advantages and disadvantages.</p>
+Today I&rsquo;ll talk about that decision, its advantages and disadvantages.</p>
 <h2 id="problems">Problems</h2>
 <h3 id="huge-ttfb">Huge TTFB</h3>
-<p>Whenever someone visits <a href="https://blog.zhaytam.com">https://blog.zhaytam.com</a>, they wouldn't receive the first byte until 4+ seconds later, regardless of whether the page was cached or not, which is HUGE. I suspect that this happens in mobile too, which is a deal breaker for most users.</p>
+<p>Whenever someone visits <a href="https://blog.zhaytam.com">https://blog.zhaytam.com</a>, they wouldn&rsquo;t receive the first byte until 4+ seconds later, regardless of whether the page was cached or not, which is HUGE. I suspect that this happens in mobile too, which is a deal breaker for most users.</p>
 <p>Suspected reasons:</p>
 <ul>
-<li>The VPS where I'm hosting the blog is far from where the users are. However this doesn't explain the issue since if you ping the server it responds withing 150ms max.</li>
+<li>The VPS where I&rsquo;m hosting the blog is far from where the users are. However this doesn&rsquo;t explain the issue since if you ping the server it responds withing 150ms max.</li>
 <li>Wordpress takes too long to generate the pages. This can explain the issue, knowing that many plugins are installed and Wordpress is slow by nature.</li>
 </ul>
 <h3 id="bad-quality-plugins-broken-plugins-lots-of-ads">Bad quality plugins, broken plugins, lots of Ads</h3>
@@ -355,16 +359,16 @@ Today I'll talk about that decision, its advantages and disadvantages.</p>
 <blockquote>
 <p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.</p>
 </blockquote>
-<p>I have heard about static site generators for a while, but didn't think they fit my need until I read more about them, especially Hugo. For a blog, this might be the easiest way to get up and going. Depending on themes, you can find anything you need.</p>
-<p>What's even better is that you can customize everything yourself as a developper, which is very handy when you need something custom.</p>
-<p>To help you switch from Wordpress to Hugo, there is this <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">plugin</a>. One problem (or not, depending on your case) is that it lets other plugins generate content and so you end up with markdown posts that contain html that doesn't respect rules and non-local images.<br>
+<p>I have heard about static site generators for a while, but didn&rsquo;t think they fit my need until I read more about them, especially Hugo. For a blog, this might be the easiest way to get up and going. Depending on themes, you can find anything you need.</p>
+<p>What&rsquo;s even better is that you can customize everything yourself as a developper, which is very handy when you need something custom.</p>
+<p>To help you switch from Wordpress to Hugo, there is this <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">plugin</a>. One problem (or not, depending on your case) is that it lets other plugins generate content and so you end up with markdown posts that contain html that doesn&rsquo;t respect rules and non-local images.<br>
 I spent about 3 days manually cleaning posts and setting up images.</p>
 <h2 id="using-github-pages">Using Github Pages</h2>
 <p>I think everyone knows Github Pages by now. You can host a static site in a repository and let people visit it at <code>&lt;username&gt;.github.io</code> or <code>&lt;username&gt;.github.io/&lt;project&gt;</code>.</p>
-<p>What I didn't know is that you can replace Github's domain with your own, while enforcing HTTPS! This makes everything easier as I only need to build the blog into a repository and the changes are online.</p>
-<p>Everything went smoothly, apart from the HTTPS part. I couldn't enforce it from the Github repository directly and so I'm currently relying on <a href="https://www.cloudflare.com/">Cloudflare</a> to do so, using Page Rules and their free SSL plan.</p>
+<p>What I didn&rsquo;t know is that you can replace Github&rsquo;s domain with your own, while enforcing HTTPS! This makes everything easier as I only need to build the blog into a repository and the changes are online.</p>
+<p>Everything went smoothly, apart from the HTTPS part. I couldn&rsquo;t enforce it from the Github repository directly and so I&rsquo;m currently relying on <a href="https://www.cloudflare.com/">Cloudflare</a> to do so, using Page Rules and their free SSL plan.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>I think that this switch was a very good decision. My <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> speed went from a horrible 23 on mobile to 92! I advise every blogger that uses Wordpress to at least consider static site generators as a solution, most don't really need that much functionnality.</p>
+<p>I think that this switch was a very good decision. My <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> speed went from a horrible 23 on mobile to 92! I advise every blogger that uses Wordpress to at least consider static site generators as a solution, most don&rsquo;t really need that much functionnality.</p>
 
             </article>
           </div>
@@ -589,7 +593,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

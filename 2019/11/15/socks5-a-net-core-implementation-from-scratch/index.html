@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Socks5 – A .NET Core implementation from scratch",
         "headline" : "Socks5 – A .NET Core implementation from scratch",
-        "description" : "A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn't find an up-to-date implementation for .NET Core, so I decided to give it a go myself.\nThe implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.",
+        "description" : "A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn\u0026rsquo;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.\nThe implementation is pretty straightforward and easy, I got inspired from starksoft-aspen and followed the official RFC.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -347,7 +351,7 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn't find an up-to-date implementation for .NET Core, so I decided to give it a go myself.</p>
+              <p>A few days ago I needed a way to connect to a server using a Socks5 proxy but couldn&rsquo;t find an up-to-date implementation for .NET Core, so I decided to give it a go myself.</p>
 <p>The implementation is pretty straightforward and easy, I got inspired from <a href="https://github.com/bentonstark/starksoft-aspen">starksoft-aspen</a> and followed the official <a href="https://tools.ietf.org/html/rfc1928">RFC</a>. All the code in this blog post is available in this <a href="https://gist.github.com/zHaytam/3730d512eb5eaf37fb3bd3d176185541">Gist</a>.</p>
 <h2 id="what-is-socks">What is Socks</h2>
 <p>Socks is an internet protocol used to exchanges packets between a client and a server using a proxy in the middle. It also provides authentication methods. Socks works on the 5th layer (session) of the OSI model that controls communication between computers.</p>
@@ -370,7 +374,7 @@ Here are the authentication methods that Socks5 supports:</p>
 </figure>
 
 <h3 id="constants--options">Constants &amp; Options</h3>
-<p>Here are the constants (never-changing values) that we'll using during the implementation:</p>
+<p>Here are the constants (never-changing values) that we&rsquo;ll using during the implementation:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Socks5Constants</span>
 {
 
@@ -421,7 +425,7 @@ Here are the authentication methods that Socks5 supports:</p>
         Auth = AuthType.None;
     }
 
-    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort) : <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">8</span><span style="color:#099">0</span>, destHost, destPort) { }
+    <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort) : <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1080</span>, destHost, destPort) { }
 
     <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">int</span> proxyPort, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort, <span style="color:#458;font-weight:bold">string</span> username,
         <span style="color:#458;font-weight:bold">string</span> password) : <span style="color:#000;font-weight:bold">this</span>(proxyHost, proxyPort, destHost, destPort)
@@ -431,7 +435,7 @@ Here are the authentication methods that Socks5 supports:</p>
     }
 
     <span style="color:#000;font-weight:bold">public</span> Socks5Options(<span style="color:#458;font-weight:bold">string</span> proxyHost, <span style="color:#458;font-weight:bold">string</span> destHost, <span style="color:#458;font-weight:bold">int</span> destPort, <span style="color:#458;font-weight:bold">string</span> username, <span style="color:#458;font-weight:bold">string</span> password) :
-        <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">8</span><span style="color:#099">0</span>, destHost, destPort, username, password)
+        <span style="color:#000;font-weight:bold">this</span>(proxyHost, <span style="color:#099">1080</span>, destHost, destPort, username, password)
     { }
 
 }
@@ -443,7 +447,7 @@ Here are the authentication methods that Socks5 supports:</p>
 }
 </code></pre></div><p>I only implemented two authentication methods: NoAuthentication and UsernamePassword, but you can easily add the others.</p>
 <h3 id="selecting-an-authentication-method">Selecting an authentication method</h3>
-<p>Firstly, after the client successfully connects to the proxy server, it needs to send the authentication methods it handles. I'll be sending the two methods previously shown.</p>
+<p>Firstly, after the client successfully connects to the proxy server, it needs to send the authentication methods it handles. I&rsquo;ll be sending the two methods previously shown.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/*
 </span><span style="color:#998;font-style:italic">+----+----------+----------+
 </span><span style="color:#998;font-style:italic">| VER | NMETHODS | METHODS |
@@ -543,7 +547,7 @@ destPort.CopyTo(buffer, <span style="color:#099">4</span> + destAddr.Length);
 </span><span style="color:#998;font-style:italic">+-----+-----+-------+------+----------+----------+
 </span><span style="color:#998;font-style:italic">*/</span>
 
-<span style="color:#458;font-weight:bold">var</span> response = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">2</span><span style="color:#099">5</span><span style="color:#099">5</span>];
+<span style="color:#458;font-weight:bold">var</span> response = <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span>[<span style="color:#099">255</span>];
 <span style="color:#000;font-weight:bold">await</span> socket.ReceiveAsync(response, SocketFlags.None);
 
 <span style="color:#000;font-weight:bold">if</span> (response[<span style="color:#099">1</span>] != Socks5Constants.CmdReplySucceeded)
@@ -784,7 +788,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

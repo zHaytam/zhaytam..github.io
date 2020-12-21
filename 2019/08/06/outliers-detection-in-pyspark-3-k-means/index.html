@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -342,15 +346,15 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>In parts <a href="https://blog.zhaytam.com/2019/06/21/outliers-detection-pyspark-1-intro/">#1</a> and <a href="https://blog.zhaytam.com/2019/07/15/outliers-detection-in-pyspark-2-interquartile-range/">#2</a> of the “Outliers Detection in PySpark” series, I talked about Anomaly Detection, Outliers Detection and the interquartile range (boxplot) method. In this third and last part, I will talk about how one can use the popular <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-means clustering algorithm</a> to detect outliers.</p>
-<h2 id="kmeans">K-means</h2>
+<h2 id="k-means">K-means</h2>
 <p>K-means is one of the easiest and most popular unsupervised algorithms in Machine Learning for Clustering. It aims to cluster data points into different K clusters in an iterative process.</p>
-<p>Most importantly, the algorithm is parametric. It needs K, the number of clusters and, sometimes, the maximum number of iterations so that it doesn't run forever.</p>
+<p>Most importantly, the algorithm is parametric. It needs K, the number of clusters and, sometimes, the maximum number of iterations so that it doesn&rsquo;t run forever.</p>
 <h3 id="how-it-works">How it works</h3>
 <ol>
 <li>Generate K random centroids.</li>
 <li>Associate each data point to the nearest centroid.</li>
 <li>Re-generate the K centroids.</li>
-<li>Repeat steps 2 and 3 until nothing changes (or other conditions, since it doesn't guarantee an optimal solution).</li>
+<li>Repeat steps 2 and 3 until nothing changes (or other conditions, since it doesn&rsquo;t guarantee an optimal solution).</li>
 </ol>
 <figure>
     <img src="https://www.projectrhea.org/rhea/images/e/ef/RunyanKmeans.gif"
@@ -359,9 +363,9 @@ if (!doNotTrack) {
         </figcaption>
 </figure>
 
-<h2 id="using-kmeans-to-detect-outliers">Using K-means to detect outliers</h2>
-<p>Although it's not the best of solutions, K-means can actually be used to detect outliers. The idea is very simple: After constructing the clusters, we flag points that are far as outliers. In other words, we consider points that are far from the centroid of the cluster they belong to (distance-wise) as outliers.</p>
-<p>Above all, this technique is also parametric and expects you to provide the fraction of outliers the data contains, which isn't always possible.</p>
+<h2 id="using-k-means-to-detect-outliers">Using K-means to detect outliers</h2>
+<p>Although it&rsquo;s not the best of solutions, K-means can actually be used to detect outliers. The idea is very simple: After constructing the clusters, we flag points that are far as outliers. In other words, we consider points that are far from the centroid of the cluster they belong to (distance-wise) as outliers.</p>
+<p>Above all, this technique is also parametric and expects you to provide the fraction of outliers the data contains, which isn&rsquo;t always possible.</p>
 <p>Here are the steps:</p>
 <ol>
 <li>Run the K-means on all the data points.</li>
@@ -390,13 +394,13 @@ if (!doNotTrack) {
 </figure>
 </p>
 <h2 id="pyspark-implementation">PySpark Implementation</h2>
-<p>Firstly, we'll run K-means on all the data points and predict the clusters they belong to:</p>
+<p>Firstly, we&rsquo;ll run K-means on all the data points and predict the clusters they belong to:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyspark.mllib.clustering</span> <span style="color:#000;font-weight:bold">import</span> KMeans
 
-k <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
-maxIterations <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
-data_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing all the data</span>
-training_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000;font-weight:bold">.</span> <span style="color:#998;font-style:italic"># An RDD containing, for each row, a tuple with all the values (except the row key)</span>
+k <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+maxIterations <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span> <span style="color:#998;font-style:italic"># Try different numbers</span>
+data_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">...</span> <span style="color:#998;font-style:italic"># An RDD containing all the data</span>
+training_rdd <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">...</span> <span style="color:#998;font-style:italic"># An RDD containing, for each row, a tuple with all the values (except the row key)</span>
 model <span style="color:#000;font-weight:bold">=</span> KMeans<span style="color:#000;font-weight:bold">.</span>train(training_rdd, k, maxIterations<span style="color:#000;font-weight:bold">=</span>maxIterations)
 preds <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>predict(training_rdd)
 </code></pre></div><p>Secondly, calculate the distance between each point and the centroid of the cluster it belongs to:</p>
@@ -406,14 +410,14 @@ preds <span style="color:#000;font-weight:bold">=</span> model<span style="color
   centroid <span style="color:#000;font-weight:bold">=</span> model<span style="color:#000;font-weight:bold">.</span>centers[prediction]
   <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>linalg<span style="color:#000;font-weight:bold">.</span>norm(data_point <span style="color:#000;font-weight:bold">-</span> centroid)
 
-<span style="color:#998;font-style:italic"># Calculate the distances</span>
+<span style="color:#998;font-style:italic"># Calculate the distances</span>
 distances <span style="color:#000;font-weight:bold">=</span> training_rdd<span style="color:#000;font-weight:bold">.</span>zip(preds)<span style="color:#000;font-weight:bold">.</span>map(to_distances)
-<span style="color:#998;font-style:italic"># Zip each row with its key so that they can be identified later on</span>
+<span style="color:#998;font-style:italic"># Zip each row with its key so that they can be identified later on</span>
 distances_and_keys <span style="color:#000;font-weight:bold">=</span> distances<span style="color:#000;font-weight:bold">.</span>zip(data_rdd)<span style="color:#000;font-weight:bold">.</span>map(<span style="color:#000;font-weight:bold">lambda</span> (distance, data_tuple): (data_tuple[key_col], distance))
 </code></pre></div><p>Lastly, calculate the number of outliers based on the given fraction and flag outliers:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">number_of_outliers <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">int</span>(outliers_fraction <span style="color:#000;font-weight:bold">*</span> distances<span style="color:#000;font-weight:bold">.</span>count())
 outliers <span style="color:#000;font-weight:bold">=</span> distances_and_keys<span style="color:#000;font-weight:bold">.</span>sortBy(<span style="color:#000;font-weight:bold">lambda</span> (key, distance): distance, ascending<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>)<span style="color:#000;font-weight:bold">.</span>take(number_of_outliers)
-</code></pre></div><p>To sum up, data quality is an important side of data mining overall. I focused on Anomaly detection (Outliers detection specifically) because that's what I was working on these months and I saw how important it was in real use cases, such as banking systems.</p>
+</code></pre></div><p>To sum up, data quality is an important side of data mining overall. I focused on Anomaly detection (Outliers detection specifically) because that&rsquo;s what I was working on these months and I saw how important it was in real use cases, such as banking systems.</p>
 <p>In these posts I introduced what these terms meant and explain 2 easy and popular algorithms: Interquartile Range and K-means clustering.<br>
 Hope you enjoyed the series!</p>
 
@@ -643,7 +647,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

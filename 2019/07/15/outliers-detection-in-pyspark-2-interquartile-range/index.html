@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -368,7 +372,7 @@ if (!doNotTrack) {
 </li>
 <li>Flag any points outside the bounds as suspected outliers.</li>
 </ol>
-<p>If you're wondering why John chose $1.5 * IQR$ and not some other value, it can be explained in the Wikipedia picture and also this <a href="https://math.stackexchange.com/questions/966331/why-john-tukey-set-1-5-iqr-to-detect-outliers-instead-of-1-or-2">post</a>.</p>
+<p>If you&rsquo;re wondering why John chose $1.5 * IQR$ and not some other value, it can be explained in the Wikipedia picture and also this <a href="https://math.stackexchange.com/questions/966331/why-john-tukey-set-1-5-iqr-to-detect-outliers-instead-of-1-or-2">post</a>.</p>
 <p>If we look at the picture, we can see that the lower bound and the upper bound correspond, respectively, to $-2.698\sigma$ and $2.698\sigma$.<br>
 This reminds me of the <code>68-95-99.7 rule</code>, which says that about 99.7% of points are within $3\sigma$ and that the rest can be considered as outliers.</p>
 <h2 id="pyspark-implementation">PySpark Implementation</h2>
@@ -380,15 +384,15 @@ This reminds me of the <code>68-95-99.7 rule</code>, which says that about 99.7%
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">calculate_bounds</span>(df):
   bounds <span style="color:#000;font-weight:bold">=</span> {
         c: <span style="color:#0086b3">dict</span>(
-            <span style="color:#0086b3">zip</span>([<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">q1</span><span style="color:#d14">&#34;</span>, <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">q3</span><span style="color:#d14">&#34;</span>], df<span style="color:#000;font-weight:bold">.</span>approxQuantile(c, [<span style="color:#099">0.25</span>, <span style="color:#099">0.75</span>], <span style="color:#099">0</span>))
+            <span style="color:#0086b3">zip</span>([<span style="color:#d14">&#34;q1&#34;</span>, <span style="color:#d14">&#34;q3&#34;</span>], df<span style="color:#000;font-weight:bold">.</span>approxQuantile(c, [<span style="color:#099">0.25</span>, <span style="color:#099">0.75</span>], <span style="color:#099">0</span>))
         )
-        <span style="color:#000;font-weight:bold">for</span> c,d <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(df<span style="color:#000;font-weight:bold">.</span>columns, df<span style="color:#000;font-weight:bold">.</span>dtypes) <span style="color:#000;font-weight:bold">if</span> d[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">int</span><span style="color:#d14">&#34;</span>
+        <span style="color:#000;font-weight:bold">for</span> c,d <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(df<span style="color:#000;font-weight:bold">.</span>columns, df<span style="color:#000;font-weight:bold">.</span>dtypes) <span style="color:#000;font-weight:bold">if</span> d[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;int&#34;</span>
     }
 
     <span style="color:#000;font-weight:bold">for</span> c <span style="color:#000;font-weight:bold">in</span> bounds:
-        iqr <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q3</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">-</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q1</span><span style="color:#d14">&#39;</span>]
-        bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">min</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q1</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">-</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
-        bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">max</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">q3</span><span style="color:#d14">&#39;</span>] <span style="color:#000;font-weight:bold">+</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
+        iqr <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14">&#39;q3&#39;</span>] <span style="color:#000;font-weight:bold">-</span> bounds[c][<span style="color:#d14">&#39;q1&#39;</span>]
+        bounds[c][<span style="color:#d14">&#39;min&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14">&#39;q1&#39;</span>] <span style="color:#000;font-weight:bold">-</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
+        bounds[c][<span style="color:#d14">&#39;max&#39;</span>] <span style="color:#000;font-weight:bold">=</span> bounds[c][<span style="color:#d14">&#39;q3&#39;</span>] <span style="color:#000;font-weight:bold">+</span> (iqr <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">1.5</span>)
 
     <span style="color:#000;font-weight:bold">return</span> bounds
 </code></pre></div><h3 id="flagging-outliers">Flagging outliers</h3>
@@ -400,9 +404,9 @@ This reminds me of the <code>68-95-99.7 rule</code>, which says that about 99.7%
   <span style="color:#000;font-weight:bold">return</span> df<span style="color:#000;font-weight:bold">.</span>select(c, id_col,
         <span style="color:#000;font-weight:bold">*</span>[
             f<span style="color:#000;font-weight:bold">.</span>when(
-                <span style="color:#000;font-weight:bold">~</span>f<span style="color:#000;font-weight:bold">.</span>col(c)<span style="color:#000;font-weight:bold">.</span>between(bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">min</span><span style="color:#d14">&#39;</span>], bounds[c][<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">max</span><span style="color:#d14">&#39;</span>]),
-                <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">yes</span><span style="color:#d14">&#34;</span>
-            )<span style="color:#000;font-weight:bold">.</span>otherwise(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">no</span><span style="color:#d14">&#34;</span>)<span style="color:#000;font-weight:bold">.</span>alias(c<span style="color:#000;font-weight:bold">+</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">_outlier</span><span style="color:#d14">&#39;</span>)
+                <span style="color:#000;font-weight:bold">~</span>f<span style="color:#000;font-weight:bold">.</span>col(c)<span style="color:#000;font-weight:bold">.</span>between(bounds[c][<span style="color:#d14">&#39;min&#39;</span>], bounds[c][<span style="color:#d14">&#39;max&#39;</span>]),
+                <span style="color:#d14">&#34;yes&#34;</span>
+            )<span style="color:#000;font-weight:bold">.</span>otherwise(<span style="color:#d14">&#34;no&#34;</span>)<span style="color:#000;font-weight:bold">.</span>alias(c<span style="color:#000;font-weight:bold">+</span><span style="color:#d14">&#39;_outlier&#39;</span>)
         ]
     )
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
@@ -632,7 +636,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 <script id="MathJax-script" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full">

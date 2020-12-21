@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Extract Available Settings Using C#",
         "headline" : "Extract Available Settings Using C#",
-        "description" : "I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could've done it manually, but there was quiet a few settings and I didn't want to have to update the table every time new ones are added.",
+        "description" : "I was working these days on my library Blazor.Diagrams and I needed to write some documentation to show all the available/possible options. I could\u0026rsquo;ve done it manually, but there was quiet a few settings and I didn\u0026rsquo;t want to have to update the table every time new ones are added.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -335,24 +339,24 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>I was working these days on my library <a href="https://github.com/zHaytam/Blazor.Diagrams">Blazor.Diagrams</a> and I needed to write some documentation to show all the available/possible options. I could've done it manually, but there was quiet a few settings and I didn't want to have to update the table every time new ones are added.</p>
+              <p>I was working these days on my library <a href="https://github.com/zHaytam/Blazor.Diagrams">Blazor.Diagrams</a> and I needed to write some documentation to show all the available/possible options. I could&rsquo;ve done it manually, but there was quiet a few settings and I didn&rsquo;t want to have to update the table every time new ones are added.</p>
 <p>So I write a quick utility code that generates it for me on the go.</p>
 <h2 id="example-class">Example class</h2>
-<p>As an example class, we'll just take my library's settings <code>BlazorOptions</code>.</p>
+<p>As an example class, we&rsquo;ll just take my library&rsquo;s settings <code>BlazorOptions</code>.</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/d7033f1ace89b4ee8762192d6246f16b.js"></script>
 
 <p>Notice that I used the <code>DescriptionAttribute</code> available in <code>System.ComponentModel</code> to describe each available option. Of course, you can use whatever attribute you want.</p>
 <h2 id="reflection-to-the-rescue">Reflection to the rescue</h2>
-<p>First, we'll create a class that holds all the information of a single setting:</p>
+<p>First, we&rsquo;ll create a class that holds all the information of a single setting:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/855771002e85db9185c14a19129eefbd.js"></script>
 
-<p>Here's what we're gonna do:</p>
+<p>Here&rsquo;s what we&rsquo;re gonna do:</p>
 <ol>
 <li>Create an instance of the class in order to be able to get the default values.</li>
 <li>For each property in the class:
 <ol>
-<li>If the property's type is a primitive, extract all the needed information (name, type, description and default value)</li>
-<li>If the property's type is a complex object, run step 2 recursively.</li>
+<li>If the property&rsquo;s type is a primitive, extract all the needed information (name, type, description and default value)</li>
+<li>If the property&rsquo;s type is a complex object, run step 2 recursively.</li>
 </ol>
 </li>
 </ol>
@@ -374,7 +378,7 @@ For example, it would be preferred to turn the type <code>Nullable'1</code> into
 <p>As you can see, implementing this method took a couple of minutes and was very easy. Using this, I am sure of two things:</p>
 <ol>
 <li>The documentation table reflects the possible options in real time, since the rendering project references the library.</li>
-<li>The table will always be up to date and I save myself the constant &ldquo;Don't forget to document this new option&rdquo; reminders.</li>
+<li>The table will always be up to date and I save myself the constant &ldquo;Don&rsquo;t forget to document this new option&rdquo; reminders.</li>
 </ol>
 
             </article>
@@ -600,7 +604,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Health Checks in ASP.NET Core",
         "headline" : "Health Checks in ASP.NET Core",
-        "description" : "Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running \u0026amp; healthy or not. It's usually one or more endpoints that reports the status, the response differs from language/framework to an other.\nHealth checks are very useful especially when your application depends on other things like a database or even other services.",
+        "description" : "Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running \u0026amp; healthy or not. It\u0026rsquo;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.\nHealth checks are very useful especially when your application depends on other things like a database or even other services.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -336,12 +340,12 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp; healthy or not.
-It's usually one or more endpoints that reports the status, the response differs from language/framework to an other.</p>
+It&rsquo;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.</p>
 <p>Health checks are very useful especially when your application depends on other things like a database or even other services.
-Usually, you'll find the generated endpoint(s) used by an Orchestrator to figure out whether the app is still up or not (liveness).</p>
-<p>Today we'll see how we can add health checks to an ASP.NET Core API.<br>
+Usually, you&rsquo;ll find the generated endpoint(s) used by an Orchestrator to figure out whether the app is still up or not (liveness).</p>
+<p>Today we&rsquo;ll see how we can add health checks to an ASP.NET Core API.<br>
 All the code is available in this <a href="https://github.com/zHaytam/HealthChecksExample">GitHub repository</a>.</p>
-<h2 id="builtin-health-checks">Built-in health checks</h2>
+<h2 id="built-in-health-checks">Built-in health checks</h2>
 <p>In ASP.NET Core, the package <code>Microsoft.AspNetCore.Diagnostics.HealthChecks</code> is used to add health checks to your application.
 This means that in every project, you have the ability to add health checks out of the box.</p>
 <div class="note info">
@@ -365,13 +369,13 @@ This means that in every project, you have the ability to add health checks out 
 </code></pre></div><div class="highlight-footer">
     Startup.cs
 </div>
-<p>This will inject a middleware that will, for now since we didn't configure any checks, report that the app is healthy.</p>
+<p>This will inject a middleware that will, for now since we didn&rsquo;t configure any checks, report that the app is healthy.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Healthy
 </code></pre></div><div class="highlight-footer">
     https://localhost:44318/health
 </div>
 <h3 id="custom-checks">Custom checks</h3>
-<p>The package doesn't come with any built-in checks, it only provides the base.
+<p>The package doesn&rsquo;t come with any built-in checks, it only provides the base.
 In order to add your own checks, there are two ways:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
   .AddCheck(<span style="color:#d14">&#34;AlwaysHealthy&#34;</span>, () =&gt; HealthCheckResult.Healthy())
@@ -387,8 +391,8 @@ In order to add your own checks, there are two ways:</p>
     Your IHealthCheck classes are registered in the DI container, so you can resolve dependencies in the constructor!
     
 </div>
-<p>This lets you perform all possible checks, but you'll have to write them manually.<br>
-Another downside is that the endpoint's response doesn't provide more information by default, maybe one day you'll want to know which checks fail and you'll have to write your own <code>ResponseWriter</code>.</p>
+<p>This lets you perform all possible checks, but you&rsquo;ll have to write them manually.<br>
+Another downside is that the endpoint&rsquo;s response doesn&rsquo;t provide more information by default, maybe one day you&rsquo;ll want to know which checks fail and you&rsquo;ll have to write your own <code>ResponseWriter</code>.</p>
 <h3 id="filtering-checks">Filtering checks</h3>
 <p>Imagine you have multiple custom checks:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
@@ -416,10 +420,10 @@ Another downside is that the endpoint's response doesn't provide more informatio
 </code></pre></div><div class="highlight-footer">
     Startup.cs
 </div>
-<p>If you visit <code>/health1</code>, it'll return <code>Healthy</code> and if you visit <code>/health2</code>, it'll return <code>Unhealthy</code>.<br>
+<p>If you visit <code>/health1</code>, it&rsquo;ll return <code>Healthy</code> and if you visit <code>/health2</code>, it&rsquo;ll return <code>Unhealthy</code>.<br>
 This is very useful if you want different health endpoints to check different things.</p>
 <h2 id="advanced-health-checks">Advanced health checks</h2>
-<p>Instead of writing every check ourselves, the package <a href="https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks">AspNetCore.Diagnostics.HealthChecks</a> comes to the rescue! It's an ASP.NET Core package that plugs into the existing health checks base and adds many custom checks, including:</p>
+<p>Instead of writing every check ourselves, the package <a href="https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks">AspNetCore.Diagnostics.HealthChecks</a> comes to the rescue! It&rsquo;s an ASP.NET Core package that plugs into the existing health checks base and adds many custom checks, including:</p>
 <ul>
 <li>SQL Server</li>
 <li>MySQL</li>
@@ -436,11 +440,11 @@ This is very useful if you want different health endpoints to check different th
 <li>Kubernetes</li>
 <li>&hellip;</li>
 </ul>
-<p>The full list, which is a lot bigger, can be found in the repositories&rsquo; README.<br>
-What's even better is that it contains a UI too!</p>
+<p>The full list, which is a lot bigger, can be found in the repositories' README.<br>
+What&rsquo;s even better is that it contains a UI too!</p>
 <h3 id="database-checks">Database checks</h3>
 <p><code>AspNetCore.HealthChecks</code> contains checks for the most popular database providers.
-Today we'll try the SQL Server one by installing the package <code>AspNetCore.HealthChecks.SqlServer</code>.</p>
+Today we&rsquo;ll try the SQL Server one by installing the package <code>AspNetCore.HealthChecks.SqlServer</code>.</p>
 <div class="note info">
     To keep the example short, I will not include the DbContext creation but you should have one, as well as the ConnectionString in appsettings.json
     
@@ -450,26 +454,26 @@ Today we'll try the SQL Server one by installing the package <code>AspNetCore.He
 </span></code></pre></div><div class="highlight-footer">
     Startup.cs
 </div>
-<p>It's as simple as this. If you configured your <code>DbContext</code> and your SQL Server is running, the <code>/health</code> endpoint should return the status <code>Healthy</code>.</p>
+<p>It&rsquo;s as simple as this. If you configured your <code>DbContext</code> and your SQL Server is running, the <code>/health</code> endpoint should return the status <code>Healthy</code>.</p>
 <h3 id="system-checks">System checks</h3>
-<p><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.System/">AspNetCore.HealthChecks.System</a> contains many system related checks, let's look at a few of them:</p>
+<p><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.System/">AspNetCore.HealthChecks.System</a> contains many system related checks, let&rsquo;s look at a few of them:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
   .AddSqlServer(Configuration[<span style="color:#d14">&#34;ConnectionString&#34;</span>]) <span style="color:#998;font-style:italic">// Your database connection string
-</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
-</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">5</span><span style="color:#099">1</span><span style="color:#099">2</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
+</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1024</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">512</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
 </span><span style="color:#998;font-style:italic"></span>  .AddProcessHealthCheck(<span style="color:#d14">&#34;ProcessName&#34;</span>, p =&gt; p.Length &gt; <span style="color:#099">0</span>) <span style="color:#998;font-style:italic">// check if process is running
 </span><span style="color:#998;font-style:italic"></span>  .AddWindowsServiceHealthCheck(<span style="color:#d14">&#34;someservice&#34;</span>, s =&gt; s.Status == ServiceControllerStatus.Running); <span style="color:#998;font-style:italic">// check if a windows service is running
 </span></code></pre></div><div class="highlight-footer">
     Startup.cs
 </div>
-<p>As you can see, there is a lot of useful checks! It would've been better if the Storage check checked the storage used instead of free, it can be very useful when working with containers.</p>
+<p>As you can see, there is a lot of useful checks! It would&rsquo;ve been better if the Storage check checked the storage used instead of free, it can be very useful when working with containers.</p>
 <h3 id="url-checks">URL checks</h3>
-<p>Imagine your app's health depends on an external API, you're using one of its endpoints in one of your functionalities. There is a health check for that scenario too!<br>
+<p>Imagine your app&rsquo;s health depends on an external API, you&rsquo;re using one of its endpoints in one of your functionalities. There is a health check for that scenario too!<br>
 By installing the package <a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.Uris">AspNetCore.HealthChecks.Uris</a>, you can use:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services.AddHealthChecks()
   .AddSqlServer(Configuration[<span style="color:#d14">&#34;ConnectionString&#34;</span>]) <span style="color:#998;font-style:italic">// Your database connection string
-</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">2</span><span style="color:#099">4</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
-</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">5</span><span style="color:#099">1</span><span style="color:#099">2</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
+</span><span style="color:#998;font-style:italic"></span>  .AddDiskStorageHealthCheck(s =&gt; s.AddDrive(<span style="color:#d14">&#34;C:\\&#34;</span>, <span style="color:#099">1024</span>)) <span style="color:#998;font-style:italic">// 1024 MB (1 GB) free minimum
+</span><span style="color:#998;font-style:italic"></span>  .AddProcessAllocatedMemoryHealthCheck(<span style="color:#099">512</span>) <span style="color:#998;font-style:italic">// 512 MB max allocated memory
 </span><span style="color:#998;font-style:italic"></span>  .AddProcessHealthCheck(<span style="color:#d14">&#34;ProcessName&#34;</span>, p =&gt; p.Length &gt; <span style="color:#099">0</span>) <span style="color:#998;font-style:italic">// check if process is running
 </span><span style="color:#998;font-style:italic"></span>  .AddWindowsServiceHealthCheck(<span style="color:#d14">&#34;someservice&#34;</span>, s =&gt; s.Status == ServiceControllerStatus.Running) <span style="color:#998;font-style:italic">// check if a windows service is running
 </span><span style="color:#998;font-style:italic"></span>  .AddUrlGroup(<span style="color:#000;font-weight:bold">new</span> Uri(<span style="color:#d14">&#34;https://localhost:44318/weatherforecast&#34;</span>), <span style="color:#d14">&#34;Example endpoint&#34;</span>); <span style="color:#998;font-style:italic">// should return status code 200
@@ -479,13 +483,13 @@ By installing the package <a href="https://www.nuget.org/packages/AspNetCore.Hea
 <p>You can configure much more using the provided <code>UriHealthCheckOptions</code>, for example what status codes are considered good or bad, more than one URLs, etc&hellip;</p>
 <h3 id="ui">UI</h3>
 <p>There is also a package that adds a monitoring UI that shows you the status of all the checks you added, as well as their history.</p>
-<p>First, let's install the packages:</p>
+<p>First, let&rsquo;s install the packages:</p>
 <ul>
 <li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI">AspNetCore.HealthChecks.UI</a> which adds the UI.</li>
 <li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.Client">AspNetCore.HealthChecks.UI.Client</a> which turns our old response (e.g. <code>Healthy</code>) into a more detailed response.</li>
 <li><a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.InMemory.Storage">AspNetCore.HealthChecks.UI.InMemory.Storage</a> which saves the results in memory for the UI to use.</li>
 </ul>
-<p>Then let's register the UI:</p>
+<p>Then let&rsquo;s register the UI:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">void</span> ConfigureServices(IServiceCollection services)
 {
   <span style="color:#998;font-style:italic">// ...
@@ -521,7 +525,7 @@ By installing the package <a href="https://www.nuget.org/packages/AspNetCore.Hea
 </code></pre></div><div class="highlight-footer">
     Startup.cs
 </div>
-<p>Here's what you'll find when you visit the <code>/health</code> endpoint:</p>
+<p>Here&rsquo;s what you&rsquo;ll find when you visit the <code>/health</code> endpoint:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#000080">&#34;status&#34;</span>: <span style="color:#d14">&#34;Unhealthy&#34;</span>,
   <span style="color:#000080">&#34;totalDuration&#34;</span>: <span style="color:#d14">&#34;00:00:00.0531378&#34;</span>,
@@ -567,7 +571,7 @@ By installing the package <a href="https://www.nuget.org/packages/AspNetCore.Hea
         </figcaption>
 </figure>
 
-<p>We can also tell the UI to save the results in an actual database, let's try the SQLite one available in the package <a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.SQLite.Storage">AspNetCore.HealthChecks.UI.SQLite.Storage</a>.</p>
+<p>We can also tell the UI to save the results in an actual database, let&rsquo;s try the SQLite one available in the package <a href="https://www.nuget.org/packages/AspNetCore.HealthChecks.UI.SQLite.Storage">AspNetCore.HealthChecks.UI.SQLite.Storage</a>.</p>
 <p>All we have to do is replace the in memory call:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">services
   .AddHealthChecksUI(s =&gt;
@@ -588,8 +592,8 @@ By installing the package <a href="https://www.nuget.org/packages/AspNetCore.Hea
 
 <h2 id="conclusion">Conclusion</h2>
 <p>In this post, we saw what ASP.NET Core provides by default regarding health checks. Microsoft made a very extensible system where other developers can create all sorts of checks while keeping the same infrastructure.</p>
-<p>We also saw some of the <code>AspNetCore.HealthChecks</code> packages that plug on top of ASP.NET Core's health checks to add the most popular checks anyone would ever need. Not only that, but also a monitoring UI that is customizable when you provide it your CSS file.</p>
-<p>What we didn't see in this post is the ability to have hooks (e.g. Slack) that listen on the application's health, which <code>AspNetCore.HealthChecks</code> also provides.</p>
+<p>We also saw some of the <code>AspNetCore.HealthChecks</code> packages that plug on top of ASP.NET Core&rsquo;s health checks to add the most popular checks anyone would ever need. Not only that, but also a monitoring UI that is customizable when you provide it your CSS file.</p>
+<p>What we didn&rsquo;t see in this post is the ability to have hooks (e.g. Slack) that listen on the application&rsquo;s health, which <code>AspNetCore.HealthChecks</code> also provides.</p>
 <p>As a reminder, all the code is available in this <a href="https://github.com/zHaytam/HealthChecksExample">GitHub repository</a>.
 I hope this post was useful, see you around!</p>
 
@@ -814,7 +818,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

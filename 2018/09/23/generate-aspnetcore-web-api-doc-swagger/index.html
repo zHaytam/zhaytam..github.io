@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Generate a documentation for an ASP.NET Core Web API using Swagger",
         "headline" : "Generate a documentation for an ASP.NET Core Web API using Swagger",
-        "description" : "Hi everyone! I hope you're having a great sunday.\nMe and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.",
+        "description" : "Hi everyone! I hope you\u0026rsquo;re having a great sunday.\nMe and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across Swagger.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -335,7 +339,7 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>Hi everyone! I hope you're having a great sunday.</p>
+              <p>Hi everyone! I hope you&rsquo;re having a great sunday.</p>
 <p>Me and my collegue decided this week to rewrite an api made with Laravel Lumen using ASP.NET Core. While doing so, I was wondering wheter some kind of tool existed to help generate the documentation of the API (since we all know writing a documentation is the least fun thing in programming) and I came across <a href="https://swagger.io/">Swagger</a>.</p>
 <p>Today I will show how you can automatically generate a documentation (with a UI) for your ASP.NET Core Web APIs using Swagger, as well as some configurations you might be intrested in.</p>
 <p>The code using in this post is available <a href="https://github.com/zHaytam/AwaitingBits_BlogPostsCodes">here</a>.</p>
@@ -395,7 +399,7 @@ if (!doNotTrack) {
 <li><a href="https://github.com/domaindrivendev/Swashbuckle">Swashbuckle</a>: Generate beautiful API documentation, including a UI to explore and test operations, directly from your routes, controllers and models.</li>
 <li><a href="https://github.com/RSuter/NSwag">NSwag</a>: An OpenAPI 2.0 and 3.0 a LOT of platforms.</li>
 </ul>
-<p>We'll be using Swashbuckle, which can be easily installed using NuGet Package Manager:</p>
+<p>We&rsquo;ll be using Swashbuckle, which can be easily installed using NuGet Package Manager:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Install-Package Swashbuckle.AspNetCore
 </code></pre></div><h3 id="integrating-swashbuckle">Integrating Swashbuckle</h3>
 <p>First of all, we have to setup the swagger specification file generation:</p>
@@ -426,15 +430,15 @@ if (!doNotTrack) {
         </figcaption>
 </figure>
 
-<p>Which honestly, looks magnificent, considering we didn't do any work.</p>
+<p>Which honestly, looks magnificent, considering we didn&rsquo;t do any work.</p>
 <p>In the interactive documentation, you can see routes grouped by their controllers (by default) and you can even try requests by clicking “Try it out”.</p>
 <h2 id="xml-documentation">XML Documentation</h2>
 <p>Another feature of Swashbuckle is the ability to use the XML documentation of our project to get more informations about the routes.</p>
 <p>First, activate the XML documentation by adding this to your csproj file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;PropertyGroup</span><span style="color:#000080">&gt;</span>
-    <span style="color:#000080">&lt;GenerateDocumentationFile</span><span style="color:#000080">&gt;</span>true<span style="color:#000080">&lt;/GenerateDocumentationFile&gt;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;PropertyGroup&gt;</span>
+    <span style="color:#000080">&lt;GenerateDocumentationFile&gt;</span>true<span style="color:#000080">&lt;/GenerateDocumentationFile&gt;</span>
 <span style="color:#000080">&lt;/PropertyGroup&gt;</span>
-</code></pre></div><p>Visual Studio will start giving you a warning, saying that X method doesn't have a XML comment. To suppress it, add <code>&lt;NoWarn&gt;$(NoWarn);1591&lt;/NoWarn&gt;</code> in the same PropertyGroup.</p>
+</code></pre></div><p>Visual Studio will start giving you a warning, saying that X method doesn&rsquo;t have a XML comment. To suppress it, add <code>&lt;NoWarn&gt;$(NoWarn);1591&lt;/NoWarn&gt;</code> in the same PropertyGroup.</p>
 <p>You can now start commenting your requests (sorry for the lack of imagination):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[Route(&#34;api/[action]</span><span style="color:#d14">&#34;)]
 </span><span style="color:#d14"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ValuesController</span> : Controller
@@ -523,8 +527,8 @@ if (!doNotTrack) {
 {
     c.SwaggerEndpoint(<span style="color:#d14">&#34;/docs/v1/docs.json&#34;</span>, <span style="color:#d14">&#34;Exampl API v1&#34;</span>);
 });
-</code></pre></div><p>If you start debugging, you'll see no changes except in the path where the specification file gets generated, which is now <code>/docs/v1/docs./json</code>.</p>
-<p>Also, it's possible to change the route of the HTML documentation:</p>
+</code></pre></div><p>If you start debugging, you&rsquo;ll see no changes except in the path where the specification file gets generated, which is now <code>/docs/v1/docs./json</code>.</p>
+<p>Also, it&rsquo;s possible to change the route of the HTML documentation:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">c.RoutePrefix = <span style="color:#d14">&#34;docs&#34;</span>;
 </code></pre></div><p>You will have to navigate to <code>localhost:port//docs</code> for the interactive documentation.</p>
 <h2 id="annotations">Annotations</h2>
@@ -540,8 +544,8 @@ if (!doNotTrack) {
 </code></pre></div><h3 id="operations">Operations</h3>
 <p><code>SwaggerOperation</code> is a useful attribute where you can set the summary, description, id and the tags of a certain request/route, for example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/// &lt;summary&gt;
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// Gets two values.
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic">/// Gets two values.
+</span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">[HttpGet]</span>
 <span style="color:#008080">[SwaggerOperation(Summary = &#34;Gets two values&#34;, Description = &#34;Gets two hardcoded values&#34;)]</span>
 <span style="color:#000;font-weight:bold">public</span> IEnumerable&lt;<span style="color:#458;font-weight:bold">string</span>&gt; Values()
@@ -552,8 +556,8 @@ if (!doNotTrack) {
 <h3 id="responses">Responses</h3>
 <p><code>SwaggerResponse</code> is an attribute where you can set for each status code a description, for example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">/// &lt;summary&gt;
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// Gets two values.
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
+</span><span style="color:#998;font-style:italic">/// Gets two values.
+</span><span style="color:#998;font-style:italic">/// &lt;/summary&gt;
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">[HttpGet]</span>
 <span style="color:#008080">[SwaggerOperation(Summary = &#34;Gets two values&#34;, Description = &#34;Gets two hardcoded values&#34;)]</span>
 <span style="color:#008080">[SwaggerResponse(200, &#34;I guess everything worked&#34;)]</span>
@@ -564,11 +568,11 @@ if (!doNotTrack) {
 }
 </code></pre></div><p>The will show in the Responses part of every request (where the status code 200 is present by default).</p>
 <h3 id="tags">Tags</h3>
-<p><code>SwaggerTag</code> is an attribute where you can set a tag for a controller, which can be then used to group requests by something other than the controller's name:</p>
+<p><code>SwaggerTag</code> is an attribute where you can set a tag for a controller, which can be then used to group requests by something other than the controller&rsquo;s name:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[SwaggerTag(&#34;Requests about values&#34;)]</span>
 <span style="color:#008080">[Route(&#34;api/[action]</span><span style="color:#d14">&#34;)]
 </span><span style="color:#d14"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ValuesController</span> : Controller
-</code></pre></div><p>The tag is also shown next to the controller's name:</p>
+</code></pre></div><p>The tag is also shown next to the controller&rsquo;s name:</p>
 <figure>
     <img src="/img/b7X4pae.png"
          alt="Swagger UI with annotations"/> <figcaption>
@@ -577,7 +581,7 @@ if (!doNotTrack) {
 </figure>
 
 <p> </p>
-<p>This concludes today's post!</p>
+<p>This concludes today&rsquo;s post!</p>
 <p>In my opinion, Swashbuckle makes it easier to concentrate on the actual API and leave the documentation writing to it, which honestly it does a great job at.</p>
 <p>Richard Morris is doing a great job developping and maintaining the library, it has everything you need and I advise you to use it whenever you need to.</p>
 <p>Have a good Monday!</p>
@@ -811,7 +815,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

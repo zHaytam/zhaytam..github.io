@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Google Sign-In for ASP.NET Core Web APIs",
         "headline" : "Google Sign-In for ASP.NET Core Web APIs",
-        "description" : "There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.\nToday I'll be showing how you can add Google Sign-In and still manage users in your back-end.\nOverview Here's a sequence diagram showing how it all works:",
+        "description" : "There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.\nToday I\u0026rsquo;ll be showing how you can add Google Sign-In and still manage users in your back-end.\nOverview Here\u0026rsquo;s a sequence diagram showing how it all works:",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -336,9 +340,9 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.<br>
-Today I'll be showing how you can add Google Sign-In and still manage users in your back-end.</p>
+Today I&rsquo;ll be showing how you can add Google Sign-In and still manage users in your back-end.</p>
 <h2 id="overview">Overview</h2>
-<p>Here's a sequence diagram showing how it all works:</p>
+<p>Here&rsquo;s a sequence diagram showing how it all works:</p>
 <figure>
     <img src="/img/Google-Sign-In-768x685.jpg"
          alt="Google Sign-In - Sequence Diagram"/> <figcaption>
@@ -365,25 +369,25 @@ Today I'll be showing how you can add Google Sign-In and still manage users in y
 </li>
 </ol>
 <p>You can also refer to the official guide from Google: <a href="https://developers.google.com/identity/sign-in/web/backend-auth">Authenticate with a backend server</a>.</p>
-<h2 id="getting-the-idtoken-from-our-client">Getting the <code>id_token</code> from our client</h2>
+<h2 id="getting-the-id_token-from-our-client">Getting the <code>id_token</code> from our client</h2>
 <p>In order to make it possible for the client to use Google’s login window, we’ll have to use their SDK <a href="https://apis.google.com/js/api.js">gapi</a>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">function onSignIn(googleUser) {
   <span style="color:#458;font-weight:bold">var</span> id_token = googleUser.getAuthResponse().id_token;
   ...
 }
-</code></pre></div><p>If you're using a framework instead of plain javascript, there are libraries that make this process easier, for instance:</p>
+</code></pre></div><p>If you&rsquo;re using a framework instead of plain javascript, there are libraries that make this process easier, for instance:</p>
 <ul>
 <li>React: <a href="https://www.npmjs.com/package/react-google-login">react-google-login</a></li>
 <li>Angular: <a href="https://www.npmjs.com/package/angularx-social-login">angularx-social-login</a></li>
 </ul>
 <p>Next, we will send the <code>id_token</code> to our back-end server:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">sendGoogleToken (token: <span style="color:#458;font-weight:bold">string</span>)<span style="color:#000;font-weight:bold">:</span> Observable<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span> {
-  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">this</span>.http.post<span style="color:#000;font-weight:bold">&lt;</span>GoogleAuthResponse<span style="color:#000;font-weight:bold">&gt;</span>(<span style="color:#000;font-weight:bold">this</span>.googleAuthUrl, token)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">sendGoogleToken (token: <span style="color:#458;font-weight:bold">string</span>)<span style="color:#000;font-weight:bold">:</span> Observable&lt;<span style="color:#000080">GoogleAuthResponse</span>&gt; {
+  <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">this</span>.http.post&lt;<span style="color:#000080">GoogleAuthResponse</span>&gt;(<span style="color:#000;font-weight:bold">this</span>.googleAuthUrl, token)
     .pipe(...);
 }
-</code></pre></div><h2 id="integrating-google-signin-in-our-server">Integrating Google Sign-In in our server</h2>
-<p><em>Note: I explain this process using ASP.NET Core but it applies to whatever language/framework you're using.</em></p>
-<p>Firstly, we'll have an action (route) to receive the token:</p>
+</code></pre></div><h2 id="integrating-google-sign-in-in-our-server">Integrating Google Sign-In in our server</h2>
+<p><em>Note: I explain this process using ASP.NET Core but it applies to whatever language/framework you&rsquo;re using.</em></p>
+<p>Firstly, we&rsquo;ll have an action (route) to receive the token:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#008080">[HttpPost(&#34;auth/google&#34;)]</span>
 <span style="color:#008080">[ProducesDefaultResponseType]</span>
 <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;JsonResult&gt; GoogleLogin(GoogleLoginRequest request)
@@ -406,8 +410,8 @@ To install it, you can use the Package Manager: <code>Install-Package Google.Api
 {
     <span style="color:#998;font-style:italic">// Invalid token
 </span><span style="color:#998;font-style:italic"></span>}
-</code></pre></div><p><em>Note: If you require users to have confirmed emails, Google's paypload contains an <strong>EmailVerified</strong> property that you can check.</em></p>
-<p>Thirdly, we'll get the user linked to this login attempt (or create it if needed):</p>
+</code></pre></div><p><em>Note: If you require users to have confirmed emails, Google&rsquo;s paypload contains an <strong>EmailVerified</strong> property that you can check.</em></p>
+<p>Thirdly, we&rsquo;ll get the user linked to this login attempt (or create it if needed):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;User&gt; GetOrCreateExternalLoginUser(<span style="color:#458;font-weight:bold">string</span> provider, <span style="color:#458;font-weight:bold">string</span> key, <span style="color:#458;font-weight:bold">string</span> email, <span style="color:#458;font-weight:bold">string</span> firstName, <span style="color:#458;font-weight:bold">string</span> lastName)
 {
     <span style="color:#998;font-style:italic">// Login already linked to a user
@@ -440,7 +444,7 @@ To install it, you can use the Package Manager: <code>Install-Package Google.Api
     _logger.LogError(<span style="color:#458;font-weight:bold">string</span>.Join(Environment.NewLine, result.Errors.Select(e =&gt; e.Description)));
     <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">null</span>;
 }
-</code></pre></div><p>Lastly, we'll generate a JWT token:</p>
+</code></pre></div><p>Lastly, we&rsquo;ll generate a JWT token:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// How to generate a JWT token is not in this post&#39;s scope
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">async</span> Task&lt;<span style="color:#458;font-weight:bold">string</span>&gt; GenerateToken(User user)
 {
@@ -473,7 +477,7 @@ To install it, you can use the Package Manager: <code>Install-Package Google.Api
   }
 </code></pre></div><p>I highly recommend putting this in a service or a handler.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>In conclusion, integrating Google (or any other provider in that matter) into your sign in/up flow is easier than you think. We saw how to show the user Google's login window, and, after validating the token in our back-end, link a user entry from our database to that login for future use.<br>
+<p>In conclusion, integrating Google (or any other provider in that matter) into your sign in/up flow is easier than you think. We saw how to show the user Google&rsquo;s login window, and, after validating the token in our back-end, link a user entry from our database to that login for future use.<br>
 I hope you enjoyed this post!</p>
 
             </article>
@@ -701,7 +705,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

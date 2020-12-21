@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "C# Expression Trees: Property Getters",
         "headline" : "C# Expression Trees: Property Getters",
-        "description" : "There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don't get me wrong, Reflection does the job most of the time, but it's known to be very slow in almost all cases. I happen to have a bit of experience in the former.",
+        "description" : "There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don\u0026rsquo;t get me wrong, Reflection does the job most of the time, but it\u0026rsquo;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -335,8 +339,8 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don't get me wrong, Reflection does the job most of the time, but it's known to be very slow in almost all cases. I happen to have a bit of experience in the former.</p>
-<p>This blog post is the start of a series about Expression Trees and some use cases I found myself needing them. If you're interested to know more about this topic, then stay tuned!</p>
+              <p>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&rsquo;t get me wrong, Reflection does the job most of the time, but it&rsquo;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</p>
+<p>This blog post is the start of a series about Expression Trees and some use cases I found myself needing them. If you&rsquo;re interested to know more about this topic, then stay tuned!</p>
 <h2 id="what-are-expression-trees">What are Expression Trees</h2>
 <blockquote>
 <p>Expression trees represent code in a tree-like data structure, where each node is an expression, for example, a method call or a binary operation such as x &lt; y.<br>
@@ -349,32 +353,32 @@ You can compile and run code represented by expression trees. This enables dynam
 <li>They can do a lot more than Reflection.</li>
 <li>They are easy to understand and create due to their nature (trees).</li>
 </ul>
-<h2 id="todays-problem">Today's problem</h2>
+<h2 id="todays-problem">Today&rsquo;s problem</h2>
 <p>Imagine we have the following class:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/0af44a82888e8223b7d349ecd3804cb6.js"></script>
 
 <p>We would like to extract the following:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/c5650f2c898948facbdea74c4f18ba79.js"></script>
 
-<p>Basically, we would like to extract all the properties of a class and their values. For my case, I needed to create query strings (e.g. <code>categoryId=qgq65s1d6qs5d1g&amp;page=1&amp;size=10&amp;filter=price&gt;10</code>) based on request classes. It can be done manually for each class, but I'm too lazy.</p>
+<p>Basically, we would like to extract all the properties of a class and their values. For my case, I needed to create query strings (e.g. <code>categoryId=qgq65s1d6qs5d1g&amp;page=1&amp;size=10&amp;filter=price&gt;10</code>) based on request classes. It can be done manually for each class, but I&rsquo;m too lazy.</p>
 <h2 id="solution">Solution</h2>
-<p>In this section, I'll explain how I personally solve these kind of problems using Expression Trees and how exactly I create the trees.</p>
-<p>Firstly, we'll look at the manual approach:</p>
+<p>In this section, I&rsquo;ll explain how I personally solve these kind of problems using Expression Trees and how exactly I create the trees.</p>
+<p>Firstly, we&rsquo;ll look at the manual approach:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/1a5860756f86a9a7483d3ac145cbaa71.js"></script>
 
-<p>Standard property getter. Now let's imagine that, for some reason, the type of <code>instance</code> is <code>object</code>. We can't access <code>CategoryId</code> directly anymore, but since we know the actual type, we can do the following:</p>
+<p>Standard property getter. Now let&rsquo;s imagine that, for some reason, the type of <code>instance</code> is <code>object</code>. We can&rsquo;t access <code>CategoryId</code> directly anymore, but since we know the actual type, we can do the following:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/2ab3324b29724aa4de1b4a9ac6c1e6b7.js"></script>
 
 <p>Simple enough, right?<br>
 Now you want to create a function out of this in order to get the full picture:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/2df773102a43e2864ba2f1370a4bfe11.js"></script>
 
-<p>Writing what we want as a lambda expression helps us picture how our compiled Expression Tree will look like. In all of these examples, we assumed that <code>instance</code> is always of type <code>ListProductsRequest</code>. But in reality, it's not, and this is where dynamic code comes into play.</p>
+<p>Writing what we want as a lambda expression helps us picture how our compiled Expression Tree will look like. In all of these examples, we assumed that <code>instance</code> is always of type <code>ListProductsRequest</code>. But in reality, it&rsquo;s not, and this is where dynamic code comes into play.</p>
 <div class="note info">
     You could cast the lambda expression from <code>Func&lt;object, object&gt;</code> to <code>Expression&lt;Func&lt;object, object&gt;&gt;</code> and debug the expression directly. It will give you a better idea of how the tree is constructed, but it won't help with the unkown type problem.
     
 </div>
-<p>If we represent the last lambda expression as a tree, it'll look like this:</p>
+<p>If we represent the last lambda expression as a tree, it&rsquo;ll look like this:</p>
 <figure>
     <img src="/img/expression_trees/PropertyGetterRepresentation.png"
          alt="Expression Tree Representation"/> <figcaption>
@@ -390,9 +394,9 @@ Now you want to create a function out of this in order to get the full picture:<
 </ol>
 <p>Of course, the whole Expression Tree is then compiled into a <code>Func&lt;object, object&gt;</code>.</p>
 <p>You might be wondering by now, where exactly do we specify what property do we want?<br>
-We will be embedding it inside the Expression Tree, so that we don't have to add an extra parameter to our function and looking for the property every time it's called.</p>
+We will be embedding it inside the Expression Tree, so that we don&rsquo;t have to add an extra parameter to our function and looking for the property every time it&rsquo;s called.</p>
 <h3 id="implementation">Implementation</h3>
-<p>Now for the fun part! Let's create the Expression Tree:</p>
+<p>Now for the fun part! Let&rsquo;s create the Expression Tree:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/d6a7c7fa1c8157feed76536324e5f6db.js"></script>
 
 <p>As you can see, the method takes a <code>PropertyInfo</code> as an argument and returns a single getter.</p>
@@ -401,7 +405,7 @@ We will be embedding it inside the Expression Tree, so that we don't have to add
 
 <p>Of course, this needs to run only once per <code>Type</code> and be cached in memory.</p>
 <h3 id="performance">Performance</h3>
-<p>Just to get an idea of how better Expression Trees are from other solutions, I set up a quick &amp; simple benchmark that tests 3 ways to get a property's value and calculate the total time taken on 1 000 000 calls (in ms).</p>
+<p>Just to get an idea of how better Expression Trees are from other solutions, I set up a quick &amp; simple benchmark that tests 3 ways to get a property&rsquo;s value and calculate the total time taken on 1 000 000 calls (in ms).</p>
 <figure>
     <img src="/img/expression_trees/PropertyGetterPerformance.png"/> 
 </figure>
@@ -413,8 +417,8 @@ We will be embedding it inside the Expression Tree, so that we don't have to add
 </ol>
 <p>As you can see, Expression Trees outperform Reflection by far.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Running code dynamically can be done in a lot of ways, today we saw how we can do it using Expression Trees and how performant it is over plain Reflection. While you probably won't need to dynamically run code a lot in your developer journey, I believe it's something worth learning and it's a lot of fun!</p>
-<p>I have a couple of use cases more that I'll be sharing in future posts.<br>
+<p>Running code dynamically can be done in a lot of ways, today we saw how we can do it using Expression Trees and how performant it is over plain Reflection. While you probably won&rsquo;t need to dynamically run code a lot in your developer journey, I believe it&rsquo;s something worth learning and it&rsquo;s a lot of fun!</p>
+<p>I have a couple of use cases more that I&rsquo;ll be sharing in future posts.<br>
 Stay tuned!</p>
 
             </article>
@@ -638,7 +642,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

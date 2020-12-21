@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Implementing a flexible neural network with backpropagation from scratch",
         "headline" : "Implementing a flexible neural network with backpropagation from scratch",
-        "description" : "Implementing your own neural network can be hard, especially if you're like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.\nToday I'll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.",
+        "description" : "Implementing your own neural network can be hard, especially if you\u0026rsquo;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.\nToday I\u0026rsquo;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -31,7 +31,7 @@
         "datePublished": "2018-08-15T21:39:58Z",
         "dateModified" : "2018-08-15T21:39:58Z",
         "url" : "https:\/\/blog.zhaytam.com\/2018\/08\/15\/implement-neural-network-backpropagation\/",
-        "wordCount" : "3393",
+        "wordCount" : "3421",
         "image" : "https:\/\/blog.zhaytam.com\/img\/NeuralNetwork-1-768x379.png",
         "keywords" : [ "Backpropagation","Binary AND","Neural networks","NumPy","Python","Blog" ]   
     }
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -341,25 +345,25 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p>Implementing your own neural network can be hard, especially if you're like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.</p>
-<p>Today I'll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm. I'll be implementing this in Python using only <a href="http://www.numpy.org/">NumPy</a> as an external library.</p>
+              <p>Implementing your own neural network can be hard, especially if you&rsquo;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.</p>
+<p>Today I&rsquo;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm. I&rsquo;ll be implementing this in Python using only <a href="http://www.numpy.org/">NumPy</a> as an external library.</p>
 <p>After reading this post, you should understand the following:</p>
 <ul>
 <li>How to feed forward inputs to a neural network.</li>
 <li>Use the Backpropagation algorithm to train a neural network.</li>
 <li>Use the neural network to solve a problem.</li>
 </ul>
-<p>In this post, we'll use our neural network to solve a very simple problem: <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND">Binary AND</a>.</p>
+<p>In this post, we&rsquo;ll use our neural network to solve a very simple problem: <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND">Binary AND</a>.</p>
 <p>The code source of the implementation is available <a href="https://github.com/zHaytam/FlexibleNeuralNetFromScratch">here</a>.</p>
 <h2 id="background-knowledge">Background knowledge</h2>
-<p>In order to easily follow and understand this post, you'll need to know the following:</p>
+<p>In order to easily follow and understand this post, you&rsquo;ll need to know the following:</p>
 <ul>
 <li>The basics of Python / <a href="https://python.swaroopch.com/oop.html">OOP</a>.</li>
 <li>An idea of calculus (e.g. dot products, derivatives).</li>
 <li>An idea of neural networks.</li>
 <li>(Optional) How to work with NumPy.</li>
 </ul>
-<p>Rest assured though, I'll try to explain everything I do/use here.</p>
+<p>Rest assured though, I&rsquo;ll try to explain everything I do/use here.</p>
 <h2 id="neural-networks">Neural networks</h2>
 <p>Before throwing ourselves into our favourite IDE, we must understand what exactly are neural networks (or more precisely, feedforward neural networks).</p>
 <p>A feedforward neural network (also called a multilayer perceptron) is an artificial neural network where all its layers are connected but do not form a circle. Meaning that the network is not recurrent and there are no feedback connections.</p>
@@ -371,7 +375,7 @@ if (!doNotTrack) {
 </figure>
 
 <p>These neural networks try and approximate a function $f(X)$ where $X$ are the inputs that get fed forward through the network to give us an output.</p>
-<p>The lines connecting the network's nodes (neurons) are called weights, typically numbers (floats) between 0 and 1.</p>
+<p>The lines connecting the network&rsquo;s nodes (neurons) are called weights, typically numbers (floats) between 0 and 1.</p>
 <p>Also, each neuron has a bias unit (a float between 0 and 1) that helps shift the results.</p>
 <p>These are called the parameters of the network.</p>
 <figure>
@@ -388,31 +392,31 @@ $$</p>
 <p>These activation functions are used to introduce non linearity.</p>
 <h2 id="implementing-a-flexible-neural-network">Implementing a flexible neural network</h2>
 <p>In order for our implementation to be called flexible, we should be able to add/remove layers without changing the code. This means that hard-coding weights and layers is a no go.</p>
-<p>First of all, let's import NumPy and set a seed for us to get the same results when generating random numbers:</p>
+<p>First of all, let&rsquo;s import NumPy and set a seed for us to get the same results when generating random numbers:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
 
 np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>seed(<span style="color:#099">100</span>)
 </code></pre></div><h3 id="layers">Layers</h3>
-<p>We'll create a class that represents our network's hidden and output layers.</p>
+<p>We&rsquo;ll create a class that represents our network&rsquo;s hidden and output layers.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Layer</span>:
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Represents a layer (hidden or output) in our neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Represents a layer (hidden or output) in our neural network.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 </code></pre></div><h4 id="initialisation">Initialisation</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>, n_input, n_neurons, activation<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>, weights<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>, bias<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param int n_input: The input size (coming from the input layer or a previous hidden layer)</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param int n_neurons: The number of neurons in this layer.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param str activation: The activation function to use (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param weights: The layer</span><span style="color:#d14">&#39;</span><span style="color:#d14">s weights.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param bias: The layer</span><span style="color:#d14">&#39;</span><span style="color:#d14">s bias.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    :param int n_input: The input size (coming from the input layer or a previous hidden layer)
+</span><span style="color:#d14">    :param int n_neurons: The number of neurons in this layer.
+</span><span style="color:#d14">    :param str activation: The activation function to use (if any).
+</span><span style="color:#d14">    :param weights: The layer&#39;s weights.
+</span><span style="color:#d14">    :param bias: The layer&#39;s bias.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">=</span> weights <span style="color:#000;font-weight:bold">if</span> weights <span style="color:#000;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#999">None</span> <span style="color:#000;font-weight:bold">else</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>rand(n_input, n_neurons)
     <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">=</span> activation
     <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>bias <span style="color:#000;font-weight:bold">=</span> bias <span style="color:#000;font-weight:bold">if</span> bias <span style="color:#000;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#999">None</span> <span style="color:#000;font-weight:bold">else</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>rand(n_neurons)
-</code></pre></div><p>In the class's constructor <code>__init__</code> we'll initialize the layer's weights and bias using the length of the input and the number of neurons this layer has. Specifying the weights and bias is optional as they will be randomly generated if not provided.</p>
-<p><em>Note: The layer's input is not always our initial input $X$, it can also be the output of a previous layer.</em></p>
+</code></pre></div><p>In the class&rsquo;s constructor <code>__init__</code> we&rsquo;ll initialize the layer&rsquo;s weights and bias using the length of the input and the number of neurons this layer has. Specifying the weights and bias is optional as they will be randomly generated if not provided.</p>
+<p><em>Note: The layer&rsquo;s input is not always our initial input $X$, it can also be the output of a previous layer.</em></p>
 <p>If we take the network shown in the figures above, we can represent its first hidden layer (3 x 4) as follows: <code>hidden_layer_1 = Layer(3, 4)</code>.</p>
 <p>As a result, the weights and bias will be:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Weights: [[<span style="color:#099">0.54340494</span> <span style="color:#099">0.27836939</span> <span style="color:#099">0.42451759</span> <span style="color:#099">0.84477613</span>]
@@ -436,50 +440,50 @@ W_l =
 0.97
 \end{bmatrix}
 $$</p>
-<p>The columns in the weights matrix $W_l$ represent our layer's neurons and each row is the weights between one input neuron and all our layer's neurons.</p>
+<p>The columns in the weights matrix $W_l$ represent our layer&rsquo;s neurons and each row is the weights between one input neuron and all our layer&rsquo;s neurons.</p>
 <h4 id="activation">Activation</h4>
 <p>As the inputs get fed forward through our network, each layer must calculate the output using its weights and the received inputs, apply an activation function (if chosen) on the output then return the result to us.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">activate</span>(<span style="color:#999">self</span>, x):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Calculates the dot product of this layer.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param x: The input.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The result.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Calculates the dot product of this layer.
+</span><span style="color:#d14">    :param x: The input.
+</span><span style="color:#d14">    :return: The result.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     r <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>dot(x, <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>weights) <span style="color:#000;font-weight:bold">+</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>bias
     <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>last_activation <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_apply_activation(r)
     <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>last_activation
 
 <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">_apply_activation</span>(<span style="color:#999">self</span>, r):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Applies the chosen activation function (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param r: The normal value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The activated value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Applies the chosen activation function (if any).
+</span><span style="color:#d14">    :param r: The normal value.
+</span><span style="color:#d14">    :return: The activated value.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
-    <span style="color:#998;font-style:italic"># In case no activation function was chosen</span>
+    <span style="color:#998;font-style:italic"># In case no activation function was chosen</span>
     <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">is</span> <span style="color:#999">None</span>:
         <span style="color:#000;font-weight:bold">return</span> r
 
-    <span style="color:#998;font-style:italic"># tanh</span>
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>:
+    <span style="color:#998;font-style:italic"># tanh</span>
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;tanh&#39;</span>:
         <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>tanh(r)
 
-    <span style="color:#998;font-style:italic"># sigmoid</span>
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>:
+    <span style="color:#998;font-style:italic"># sigmoid</span>
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;sigmoid&#39;</span>:
         <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">/</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">+</span> np<span style="color:#000;font-weight:bold">.</span>exp(<span style="color:#000;font-weight:bold">-</span>r))
 
     <span style="color:#000;font-weight:bold">return</span> r
-</code></pre></div><p>Here's an explanation of the process:</p>
+</code></pre></div><p>Here&rsquo;s an explanation of the process:</p>
 <ol>
 <li>The input goes through our <code>activate</code> function.</li>
 <li>It calculates $X\cdot W_l + \beta_l$.</li>
 <li>Applies the chosen activation function $A(r)$.</li>
-<li>Saves the result in <code>last_activation</code> (I'll explain why later).</li>
+<li>Saves the result in <code>last_activation</code> (I&rsquo;ll explain why later).</li>
 <li>Returns the result.</li>
 </ol>
 <p><em>Note: I only implemented here 2 activation functions, tanh $(2 \cdot \sigma \left( 2 x \right) - 1)$ and sigmoid $(\frac{1}{1 - e^{-x}})$, but there are many more available.</em></p>
-<p>If we want to active the input <code>[1, 2, 3]</code> for example, we'll write the following: <code>layer.activate([1, 2, 3])</code>, which results in: <code>[1.14829064 2.35516451 4.65967912 4.10271179]</code>, a vector of length 4 (our number of neurons).</p>
+<p>If we want to active the input <code>[1, 2, 3]</code> for example, we&rsquo;ll write the following: <code>layer.activate([1, 2, 3])</code>, which results in: <code>[1.14829064 2.35516451 4.65967912 4.10271179]</code>, a vector of length 4 (our number of neurons).</p>
 <p>$$
 r =
 \begin{bmatrix}
@@ -508,8 +512,8 @@ r =
 \end{bmatrix}
 $$</p>
 <p>The dot product between a matrix $A(N\times M)$ and a vector $V(N)$ is simply a new vector $R(M)$ made of dot products between each element in $V$ and each row $A_i$. You can find more information about this <a href="https://mathinsight.org/matrix_vector_multiplication">here</a>.</p>
-<p>Don't forget that we didn't specify any activation function, so the result we're seeing here is only the dot product.</p>
-<p>If we did actually specify one, let's say sigmoid, then the result would be the following (note that all the values are now between 0 and 1):</p>
+<p>Don&rsquo;t forget that we didn&rsquo;t specify any activation function, so the result we&rsquo;re seeing here is only the dot product.</p>
+<p>If we did actually specify one, let&rsquo;s say sigmoid, then the result would be the following (note that all the values are now between 0 and 1):</p>
 <p>$$
 \sigma(
 \begin{bmatrix}
@@ -527,58 +531,58 @@ $$</p>
 \end{bmatrix}
 $$</p>
 <h3 id="neural-network">Neural network</h3>
-<p>We'll also create a class to represent a neural network:</p>
+<p>We&rsquo;ll also create a class to represent a neural network:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">NeuralNetwork</span>:
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Represents a neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Represents a neural network.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>):
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers <span style="color:#000;font-weight:bold">=</span> []
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">add_layer</span>(<span style="color:#999">self</span>, layer):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Adds a layer to the neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param Layer layer: The layer to add.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Adds a layer to the neural network.
+</span><span style="color:#d14">        :param Layer layer: The layer to add.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers<span style="color:#000;font-weight:bold">.</span>append(layer)
 </code></pre></div><p>The code is pretty straight forward, we have a constructor a initialize an empty list <code>_layers</code> and a function <code>add_layer</code> that appends layers to that list (of course, the layers are of type <code>Layer</code>, the one we created earlier).</p>
 <h3 id="feed-forward">Feed forward</h3>
 <p>As previously explained, inputs travel forward through the network.</p>
-<p>We'll go ahead and implement it in our <code>NeuralNetwork</code> class:</p>
+<p>We&rsquo;ll go ahead and implement it in our <code>NeuralNetwork</code> class:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">feed_forward</span>(<span style="color:#999">self</span>, X):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Feed forward the input through the layers.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The result.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Feed forward the input through the layers.
+</span><span style="color:#d14">    :param X: The input values.
+</span><span style="color:#d14">    :return: The result.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     <span style="color:#000;font-weight:bold">for</span> layer <span style="color:#000;font-weight:bold">in</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers:
         X <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>activate(X)
 
     <span style="color:#000;font-weight:bold">return</span> X
 
-<span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">N.B: Having a sigmoid activation in the output layer can be interpreted</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">as expecting probabilities as outputs.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">W</span><span style="color:#d14">&#39;</span><span style="color:#d14">ll need to choose a winning class, this is usually done by choosing the</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">index of the biggest probability.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span>
+<span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">N.B: Having a sigmoid activation in the output layer can be interpreted
+</span><span style="color:#d14">as expecting probabilities as outputs.
+</span><span style="color:#d14">W&#39;ll need to choose a winning class, this is usually done by choosing the
+</span><span style="color:#d14">index of the biggest probability.
+</span><span style="color:#d14">&#34;&#34;&#34;</span>
 <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">predict</span>(<span style="color:#999">self</span>, X):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Predicts a class (or classes).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The predictions.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Predicts a class (or classes).
+</span><span style="color:#d14">    :param X: The input values.
+</span><span style="color:#d14">    :return: The predictions.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     ff <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>feed_forward(X)
 
-    <span style="color:#998;font-style:italic"># One row</span>
+    <span style="color:#998;font-style:italic"># One row</span>
     <span style="color:#000;font-weight:bold">if</span> ff<span style="color:#000;font-weight:bold">.</span>ndim <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">1</span>:
         <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>argmax(ff)
 
-    <span style="color:#998;font-style:italic"># Multiple rows</span>
+    <span style="color:#998;font-style:italic"># Multiple rows</span>
     <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>argmax(ff, axis<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>)
 </code></pre></div><ul>
 <li>The function <code>feed_forward</code> takes the input $X$ and feeds it forward through all our layers.</li>
@@ -586,11 +590,11 @@ $$</p>
 <li>The function <code>predict</code> chooses the winning probability and returns its index (interpreted as the winning class).</li>
 </ul>
 <h3 id="our-neural-network">Our neural network</h3>
-<p>Let's now create a neural network that we will use throughout the post.</p>
+<p>Let&rsquo;s now create a neural network that we will use throughout the post.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nn <span style="color:#000;font-weight:bold">=</span> NeuralNetwork()
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>))
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">3</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>))
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#d14">&#39;tanh&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">3</span>, <span style="color:#d14">&#39;sigmoid&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#d14">&#39;sigmoid&#39;</span>))
 </code></pre></div><figure>
     <img src="/img/NeuralNetwork-1-768x379.png"
          alt="Representation of a neural network"/> <figcaption>
@@ -598,7 +602,7 @@ nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style=
         </figcaption>
 </figure>
 
-<p>Our neural network's goal is to be able to perform the Binary AND operation.</p>
+<p>Our neural network&rsquo;s goal is to be able to perform the Binary AND operation.</p>
 <p>Although at the moment, it sucks at it:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nn<span style="color:#000;font-weight:bold">.</span>predict([[<span style="color:#099">0</span>, <span style="color:#099">0</span>], [<span style="color:#099">0</span>, <span style="color:#099">1</span>], [<span style="color:#099">1</span>, <span style="color:#099">0</span>], [<span style="color:#099">1</span>, <span style="color:#099">1</span>]])
 <span style="color:#000;font-weight:bold">&gt;</span> [<span style="color:#099">1</span> <span style="color:#099">1</span> <span style="color:#099">1</span> <span style="color:#099">1</span>]
@@ -639,15 +643,15 @@ nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style=
 </tbody>
 </table>
 <h3 id="backpropagation">Backpropagation</h3>
-<p>Now we're at the most important step of our implementation, the backpropagation algorithm.</p>
+<p>Now we&rsquo;re at the most important step of our implementation, the backpropagation algorithm.</p>
 <p>Simply put, the backpropagation is a method that calculates gradients which are then used to train neural networks by modifying their weights for better results/predictions.</p>
-<p>The algorithm is supervised, meaning that we'll need to provide examples (inputs and targets) of how it should work in order for it to actually help us.</p>
-<p>In this implementation, we'll use the Mean Squared Sum Loss as the loss function for the backpropagation algorithm, where $y_i$ is the target value and $^y_i$ is the predicted value.
+<p>The algorithm is supervised, meaning that we&rsquo;ll need to provide examples (inputs and targets) of how it should work in order for it to actually help us.</p>
+<p>In this implementation, we&rsquo;ll use the Mean Squared Sum Loss as the loss function for the backpropagation algorithm, where $y_i$ is the target value and $^y_i$ is the predicted value.
 $$
 \frac{1}{2}\sum{(y_i - ^y_i)}^2
 $$</p>
 <h4 id="how-does-it-work">How does it work</h4>
-<p>Let's represent our neural network the following way:</p>
+<p>Let&rsquo;s represent our neural network the following way:</p>
 <figure>
     <img src="/img/NeuralNetRepresentation-3-768x209.png"
          alt="Simpler representation of our neural network"/> <figcaption>
@@ -668,49 +672,49 @@ $$</p>
 <li>Calculate the error $E$:
 For the output layer: $y - o$ where $o$ is the output that we get from <code>feed_forward(X)</code>.
 For the hidden layers: $W_{l+1} \cdot \delta_{l+1}$ where $l+1$ is the next layer and $\delta$ is its delta.</li>
-<li>Calculate the delta: $E \times A&rsquo;(o_i)$ where $A'$ is the derivative of our activation function and $o_i$ is the last activation that we stored previously.</li>
+<li>Calculate the delta: $E \times A'(o_i)$ where $A'$ is the derivative of our activation function and $o_i$ is the last activation that we stored previously.</li>
 </ul>
-<p>First, let's add the derivatives of our activation functions:</p>
+<p>First, let&rsquo;s add the derivatives of our activation functions:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">apply_activation_derivative</span>(<span style="color:#999">self</span>, r):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Applies the derivative of the activation function (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param r: The normal value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The </span><span style="color:#d14">&#34;</span><span style="color:#d14">derived</span><span style="color:#d14">&#34;</span><span style="color:#d14"> value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Applies the derivative of the activation function (if any).
+</span><span style="color:#d14">    :param r: The normal value.
+</span><span style="color:#d14">    :return: The &#34;derived&#34; value.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
-    <span style="color:#998;font-style:italic"># We use &#39;r&#39; directly here because its already activated, the only values that</span>
-    <span style="color:#998;font-style:italic"># are used in this function are the last activations that were saved.</span>
+    <span style="color:#998;font-style:italic"># We use &#39;r&#39; directly here because its already activated, the only values that</span>
+    <span style="color:#998;font-style:italic"># are used in this function are the last activations that were saved.</span>
 
     <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">is</span> <span style="color:#999">None</span>:
         <span style="color:#000;font-weight:bold">return</span> r
 
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>:
-        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r <span style="color:#000;font-weight:bold">*</span><span style="color:#000;font-weight:bold">*</span> <span style="color:#099">2</span>
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;tanh&#39;</span>:
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>
 
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>:
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;sigmoid&#39;</span>:
         <span style="color:#000;font-weight:bold">return</span> r <span style="color:#000;font-weight:bold">*</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r)
 
     <span style="color:#000;font-weight:bold">return</span> r
 </code></pre></div><p>Then calculate the errors and the deltas:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">backpropagation</span>(<span style="color:#999">self</span>, X, y, learning_rate):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Performs the backward propagation algorithm and updates the layers weights.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param y: The target values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Performs the backward propagation algorithm and updates the layers weights.
+</span><span style="color:#d14">    :param X: The input values.
+</span><span style="color:#d14">    :param y: The target values.
+</span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
-    <span style="color:#998;font-style:italic"># Feed forward for the output</span>
+    <span style="color:#998;font-style:italic"># Feed forward for the output</span>
     output <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>feed_forward(X)
 
-    <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
+    <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
     <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">reversed</span>(<span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers))):
         layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
 
-        <span style="color:#998;font-style:italic"># If this is the output layer</span>
+        <span style="color:#998;font-style:italic"># If this is the output layer</span>
         <span style="color:#000;font-weight:bold">if</span> layer <span style="color:#000;font-weight:bold">==</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]:
             layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">=</span> y <span style="color:#000;font-weight:bold">-</span> output
-            <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
+            <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
             layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">*</span> layer<span style="color:#000;font-weight:bold">.</span>apply_activation_derivative(output)
         <span style="color:#000;font-weight:bold">else</span>:
             next_layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>]
@@ -721,58 +725,58 @@ For the hidden layers: $W_{l+1} \cdot \delta_{l+1}$ where $l+1$ is the next laye
 <p>The learning rate is a number between 0 and 1 that controls how much we adjust the weights. A big learning rate may cause you to miss the global minimum while a small learning rate might be too slow to converge.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers)):
     layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
-    <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
+    <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
     input_to_use <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>atleast_2d(X <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">else</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">.</span>last_activation)
-    layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
+    layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
 </code></pre></div><ol>
 <li>Loop over the layers (forwardly).</li>
 <li>Choose the input to use ($X$ or $o_{l-1}$) depending on the current layer.</li>
-<li>Update the layer's weights using $W_l = W_l + \delta_l \times X^T \times \alpha$.</li>
+<li>Update the layer&rsquo;s weights using $W_l = W_l + \delta_l \times X^T \times \alpha$.</li>
 </ol>
 <p>Our backpropagation function becomes:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">backpropagation</span>(<span style="color:#999">self</span>, X, y, learning_rate):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Performs the backward propagation algorithm and updates the layers weights.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param y: The target values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Performs the backward propagation algorithm and updates the layers weights.
+</span><span style="color:#d14">    :param X: The input values.
+</span><span style="color:#d14">    :param y: The target values.
+</span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
-    <span style="color:#998;font-style:italic"># Feed forward for the output</span>
+    <span style="color:#998;font-style:italic"># Feed forward for the output</span>
     output <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>feed_forward(X)
 
-    <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
+    <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
     <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">reversed</span>(<span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers))):
         layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
 
-        <span style="color:#998;font-style:italic"># If this is the output layer</span>
+        <span style="color:#998;font-style:italic"># If this is the output layer</span>
         <span style="color:#000;font-weight:bold">if</span> layer <span style="color:#000;font-weight:bold">==</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]:
             layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">=</span> y <span style="color:#000;font-weight:bold">-</span> output
-            <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
+            <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
             layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">*</span> layer<span style="color:#000;font-weight:bold">.</span>apply_activation_derivative(output)
         <span style="color:#000;font-weight:bold">else</span>:
             next_layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>]
             layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>dot(next_layer<span style="color:#000;font-weight:bold">.</span>weights, next_layer<span style="color:#000;font-weight:bold">.</span>delta)
             layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">*</span> layer<span style="color:#000;font-weight:bold">.</span>apply_activation_derivative(layer<span style="color:#000;font-weight:bold">.</span>last_activation)
 
-    <span style="color:#998;font-style:italic"># Update the weights</span>
+    <span style="color:#998;font-style:italic"># Update the weights</span>
     <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers)):
         layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
-        <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
+        <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
         input_to_use <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>atleast_2d(X <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">else</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">.</span>last_activation)
-        layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
+        layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
 </code></pre></div><h3 id="training-the-neural-network">Training the neural network</h3>
 <p>Finally, we need to train our neural network using the backpropagation function we implemented above.</p>
 <p>We will use the <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">stochastic gradient descent algorithm</a>, where we update the weights with each row of our input (you can also take mini-batches instead).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">train</span>(<span style="color:#999">self</span>, X, y, learning_rate, max_epochs):
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Trains the neural network using backpropagation.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param y: The target values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :param int max_epochs: The maximum number of epochs (cycles).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    :return: The list of calculated MSE errors.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Trains the neural network using backpropagation.
+</span><span style="color:#d14">    :param X: The input values.
+</span><span style="color:#d14">    :param y: The target values.
+</span><span style="color:#d14">    :param float learning_rate: The learning rate (between 0 and 1).
+</span><span style="color:#d14">    :param int max_epochs: The maximum number of epochs (cycles).
+</span><span style="color:#d14">    :return: The list of calculated MSE errors.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     mses <span style="color:#000;font-weight:bold">=</span> []
 
@@ -782,30 +786,30 @@ For the hidden layers: $W_{l+1} \cdot \delta_{l+1}$ where $l+1$ is the next laye
         <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">%</span> <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>:
             mse <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>mean(np<span style="color:#000;font-weight:bold">.</span>square(y <span style="color:#000;font-weight:bold">-</span> nn<span style="color:#000;font-weight:bold">.</span>feed_forward(X)))
             mses<span style="color:#000;font-weight:bold">.</span>append(mse)
-            <span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Epoch: #</span><span style="color:#d14">%s</span><span style="color:#d14">, MSE: </span><span style="color:#d14">%f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (i, <span style="color:#0086b3">float</span>(mse)))
+            <span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14">&#39;Epoch: #</span><span style="color:#d14">%s</span><span style="color:#d14">, MSE: </span><span style="color:#d14">%f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (i, <span style="color:#0086b3">float</span>(mse)))
 
     <span style="color:#000;font-weight:bold">return</span> mses
 </code></pre></div><p>We repeat the process for <code>max_epochs</code> epochs (also called cycles or runs).</p>
 <p>At every 10th epoch, we will print out the Mean Squared Error and save it in <code>mses</code> which we will return at the end.</p>
-<p>Here's the complete implementation:</p>
+<p>Here&rsquo;s the complete implementation:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
 
 np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>seed(<span style="color:#099">100</span>)
 
 
 <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Layer</span>:
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Represents a layer (hidden or output) in our neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Represents a layer (hidden or output) in our neural network.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>, n_input, n_neurons, activation<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>, weights<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>, bias<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param int n_input: The input size (coming from the input layer or a previous hidden layer)</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param int n_neurons: The number of neurons in this layer.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param str activation: The activation function to use (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param weights: The layer</span><span style="color:#d14">&#39;</span><span style="color:#d14">s weights.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param bias: The layer</span><span style="color:#d14">&#39;</span><span style="color:#d14">s bias.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        :param int n_input: The input size (coming from the input layer or a previous hidden layer)
+</span><span style="color:#d14">        :param int n_neurons: The number of neurons in this layer.
+</span><span style="color:#d14">        :param str activation: The activation function to use (if any).
+</span><span style="color:#d14">        :param weights: The layer&#39;s weights.
+</span><span style="color:#d14">        :param bias: The layer&#39;s bias.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">=</span> weights <span style="color:#000;font-weight:bold">if</span> weights <span style="color:#000;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#999">None</span> <span style="color:#000;font-weight:bold">else</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>rand(n_input, n_neurons)
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">=</span> activation
@@ -815,81 +819,81 @@ np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#00
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">None</span>
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">activate</span>(<span style="color:#999">self</span>, x):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Calculates the dot product of this layer.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param x: The input.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The result.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Calculates the dot product of this layer.
+</span><span style="color:#d14">        :param x: The input.
+</span><span style="color:#d14">        :return: The result.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         r <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>dot(x, <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>weights) <span style="color:#000;font-weight:bold">+</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>bias
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>last_activation <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_apply_activation(r)
         <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>last_activation
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">_apply_activation</span>(<span style="color:#999">self</span>, r):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Applies the chosen activation function (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param r: The normal value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The </span><span style="color:#d14">&#34;</span><span style="color:#d14">activated</span><span style="color:#d14">&#34;</span><span style="color:#d14"> value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Applies the chosen activation function (if any).
+</span><span style="color:#d14">        :param r: The normal value.
+</span><span style="color:#d14">        :return: The &#34;activated&#34; value.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
-        <span style="color:#998;font-style:italic"># In case no activation function was chosen</span>
+        <span style="color:#998;font-style:italic"># In case no activation function was chosen</span>
         <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">is</span> <span style="color:#999">None</span>:
             <span style="color:#000;font-weight:bold">return</span> r
 
-        <span style="color:#998;font-style:italic"># tanh</span>
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>:
+        <span style="color:#998;font-style:italic"># tanh</span>
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;tanh&#39;</span>:
             <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>tanh(r)
 
-        <span style="color:#998;font-style:italic"># sigmoid</span>
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>:
+        <span style="color:#998;font-style:italic"># sigmoid</span>
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;sigmoid&#39;</span>:
             <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">/</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">+</span> np<span style="color:#000;font-weight:bold">.</span>exp(<span style="color:#000;font-weight:bold">-</span>r))
 
         <span style="color:#000;font-weight:bold">return</span> r
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">apply_activation_derivative</span>(<span style="color:#999">self</span>, r):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Applies the derivative of the activation function (if any).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param r: The normal value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The </span><span style="color:#d14">&#34;</span><span style="color:#d14">derived</span><span style="color:#d14">&#34;</span><span style="color:#d14"> value.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Applies the derivative of the activation function (if any).
+</span><span style="color:#d14">        :param r: The normal value.
+</span><span style="color:#d14">        :return: The &#34;derived&#34; value.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
-        <span style="color:#998;font-style:italic"># We use &#39;r&#39; directly here because its already activated, the only values that</span>
-        <span style="color:#998;font-style:italic"># are used in this function are the last activations that were saved.</span>
+        <span style="color:#998;font-style:italic"># We use &#39;r&#39; directly here because its already activated, the only values that</span>
+        <span style="color:#998;font-style:italic"># are used in this function are the last activations that were saved.</span>
 
         <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">is</span> <span style="color:#999">None</span>:
             <span style="color:#000;font-weight:bold">return</span> r
 
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>:
-            <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r <span style="color:#000;font-weight:bold">*</span><span style="color:#000;font-weight:bold">*</span> <span style="color:#099">2</span>
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;tanh&#39;</span>:
+            <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>
 
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>:
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>activation <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;sigmoid&#39;</span>:
             <span style="color:#000;font-weight:bold">return</span> r <span style="color:#000;font-weight:bold">*</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> r)
 
         <span style="color:#000;font-weight:bold">return</span> r
 
 
 <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">NeuralNetwork</span>:
-    <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    Represents a neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">    </span><span style="color:#d14">&#34;&#34;&#34;</span>
+    <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">    Represents a neural network.
+</span><span style="color:#d14">    &#34;&#34;&#34;</span>
 
     <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>):
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers <span style="color:#000;font-weight:bold">=</span> []
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">add_layer</span>(<span style="color:#999">self</span>, layer):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Adds a layer to the neural network.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param Layer layer: The layer to add.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Adds a layer to the neural network.
+</span><span style="color:#d14">        :param Layer layer: The layer to add.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers<span style="color:#000;font-weight:bold">.</span>append(layer)
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">feed_forward</span>(<span style="color:#999">self</span>, X):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Feed forward the input through the layers.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The result.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Feed forward the input through the layers.
+</span><span style="color:#d14">        :param X: The input values.
+</span><span style="color:#d14">        :return: The result.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         <span style="color:#000;font-weight:bold">for</span> layer <span style="color:#000;font-weight:bold">in</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers:
             X <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>activate(X)
@@ -897,62 +901,62 @@ np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#00
         <span style="color:#000;font-weight:bold">return</span> X
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">predict</span>(<span style="color:#999">self</span>, X):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Predicts a class (or classes).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The predictions.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Predicts a class (or classes).
+</span><span style="color:#d14">        :param X: The input values.
+</span><span style="color:#d14">        :return: The predictions.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         ff <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>feed_forward(X)
 
-        <span style="color:#998;font-style:italic"># One row</span>
+        <span style="color:#998;font-style:italic"># One row</span>
         <span style="color:#000;font-weight:bold">if</span> ff<span style="color:#000;font-weight:bold">.</span>ndim <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">1</span>:
             <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>argmax(ff)
 
-        <span style="color:#998;font-style:italic"># Multiple rows</span>
+        <span style="color:#998;font-style:italic"># Multiple rows</span>
         <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>argmax(ff, axis<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>)
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">backpropagation</span>(<span style="color:#999">self</span>, X, y, learning_rate):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Performs the backward propagation algorithm and updates the layers weights.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param y: The target values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param float learning_rate: The learning rate (between 0 and 1).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Performs the backward propagation algorithm and updates the layers weights.
+</span><span style="color:#d14">        :param X: The input values.
+</span><span style="color:#d14">        :param y: The target values.
+</span><span style="color:#d14">        :param float learning_rate: The learning rate (between 0 and 1).
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
-        <span style="color:#998;font-style:italic"># Feed forward for the output</span>
+        <span style="color:#998;font-style:italic"># Feed forward for the output</span>
         output <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>feed_forward(X)
 
-        <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
+        <span style="color:#998;font-style:italic"># Loop over the layers backward</span>
         <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">reversed</span>(<span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers))):
             layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
 
-            <span style="color:#998;font-style:italic"># If this is the output layer</span>
+            <span style="color:#998;font-style:italic"># If this is the output layer</span>
             <span style="color:#000;font-weight:bold">if</span> layer <span style="color:#000;font-weight:bold">==</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]:
                 layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">=</span> y <span style="color:#000;font-weight:bold">-</span> output
-                <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
+                <span style="color:#998;font-style:italic"># The output = layer.last_activation in this case</span>
                 layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">*</span> layer<span style="color:#000;font-weight:bold">.</span>apply_activation_derivative(output)
             <span style="color:#000;font-weight:bold">else</span>:
                 next_layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>]
                 layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>dot(next_layer<span style="color:#000;font-weight:bold">.</span>weights, next_layer<span style="color:#000;font-weight:bold">.</span>delta)
                 layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>error <span style="color:#000;font-weight:bold">*</span> layer<span style="color:#000;font-weight:bold">.</span>apply_activation_derivative(layer<span style="color:#000;font-weight:bold">.</span>last_activation)
 
-        <span style="color:#998;font-style:italic"># Update the weights</span>
+        <span style="color:#998;font-style:italic"># Update the weights</span>
         <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers)):
             layer <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i]
-            <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
+            <span style="color:#998;font-style:italic"># The input is either the previous layers output or X itself (for the first hidden layer)</span>
             input_to_use <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>atleast_2d(X <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">else</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>_layers[i <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">.</span>last_activation)
-            layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
+            layer<span style="color:#000;font-weight:bold">.</span>weights <span style="color:#000;font-weight:bold">+=</span> layer<span style="color:#000;font-weight:bold">.</span>delta <span style="color:#000;font-weight:bold">*</span> input_to_use<span style="color:#000;font-weight:bold">.</span>T <span style="color:#000;font-weight:bold">*</span> learning_rate
 
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">train</span>(<span style="color:#999">self</span>, X, y, learning_rate, max_epochs):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Trains the neural network using backpropagation.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param X: The input values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param y: The target values.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param float learning_rate: The learning rate (between 0 and 1).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param int max_epochs: The maximum number of epochs (cycles).</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The list of calculated MSE errors.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Trains the neural network using backpropagation.
+</span><span style="color:#d14">        :param X: The input values.
+</span><span style="color:#d14">        :param y: The target values.
+</span><span style="color:#d14">        :param float learning_rate: The learning rate (between 0 and 1).
+</span><span style="color:#d14">        :param int max_epochs: The maximum number of epochs (cycles).
+</span><span style="color:#d14">        :return: The list of calculated MSE errors.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         mses <span style="color:#000;font-weight:bold">=</span> []
 
@@ -962,42 +966,42 @@ np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#00
             <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">%</span> <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>:
                 mse <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>mean(np<span style="color:#000;font-weight:bold">.</span>square(y <span style="color:#000;font-weight:bold">-</span> nn<span style="color:#000;font-weight:bold">.</span>feed_forward(X)))
                 mses<span style="color:#000;font-weight:bold">.</span>append(mse)
-                <span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Epoch: #</span><span style="color:#d14">%s</span><span style="color:#d14">, MSE: </span><span style="color:#d14">%f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (i, <span style="color:#0086b3">float</span>(mse)))
+                <span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14">&#39;Epoch: #</span><span style="color:#d14">%s</span><span style="color:#d14">, MSE: </span><span style="color:#d14">%f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (i, <span style="color:#0086b3">float</span>(mse)))
 
         <span style="color:#000;font-weight:bold">return</span> mses
 
     <span style="color:#3c5d5d;font-weight:bold">@staticmethod</span>
     <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">accuracy</span>(y_pred, y_true):
-        <span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14"></span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        Calculates the accuracy between the predicted labels and true labels.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param y_pred: The predicted labels.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :param y_true: The true labels.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        :return: The calculated accuracy.</span><span style="color:#d14">
-</span><span style="color:#d14"></span><span style="color:#d14">        </span><span style="color:#d14">&#34;&#34;&#34;</span>
+        <span style="color:#d14">&#34;&#34;&#34;
+</span><span style="color:#d14">        Calculates the accuracy between the predicted labels and true labels.
+</span><span style="color:#d14">        :param y_pred: The predicted labels.
+</span><span style="color:#d14">        :param y_true: The true labels.
+</span><span style="color:#d14">        :return: The calculated accuracy.
+</span><span style="color:#d14">        &#34;&#34;&#34;</span>
 
         <span style="color:#000;font-weight:bold">return</span> (y_pred <span style="color:#000;font-weight:bold">==</span> y_true)<span style="color:#000;font-weight:bold">.</span>mean()
 </code></pre></div><h2 id="training-the-neural-network-to-solve-the-binary-and-problem">Training the neural network to solve the Binary AND problem</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nn <span style="color:#000;font-weight:bold">=</span> NeuralNetwork()
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">tanh</span><span style="color:#d14">&#39;</span>))
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">3</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>))
-nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">sigmoid</span><span style="color:#d14">&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#d14">&#39;tanh&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">3</span>, <span style="color:#d14">&#39;sigmoid&#39;</span>))
+nn<span style="color:#000;font-weight:bold">.</span>add_layer(Layer(<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#d14">&#39;sigmoid&#39;</span>))
 
-<span style="color:#998;font-style:italic"># Define dataset</span>
+<span style="color:#998;font-style:italic"># Define dataset</span>
 X <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>array([[<span style="color:#099">0</span>, <span style="color:#099">0</span>], [<span style="color:#099">0</span>, <span style="color:#099">1</span>], [<span style="color:#099">1</span>, <span style="color:#099">0</span>], [<span style="color:#099">1</span>, <span style="color:#099">1</span>]])
 y <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>array([[<span style="color:#099">0</span>], [<span style="color:#099">0</span>], [<span style="color:#099">0</span>], [<span style="color:#099">1</span>]])
 
-<span style="color:#998;font-style:italic"># Train the neural network</span>
+<span style="color:#998;font-style:italic"># Train the neural network</span>
 errors <span style="color:#000;font-weight:bold">=</span> nn<span style="color:#000;font-weight:bold">.</span>train(X, y, <span style="color:#099">0.3</span>, <span style="color:#099">290</span>)
-<span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Accuracy: </span><span style="color:#d14">%.2f</span><span style="color:#d14">%%</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (nn<span style="color:#000;font-weight:bold">.</span>accuracy(nn<span style="color:#000;font-weight:bold">.</span>predict(X), y<span style="color:#000;font-weight:bold">.</span>flatten()) <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">100</span>))
+<span style="color:#000;font-weight:bold">print</span>(<span style="color:#d14">&#39;Accuracy: </span><span style="color:#d14">%.2f%%</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (nn<span style="color:#000;font-weight:bold">.</span>accuracy(nn<span style="color:#000;font-weight:bold">.</span>predict(X), y<span style="color:#000;font-weight:bold">.</span>flatten()) <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">100</span>))
 
-<span style="color:#998;font-style:italic"># Plot changes in mse</span>
+<span style="color:#998;font-style:italic"># Plot changes in mse</span>
 plt<span style="color:#000;font-weight:bold">.</span>plot(errors)
-plt<span style="color:#000;font-weight:bold">.</span>title(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Changes in MSE</span><span style="color:#d14">&#39;</span>)
-plt<span style="color:#000;font-weight:bold">.</span>xlabel(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Epoch (every 10th)</span><span style="color:#d14">&#39;</span>)
-plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">MSE</span><span style="color:#d14">&#39;</span>)
+plt<span style="color:#000;font-weight:bold">.</span>title(<span style="color:#d14">&#39;Changes in MSE&#39;</span>)
+plt<span style="color:#000;font-weight:bold">.</span>xlabel(<span style="color:#d14">&#39;Epoch (every 10th)&#39;</span>)
+plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#d14">&#39;MSE&#39;</span>)
 plt<span style="color:#000;font-weight:bold">.</span>show()
 </code></pre></div><p>The learning rate 0.3 and max_epochs 290 were chosen with trial and error, nothing fancy.</p>
-<p>Here's the result of our training:</p>
+<p>Here&rsquo;s the result of our training:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Epoch: <span style="color:#998;font-style:italic">#0, MSE: 0.493821</span>
 Epoch: <span style="color:#998;font-style:italic">#10, MSE: 0.229725</span>
 Epoch: <span style="color:#998;font-style:italic">#20, MSE: 0.197990</span>
@@ -1081,7 +1085,7 @@ Accuracy: 100.00%
 <p>Aside from being able to do binary AND operations, the neural network seems to always predict 1 when a positive number is used and 0 when a negative number is used.</p>
 <p>Sadly, this remains a secret from us&hellip;</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Implementing a neural network can be challenging at first, especially since a lot of articles makes it seem like its hard and you need to be a math genius to get it done. In reality, it's fairly simple to do it. All you need to have is some basic knowledge in calculus and machine learning.</p>
+<p>Implementing a neural network can be challenging at first, especially since a lot of articles makes it seem like its hard and you need to be a math genius to get it done. In reality, it&rsquo;s fairly simple to do it. All you need to have is some basic knowledge in calculus and machine learning.</p>
 <p>I hope this post helped you understand how a neural network functions and especially how it can be trained using the Backpropagation algorithm. If you have any suggestions, improvements, questions or whatever feel free to comment below!</p>
 
             </article>
@@ -1312,7 +1316,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 <script id="MathJax-script" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full">

@@ -6,11 +6,7 @@
     <description>Recent content in Repository Pattern on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Mar 2019 15:00:44 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/repository-pattern/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 14 Mar 2019 15:00:44 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/repository-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Repository Pattern – Generic Async Repositories in C#</title>
       <link>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://blog.zhaytam.com/2019/03/14/generic-repository-pattern-csharp/</guid>
       <description>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.
-Today I&#39;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
+Today I&amp;rsquo;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).
 The code of this blog post is available here.</description>
     </item>
     

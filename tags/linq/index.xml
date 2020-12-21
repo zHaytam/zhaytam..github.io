@@ -6,19 +6,15 @@
     <description>Recent content in LINQ on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/linq/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/linq/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamic Sorting and Filtering in C#</title>
       <link>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</guid>
-      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&#39;ve come to the right place!
-Today we&#39;ll see how we can generate these types of operations at runtime and on the fly.</description>
+      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&amp;rsquo;ve come to the right place!
+Today we&amp;rsquo;ll see how we can generate these types of operations at runtime and on the fly.</description>
     </item>
     
   </channel>

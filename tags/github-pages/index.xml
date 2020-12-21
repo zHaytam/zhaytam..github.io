@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GitHub Pages on Awaiting Bits</title>
+    <title>Github Pages on Awaiting Bits</title>
     <link>https://blog.zhaytam.com/tags/github-pages/</link>
-    <description>Recent content in GitHub Pages on Awaiting Bits</description>
+    <description>Recent content in Github Pages on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploy Blazor WASM to GitHub Pages using GitHub Actions</title>
       <link>https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/06/08/deploy-blazor-wasm-github-pages-using-actions/</guid>
-      <description>Blazor WebAssembly was out a couple of weeks ago, and I can&#39;t stop playing with it! It&#39;s such a refreshing pause from all the JavaScript SPA frameworks.
-As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I&#39;ll be showing you step by step how to do so.</description>
+      <description>Blazor WebAssembly was out a couple of weeks ago, and I can&amp;rsquo;t stop playing with it! It&amp;rsquo;s such a refreshing pause from all the JavaScript SPA frameworks.
+As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Today I&amp;rsquo;ll be showing you step by step how to do so.</description>
     </item>
     
     <item>
@@ -28,7 +24,7 @@ As with any other SPA framework, you can deploy Blazor WASM in Github Pages! Tod
       
       <guid>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</guid>
       <description>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.
-Today I&#39;ll talk about that decision, its advantages and disadvantages.</description>
+Today I&amp;rsquo;ll talk about that decision, its advantages and disadvantages.</description>
     </item>
     
   </channel>

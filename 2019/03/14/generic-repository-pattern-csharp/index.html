@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Repository Pattern – Generic Async Repositories in C#",
         "headline" : "Repository Pattern – Generic Async Repositories in C#",
-        "description" : "Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.\nToday I'll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).\nThe code of this blog post is available here.",
+        "description" : "Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.\nToday I\u0026rsquo;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).\nThe code of this blog post is available here.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -336,10 +340,10 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>Repository Pattern was first introduced in the Domain Driven Development back in 2004 and has since then gained a lot of popularity.<br>
-Today I'll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).</p>
+Today I&rsquo;ll show you how you can implement a generic async version of it in C# (ASP.NET Core specifically).</p>
 <p>The code of this blog post is available <a href="https://github.com/zHaytam/RepositoryPatternExample">here</a>.</p>
-<h2 id="ddd--domain-driven-development">DDD - Domain Driven Development</h2>
-<p>Since this blog post isn't specifically about DDD, I will only quote what Steve Smith said in his amazing book <a href="https://docs.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/">Architecting Modern Web Apps with ASP.NET Core 2 and Azure</a> about it:</p>
+<h2 id="ddd---domain-driven-development">DDD - Domain Driven Development</h2>
+<p>Since this blog post isn&rsquo;t specifically about DDD, I will only quote what Steve Smith said in his amazing book <a href="https://docs.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/">Architecting Modern Web Apps with ASP.NET Core 2 and Azure</a> about it:</p>
 <blockquote>
 <p>Domain-Driven Design (DDD) is an agile approach to building software that emphasizes focusing on the business domain. It places a heavy emphasis on communication and interaction with business domain expert(s) who can relate to the developers how the real-world system works.</p>
 </blockquote>
@@ -348,12 +352,12 @@ Today I'll show you how you can implement a generic async version of it in C# (A
 <p>Repositories act almost like lists that you can add to, update, remove elements from and you would usually have one repository per entity (or value object).<br>
 This is highly useful because:</p>
 <ol>
-<li>The application core doesn't know how the entities are saved, so you end up working with an interface that makes switching things up much easier in the infrastructure.</li>
+<li>The application core doesn&rsquo;t know how the entities are saved, so you end up working with an interface that makes switching things up much easier in the infrastructure.</li>
 <li>It makes the application core testable. All you have to do now is mock the repository interface and test your business logic as much as possible.</li>
 </ol>
 <h3 id="about-entity-framework-core">About Entity Framework Core</h3>
 <p>Some people consider EF to implement a repository pattern and/or UoW, which it does.<br>
-But what if you one day to decided to switch to Dapper, a REDIS cache or even a NoSQL database? EF won't help you in that case and your architecture should be flexible enough to allow these kind of changes without breaking anything.</p>
+But what if you one day to decided to switch to Dapper, a REDIS cache or even a NoSQL database? EF won&rsquo;t help you in that case and your architecture should be flexible enough to allow these kind of changes without breaking anything.</p>
 <h2 id="implementing-a-generic-async-repository">Implementing a Generic Async Repository</h2>
 <h3 id="base-entity">Base Entity</h3>
 <p>In order to implement a generic repository, we will need a base entity class for all the entities/aggregation roots/value objects:</p>
@@ -372,7 +376,7 @@ But what if you one day to decided to switch to Dapper, a REDIS cache or even a 
 }
 </code></pre></div><h3 id="interface">Interface</h3>
 <p>The repository interface should include all the basic/useful functions that are needed from a repository without getting too specific.<br>
-Just because one entity needs a specific function doesn't mean it belongs to the interface (will talk about this later).</p>
+Just because one entity needs a specific function doesn&rsquo;t mean it belongs to the interface (will talk about this later).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System</span>;
 <span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Collections.Generic</span>;
 <span style="color:#000;font-weight:bold">using</span> <span style="color:#555">System.Linq.Expressions</span>;
@@ -478,10 +482,10 @@ A basic implementation of the <code>IAsyncRepository</code> in EF would be:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">services.AddScoped(<span style="color:#000;font-weight:bold">typeof</span>(IAsyncRepository&lt;&gt;), <span style="color:#000;font-weight:bold">typeof</span>(EfRepository&lt;&gt;));
 </code></pre></div><p>With this, you will be able to inject a repository of a specific entity at any time.</p>
 <h3 id="about-specific-functions">About specific functions</h3>
-<p>In case you really need a specific function in your repository, for example <code>GetByFirstName</code>, you can't really add it to the interface and implement because:</p>
+<p>In case you really need a specific function in your repository, for example <code>GetByFirstName</code>, you can&rsquo;t really add it to the interface and implement because:</p>
 <ol>
-<li>It's bad design since it's specific to a certain entity.</li>
-<li>You won't even be able to implement it since the generic repository works on the <code>BaseEntity</code> which doesn't have a FirstName property (unless you add it, which is more catastrophic…).</li>
+<li>It&rsquo;s bad design since it&rsquo;s specific to a certain entity.</li>
+<li>You won&rsquo;t even be able to implement it since the generic repository works on the <code>BaseEntity</code> which doesn&rsquo;t have a FirstName property (unless you add it, which is more catastrophic…).</li>
 </ol>
 <p>What you should do instead is inherit the <code>IAsyncRepository</code> and <code>EfRepository</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">namespace</span> <span style="color:#555">ApplicationCore.Entities</span>
@@ -747,7 +751,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

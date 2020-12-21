@@ -6,11 +6,7 @@
     <description>Recent content in Records on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/records/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/records/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C# 9 - Immutability - Records &amp; Init-only Properties</title>
       <link>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://blog.zhaytam.com/2020/07/03/csharp-9-immutability-records-init-only-properties/</guid>
       <description>Immutability has been getting popular these last years, especially with the rise of not only functional programming and but also JS frameworks such as React.
-It&#39;s an important concept for many reasons, but I won&#39;t get into it in this blog post because it&#39;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&#39;s The changing state of immutability in c# video, which explain it in details.</description>
+It&amp;rsquo;s an important concept for many reasons, but I won&amp;rsquo;t get into it in this blog post because it&amp;rsquo;s not the point. Although I would urge you to either read The Dao of Immutability or watch Jon Skeet&amp;rsquo;s The changing state of immutability in c# video, which explain it in details.</description>
     </item>
     
   </channel>

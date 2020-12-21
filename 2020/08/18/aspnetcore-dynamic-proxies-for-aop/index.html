@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Aspect Oriented Programming using proxies in ASP.NET Core",
         "headline" : "Aspect Oriented Programming using proxies in ASP.NET Core",
-        "description" : "After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).\n In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a \u0026ldquo;pointcut\u0026rdquo; specification, such as \u0026ldquo;log all function calls when the function's name begins with \u0026lsquo;set\u0026rsquo;\u0026quot;.",
+        "description" : "After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).\n In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a \u0026ldquo;pointcut\u0026rdquo; specification, such as \u0026ldquo;log all function calls when the function\u0026rsquo;s name begins with \u0026lsquo;set\u0026rsquo;\u0026rdquo;.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -337,7 +341,7 @@ if (!doNotTrack) {
             <article>
               <p>After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).</p>
 <blockquote>
-<p>In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &ldquo;pointcut&rdquo; specification, such as &ldquo;log all function calls when the function's name begins with &lsquo;set&rsquo;&quot;. This allows behaviors that are not central to the business logic (such as logging) to be added to a program without cluttering the code, core to the functionality. AOP forms a basis for aspect-oriented software development.
+<p>In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &ldquo;pointcut&rdquo; specification, such as &ldquo;log all function calls when the function&rsquo;s name begins with &lsquo;set&rsquo;&rdquo;. This allows behaviors that are not central to the business logic (such as logging) to be added to a program without cluttering the code, core to the functionality. AOP forms a basis for aspect-oriented software development.
 &ndash; <!-- raw HTML omitted -->Wikipedia<!-- raw HTML omitted --></p>
 </blockquote>
 <p>There are a couple use cases where AOP can be used:</p>
@@ -352,37 +356,37 @@ if (!doNotTrack) {
 </div>
 <p>All the code in this blog post is demonstrated in this <a href="https://github.com/zHaytam/AspNetCore.DynamicProxies">repository</a>.</p>
 <h2 id="aop-in-c">AOP in C#.</h2>
-<p>It's already possible to do AOP in C#, a quick search in Google will show you how: <code>RealProxy</code> and <code>MarshalByRefObject</code>. Technically, it can be used both locally and remotely, which is very nice until you understand that all your target objects <strong>must</strong> inherit <code>MarshalByRefObject</code>. That alone drives people to not even consider it.</p>
+<p>It&rsquo;s already possible to do AOP in C#, a quick search in Google will show you how: <code>RealProxy</code> and <code>MarshalByRefObject</code>. Technically, it can be used both locally and remotely, which is very nice until you understand that all your target objects <strong>must</strong> inherit <code>MarshalByRefObject</code>. That alone drives people to not even consider it.</p>
 <h2 id="the-better-way">The better way</h2>
 <p>Thankfully, there is a better way to create proxies of objects in C#, using <a href="http://www.castleproject.org/projects/dynamicproxy/">Castle.DynamicProxy</a>.</p>
 <blockquote>
 <p>Castle DynamicProxy is a library for generating lightweight .NET proxies on the fly at runtime. Proxy objects allow calls to members of an object to be intercepted without modifying the code of the class. Both classes and interfaces can be proxied, however only virtual members can be intercepted.
 &ndash; <!-- raw HTML omitted -->Castle Project<!-- raw HTML omitted --></p>
 </blockquote>
-<p>Using Castle's dynamic proxies, you can create proxies of abstract classes, interfaces (while providing the implementation) and classes (only virtual methods/properties).</p>
-<p>As an example, let's say we're making a server that handles blog posts:</p>
+<p>Using Castle&rsquo;s dynamic proxies, you can create proxies of abstract classes, interfaces (while providing the implementation) and classes (only virtual methods/properties).</p>
+<p>As an example, let&rsquo;s say we&rsquo;re making a server that handles blog posts:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/a74c5342116bea30f33f818464af6795.js"></script>
 
 <p>Usually, you would register <code>IBlogService</code> with the implementation <code>BlogService</code>, and everything will work well. But now, you want to proxy the interface and do something whenever a method is called.</p>
 <p>First, we need to create an interceptor that intercepts method calls, just like <code>RealProxy</code>:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/3c658602699e84c99b5af687f56be29e.js"></script>
 
-<p>Then, we'll create the proxy object using a generator:</p>
+<p>Then, we&rsquo;ll create the proxy object using a generator:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/87ab88584b408f29f9200b7e05107403.js"></script>
 
 <p>We have now created a proxy object that implements <code>IBlogService</code> and has the inner implementation <code>BlogService</code>. Whenever an interface method is called, the <code>LoggingInterceptor.Intercept</code> method will be called and when it calls <code>invocation.Proceed()</code>, the implemented method in <code>BlogService</code> will be called.</p>
 <h2 id="using-it-in-aspnet-core">Using it in ASP.NET Core</h2>
-<p>The idea here is to always serve proxies of services using the IOC Container of ASP.NET Core. Castle Project does have its own IOC Container <a href="https://github.com/castleproject/Windsor">Castle Windsor</a> which makes injecting proxies much easier, but we won't use it for now.</p>
-<p>First, we'll add a simple dependency to our <code>LoggingInterceptor</code> to show how we can handle them using DI. In reality, most of your interceptors will require one or more dependencies.</p>
+<p>The idea here is to always serve proxies of services using the IOC Container of ASP.NET Core. Castle Project does have its own IOC Container <a href="https://github.com/castleproject/Windsor">Castle Windsor</a> which makes injecting proxies much easier, but we won&rsquo;t use it for now.</p>
+<p>First, we&rsquo;ll add a simple dependency to our <code>LoggingInterceptor</code> to show how we can handle them using DI. In reality, most of your interceptors will require one or more dependencies.</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/7a1e38255aeb751eefda6d138353bded.js"></script>
 
-<p>Second, we'll register a singleton <code>ProxyGenerator</code> and all the interceptors we're working with (<code>LoggingInterceptor</code> for now):</p>
+<p>Second, we&rsquo;ll register a singleton <code>ProxyGenerator</code> and all the interceptors we&rsquo;re working with (<code>LoggingInterceptor</code> for now):</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/42b5f44b551ea77e9a583f2615ee34e0.js"></script>
 
-<p>Lastly, we'll register everything:</p>
+<p>Lastly, we&rsquo;ll register everything:</p>
 <script type="application/javascript" src="https://gist.github.com/zHaytam/c5b1c5eeaf2f915dd416ed1ae1fee75c.js"></script>
 
-<p>Here's how it works:</p>
+<p>Here&rsquo;s how it works:</p>
 <ol>
 <li>We register the implementation (e.g. <code>BlogService</code>). This is because the implementation might have dependencies that need to be resolved using DI, (there might be a better way).</li>
 <li>Whenever the interface is asked for:
@@ -394,8 +398,8 @@ if (!doNotTrack) {
 </ol>
 </li>
 </ol>
-<p>Now, whenever we ask for <code>IBlogService</code>, we'll receive a proxy object that passes through all the interceptors, and then call the actual methods in <code>BlogService</code>.</p>
-<p>Unfortunately, this isn't very easy nor straightforward to do in ASP.NET Core compared to Spring, but we can easily turn this into a simple &ldquo;framework&rdquo;. We can hook into specific methods using Castle's DynamicProxy and do more advanced things.</p>
+<p>Now, whenever we ask for <code>IBlogService</code>, we&rsquo;ll receive a proxy object that passes through all the interceptors, and then call the actual methods in <code>BlogService</code>.</p>
+<p>Unfortunately, this isn&rsquo;t very easy nor straightforward to do in ASP.NET Core compared to Spring, but we can easily turn this into a simple &ldquo;framework&rdquo;. We can hook into specific methods using Castle&rsquo;s DynamicProxy and do more advanced things.</p>
 <p>I hope this helps some of you &amp; Happy Coding!</p>
 
             </article>
@@ -625,7 +629,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

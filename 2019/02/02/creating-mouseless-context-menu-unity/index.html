@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "Creating a Mouseless Context Menu in Unity",
         "headline" : "Creating a Mouseless Context Menu in Unity",
-        "description" : "I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).\nUnfortunately, Unity didn't have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.",
+        "description" : "I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).\nUnfortunately, Unity didn\u0026rsquo;t have a Context Menu out of the box so I searched a bit and found this, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -336,7 +340,7 @@ if (!doNotTrack) {
           <div class="entry-content">
             <article>
               <p>I was prototyping a 2D Side Scroller game in Unity a week ago and started implementing an Inventory System (Equipments, slots, etc…).<br>
-Unfortunately, Unity didn't have a Context Menu out of the box so I searched a bit and found <a href="https://gamedev.stackexchange.com/questions/108508/how-to-design-context-menus-based-on-whatever-the-object-is#answer-108527">this</a>, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</p>
+Unfortunately, Unity didn&rsquo;t have a Context Menu out of the box so I searched a bit and found <a href="https://gamedev.stackexchange.com/questions/108508/how-to-design-context-menus-based-on-whatever-the-object-is#answer-108527">this</a>, which helped me get an idea of how to implement one as well as make it completely mouseless, since my game was mouseless itself.</p>
 <h2 id="preparing-the-ui">Preparing the UI</h2>
 <h3 id="a-panel-for-our-context-menu">A panel for our Context Menu</h3>
 <p>The first step is to create a panel (in a canvas as usual) for our Context Menu, you can customize it however you like.<br>
@@ -356,7 +360,7 @@ The panel will have to have these components to save us some code:</p>
 </figure>
 
 <h3 id="a-button-prefab-for-our-context-menu-items">A button prefab for our Context Menu Items</h3>
-<p>Next, we'll have to create a prefab of how the items will be shown in the menu.<br>
+<p>Next, we&rsquo;ll have to create a prefab of how the items will be shown in the menu.<br>
 Using a Button makes things easier since it has a <code>onClick</code>.</p>
 <figure>
     <img src="/img/whQs4wP.png"
@@ -365,7 +369,7 @@ Using a Button makes things easier since it has a <code>onClick</code>.</p>
         </figcaption>
 </figure>
 
-<p>The button has to have a LayoutElement set to a height you want, since we're using a VerticalLayoutGroup in its parent.</p>
+<p>The button has to have a LayoutElement set to a height you want, since we&rsquo;re using a VerticalLayoutGroup in its parent.</p>
 <h2 id="scripts">Scripts</h2>
 <h3 id="items">Items</h3>
 <p>We will represent each item in the menu with the following class:</p>
@@ -395,15 +399,15 @@ Using a Button makes things easier since it has a <code>onClick</code>.</p>
     }
 }
 </code></pre></div><h3 id="menu">Menu</h3>
-<p>We'll need a couple of fields:</p>
+<p>We&rsquo;ll need a couple of fields:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// The prefab we created previously
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">[SerializeField]</span> <span style="color:#000;font-weight:bold">private</span> Button _itemButtonPrefab;
 <span style="color:#998;font-style:italic">// To position the menu where it was clicked/pressed
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">private</span> RectTransform _panelRectTransform;
 <span style="color:#998;font-style:italic">// To help us go back to our previous action
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// For example: Navigating items in an Inventory,
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// once we&#39;re done, we need to re-select the slot
-</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// we were in so that the player can keep navigating.
+</span><span style="color:#998;font-style:italic">// For example: Navigating items in an Inventory,
+</span><span style="color:#998;font-style:italic">// once we&#39;re done, we need to re-select the slot
+</span><span style="color:#998;font-style:italic">// we were in so that the player can keep navigating.
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">private</span> Selectable _lastSelectableObject;
 </code></pre></div><p>Unity methods:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#000;font-weight:bold">private</span> <span style="color:#000;font-weight:bold">void</span> Awake()
@@ -527,7 +531,7 @@ When the player presses Space:</p>
 }
 </code></pre></div><p>The action is simply to equip the item using the Inventory System.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>I hope this post helps someone in the future and I'd like to thank Experion again for his answer in Stackoverflow as his idea was my starting point.<br>
+<p>I hope this post helps someone in the future and I&rsquo;d like to thank Experion again for his answer in Stackoverflow as his idea was my starting point.<br>
 If you have any suggestions, feel free to comment/message me.<br>
 See you around!</p>
 
@@ -752,7 +756,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

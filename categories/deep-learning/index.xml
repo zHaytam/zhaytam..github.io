@@ -6,19 +6,15 @@
     <description>Recent content in Deep Learning on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Aug 2018 21:39:58 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 15 Aug 2018 21:39:58 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementing a flexible neural network with backpropagation from scratch</title>
       <link>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</link>
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
-      <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
-Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
+      <description>Implementing your own neural network can be hard, especially if you&amp;rsquo;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
+Today I&amp;rsquo;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>
     
   </channel>

@@ -13,7 +13,7 @@
         "articleSection" : "post",
         "name" : "NDepend, a powerful static analysis tool for .NET",
         "headline" : "NDepend, a powerful static analysis tool for .NET",
-        "description" : "Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I'll be talking about my opinion and thoughts after trying it for the first time.\nStatic code analysis Being able to check the quality of your source code before it's even ran is a very valuable thing to have.",
+        "description" : "Patrick Smacchia, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I\u0026rsquo;ll be talking about my opinion and thoughts after trying it for the first time.\nStatic code analysis Being able to check the quality of your source code before it\u0026rsquo;s even ran is a very valuable thing to have.",
         "inLanguage" : "en",
         "author" : "Zanid Haytam",
         "creator" : "Zanid Haytam",
@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -341,20 +345,20 @@ if (!doNotTrack) {
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <p><a href="https://blog.ndepend.com/author/psmacchia/">Patrick Smacchia</a>, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I'll be talking about my opinion and thoughts after trying it for the first time.</p>
+              <p><a href="https://blog.ndepend.com/author/psmacchia/">Patrick Smacchia</a>, the author of NDepend, offered me a license for NDepend and I was thrilled, as I was always interested in it. In this blog post, I&rsquo;ll be talking about my opinion and thoughts after trying it for the first time.</p>
 <h2 id="static-code-analysis">Static code analysis</h2>
-<p>Being able to check the quality of your source code before it's even ran is a very valuable thing to have. In static code analysis, a set of predefined rules are ran against your code to determine whether you need to change anything.</p>
-<p>This type of analysis is powerful because it can save you a lot of time, especially in medium/big projects where things like technical debt is something you certainly don't want to have.</p>
+<p>Being able to check the quality of your source code before it&rsquo;s even ran is a very valuable thing to have. In static code analysis, a set of predefined rules are ran against your code to determine whether you need to change anything.</p>
+<p>This type of analysis is powerful because it can save you a lot of time, especially in medium/big projects where things like technical debt is something you certainly don&rsquo;t want to have.</p>
 <h2 id="ndepend">NDepend</h2>
 <p>NDepend is a static analysis tool for .NET managed code. It contains a lot of predefined metrics, insights and visualizations out of the box. You can easily integrate it with Visual Studio and Azure DevOps.</p>
 <blockquote>
 <p>NDepend is the only Visual Studio extension that is able to tell the developer that over the past hour, <strong>the code just written has introduced debt that would cost for example about 30 minutes should it have to be repaid later</strong>. Knowing this, the developer can fix the code before even committing it to the source control.</p>
-<p><a href="https://www.ndepend.com/"><a href="https://www.ndepend.com/">https://www.ndepend.com/</a></a></p>
+<p><a href="https://www.ndepend.com/">https://www.ndepend.com/</a></p>
 </blockquote>
 <h2 id="overview">Overview</h2>
-<p>While trying out NDepend, I was using its Visual Studio's extension. I used it on the current project I'm working on, which is ML.NET's AutoML.</p>
+<p>While trying out NDepend, I was using its Visual Studio&rsquo;s extension. I used it on the current project I&rsquo;m working on, which is ML.NET&rsquo;s AutoML.</p>
 <h3 id="analysis">Analysis</h3>
-<p>Firstly, setting up NDepend on the project failed as it couldn't find the dll files in the Debug folder. The author(s) already thought of this: manually selecting the folder/files.</p>
+<p>Firstly, setting up NDepend on the project failed as it couldn&rsquo;t find the dll files in the Debug folder. The author(s) already thought of this: manually selecting the folder/files.</p>
 <figure>
     <img src="/img/devenv_2019-08-26_10-56-00-768x498.jpg"
          alt="NDepend - Adding assemblies"/> <figcaption>
@@ -362,7 +366,7 @@ if (!doNotTrack) {
         </figcaption>
 </figure>
 
-<p>Note that the test projects and assemblies couldn't be loaded. If they were loaded, you'll have to remove them.</p>
+<p>Note that the test projects and assemblies couldn&rsquo;t be loaded. If they were loaded, you&rsquo;ll have to remove them.</p>
 <p>Secondly, I ran the analysis and after a couple of seconds, the results were in! An HTML report was generated and auto-opened and the extension shows you some next steps to take.</p>
 <figure>
     <img src="/img/devenv_2019-08-26_10-58-08-768x620.jpg"
@@ -394,21 +398,21 @@ These rules are part of the quality gates too. For example:</p>
 <ul>
 <li>Avoid types too big.</li>
 <li>Avoid non-readonly static fields.</li>
-<li>Don't create threads explicitly.</li>
+<li>Don&rsquo;t create threads explicitly.</li>
 </ul>
 <h3 id="cqlinq">CQLinq</h3>
 <p>CQLinq is a feature that comes with NDepend, which lets you query code using LINQ.<br>
-For instance, this is one of the predefined rules, which makes sure you don't explicitly create your own threads:</p>
+For instance, this is one of the predefined rules, which makes sure you don&rsquo;t explicitly create your own threads:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">warnif count &gt; <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">from</span> m <span style="color:#000;font-weight:bold">in</span> Application.Methods <span style="color:#000;font-weight:bold">where</span>
   m.CreateA (<span style="color:#d14">&#34;System.Threading.Thread&#34;</span>.AllowNoMatch())
 <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">new</span> {
    m,
-   Debt = <span style="color:#099">6</span><span style="color:#099">0.</span>ToMinutes().ToDebt(),
+   Debt = <span style="color:#099">60.</span>ToMinutes().ToDebt(),
    Severity = Severity.Critical
 }
 </code></pre></div><p>This is a very good addition to the tool where people can add their own rules easily.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>To sum up, NDepend turned out to be better than what I was expecting. The amount of information you get is incredible and insightful. Considering a license's price, I highly doubt a solo developer would be able to afford it, but for medium/big teams, I'd say this tool is a must.</p>
+<p>To sum up, NDepend turned out to be better than what I was expecting. The amount of information you get is incredible and insightful. Considering a license&rsquo;s price, I highly doubt a solo developer would be able to afford it, but for medium/big teams, I&rsquo;d say this tool is a must.</p>
 
             </article>
           </div>
@@ -634,7 +638,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>

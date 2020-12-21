@@ -6,11 +6,7 @@
     <description>Recent content in ASP.NET Core on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aspect Oriented Programming using proxies in ASP.NET Core</title>
       <link>https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://blog.zhaytam.com/2020/08/18/aspnetcore-dynamic-proxies-for-aop/</guid>
       <description>After working with Spring Boot for a couple of months now, one thing that I find lacking in ASP.NET Core (C#) is Aspect Oriented Programming (AOP).
- In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&#39;s name begins with &amp;lsquo;set&amp;rsquo;&amp;quot;.</description>
+ In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a &amp;ldquo;pointcut&amp;rdquo; specification, such as &amp;ldquo;log all function calls when the function&amp;rsquo;s name begins with &amp;lsquo;set&amp;rsquo;&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -27,7 +23,7 @@
       <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/04/30/health-checks-aspnetcore/</guid>
-      <description>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp;amp; healthy or not. It&#39;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.
+      <description>Health checks are a set of checks (duh) that you perform in order to tell whether an application/service is up, running &amp;amp; healthy or not. It&amp;rsquo;s usually one or more endpoints that reports the status, the response differs from language/framework to an other.
 Health checks are very useful especially when your application depends on other things like a database or even other services.</description>
     </item>
     
@@ -38,8 +34,8 @@ Health checks are very useful especially when your application depends on other 
       
       <guid>https://blog.zhaytam.com/2019/10/03/google-sign-in-asp-net-core-web-api/</guid>
       <description>There is a lot of tutorials that show how to integrate Google Sign-In in your website, but only a handful show how to integrate it in a REST API.
-Today I&#39;ll be showing how you can add Google Sign-In and still manage users in your back-end.
-Overview Here&#39;s a sequence diagram showing how it all works:</description>
+Today I&amp;rsquo;ll be showing how you can add Google Sign-In and still manage users in your back-end.
+Overview Here&amp;rsquo;s a sequence diagram showing how it all works:</description>
     </item>
     
     <item>
@@ -59,8 +55,8 @@ I compiled this list to have all the new features, improvements and breaking cha
       
       <guid>https://blog.zhaytam.com/2019/06/08/emailsender-service-fluent-email-razor-templates/</guid>
       <description>Sending emails is a very important functionality for any website nowdays, either to send account verification emails, newsletter emails or even notification emails.
-Today I&#39;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
-EmailSender interface If you&#39;re working with a project that implements a Clean Architecture, you&#39;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
+Today I&amp;rsquo;ll be showing how you can create your own EmailSender Service in ASP.NET Core using FluentEmail and Razor templates for rich HTML emails.
+EmailSender interface If you&amp;rsquo;re working with a project that implements a Clean Architecture, you&amp;rsquo;ll want to create an interface in your Core project to define what you need the service to do, as well as to have the possibility to use it from the Core project too.</description>
     </item>
     
     <item>

@@ -6,11 +6,7 @@
     <description>Recent content in Algorithms on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 15 Oct 2019 09:39:51 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Color quantization using K-means clustering in ML.NET</title>
       <link>https://blog.zhaytam.com/2019/10/15/color-quantization-using-k-means-clustering-in-ml-net/</link>
@@ -48,7 +44,7 @@ Introduction The Interquartile Range method, also known as IQR, was developed by
       <pubDate>Tue, 23 Oct 2018 17:52:24 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/10/23/association-rule-mining-using-apriori-algorithm/</guid>
-      <description>Have you ever wondered how Amazon suggets to us items to buy when we&#39;re looking at a product (labeled as “Frequently bought together”)?
+      <description>Have you ever wondered how Amazon suggets to us items to buy when we&amp;rsquo;re looking at a product (labeled as “Frequently bought together”)?
 For example, when checking a GPU product (e.g. GTX 1080), amazon will tell you that the gpu, i7 cpu and RAM are frequently bought together.
 Which is true because a lot of people buy their components grouped when building a desktop pc.</description>
     </item>
@@ -59,8 +55,8 @@ Which is true because a lot of people buy their components grouped when building
       <pubDate>Wed, 15 Aug 2018 21:39:58 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2018/08/15/implement-neural-network-backpropagation/</guid>
-      <description>Implementing your own neural network can be hard, especially if you&#39;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
-Today I&#39;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
+      <description>Implementing your own neural network can be hard, especially if you&amp;rsquo;re like me, coming from a computer science background, math equations/syntax makes you dizzy and you would understand things better using actual code.
+Today I&amp;rsquo;ll show you how easy it is to implement a flexible neural network and train it using the backpropagation algorithm.</description>
     </item>
     
   </channel>

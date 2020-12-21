@@ -6,18 +6,14 @@
     <description>Recent content in Expression Trees on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/tags/expression-trees/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/expression-trees/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C# Expression Trees: Property Getters</title>
       <link>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/11/17/expression-trees-property-getter/</guid>
-      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&#39;t get me wrong, Reflection does the job most of the time, but it&#39;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
+      <description>There are times where I needed to do some things dynamically and I typically think of Expression Trees to do it. Don&amp;rsquo;t get me wrong, Reflection does the job most of the time, but it&amp;rsquo;s known to be very slow in almost all cases. I happen to have a bit of experience in the former.</description>
     </item>
     
     <item>
@@ -26,8 +22,8 @@
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/</guid>
-      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&#39;ve come to the right place!
-Today we&#39;ll see how we can generate these types of operations at runtime and on the fly.</description>
+      <description>If you ever wondered how you could dynamically filter and/or sort your queries without having to write a huge switch statement with all the possible properties and operations, you&amp;rsquo;ve come to the right place!
+Today we&amp;rsquo;ll see how we can generate these types of operations at runtime and on the fly.</description>
     </item>
     
   </channel>

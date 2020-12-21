@@ -6,11 +6,7 @@
     <description>Recent content in other on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate>
-    
-	<atom:link href="https://blog.zhaytam.com/categories/other/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 13 Dec 2019 10:26:06 +0100</lastBuildDate><atom:link href="https://blog.zhaytam.com/categories/other/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Wordpress to Hugo, Self Hosting to Github Pages</title>
       <link>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://blog.zhaytam.com/2019/12/13/wordpress-to-hugo-self-hosting-to-github-pages/</guid>
       <description>These past months I realized that my blog, which is made using Wordpress, is very slow and that hurts the traffic. So I went looking for the problems and their solutions but nothing really worked, so I decided to switch everything.
-Today I&#39;ll talk about that decision, its advantages and disadvantages.</description>
+Today I&amp;rsquo;ll talk about that decision, its advantages and disadvantages.</description>
     </item>
     
     <item>
@@ -27,9 +23,9 @@ Today I&#39;ll talk about that decision, its advantages and disadvantages.</desc
       <pubDate>Fri, 19 Apr 2019 15:50:27 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2019/04/19/powerline-and-zshs-agnoster-theme-in-vs-code/</guid>
-      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&#39;s terminal, as it needs a monospaced font and Powerline isn&#39;t one.
-In this post I&#39;ll explain how to quickly fix it.
-The problem   Problem   VS Code defaults the terminal&#39;s font to the editor&#39;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
+      <description>Today I was installing Oh My ZSH and the theme Agnoster and it worked in the the normal terminal but not in Visual Studio Code&amp;rsquo;s terminal, as it needs a monospaced font and Powerline isn&amp;rsquo;t one.
+In this post I&amp;rsquo;ll explain how to quickly fix it.
+The problem   Problem   VS Code defaults the terminal&amp;rsquo;s font to the editor&amp;rsquo;s font, and since the Agnoster theme needs Powerline, the terminal outputs non-sense characters.</description>
     </item>
     
     <item>

@@ -99,9 +99,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<link href="https://blog.zhaytam.com/css/style.css?v=1605653077" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/style.css?v=1608573526" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
 
-<link href="https://blog.zhaytam.com/css/custom.css?v=1605653077" rel="stylesheet" type='text/css' media='all'>
+<link href="https://blog.zhaytam.com/css/custom.css?v=1608573526" rel="stylesheet" type='text/css' media='all'>
 <link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
 
@@ -136,15 +136,19 @@ if (!doNotTrack) {
       <ul id="menu-secondary-items" class="menu-secondary-items">
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
           <a href="/categories/algorithms">algorithms</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/artificial-intelligence">artificial-intelligence</a>
+          <a href="/categories/asp.net-core">asp.net-core</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-          <a href="/categories/asp.net-core">asp.net-core</a>
+          <a href="/categories/blazor">blazor</a>
         </li>
         
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
@@ -359,9 +363,9 @@ if (!doNotTrack) {
 </ul>
 <h2 id="example">Example</h2>
 <h3 id="creating-data">Creating Data</h3>
-<p>In this example, we'll be creating data instead of loading it from a CSV, since <code>DataFrame.LoadCsv</code> doesn't handle null values and all structs (e.g. <code>DateTime</code>) yet.</p>
+<p>In this example, we&rsquo;ll be creating data instead of loading it from a CSV, since <code>DataFrame.LoadCsv</code> doesn&rsquo;t handle null values and all structs (e.g. <code>DateTime</code>) yet.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">string</span>[] names = { <span style="color:#d14">&#34;John&#34;</span>, <span style="color:#d14">&#34;Ahmed&#34;</span>, <span style="color:#d14">&#34;Chris&#34;</span>, <span style="color:#d14">&#34;Albert&#34;</span> };
-<span style="color:#458;font-weight:bold">int</span>[] salaries = { <span style="color:#099">2</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">3</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">4</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span>, <span style="color:#099">1</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span><span style="color:#099">0</span> };
+<span style="color:#458;font-weight:bold">int</span>[] salaries = { <span style="color:#099">20000</span>, <span style="color:#099">30000</span>, <span style="color:#099">40000</span>, <span style="color:#099">10000</span> };
 DateTime[] birthdays = { DateTime.Parse(<span style="color:#d14">&#34;23/4/1990&#34;</span>), DateTime.Parse(<span style="color:#d14">&#34;4/5/1982&#34;</span>),
     DateTime.Parse(<span style="color:#d14">&#34;2/1/1980&#34;</span>), DateTime.Parse(<span style="color:#d14">&#34;9/10/1994&#34;</span>) };
 <span style="color:#458;font-weight:bold">string</span>[] departments = { <span style="color:#d14">&#34;Development&#34;</span>, <span style="color:#d14">&#34;Development&#34;</span>, <span style="color:#d14">&#34;HR&#34;</span>, <span style="color:#000;font-weight:bold">null</span> };
@@ -493,7 +497,7 @@ DateTime[] birthdays = { DateTime.Parse(<span style="color:#d14">&#34;23/4/1990&
 </tr>
 </tbody>
 </table>
-<p>I would've hoped to see more information in <code>Info</code>, for example the memory usage like in pandas.</p>
+<p>I would&rsquo;ve hoped to see more information in <code>Info</code>, for example the memory usage like in pandas.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">employeesDf.Description().PrettyPrint();
 </code></pre></div><table>
 <thead>
@@ -532,7 +536,7 @@ DateTime[] birthdays = { DateTime.Parse(<span style="color:#d14">&#34;23/4/1990&
 </tbody>
 </table>
 <h4 id="prettyprint">PrettyPrint</h4>
-<p><code>DataFrame.ToString</code> only takes into account the maximum length of columns when printing the dataframe, which doesn't always work since some column values might be longer.<br>
+<p><code>DataFrame.ToString</code> only takes into account the maximum length of columns when printing the dataframe, which doesn&rsquo;t always work since some column values might be longer.<br>
 I created a function that does the opposite to get some good looking tables, the code is available at the end of the post.</p>
 <h3 id="fill-nulls-with-a-value">Fill nulls with a value</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">departmentColumn.FillNulls(<span style="color:#d14">&#34;Other&#34;</span>, inPlace: <span style="color:#000;font-weight:bold">true</span>);
@@ -541,8 +545,8 @@ I created a function that does the opposite to get some good looking tables, the
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#458;font-weight:bold">var</span> currentYear = DateTime.Now.Year;
 employeesDf[<span style="color:#d14">&#34;Age&#34;</span>] = birthdayColumn.Apply(d =&gt; currentYear - d.Year);
 employeesDf.PrettyPrint();
-</code></pre></div><p>For now, <code>DataFrame.Apply</code> only handle same-type function, meaning that if your colum is of type <code>DateTime</code>, the output needs to be the same, which doesn't work for our example (and for other use cases).</p>
-<p>I opened an issue in the repo (<a href="https://github.com/dotnet/corefxlab/issues/2805">here</a>) and I'm working on an PR, for now, I'm using a custom extension method that will be available at the end of the post too.</p>
+</code></pre></div><p>For now, <code>DataFrame.Apply</code> only handle same-type function, meaning that if your colum is of type <code>DateTime</code>, the output needs to be the same, which doesn&rsquo;t work for our example (and for other use cases).</p>
+<p>I opened an issue in the repo (<a href="https://github.com/dotnet/corefxlab/issues/2805">here</a>) and I&rsquo;m working on an PR, for now, I&rsquo;m using a custom extension method that will be available at the end of the post too.</p>
 <table>
 <thead>
 <tr>
@@ -695,7 +699,7 @@ df.PrettyPrint();
 </tr>
 </tbody>
 </table>
-<p>I'll have to admit that I got confused at first, thinking that <code>Join</code> should do this while <code>Merge</code> would only merge without a condition.</p>
+<p>I&rsquo;ll have to admit that I got confused at first, thinking that <code>Join</code> should do this while <code>Merge</code> would only merge without a condition.</p>
 <h3 id="drop-a-column-and-sort-by-a-column">Drop a column and sort by a column</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">df.Columns.Remove(<span style="color:#d14">&#34;EmployeeId&#34;</span>);
 df = df.Sort(<span style="color:#d14">&#34;Id&#34;</span>);
@@ -802,10 +806,10 @@ employeesByDepartment.Mean(<span style="color:#d14">&#34;Salary&#34;</span>).Pre
 </table>
 <h3 id="sample-rows">Sample rows</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">df.Sample(<span style="color:#099">2</span>).PrettyPrint();
-</code></pre></div><p><em>Note: This method can give duplicate rows. I created an issue and hopefully it'll be fixed next preview.</em></p>
+</code></pre></div><p><em>Note: This method can give duplicate rows. I created an issue and hopefully it&rsquo;ll be fixed next preview.</em></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>I'm excited to see what this library becomes in the future. It still needs a lot of work but I hope it gets mature enough to get out of the lab and be officially supported, it can be a nice addition to .NET.</p>
-<p>If you're interested in the code used in this post:</p>
+<p>I&rsquo;m excited to see what this library becomes in the future. It still needs a lot of work but I hope it gets mature enough to get out of the lab and be officially supported, it can be a nice addition to .NET.</p>
+<p>If you&rsquo;re interested in the code used in this post:</p>
 <ul>
 <li><a href="https://gist.github.com/zHaytam/75c8de95fba4e8158cf7945bd316bbb1">Main code</a></li>
 <li><a href="https://gist.github.com/zHaytam/f2a30eeb91b92981e9020dda91ea2697">DataFrame utils</a></li>
@@ -1036,7 +1040,7 @@ title="github icon"></i>
   </div>
   <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
 <script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
-<script src="https://blog.zhaytam.com/js/production.min.js?v=1605653077"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1608573526"></script>
 
 
 </body>
