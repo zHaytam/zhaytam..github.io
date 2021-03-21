@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Blazor Internals: EvenCallback</title>
+      <title>Blazor Internals: EventCallback</title>
       <link>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
