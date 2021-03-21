@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Blazor Internals: EvenCallback",
+        "headline" : "Blazor Internals: EvenCallback",
+        "description" : "Figuring out how technologies are maid under the hood is one of the things I love to do. Ever since I started using Blazor and going in-depth into its features, I can\u0026rsquo;t stop wondering how things are made internally.\nThis post is the start of a series about, you guess it, Blazor Internals.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2021",
+        "datePublished": "2021-03-21T00:00:00Z",
+        "dateModified" : "2021-03-21T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2021\/03\/21\/blazor-internals-eventcallback\/",
+        "wordCount" : "684",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/blazor_internals\/eventcallback.jpg",
+        "keywords" : [ "Internals","EventCallback","Blog" ]   
+    }
+    </script>
+
+
+ <title>Blazor Internals: EvenCallback </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Blazor Internals: EvenCallback | Awaiting Bits</title>
+<meta property="og:title" content="Blazor Internals: EvenCallback | Awaiting Bits" />
+<meta name="twitter:title" content="Blazor Internals: EvenCallback | Awaiting Bits" />
+<meta itemprop="name" content="Blazor Internals: EvenCallback | Awaiting Bits" />
+<meta name="application-name" content="Blazor Internals: EvenCallback | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/">
+<link rel="canonical" href="https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/blazor_internals/eventcallback.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/blazor_internals/eventcallback.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/blazor_internals/eventcallback.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/blazor_internals/eventcallback.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2021-03-21T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Internals,EventCallback" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1616328501" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1616328501" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/blazor">blazor</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/csharp">csharp</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/devops">devops</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/blazor_internals/eventcallback.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">21 March</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/blazor">Blazor</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Blazor Internals: EvenCallback</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>Figuring out how technologies are maid under the hood is one of the things I love to do. Ever since I started using Blazor and going in-depth into its features, I can&rsquo;t stop wondering how things are made internally.</p>
+<p>This post is the start of a series about, you guess it, <strong>Blazor Internals</strong>. I&rsquo;ll be talking about things that I find interesting in Blazor and how they work under the hood by reading the source code.</p>
+<p>I&rsquo;d also like to point to the amazing blog of <a href="https://safia.rocks/blog/">Safia Abdallah</a>, an engineer at Microsoft that works on Blazor. She has some great posts about Blazor&rsquo;s internals too.</p>
+<h2 id="what-is-an-eventcallback">What is an EventCallback</h2>
+<p><code>EventCallback</code> (and its generic version <code>EventCallback&lt;T&gt;</code>) are structs that are declared in a component as parameters (using <code>[Parameter]</code>). Consumers of that component can &ldquo;subscribe&rdquo; to those parameters so that they are &ldquo;notified&rdquo; whenever they are triggered. You can think of them as a small / straightforward version of C# events.</p>
+<div class="note info">
+    All Blazor's UI events (e.g. <code>@onclick</code> and <code>@onmousedown</code>) use <code>EventCallback</code>.
+    
+</div>
+<h3 id="usage">Usage</h3>
+<p>Let&rsquo;s take as an example a <code>Button</code> component:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/6b2d195e75912acff14c0ff15476a888.js"></script>
+</p>
+<p>As you can see, we declare a <code>OnClick</code> parameter of type <code>EventCallback</code>. We want the users of this component to be able to subscribe to the button&rsquo;s click event. Whenever the button is clicked, we call <code>OnClick.InvokeAsync()</code> to notify the subscriber (if there is one).</p>
+<p>We can use it this way:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/1b00bdfb5c561fb5a8730e31765c53c2.js"></script>
+</p>
+<h2 id="whats-interesting-about-it">What&rsquo;s interesting about it</h2>
+<p>Unlike regular C# events, <code>EventCallback</code> can&rsquo;t be null (since it&rsquo;s a <code>struct</code>) and can only have a single subscriber. This works well for Blazor since you almost always only need one subscriber (which is usually the parent).</p>
+<p>If you paid attention to the examples above (our <code>Button</code> component and its user), you will find that I declared the first handler as an <code>async Task</code> and the second one as <code>void</code>. This is what&rsquo;s great about <code>EventCallback</code>, your handlers can either be asynchronous (<code>Task</code>) or not (<code>void</code>).</p>
+<h2 id="how-does-it-work">How does it work</h2>
+<p>For example, when you subscribe to the <code>@onclick</code> event, which is an <code>EventCallback&lt;MouseEventArgs&gt;</code>, in your component (<code>@onclick=&quot;SomeMethod&quot;</code>), it will get compiled to something like this:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/86fbc309a4896f4ef46215c801293c5c.js"></script>
+</p>
+<p>The same goes for the non generic version of <code>EventCallback</code>, everything is created using <code>EventCallback.Factory.Create</code>, which handles many types of methods:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/930f5b11c0f1162b8d5f98713c0eb158.js"></script>
+</p>
+<p>This is how event handlers can be asynchronous or not. <code>EventCallbackFactory</code> contains all these overloads for the different use cases.</p>
+<h3 id="storage">Storage</h3>
+<p>The next logical question is: How does <code>EventCallback</code> store the delegates when their signature isn&rsquo;t the same? Easy:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/368dc8350f227461d82ad247efa22e1e.js"></script>
+</p>
+<p>All delegates (<code>Action</code>, <code>Func</code>, your own) are <code>MulticastDelegate</code>s, which are <code>Delegate</code>s. This makes it easy to handle multiple types of methods (different signatures). See <a href="https://docs.microsoft.com/en-us/dotnet/api/system.multicastdelegate?view=net-5.0">MulticastDelegate Class</a> for more information about it.</p>
+<p>Here&rsquo;s an example to better understand how it works:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/6f9c7726bd9ab6022ece39506a08985e.js"></script>
+</p>
+<p>As demonstrated, you can cast all delegates to <code>MulticastDelegate</code> and back to their origin type.</p>
+<h3 id="execution">Execution</h3>
+<p>Whenever Blazor wants to trigger the event callback, it calls <code>EventCallback.InvokeAsync</code>. This calls <code>Receiver.InvokeAsync</code> with a new <code>EventCallbackWorkItem</code> and an argument (in case it&rsquo;s the generic version). See the <a href="https://github.com/dotnet/aspnetcore/blob/main/src/Components/Components/src/EventCallback.cs#L61">source code</a>.</p>
+<p><code>EventCallbackWorkItem</code> is the star struct here:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/444b2c46d6245f4f4cabd266ee6ee702.js"></script>
+</p>
+<p>As you can see, <code>EventCallbackWorkItem</code> executes the <code>MulticastDelegate</code> by first trying to cast it to known delegates (<code>Action</code> and <code>Func</code>). This way the performance is the same as calling the methods directly. The fallback is to call <code>DynamicInvoke</code>, which I personally don&rsquo;t know when it can happen, but if it does, it&rsquo;s a big performance hit.</p>
+<p>Here&rsquo;s how the receiver handles the event:
+<script type="application/javascript" src="https://gist.github.com/zHaytam/60636536895c681a8f9517e490c80b78.js"></script>
+</p>
+<p>After the event is triggered, <code>StateHasChanged</code> is called. If the event handler returned an incomplete <code>Task</code>, <code>StateHasChanged</code> is called again after the task is finished.</p>
+<p>Some Blazor developers, including me, don&rsquo;t like this automatic SHC call and prefer to have an option to disable it. I believe the Blazor team is working on it.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>At first, you might think that some functionalities are so hard to implement and scary to understand, until you dive deep into them and it turns out to be a fun journey.<br>
+Event callbacks are a great feature that is used everywhere, it&rsquo;s only fair we understand how it works under the hood.</p>
+<p>I hope you enjoyed this post, stay tuned for the next ones!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/blazor" title="View all posts in Blazor">Blazor</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/internals" title="View all posts tagged Internals">Internals</a>
+  
+  <a href="/tags/eventcallback" title="View all posts tagged EventCallback">EventCallback</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "awaiting-bits" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1616328501"></script>
+
+
+</body>
+</html>

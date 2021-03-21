@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internals on Awaiting Bits</title>
+    <link>https://blog.zhaytam.com/tags/internals/</link>
+    <description>Recent content in Internals on Awaiting Bits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/internals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blazor Internals: EvenCallback</title>
+      <link>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</guid>
+      <description>Figuring out how technologies are maid under the hood is one of the things I love to do. Ever since I started using Blazor and going in-depth into its features, I can&amp;rsquo;t stop wondering how things are made internally.
+This post is the start of a series about, you guess it, Blazor Internals.</description>
+    </item>
+    
+  </channel>
+</rss>
