@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/blog.zhaytam.com\/"
+        },
+        "articleSection" : "post",
+        "name" : "Blazor JavaScript Interop Batching",
+        "headline" : "Blazor JavaScript Interop Batching",
+        "description" : "It\u0026rsquo;s been a long time sine I\u0026rsquo;ve written a blog post, and I miss it a lot!\nToday, I\u0026rsquo;ll be talking about an experiment I did 2 months ago when I was trying to optimize Blazor.Diagrams: JS Interop Batching.\nContext I\u0026rsquo;ve been working on my Diagramming Library for Blazor for quite some time now, and it basically takes a model (Diagram) that contains multiple nodes, ports and links (which are also models), renders it and makes it editable on the fly.",
+        "inLanguage" : "en",
+        "author" : "Zanid Haytam",
+        "creator" : "Zanid Haytam",
+        "publisher": {
+        	"@type" : "Organization",
+            "name" : "Zanid Haytam",
+            "logo" : {
+            	"@type" : "ImageObject",
+            	"url" : "https:\/\/blog.zhaytam.com\/img\/me.jpg"
+            }
+        },
+        "accountablePerson" : "Zanid Haytam",
+        "copyrightHolder" : "Zanid Haytam",
+        "copyrightYear" : "2021",
+        "datePublished": "2021-09-23T00:00:00Z",
+        "dateModified" : "2021-09-23T00:00:00Z",
+        "url" : "https:\/\/blog.zhaytam.com\/2021\/09\/23\/blazor-js-interop-batching\/",
+        "wordCount" : "1105",
+        "image" : "https:\/\/blog.zhaytam.com\/img\/default_blazor.jpg",
+        "keywords" : [ "Blazor","JavaScript","Interop","Batching","Experiment","Blog" ]   
+    }
+    </script>
+
+
+ <title>Blazor JavaScript Interop Batching </title>
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+
+<title itemprop="name">Blazor JavaScript Interop Batching | Awaiting Bits</title>
+<meta property="og:title" content="Blazor JavaScript Interop Batching | Awaiting Bits" />
+<meta name="twitter:title" content="Blazor JavaScript Interop Batching | Awaiting Bits" />
+<meta itemprop="name" content="Blazor JavaScript Interop Batching | Awaiting Bits" />
+<meta name="application-name" content="Blazor JavaScript Interop Batching | Awaiting Bits" />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta itemprop="description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta property="og:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+<meta name="twitter:description" content="Zanid Haytam&#39;s personal blog about Programming, Data Science and random stuff." />
+
+
+<base href="https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/">
+<link rel="canonical" href="https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/" itemprop="url" /> 
+<meta name="url" content="https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/" />
+<meta name="twitter:url" content="https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/" /> 
+<meta property="og:url" content="https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/" />
+
+
+<meta property="og:locale" content="en">
+<meta name="language" content="Global">
+
+
+
+ 
+  <meta itemprop="image" content="https://blog.zhaytam.com/img/default_blazor.jpg" />
+  <meta property="og:image" content="https://blog.zhaytam.com/img/default_blazor.jpg" /> 
+  <meta name="twitter:image" content="https://blog.zhaytam.com/img/default_blazor.jpg" />
+  <meta name="twitter:image:src" content="https://blog.zhaytam.com/img/default_blazor.jpg" /> 
+
+
+
+<meta property="og:updated_time" content=2021-09-23T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.zhaytam.com/sitemap.xml" /> 
+
+
+
+
+
+    <meta name="keywords" content="Blazor,JavaScript,Interop,Batching,Experiment" />
+
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" id="ct-tracks-google-fonts-css" href="https://fonts.googleapis.com/css?family=Raleway%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=4.7.2" type="text/css" media="all">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link href="https://blog.zhaytam.com/css/style.css?v=1632440448" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
+
+<link href="https://blog.zhaytam.com/css/custom.css?v=1632440448" rel="stylesheet" type='text/css' media='all'>
+<link rel="shortcut icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://blog.zhaytam.com/img/favicon.ico" type="image/x-icon">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-120926049-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+
+  <div id="overflow-container" class="overflow-container">
+    <a class="skip-content" href="#main">Skip to content</a>
+    <header id="site-header" class="site-header" role="banner">
+      <div class='top-navigation'>
+        <div class='container'>
+
+  <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+    <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fas fa-plus"></i></button>
+
+    <div class="menu">
+
+      <ul id="menu-secondary-items" class="menu-secondary-items">
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/ai">ai</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/algorithms">algorithms</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/asp.net-core">asp.net-core</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/blazor">blazor</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/code-analysis">code-analysis</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/csharp">csharp</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/data-mining">data-mining</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/deep-learning">deep-learning</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/devops">devops</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/other">other</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/programming">programming</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+          <a href="/categories/protocols">protocols</a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <ul class="social-media-icons">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li>
+      <a href="mailto:haytam.zanid@gmail.com" data-animate-hover="pulse" class="email">
+        <i class="fas fa-envelope" title="email"></i>
+        <span class="screen-reader-text">email</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://ma.linkedin.com/in/zanid-haytam" data-animate-hover="pulse" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in" title="linkedin"></i>
+        <span class="screen-reader-text">linkedin</span>
+      </a>
+    </li>
+    
+
+    
+    <li>
+      <a href="https://stackoverflow.com/users/5447084/haytam" data-animate-hover="pulse" class="stackoverflow" target="_blank">
+        <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+        <span class="screen-reader-text">stackoverflow</span>
+      </a>
+    </li>
+    
+
+
+    
+    <li>
+      <a href="https://github.com/zHaytam" data-animate-hover="pulse" class="github" target="_blank">
+        <i class="fab fa-github" title="github"></i>
+        <span class="screen-reader-text">github</span>
+      </a>
+    </li>
+    
+
+
+    
+
+    
+    <li>
+      <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+        <i class="fas fa-rss" title="rss"></i>
+        <span class="screen-reader-text">rss</span>
+      </a>
+    </li>
+    
+
+
+  </ul></div>
+
+      </div>
+
+      <div class="container">
+        <div id="title-info" class="title-info">
+  <div id='site-title' class='site-title'>
+    
+    <a href="/"> Awaiting Bits </a>
+    </div>
+  </div>
+  <button id="toggle-navigation" class="toggle-navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+    
+    <p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+    
+
+    <div class="menu">
+      <ul id="menu-primary-items" class="menu-primary-items">
+        
+        
+        <li class='menu-item menu-item-type-custom menu-item-object-custom '>
+          <a href="https://blog.zhaytam.com/">Home</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/about/">About</a>
+          
+        </li>
+        
+        <li class='menu-item menu-item-type-post_type menu-item-object-page '>
+          <a href="https://blog.zhaytam.com/contact/">Get in touch</a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+
+      </div>
+    </header>
+
+    <div id="main" class="main" role="main">
+
+      
+  
+  
+    
+  
+  
+  <div id="loop-container" class="loop-container">
+    
+    <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+
+      <div class='featured-image lazy lazy-bg-image'  data-background="https://blog.zhaytam.com/img/default_blazor.jpg">
+      </div>
+      
+        <div class="entry-meta">
+          <span class="date">23 September</span>	<span> / </span>
+
+          <span class="author">
+            <a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a>
+          </span>
+
+
+          
+          <span class="category">
+            <span> / </span>
+
+            <a href="/categories/blazor">Blazor</a>
+          </span>
+          
+
+
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'> Blazor JavaScript Interop Batching</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>It&rsquo;s been a long time sine I&rsquo;ve written a blog post, and I miss it a lot!<br>
+Today, I&rsquo;ll be talking about an experiment I did 2 months ago when I was trying to optimize <a href="https://github.com/Blazor-Diagrams/Blazor.Diagrams">Blazor.Diagrams</a>: JS Interop Batching.</p>
+<h2 id="context">Context</h2>
+<p>I&rsquo;ve been working on my Diagramming Library for Blazor for quite some time now, and it basically takes a model (<code>Diagram</code>) that contains multiple nodes, ports and links (which are also models), renders it and makes it editable on the fly.</p>
+<p>In order for the library to render things correctly, it needs to know the size of these nodes and ports. Since the library lets you use any HTML/CSS you want to style your nodes and ports, the size cannot always be known beforehand and so it needs to be calculated. That&rsquo;s why the library uses JS Interop to get the bounds of the elements that interests it using <code>getBoundingClientRect</code>.</p>
+<p>Now, everything works fine until you have thousands of elements to get the bounds for. Let&rsquo;s take the following example:</p>
+<ul>
+<li>A diagram with 200 nodes</li>
+<li>Each node contains 8 ports</li>
+</ul>
+<p>This means that we have 1800 elements of which the bounds need to be fetched using JS. The following problems arise:</p>
+<ol>
+<li>Since the JS calls are done separately by each renderer, we have 1800 calls to make. Each call is a roundtrip between the JS/.net barrier, which is just extra cost.</li>
+<li>Since Blazor WebAssembly only has 1 thread, the UI is blocked until we get all the data.</li>
+</ol>
+<p>One of the things that I tried in order to optimize this process was to batch the JS calls together in order to save some time. In this post, I&rsquo;ll share how I did it and all my findings.</p>
+<div class="note info">
+    JS Interop shouldn't be a problem in most web apps. However, the time taken by ~2000 calls was around 5 seconds in WebAssembly and 2.5 seconds in Server Side.
+    
+</div>
+<h2 id="generic-solution">Generic Solution</h2>
+<p>While thinking of a proper solution, I thought it would be a good idea for the solution to be a generic one, usable as a separate library in the future in case other users are interested.</p>
+<p>It would also be better if we could just drop the batching functionality in without changing a lot of code. As an example, the below usage should still work by only changing the <code>JSRuntime</code> type.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">await JSRuntime.InvokeAsync&lt;Something&gt;(&#34;method1&#34;);
+await JSRuntime.InvokeVoidAsync(&#34;method2&#34;);
+</code></pre></div><p>As you can see, the solution should handle generic calls as well as void calls. Actually, void calls are generic ones that use <code>object</code> internally.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Since the calls need to be awaited for results, we will need to use <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskcompletionsource-1?view=net-5.0">TaskCompletionSource</a>. Once our Web App tries to call JS, we will register a new TCS and return its <code>Task</code> back so that it can be awaited. Once the JS calls are made (in a batch), we can set the results of all the TCS.</p>
+<h3 id="dtos">DTOs</h3>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/0e4042f8092e2e42fd196fd7bc1d2c54.js"></script>
+
+<ul>
+<li>The <code>JsCall</code> class is used internally in order to know what calls need to be made.</li>
+<li>The <code>JsResult</code> class is used to deserialize the result of a batch.</li>
+</ul>
+<h3 id="batching">Batching</h3>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/69d7c1e15b1c57457b9177be1ef34329.js"></script>
+
+<ol>
+<li>When <code>InvokeAsync</code> is called, we create a <code>TaskCompletionSource</code> and a <code>JsCall</code> to enqueue the call.</li>
+<li>If the task can be canceled, we register a new callback in the <code>CancellationToken</code> in order to cancel the TCS, otherwise the call would hang.</li>
+<li>If this is the first call, we create a new instance of the timer with an interval of 50 ms (can be lower or higher).</li>
+<li>Whenever the timer ticks, we try to dequeue all the calls and call <code>bachJsInterop</code>.</li>
+<li>For every call, we either set the result or set an exception based on the output.</li>
+</ol>
+<p>Since we specified <code>JsResult.ReturnValue</code> as an object (since we don&rsquo;t know its type), <code>System.Text.Json</code> will fill it with a <code>JsonElement</code>. Unfortunately, as of now there isn&rsquo;t a direct way to turn it into a specific <code>Type</code>. The <code>ToObject</code> method does it by creating a writer first, then deserializing to the correct type, which is an added overhead.</p>
+<h3 id="tcsutil">TcsUtil</h3>
+<p>As seen in the above implementation, there are two interesting methods: <code>SetResult</code> and <code>SetException</code>. Since invoking a call can be done using any Type (it&rsquo;s generic) and we create a generic TCS as well, we only know the actual type at runtime, which is why we need a way to set either the result or the exception without needing to know it.</p>
+<p>I used Expression Trees to do it, but you can also do it using a generic static class &ldquo;hack&rdquo;.</p>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/35ea970cd31613a34a6cf24e392afbc7.js"></script>
+
+<p>These methods basically create &amp; compile an Expression Tree that takes as input a TCS with an unknown type, its actual type (known from the <code>InvokeAsync</code> call) and the value to set. The expression casts the <code>tcs</code> object into the correct type and sets the result/exception accordingly.</p>
+<p>With this approach, there is only a small overhead for the first call of every type, then it should be the same speed as if the type was known.</p>
+<h3 id="javascript">JavaScript</h3>
+<script type="application/javascript" src="https://gist.github.com/zHaytam/39b7378caf0d4e67983f38b32e53db54.js"></script>
+
+<p>The functions is pretty straightforward. It looks for the function to call (if needed) using the <code>identifier</code>, and you execute it with the given arguments (if any).</p>
+<p>This is basically everything you need to do batching!</p>
+<h2 id="results">Results</h2>
+<p>Unfortunately, the results weren&rsquo;t that appealing. The gains weren&rsquo;t as important as the work required to make/maintain the functionality.</p>
+<ul>
+<li>The fact that everything was unknown until runtime adds overhead, STJ adds to that as well by not being able to freely deserialize from a <code>JsonElement</code>. If the need was to only support void calls, then the performance gain would be much higher.</li>
+<li>Batching JS calls with results means that the more calls we have, the more data we have to bring back from JS. This isn&rsquo;t a big problem in WebAssembly, but it is in Server Side Blazor. Everything needs to travel through the network, and there is a limit to how much data you can transfer in SignalR. The limit can be changed, but the Blazor team don&rsquo;t really advise it.</li>
+</ul>
+<p>This suggests that a generic JS Batching solution won&rsquo;t be of great benefit. It&rsquo;s a nice plus, but not something to jump on, at least with the implementation I tried.</p>
+<p>Having said that, I will still try and look for a nice solution. In the meantime, I&rsquo;m thinking of just batching JS calls with a known return type to avoid the mentioned overheads.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Honestly, it was a very fun experiment to do. I&rsquo;ve always enjoyed measuring performance and trying to find better ways to do things, so this was a nice exercise. I hope this could be useful to someone out there. If anyone has an idea to make this better, I&rsquo;d love to chat.</p>
+<p>Happy coding!</p>
+
+            </article>
+          </div>
+          
+      <div class='entry-meta-bottom'>
+        
+
+  <div class="entry-categories"><p><span>Categories</span>
+    
+    <a href="/categories/blazor" title="View all posts in Blazor">Blazor</a>
+  </p>
+</div>
+
+
+
+<div class="entry-tags"><p><span>Tags</span>
+  
+  <a href="/tags/blazor" title="View all posts tagged Blazor">Blazor</a>
+  
+  <a href="/tags/javascript" title="View all posts tagged JavaScript">JavaScript</a>
+  
+  <a href="/tags/interop" title="View all posts tagged Interop">Interop</a>
+  
+  <a href="/tags/batching" title="View all posts tagged Batching">Batching</a>
+  
+  <a href="/tags/experiment" title="View all posts tagged Experiment">Experiment</a>
+  
+
+</p></div>	</div>
+
+	
+<div class="author-meta">
+
+  <div class="author">
+    	
+      <img alt='Zanid Haytam' src="https://www.gravatar.com/avatar/3b94119ba495ae8d2328fc0b2bb0825a?s=100&d=identicon" class='avatar avatar-72 photo' height='72' width='72'>
+    
+    <span>
+      Written by:<a href="https://blog.zhaytam.com/about/" title="Posts by Zanid Haytam" rel="author">Zanid Haytam</a> </span>
+    </div>
+    <div class="bio">
+      
+      
+      <p>Zanid Haytam is an enthusiastic programmer that enjoys coding, reading code, hunting bugs and writing blog posts.</p>
+      
+      
+	
+
+
+
+
+
+
+
+<a class="linkedin" target="_blank"
+href="https://ma.linkedin.com/in/zanid-haytam">
+<i class="fab fa-linkedin"
+title="linkedin icon"></i>
+</a>
+
+
+
+<a class="email" target="_blank"
+href="mailto:haytam.zanid@gmail.com">
+<i class="fas fa-envelope"
+title="email icon"></i>
+</a>
+
+
+
+
+
+<a class="stackoverflow" target="_blank"
+href="https://stackoverflow.com/users/5447084/haytam">
+<i class="fab fa-stack-overflow"
+title="stackoverflow icon"></i>
+</a>
+
+
+
+<a class="github" target="_blank"
+href="https://github.com/zHaytam">
+<i class="fab fa-github"
+title="github icon"></i>
+</a>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<section id="comments" class="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "awaiting-bits" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+
+
+
+
+</section>
+</div>
+
+ 
+
+
+
+    </div>
+
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+	<h1>
+    
+    <a href=""> Awaiting Bits </a>
+    
+	</h1>
+
+			
+			<p class="site-description">Zanid Haytam's personal blog about Programming, Data Science and random stuff.</p>
+			
+
+		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
+
+      <ul id="menu-footer-items" class="menu-footer-items">
+        
+</ul>
+
+</div>	</div>
+
+<ul class="social-media-icons">
+
+        
+
+        
+
+
+        
+
+        
+
+        
+        <li>
+        <a href="mailto:haytam.zanid@gmail.com"  class="email">
+            <i class="fas fa-envelope" title="email"></i>
+            <span class="screen-reader-text">email</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://ma.linkedin.com/in/zanid-haytam" class="linkedin" target="_blank">
+            <i class="fab fa-linkedin-in" title="linkedin"></i>
+            <span class="screen-reader-text">linkedin</span>
+        </a>
+        </li>
+        
+
+        
+        <li>
+        <a href="https://stackoverflow.com/users/5447084/haytam"  class="stackoverflow" target="_blank">
+            <i class="fab fa-stack-overflow" title="stackoverflow"></i>
+            <span class="screen-reader-text">stackoverflow</span>
+        </a>
+        </li>
+        
+
+
+        
+        <li>
+        <a href="https://github.com/zHaytam"  class="github" target="_blank">
+            <i class="fab fa-github" title="github"></i>
+            <span class="screen-reader-text">github</span>
+        </a>
+        </li>
+        
+
+
+        
+
+        
+        <li>
+        <a href="https://blog.zhaytam.com/index.xml" data-animate-hover="pulse" class="rss" target="_blank">
+            <i class="fas fa-rss" title="rss"></i>
+            <span class="screen-reader-text">rss</span>
+        </a>
+        </li>
+        
+
+				</ul>	<div class="design-credit">
+		
+		<p>© 2019 Zanid Haytam</p>
+		
+		<p>Nederburg Hugo Theme by <a href="https://appernetic.io">Appernetic</a>.</p>
+		
+		<p>A port of Tracks by Compete Themes.</p>
+		
+	</div>
+</footer>
+
+  </div>
+  <script src="https://blog.zhaytam.com/js/jquery.min.js"></script>
+<script src="https://blog.zhaytam.com/js/jquerymigrate.js"></script>
+<script src="https://blog.zhaytam.com/js/production.min.js?v=1632440448"></script>
+
+
+</body>
+</html>

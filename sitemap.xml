@@ -4,21 +4,61 @@
   
   <url>
     <loc>https://blog.zhaytam.com/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/batching/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/blazor/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <loc>https://blog.zhaytam.com/2021/09/23/blazor-js-interop-batching/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.zhaytam.com/categories/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/experiment/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/interop/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/javascript/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/post/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/tags/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,16 +69,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/tags/internals/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/post/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -85,11 +115,6 @@
   <url>
     <loc>https://blog.zhaytam.com/tags/performance/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/blazor/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -744,11 +769,6 @@
   
   <url>
     <loc>https://blog.zhaytam.com/tags/google-maps-alternative/</loc>
-    <lastmod>2018-07-20T18:39:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhaytam.com/tags/javascript/</loc>
     <lastmod>2018-07-20T18:39:00+00:00</lastmod>
   </url>
   

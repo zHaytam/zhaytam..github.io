@@ -13,7 +13,7 @@
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/2021/03/21/blazor-internals-eventcallback/</guid>
-      <description>Figuring out how technologies are maid under the hood is one of the things I love to do. Ever since I started using Blazor and going in-depth into its features, I can&amp;rsquo;t stop wondering how things are made internally.
+      <description>Figuring out how technologies are made under the hood is one of the things I love to do. Ever since I started using Blazor and going in-depth into its features, I can&amp;rsquo;t stop wondering how things are made internally.
 This post is the start of a series about, you guess it, Blazor Internals.</description>
     </item>
     

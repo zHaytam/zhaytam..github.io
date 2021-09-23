@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Awaiting Bits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zhaytam.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Batching</title>
+      <link>https://blog.zhaytam.com/tags/batching/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/batching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blazor</title>
+      <link>https://blog.zhaytam.com/tags/blazor/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/blazor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experiment</title>
+      <link>https://blog.zhaytam.com/tags/experiment/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/experiment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interop</title>
+      <link>https://blog.zhaytam.com/tags/interop/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/interop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://blog.zhaytam.com/tags/javascript/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.zhaytam.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>EventCallback</title>
       <link>https://blog.zhaytam.com/tags/eventcallback/</link>
@@ -76,15 +121,6 @@
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/tags/performance/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blazor</title>
-      <link>https://blog.zhaytam.com/tags/blazor/</link>
-      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/tags/blazor/</guid>
       <description></description>
     </item>
     
@@ -913,15 +949,6 @@
       <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
       
       <guid>https://blog.zhaytam.com/tags/google-maps-alternative/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
-      <link>https://blog.zhaytam.com/tags/javascript/</link>
-      <pubDate>Fri, 20 Jul 2018 18:39:00 +0000</pubDate>
-      
-      <guid>https://blog.zhaytam.com/tags/javascript/</guid>
       <description></description>
     </item>
     
